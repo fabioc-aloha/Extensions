@@ -2,8 +2,11 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
+    "extensions/hook-studio/README.md",
     "extensions/hook-studio/package.json",
+    "extensions/mcp-app-starter/README.md",
     "extensions/mcp-app-starter/package.json",
+    "extensions/workspace-watchdog/README.md",
     "extensions/workspace-watchdog/package.json",
     "package-lock.json"
   ],
@@ -11,13 +14,13 @@
     {
       "file": "ROADMAP.md",
       "todoCount": 4,
-      "scannedAt": 1771952370700
+      "scannedAt": 1771952643590
     },
     {
       "file": "extensions/hook-studio/hook-studio-0.1.0.vsix",
       "todoCount": 1,
-      "scannedAt": 1771952370700
+      "scannedAt": 1771952643590
     }
   ],
-  "lastUpdated": 1771952370700
+  "lastUpdated": 1771952643590
 }

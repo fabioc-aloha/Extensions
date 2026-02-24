@@ -1,6 +1,6 @@
 # Hook Studio
 
-![Hook Studio Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/hook-studio/assets/banner.png)
+![Hook Studio Banner](assets/banner.png)
 
 **Visual GUI for VS Code `hooks.json` — the missing tooling for Copilot Chat hooks (VS Code 1.109+)**
 

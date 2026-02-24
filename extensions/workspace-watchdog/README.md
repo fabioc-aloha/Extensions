@@ -1,6 +1,6 @@
 # Workspace Watchdog
 
-![Workspace Watchdog Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/workspace-watchdog/assets/banner.png)
+![Workspace Watchdog Banner](assets/banner.png)
 
 **Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots**
 
