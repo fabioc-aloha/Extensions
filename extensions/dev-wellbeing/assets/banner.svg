@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#16213e"/>
+      <stop offset="100%" stop-color="#0f3460"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="320" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#accentGrad)"/>
+  <rect x="0" y="316" width="1280" height="4" fill="url(#accentGrad)"/>
+  
+  <!-- Health/wellness icon -->
+  <g transform="translate(80, 70)">
+    <!-- Heart with pulse -->
+    <path d="M90 40 C90 20 70 10 50 30 C30 10 10 20 10 40 C10 70 50 100 50 100 C50 100 90 70 90 40" fill="url(#heartGrad)"/>
+    <!-- Pulse line -->
+    <path d="M25 50 L40 50 L45 30 L50 70 L55 40 L60 60 L65 50 L80 50" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Water drop -->
+    <path d="M130 70 C130 90 150 100 150 100 C150 100 170 90 170 70 C170 55 150 30 150 30 C150 30 130 55 130 70" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="2"/>
+    
+    <!-- Eye -->
+    <ellipse cx="150" cy="140" rx="25" ry="15" fill="rgba(34,197,94,0.3)" stroke="#22c55e" stroke-width="2"/>
+    <circle cx="150" cy="140" r="8" fill="#22c55e"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="300" y="145" font-family="Segoe UI, system-ui, sans-serif" font-size="64" font-weight="700" fill="#ffffff">
+    Dev Wellbeing
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="302" y="195" font-family="Segoe UI, system-ui, sans-serif" font-size="24" fill="rgba(255,255,255,0.8)">
+    Health Reminders for Developers
+  </text>
+  
+  <!-- Feature pills -->
+  <g transform="translate(302, 230)">
+    <rect x="0" y="0" width="100" height="32" rx="16" fill="rgba(34,197,94,0.2)" stroke="rgba(34,197,94,0.4)" stroke-width="1"/>
+    <text x="50" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#4ade80">Posture</text>
+    
+    <rect x="115" y="0" width="100" height="32" rx="16" fill="rgba(34,197,94,0.2)" stroke="rgba(34,197,94,0.4)" stroke-width="1"/>
+    <text x="165" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#4ade80">Eye Breaks</text>
+    
+    <rect x="230" y="0" width="100" height="32" rx="16" fill="rgba(34,197,94,0.2)" stroke="rgba(34,197,94,0.4)" stroke-width="1"/>
+    <text x="280" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#4ade80">Hydration</text>
+  </g>
+  
+  <!-- 20-20-20 badge -->
+  <g transform="translate(1050, 120)">
+    <rect x="0" y="0" width="160" height="80" rx="12" fill="rgba(34,197,94,0.15)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+    <text x="80" y="35" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">20-20-20 Rule</text>
+    <text x="80" y="58" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#4ade80">Protect Your Eyes</text>
+  </g>
+  
+  <!-- CX CorreaX branding -->
+  <g transform="translate(1095, 268)">
+    <defs>
+      <linearGradient id="cxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0078d4"/>
+        <stop offset="100%" stop-color="#005a9e"/>
+      </linearGradient>
+    </defs>
+    <g transform="scale(0.75)">
+      <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14c3.866 0 7.389-1.568 9.928-4.1l-3.535-3.536A9.002 9.002 0 0116 25c-4.97 0-9-4.03-9-9s4.03-9 9-9c2.29 0 4.38.857 5.971 2.268l3.464-3.639C22.993 3.352 19.66 2 16 2z" fill="url(#cxGrad)"/>
+      <path d="M20 10l-4 6 4 6h4l-4-6 4-6h-4z" fill="url(#cxGrad)"/>
+      <path d="M24 10l4 6-4 6h4l4-6-4-6h-4z" fill="url(#cxGrad)" opacity="0.5"/>
+    </g>
+    <text x="32" y="18" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">CorreaX</text>
+  </g>
+</svg>

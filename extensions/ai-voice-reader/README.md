@@ -1,5 +1,7 @@
 # AI Voice Reader
 
+![AI Voice Reader Banner](assets/banner.png)
+
 **Text-to-speech for VS Code — read documents, selections, and notes aloud**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

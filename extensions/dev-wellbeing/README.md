@@ -1,5 +1,7 @@
 # Dev Wellbeing
 
+![Dev Wellbeing Banner](assets/banner.png)
+
 **Healthy coding habits — posture reminders, eye breaks, hydration nudges, and session stats**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

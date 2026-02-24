@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#16213e"/>
+      <stop offset="100%" stop-color="#0f3460"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="decayGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="320" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#accentGrad)"/>
+  <rect x="0" y="316" width="1280" height="4" fill="url(#accentGrad)"/>
+  
+  <!-- Decay curve -->
+  <g transform="translate(70, 70)">
+    <rect x="0" y="0" width="140" height="140" fill="none" stroke="rgba(139,92,246,0.2)" stroke-width="1" rx="8"/>
+    <path d="M10 20 Q70 25 90 60 T130 130" fill="none" stroke="url(#decayGrad)" stroke-width="4" stroke-linecap="round"/>
+    <!-- Data points -->
+    <circle cx="10" cy="20" r="6" fill="#8b5cf6"/>
+    <circle cx="50" cy="35" r="5" fill="#8b5cf6" opacity="0.8"/>
+    <circle cx="90" cy="65" r="4" fill="#8b5cf6" opacity="0.6"/>
+    <circle cx="130" cy="130" r="3" fill="#8b5cf6" opacity="0.4"/>
+    <!-- Calendar icon -->
+    <rect x="100" y="5" width="35" height="30" rx="4" fill="rgba(139,92,246,0.3)" stroke="#8b5cf6" stroke-width="1.5"/>
+    <line x1="100" y1="15" x2="135" y2="15" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="117" y="30" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="600" fill="#8b5cf6">90d</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="240" y="130" font-family="Segoe UI, system-ui, sans-serif" font-size="52" font-weight="700" fill="#ffffff">
+    Knowledge Decay
+  </text>
+  <text x="240" y="175" font-family="Segoe UI, system-ui, sans-serif" font-size="52" font-weight="700" fill="#ffffff">
+    Tracker
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="242" y="215" font-family="Segoe UI, system-ui, sans-serif" font-size="22" fill="rgba(255,255,255,0.8)">
+    Find Stale Docs Before They Mislead
+  </text>
+  
+  <!-- Feature pills -->
+  <g transform="translate(242, 250)">
+    <rect x="0" y="0" width="130" height="32" rx="16" fill="rgba(139,92,246,0.2)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+    <text x="65" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#a78bfa">Review Tags</text>
+    
+    <rect x="145" y="0" width="140" height="32" rx="16" fill="rgba(139,92,246,0.2)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+    <text x="215" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#a78bfa">Decay Profiles</text>
+    
+    <rect x="300" y="0" width="120" height="32" rx="16" fill="rgba(139,92,246,0.2)" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+    <text x="360" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#a78bfa">Batch Report</text>
+  </g>
+  
+  <!-- Overdue badge -->
+  <g transform="translate(1050, 120)">
+    <rect x="0" y="0" width="160" height="80" rx="12" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+    <text x="80" y="30" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="700" fill="#f87171">3</text>
+    <text x="80" y="55" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Overdue Docs</text>
+  </g>
+  
+  <!-- CX CorreaX branding -->
+  <g transform="translate(1095, 268)">
+    <defs>
+      <linearGradient id="cxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0078d4"/>
+        <stop offset="100%" stop-color="#005a9e"/>
+      </linearGradient>
+    </defs>
+    <g transform="scale(0.75)">
+      <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14c3.866 0 7.389-1.568 9.928-4.1l-3.535-3.536A9.002 9.002 0 0116 25c-4.97 0-9-4.03-9-9s4.03-9 9-9c2.29 0 4.38.857 5.971 2.268l3.464-3.639C22.993 3.352 19.66 2 16 2z" fill="url(#cxGrad)"/>
+      <path d="M20 10l-4 6 4 6h4l-4-6 4-6h-4z" fill="url(#cxGrad)"/>
+      <path d="M24 10l4 6-4 6h4l4-6-4-6h-4z" fill="url(#cxGrad)" opacity="0.5"/>
+    </g>
+    <text x="32" y="18" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">CorreaX</text>
+  </g>
+</svg>

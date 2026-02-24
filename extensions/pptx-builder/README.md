@@ -1,5 +1,7 @@
 # PPTX Builder
 
+![PPTX Builder Banner](assets/banner.png)
+
 **Convert Markdown to PowerPoint — each `##` heading becomes a slide**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

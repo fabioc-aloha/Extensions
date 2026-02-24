@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#16213e"/>
+      <stop offset="100%" stop-color="#0f3460"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="320" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#accentGrad)"/>
+  <rect x="0" y="316" width="1280" height="4" fill="url(#accentGrad)"/>
+  
+  <!-- Network nodes background -->
+  <g opacity="0.1">
+    <circle cx="150" cy="60" r="4" fill="#7c3aed"/>
+    <circle cx="200" cy="100" r="4" fill="#7c3aed"/>
+    <circle cx="120" cy="140" r="4" fill="#7c3aed"/>
+    <line x1="150" y1="60" x2="200" y2="100" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="200" y1="100" x2="120" y2="140" stroke="#7c3aed" stroke-width="1"/>
+    
+    <circle cx="1100" cy="80" r="4" fill="#7c3aed"/>
+    <circle cx="1150" cy="120" r="4" fill="#7c3aed"/>
+    <circle cx="1180" cy="70" r="4" fill="#7c3aed"/>
+    <line x1="1100" y1="80" x2="1150" y2="120" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="1150" y1="120" x2="1180" y2="70" stroke="#7c3aed" stroke-width="1"/>
+  </g>
+  
+  <!-- MCP cube/block icon -->
+  <g transform="translate(80, 90)">
+    <path d="M60 0 L120 30 L120 90 L60 120 L0 90 L0 30 Z" fill="url(#cubeGrad)" opacity="0.3"/>
+    <path d="M60 0 L120 30 L60 60 L0 30 Z" fill="url(#cubeGrad)"/>
+    <path d="M60 60 L120 30 L120 90 L60 120 Z" fill="url(#cubeGrad)" opacity="0.7"/>
+    <path d="M0 30 L60 60 L60 120 L0 90 Z" fill="url(#cubeGrad)" opacity="0.5"/>
+    <text x="60" y="70" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="24" font-weight="700" fill="#ffffff">M</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="230" y="145" font-family="Segoe UI, system-ui, sans-serif" font-size="64" font-weight="700" fill="#ffffff">
+    MCP App Starter
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="232" y="195" font-family="Segoe UI, system-ui, sans-serif" font-size="24" fill="rgba(255,255,255,0.8)">
+    Scaffold MCP Servers in One Command
+  </text>
+  
+  <!-- Feature pills -->
+  <g transform="translate(232, 230)">
+    <rect x="0" y="0" width="110" height="32" rx="16" fill="rgba(124,58,237,0.2)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+    <text x="55" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#a78bfa">TypeScript</text>
+    
+    <rect x="125" y="0" width="100" height="32" rx="16" fill="rgba(124,58,237,0.2)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+    <text x="175" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#a78bfa">JavaScript</text>
+    
+    <rect x="240" y="0" width="90" height="32" rx="16" fill="rgba(124,58,237,0.2)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+    <text x="285" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#a78bfa">Python</text>
+  </g>
+  
+  <!-- VS Code 1.109 badge -->
+  <g transform="translate(1050, 130)">
+    <rect x="0" y="0" width="160" height="60" rx="8" fill="rgba(124,58,237,0.15)" stroke="rgba(124,58,237,0.3)" stroke-width="1"/>
+    <text x="80" y="28" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">MCP Apps</text>
+    <text x="80" y="48" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#a78bfa">VS Code 1.109+</text>
+  </g>
+  
+  <!-- CX CorreaX branding -->
+  <g transform="translate(1095, 268)">
+    <defs>
+      <linearGradient id="cxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0078d4"/>
+        <stop offset="100%" stop-color="#005a9e"/>
+      </linearGradient>
+    </defs>
+    <g transform="scale(0.75)">
+      <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14c3.866 0 7.389-1.568 9.928-4.1l-3.535-3.536A9.002 9.002 0 0116 25c-4.97 0-9-4.03-9-9s4.03-9 9-9c2.29 0 4.38.857 5.971 2.268l3.464-3.639C22.993 3.352 19.66 2 16 2z" fill="url(#cxGrad)"/>
+      <path d="M20 10l-4 6 4 6h4l-4-6 4-6h-4z" fill="url(#cxGrad)"/>
+      <path d="M24 10l4 6-4 6h4l4-6-4-6h-4z" fill="url(#cxGrad)" opacity="0.5"/>
+    </g>
+    <text x="32" y="18" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">CorreaX</text>
+  </g>
+</svg>

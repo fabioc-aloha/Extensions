@@ -1,5 +1,7 @@
 # Mermaid Diagram Pro
 
+![Mermaid Diagram Pro Banner](assets/banner.png)
+
 **Enhanced Mermaid diagram support — templates, Mermaid Live preview, validation**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

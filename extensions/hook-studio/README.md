@@ -1,5 +1,7 @@
 # Hook Studio
 
+![Hook Studio Banner](assets/banner.png)
+
 **Visual GUI for VS Code `hooks.json` — the missing tooling for Copilot Chat hooks (VS Code 1.109+)**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

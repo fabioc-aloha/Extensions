@@ -1,5 +1,7 @@
 # Knowledge Decay Tracker
 
+![Knowledge Decay Tracker Banner](assets/banner.png)
+
 **Surface time-decayed knowledge — find docs going stale before they mislead**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#16213e"/>
+      <stop offset="100%" stop-color="#0f3460"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="timerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="320" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1280" height="4" fill="url(#accentGrad)"/>
+  <rect x="0" y="316" width="1280" height="4" fill="url(#accentGrad)"/>
+  
+  <!-- Timer icon -->
+  <g transform="translate(90, 80)">
+    <circle cx="60" cy="70" r="60" fill="none" stroke="url(#timerGrad)" stroke-width="6" opacity="0.3"/>
+    <circle cx="60" cy="70" r="60" fill="none" stroke="url(#timerGrad)" stroke-width="6" stroke-dasharray="280 100" transform="rotate(-90 60 70)"/>
+    <circle cx="60" cy="70" r="45" fill="none" stroke="rgba(245,158,11,0.2)" stroke-width="2"/>
+    <line x1="60" y1="70" x2="60" y2="35" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="60" y1="70" x2="85" y2="80" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="60" cy="70" r="6" fill="#f59e0b"/>
+    <!-- Play triangle -->
+    <polygon points="50,55 50,85 75,70" fill="#f59e0b" opacity="0.3"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="230" y="145" font-family="Segoe UI, system-ui, sans-serif" font-size="72" font-weight="700" fill="#ffffff">
+    Focus Timer
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="232" y="195" font-family="Segoe UI, system-ui, sans-serif" font-size="24" fill="rgba(255,255,255,0.8)">
+    Pomodoro Timer in Your Status Bar
+  </text>
+  
+  <!-- Feature pills -->
+  <g transform="translate(232, 230)">
+    <rect x="0" y="0" width="120" height="32" rx="16" fill="rgba(245,158,11,0.2)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+    <text x="60" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#fbbf24">Pomodoro</text>
+    
+    <rect x="135" y="0" width="100" height="32" rx="16" fill="rgba(245,158,11,0.2)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+    <text x="185" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#fbbf24">Streaks</text>
+    
+    <rect x="250" y="0" width="100" height="32" rx="16" fill="rgba(245,158,11,0.2)" stroke="rgba(245,158,11,0.4)" stroke-width="1"/>
+    <text x="300" y="21" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#fbbf24">Goals</text>
+  </g>
+  
+  <!-- Session badge -->
+  <g transform="translate(1050, 120)">
+    <rect x="0" y="0" width="160" height="80" rx="12" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+    <text x="80" y="30" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="32" font-weight="700" fill="#fbbf24">25:00</text>
+    <text x="80" y="55" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Focus Session</text>
+  </g>
+  
+  <!-- CX CorreaX branding -->
+  <g transform="translate(1095, 268)">
+    <defs>
+      <linearGradient id="cxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0078d4"/>
+        <stop offset="100%" stop-color="#005a9e"/>
+      </linearGradient>
+    </defs>
+    <g transform="scale(0.75)">
+      <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14c3.866 0 7.389-1.568 9.928-4.1l-3.535-3.536A9.002 9.002 0 0116 25c-4.97 0-9-4.03-9-9s4.03-9 9-9c2.29 0 4.38.857 5.971 2.268l3.464-3.639C22.993 3.352 19.66 2 16 2z" fill="url(#cxGrad)"/>
+      <path d="M20 10l-4 6 4 6h4l-4-6 4-6h-4z" fill="url(#cxGrad)"/>
+      <path d="M24 10l4 6-4 6h4l4-6-4-6h-4z" fill="url(#cxGrad)" opacity="0.5"/>
+    </g>
+    <text x="32" y="18" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">CorreaX</text>
+  </g>
+</svg>

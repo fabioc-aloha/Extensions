@@ -1,5 +1,7 @@
 # MCP App Starter
 
+![MCP App Starter Banner](assets/banner.png)
+
 **Scaffold Model Context Protocol (MCP) servers in seconds — TypeScript, JavaScript, or Python**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

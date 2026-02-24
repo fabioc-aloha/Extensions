@@ -1,5 +1,7 @@
 # SecretGuard
 
+![SecretGuard Banner](assets/banner.png)
+
 **Pre-commit secret scanner — catch leaked API keys, tokens, and credentials before they leave your machine**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

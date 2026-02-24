@@ -1,5 +1,7 @@
 # Gamma Slide Assistant
 
+![Gamma Slide Assistant Banner](assets/banner.png)
+
 **Write presentations in Markdown, render with Marp — beautiful slides without leaving VS Code**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)

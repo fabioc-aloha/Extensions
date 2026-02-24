@@ -1,5 +1,7 @@
 # Workspace Watchdog
 
+![Workspace Watchdog Banner](assets/banner.png)
+
 **Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
