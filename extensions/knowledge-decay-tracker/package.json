@@ -4,6 +4,7 @@
     "description": "Surface time-decayed knowledge in your codebase — find docs going stale before they mislead",
     "version": "0.1.0",
     "publisher": "fabioc-aloha",
+    "icon": "assets/icon.png",
     "engines": {
         "vscode": "^1.109.0"
     },

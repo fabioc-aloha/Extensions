@@ -4,6 +4,7 @@
     "description": "Convert Markdown to beautiful presentations — Marp offline rendering with Gamma-inspired themes, or export to HTML/PDF",
     "version": "0.1.0",
     "publisher": "fabioc-aloha",
+    "icon": "assets/icon.png",
     "engines": {
         "vscode": "^1.109.0"
     },

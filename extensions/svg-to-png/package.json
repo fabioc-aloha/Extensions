@@ -4,6 +4,7 @@
     "description": "Convert SVG files to pixel-perfect PNGs using resvg-js (Rust-based renderer) — right-click any SVG or run from command palette",
     "version": "0.1.0",
     "publisher": "fabioc-aloha",
+    "icon": "assets/icon.png",
     "engines": {
         "vscode": "^1.109.0"
     },

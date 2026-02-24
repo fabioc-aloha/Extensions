@@ -4,6 +4,7 @@
     "description": "Pre-commit secret scanner — catch leaked API keys, tokens, and credentials before they leave your machine",
     "version": "0.1.0",
     "publisher": "fabioc-aloha",
+    "icon": "assets/icon.png",
     "engines": {
         "vscode": "^1.109.0"
     },

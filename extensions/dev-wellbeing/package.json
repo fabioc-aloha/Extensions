@@ -4,6 +4,7 @@
     "description": "Healthy coding habits — posture reminders, eye strain breaks, hydration nudges, and session pacing",
     "version": "0.1.0",
     "publisher": "fabioc-aloha",
+    "icon": "assets/icon.png",
     "engines": {
         "vscode": "^1.109.0"
     },

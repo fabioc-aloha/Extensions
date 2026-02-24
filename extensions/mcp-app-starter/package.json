@@ -4,6 +4,7 @@
     "description": "Scaffold Model Context Protocol (MCP) servers for VS Code 1.109+ — no boilerplate, just code",
     "version": "0.1.0",
     "publisher": "fabioc-aloha",
+    "icon": "assets/icon.png",
     "engines": {
         "vscode": "^1.109.0"
     },

@@ -4,6 +4,7 @@
     "description": "Text-to-speech for VS Code — read documents, comments, and notes aloud using OS TTS or Azure Cognitive Speech",
     "version": "0.1.0",
     "publisher": "fabioc-aloha",
+    "icon": "assets/icon.png",
     "engines": {
         "vscode": "^1.109.0"
     },
