@@ -1,6 +1,6 @@
 # MCP App Starter
 
-![MCP App Starter Banner](assets/banner.png)
+![MCP App Starter Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/mcp-app-starter/assets/banner.png)
 
 **Scaffold Model Context Protocol (MCP) servers in seconds — TypeScript, JavaScript, or Python**
 
