@@ -1,6 +1,8 @@
 # Extensions Roadmap
 
 **Last Updated**: February 24, 2026
+**Build Status**: ✅ All 15 extensions compile successfully
+**Publisher**: `fabioc-aloha` (PAT verified)
 
 ---
 
@@ -10,7 +12,7 @@ Ordered by: shipping window urgency first, effort second, audience size third.
 
 ### ✅ Infrastructure — Fully Implemented
 
-All foundation work is done. Every extension has a working `extension.ts` and all shared utilities are complete.
+All foundation work is done. Every extension compiles successfully and all shared utilities are complete.
 
 | Component | Status |
 |---|:---:|
@@ -19,51 +21,58 @@ All foundation work is done. Every extension has a working `extension.ts` and al
 | `shared/utils/secretScanner.ts` | ✅ Implemented |
 | `shared/api/replicate.ts` | ✅ Implemented |
 | `shared/api/brandfetch.ts` | ✅ Implemented |
+| `shared/index.ts` (barrel export) | ✅ Created |
+| `shared/tsconfig.json` | ✅ Configured |
 | Alex Extensions `.github/` heir | ✅ Deployed (v1.0.0) |
 | All 15 extension `extension.ts` files | ✅ Implemented |
+| All 15 extensions compile | ✅ Verified (npm run compile:all) |
+| VSCE Publisher PAT | ✅ Verified (fabioc-aloha) |
 
-**Next step for all sprints**: `npm run compile` → `F5` test in Extension Development Host → `npx vsce package` → publish.
+**Next step for all sprints**: `F5` test in Extension Development Host → `npx vsce package` → publish.
 
-### 🔨 Sprint 1 — First Movers (Implemented — Ship Next)
+### 🔨 Sprint 1 — First Movers (✅ Compile-Ready — Ship Next)
 
 These three have open first-mover windows tied to VS Code 1.109 (released Feb 4, 2026). No competing extensions exist yet.
+**Status**: All compile successfully. Ready for F5 testing and publishing.
 
-| Extension | Effort | Why Now |
-|---|:---:|---|
-| [Hook Studio](#hook-studio) | 1w | VS Code 1.109 shipped agent hooks with zero tooling. Every Copilot agent user is a potential customer. |
-| [Workspace Watchdog](#workspace-watchdog) | 2d | Background File Watcher engine fully built in Alex v5.9.8. Zero AI needed. Broadest audience. |
-| [MCP App Starter](#mcp-app-starter) | 3d | MCP Apps went stable in VS Code 1.109. No scaffolding tool exists. Developer tooling for developers. |
+| Extension | Effort | Status | Why Now |
+|---|:---:|:---:|---|
+| [Hook Studio](#hook-studio) | 1w | ✅ Compiles | VS Code 1.109 shipped agent hooks with zero tooling. Every Copilot agent user is a potential customer. |
+| [Workspace Watchdog](#workspace-watchdog) | 2d | ✅ Compiles | Background File Watcher engine fully built in Alex v5.9.8. Zero AI needed. Broadest audience. |
+| [MCP App Starter](#mcp-app-starter) | 3d | ✅ Compiles | MCP Apps went stable in VS Code 1.109. No scaffolding tool exists. Developer tooling for developers. |
 
-### ✅ Sprint 2 — Code Extracted & Implemented (Next: Compile + Package)
+### ✅ Sprint 2 — Code Extracted & Implemented (✅ Compile-Ready)
 
-Logic exists in Alex. These are extraction + packaging tasks, not net-new builds.
+Logic exists in Alex. All compile successfully. Ready for testing and packaging.
 
-| Extension | Effort | Source in Alex |
-|---|:---:|---|
-| [SecretGuard](#secret-guard) | 3d | `secretScanner.ts` — enterprise secret scan already built |
-| [Focus Timer](#focus-timer) | 2d | Focus/goals system, Pomodoro logic in Alex |
-| [Knowledge Decay Tracker](#knowledge-decay-tracker) | 3d | Forgetting Curve decay engine (`v5.9.6`) — exact same math |
-| [Markdown to Word](#markdown-to-word) | 3d | `md-to-word` skill — Pandoc pipeline already documented |
-| [Brandfetch Logo Fetcher](#brandfetch-logo-fetcher) | 2d | Brandfetch API client already in Alex extension |
-| [AI Voice Reader](#ai-voice-reader) | 3d | TTS module built in Alex v5.4.x |
+| Extension | Effort | Status | Source in Alex |
+|---|:---:|:---:|---|
+| [SecretGuard](#secret-guard) | 3d | ✅ Compiles | `secretScanner.ts` — enterprise secret scan already built |
+| [Focus Timer](#focus-timer) | 2d | ✅ Compiles | Focus/goals system, Pomodoro logic in Alex |
+| [Knowledge Decay Tracker](#knowledge-decay-tracker) | 3d | ✅ Compiles | Forgetting Curve decay engine (`v5.9.6`) — exact same math |
+| [Markdown to Word](#markdown-to-word) | 3d | ✅ Compiles | `md-to-word` skill — Pandoc pipeline already documented |
+| [Brandfetch Logo Fetcher](#brandfetch-logo-fetcher) | 2d | ✅ Compiles | Brandfetch API client already in Alex extension |
+| [AI Voice Reader](#ai-voice-reader) | 3d | ✅ Compiles | TTS module built in Alex v5.4.x |
 
-### � Sprint 3 — Moderate Builds (Implemented — Next: Compile + Test)
+### 🔧 Sprint 3 — Moderate Builds (✅ Compile-Ready)
 
-Require more new code but have strong Alex foundations.
+Require more new code but have strong Alex foundations. All compile successfully.
 
-| Extension | Effort | Foundation |
-|---|:---:|---|
-| [Dev Wellbeing](#dev-wellbeing) | 3d | Siegel Session Health (v5.9.4), Window of Tolerance signals |
-| [PPTX Builder](#pptx-builder) | 4d | `pptxgenjs` already in Alex deps |
-| [Replicate Image Studio](#replicate-image-studio) | 1w | Replicate MCP wired in Alex; ADR-007 reference impl |
+| Extension | Effort | Status | Foundation |
+|---|:---:|:---:|---|
+| [Dev Wellbeing](#dev-wellbeing) | 3d | ✅ Compiles | Siegel Session Health (v5.9.4), Window of Tolerance signals |
+| [PPTX Builder](#pptx-builder) | 4d | ✅ Compiles | `pptxgenjs` already in Alex deps |
+| [Replicate Image Studio](#replicate-image-studio) | 1w | ✅ Compiles | Replicate MCP wired in Alex; ADR-007 reference impl |
 
-### � Sprint 4 — Larger Builds (Implemented — Next: Compile + Test)
+### 🔮 Sprint 4 — Larger Builds (✅ Compile-Ready)
 
-| Extension | Effort | Notes |
-|---|:---:|---|
-| [Mermaid Diagram Pro](#mermaid-diagram-pro) | 1w | Deep Mermaid patterns in Alex; live preview needs Mermaid.js integration |
-| [SVG Toolkit](#svg-toolkit) | 1w | SVG skill exists; image conversion pipeline is the hard part |
-| [Gamma Slide Assistant](#gamma-slide-assistant) | 1w | Gamma API not public yet; Marp is the offline path |
+All compile successfully. Ready for testing.
+
+| Extension | Effort | Status | Notes |
+|---|:---:|:---:|---|
+| [Mermaid Diagram Pro](#mermaid-diagram-pro) | 1w | ✅ Compiles | Deep Mermaid patterns in Alex; live preview needs Mermaid.js integration |
+| [SVG Toolkit](#svg-toolkit) | 1w | ✅ Compiles | SVG skill exists; image conversion pipeline is the hard part |
+| [Gamma Slide Assistant](#gamma-slide-assistant) | 1w | ✅ Compiles | Gamma API not public yet; Marp is the offline path |
 
 ---
 
@@ -81,7 +90,7 @@ Require more new code but have strong Alex foundations.
 - Import/export hooks between projects
 
 **Tech**: VS Code API, JSON Schema validation, Webview (React)
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -98,7 +107,7 @@ Require more new code but have strong Alex foundations.
 - Observation history persisted across sessions (`file-observations.json`)
 
 **Tech**: VS Code API, `child_process` (git), file system watchers
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -114,7 +123,7 @@ Require more new code but have strong Alex foundations.
 - Validates manifest against MCP Apps schema on save
 
 **Tech**: VS Code API, MCP Apps SDK (`modelcontextprotocol/ext-apps`), Webview
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -131,7 +140,7 @@ Require more new code but have strong Alex foundations.
 - Git pre-commit hook integration
 
 **Tech**: Regex engine, VS Code Diagnostics API, file system
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -148,7 +157,7 @@ Require more new code but have strong Alex foundations.
 - Zero AI dependency
 
 **Tech**: VS Code API, status bar, SecretStorage (settings)
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -165,7 +174,7 @@ Require more new code but have strong Alex foundations.
 - Works on `.md`, `.ts`, `.json`, ADR files — any text file
 
 **Tech**: VS Code API, frontmatter parser, file system
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -182,7 +191,7 @@ Require more new code but have strong Alex foundations.
 - Batch export: convert entire folder of `.md` files
 
 **Tech**: Pandoc (shell), `docx` npm package fallback, Mermaid CLI
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -198,7 +207,7 @@ Require more new code but have strong Alex foundations.
 - Bulk insert from list (paste 10 company names, get 10 logos)
 
 **Tech**: Brandfetch API, Logo.dev API, VS Code TextEditor
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -215,7 +224,7 @@ Require more new code but have strong Alex foundations.
 - Auto-scroll to follow reading position
 
 **Tech**: VS Code API, Web Speech API (Webview), Azure Speech SDK (optional)
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -232,7 +241,7 @@ Require more new code but have strong Alex foundations.
 - All local, zero telemetry
 
 **Tech**: VS Code API, text change events, status bar
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -249,7 +258,7 @@ Require more new code but have strong Alex foundations.
 - Export to Google Slides via PPTX import
 
 **Tech**: `pptxgenjs`, VS Code API, file system
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -266,7 +275,7 @@ Require more new code but have strong Alex foundations.
 - Chat participant: `@replicate generate a banner for my README`
 
 **Tech**: Replicate API, VS Code Chat Participant API, file system
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -283,7 +292,7 @@ Require more new code but have strong Alex foundations.
 - GitHub Mermaid compatibility checker
 
 **Tech**: Mermaid.js (WASM), VS Code CustomEditor, Webview, Sharp (export)
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -300,7 +309,7 @@ Require more new code but have strong Alex foundations.
 - SVG preview panel with zoom and path inspection
 
 **Tech**: Sharp, SVGO, potrace (WASM), VS Code API, Replicate (AI generation)
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 
@@ -316,7 +325,7 @@ Require more new code but have strong Alex foundations.
 - Export: Marp → HTML, PDF, PPTX
 
 **Tech**: Marp CLI, Gamma API (when available), Replicate API, VS Code API
-**Status**: � Implemented
+**Status**: ✅ Implemented
 
 ---
 

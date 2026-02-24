@@ -28,7 +28,7 @@ All implementation work is complete. These are no longer tasks.
 - [x] `npm install` from monorepo root — resolve all dependencies
 - [x] Verify `tsconfig.json` path resolution for `../../shared/utils/` imports in each extension
 - [x] All 15 extensions + shared package compile successfully
-- [ ] Set up `fabioc-aloha` VSCE publisher credentials (`npx vsce login fabioc-aloha`) — skipped for now
+- [x] Set up `fabioc-aloha` VSCE publisher credentials — PAT verified
 - [x] Create GitHub repo `Extensions` and push
 
 ### Step 2: Hook Studio — Ship First (First-Mover Window Open)
@@ -54,11 +54,11 @@ All implementation work is complete. These are no longer tasks.
 
 ## 📋 Sprint 2 (Next Month)
 
-*All shared utility ports are complete. Sprint 2 is now: compile-verify + polish + publish.*
-*All 15 extensions now compile successfully (2026-02-24).*
+*All shared utility ports are complete. All 15 extensions compile successfully (2026-02-24).*
+*VSCE publisher credentials verified — ready to publish.*
 
 ### SecretGuard (`secretScanner.ts` ✅ ported)
-- [x] `npm run compile` — verify build
+- [x] `npm run compile` — verified
 - [ ] Test scan-on-save diagnostics fire correctly in Extension Development Host
 - [ ] Add `.secretguardignore` file parser
 - [ ] Implement audit log export (JSON + CSV)
@@ -66,34 +66,34 @@ All implementation work is complete. These are no longer tasks.
 - [ ] Publish
 
 ### Focus Timer (Pomodoro logic ✅ implemented)
-- [ ] `npm run compile` — verify build
+- [x] `npm run compile` — verified
 - [ ] Test status bar timer, pause, stop in Extension Development Host
 - [ ] Add streak persistence via VS Code `globalState`
 - [ ] Verify GitHub Issues sync (optional — can ship without)
 - [ ] Publish
 
 ### Knowledge Decay Tracker (`decay.ts` ✅ ported)
-- [ ] `npm run compile` — verify build
+- [x] `npm run compile` — verified
 - [ ] Test frontmatter/comment tag parser (`<!-- review: 90d -->`)
 - [ ] Verify status bar badge (overdue count) updates correctly
 - [ ] Add GitHub Issues auto-create for overdue docs (optional — ship without)
 - [ ] Publish
 
 ### Markdown to Word
-- [ ] `npm run compile` — verify build
+- [x] `npm run compile` — verified
 - [ ] Verify Pandoc install detection (graceful error if missing)
 - [ ] Test Mermaid → PNG pre-processing via Mermaid CLI
 - [ ] Test right-click context menu in Explorer
 - [ ] Publish
 
 ### Brandfetch Logo Fetcher (`brandfetch.ts` ✅ ported)
-- [ ] `npm run compile` — verify build
+- [x] `npm run compile` — verified
 - [ ] Test command palette entry and insert format picker
 - [ ] Verify Logo.dev fallback works when Brandfetch returns nothing
 - [ ] Publish
 
 ### AI Voice Reader
-- [ ] `npm run compile` — verify build
+- [x] `npm run compile` — verified
 - [ ] Test Web Speech API via Webview (no API key path)
 - [ ] Verify per-language voice routing config
 - [ ] Publish
@@ -116,9 +116,10 @@ All implementation work is complete. These are no longer tasks.
 
 ---
 
-## Infrastructure
+## Infrastructure ✅
 
-- [ ] Set up `shared/` as a proper ts module with its own compilation
+- [x] Set up `shared/` as a proper ts module with its own compilation (`shared/tsconfig.json`, `shared/index.ts`)
+- [x] All 15 extensions compile successfully via `npm run compile:all`
 - [ ] Add ESLint config shared across all extensions
 - [ ] Add `scripts/package-all.sh` — packages all extensions to `dist/`
 - [ ] Add `scripts/publish-all.sh` — publishes all extensions sequentially
