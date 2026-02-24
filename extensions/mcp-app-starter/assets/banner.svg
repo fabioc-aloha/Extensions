@@ -72,8 +72,8 @@
   <!-- VS Code 1.109 badge -->
   <g transform="translate(1050, 130)">
     <rect x="0" y="0" width="160" height="60" rx="8" fill="rgba(124,58,237,0.15)" stroke="rgba(124,58,237,0.3)" stroke-width="1"/>
-    <text x="80" y="28" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">MCP Apps</text>
-    <text x="80" y="48" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#a78bfa">VS Code 1.109+</text>
+    <text x="80" y="24" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">MCP Apps</text>
+    <text x="80" y="44" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#a78bfa">VS Code 1.109+</text>
   </g>
   
 

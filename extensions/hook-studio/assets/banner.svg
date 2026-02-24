@@ -60,10 +60,10 @@
   </g>
   
   <!-- VS Code badge -->
-  <g transform="translate(1080, 130)">
-    <rect x="0" y="0" width="140" height="60" rx="8" fill="rgba(255,255,255,0.1)"/>
-    <text x="70" y="28" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Requires</text>
-    <text x="70" y="48" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#ffffff">VS Code 1.109+</text>
+  <g transform="translate(1050, 130)">
+    <rect x="0" y="0" width="160" height="60" rx="8" fill="rgba(255,255,255,0.1)"/>
+    <text x="80" y="24" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)">Requires</text>
+    <text x="80" y="44" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="600" fill="#ffffff">VS Code 1.109+</text>
   </g>
   
 

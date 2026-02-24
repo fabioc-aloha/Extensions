@@ -60,8 +60,8 @@
   <!-- Session badge -->
   <g transform="translate(1050, 120)">
     <rect x="0" y="0" width="160" height="80" rx="12" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
-    <text x="80" y="30" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="32" font-weight="700" fill="#fbbf24">25:00</text>
-    <text x="80" y="55" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Focus Session</text>
+    <text x="80" y="40" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="32" font-weight="700" fill="#fbbf24">25:00</text>
+    <text x="80" y="62" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Focus Session</text>
   </g>
   
 

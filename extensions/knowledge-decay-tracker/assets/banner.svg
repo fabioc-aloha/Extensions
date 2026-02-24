@@ -66,8 +66,8 @@
   <!-- Overdue badge -->
   <g transform="translate(1050, 120)">
     <rect x="0" y="0" width="160" height="80" rx="12" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-    <text x="80" y="30" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="700" fill="#f87171">3</text>
-    <text x="80" y="55" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Overdue Docs</text>
+    <text x="80" y="38" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="700" fill="#f87171">3</text>
+    <text x="80" y="60" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Overdue Docs</text>
   </g>
   
 
