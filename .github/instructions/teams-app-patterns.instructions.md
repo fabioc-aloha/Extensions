@@ -2,7 +2,7 @@
 
 **Auto-loaded when**: Building Microsoft Teams apps, M365 Copilot declarative agents, bots, tabs, or managing Teams app manifests
 **Domain**: Microsoft Teams, M365 platform, declarative agents, Teams Toolkit
-**Synapses**: [teams-app-patterns/SKILL.md](../skills/teams-app-patterns/SKILL.md)
+**Synapses**: [teams-app-patterns/SKILL.md](../skills/teams-app-patterns/SKILL.md), [.github/instructions/azure-enterprise-deployment.instructions.md] (High, Coordinates, Bidirectional) - "Teams app deployments commonly use enterprise Azure infrastructure"
 
 ---
 

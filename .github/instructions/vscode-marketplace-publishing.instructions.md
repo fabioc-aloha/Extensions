@@ -279,4 +279,100 @@ Applied 10 heir transformations
 
 ---
 
-*Marketplace publishing procedural memory — learned from v5.7.1 production deployment on 2026-02-15*
+## Multi-Extension Monorepo Publishing
+
+*Learned from extensions monorepo Sprint 1–2 (2026-02-24). Applies when publishing independent extensions from a shared workspace.*
+
+### Rate Limit Constraint
+
+**Critical**: Marketplace caps **~4 new extension creations per 12-hour window**.
+
+- Patch/minor publishes to **existing** extensions are not affected by this cap
+- New extension first-time publishes (new entry on marketplace) count toward the limit
+- **Strategy**: Batch 3–4 new extensions per publish session, schedule remaining for next day
+- If limit hit: `ERROR Failed request: (429)` or silent rejection — resume 12h later
+
+### Name Collision Strategy
+
+Marketplace extension names are globally unique across all publishers:
+
+```
+ERROR  Extension 'focus-timer' already exists in the Marketplace.
+→ Solution: Prefix with 'cx-' to make name unique
+```
+
+**cx- Prefix Pattern**:
+- `focus-timer` taken → rename `cx-focus-timer` in `package.json` (`name` + `displayName`)
+- `secret-guard` taken → `cx-secret-guard`
+- `workspace-watchdog` taken → `cx-workspace-watchdog`
+- **Check before publishing**: Search `https://marketplace.visualstudio.com/search?term=<name>` first
+
+**When collision detected**:
+1. Update `package.json`: `"name": "cx-<original>"`, `"displayName": "CX <Original>"`
+2. Update README and CHANGELOG to reflect new display name
+3. Re-run bundle + publish
+
+### esbuild Inline Bundling (Shared Library Pattern)
+
+When extensions use a workspace-shared library (`@alex-extensions/shared`), bundle it inline:
+
+```powershell
+npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify
+```
+
+**Key flags**:
+- `--bundle`: Inlines all imports including shared library
+- `--external:vscode`: Keeps VS Code API as runtime dependency (host provides it)
+- `--no-dependencies` flag on `vsce publish` then works correctly (no runtime deps needed)
+
+**Remove shared lib from runtime deps** in `package.json`:
+```json
+// Before: will fail at install time (workspace package not on npm)
+"dependencies": { "@alex-extensions/shared": "*" }
+
+// After: bundled inline, no runtime dependency needed
+"dependencies": {}
+```
+
+**Required `.vscodeignore` entries** to keep VSIX clean:
+```
+src/**
+tsconfig.json
+node_modules/**
+**/*.ts
+**/*.map
+```
+
+### Per-Extension Publish Checklist
+
+For each extension in the monorepo, verify before publishing:
+
+| Step | Item | Command / Check |
+|------|------|-----------------|
+| 1 | LICENSE exists | `Test-Path extensions/<name>/LICENSE` |
+| 2 | `.vscodeignore` exists | `Test-Path extensions/<name>/.vscodeignore` |
+| 3 | Name collision check | Search Marketplace for extension name |
+| 4 | esbuild scripts in package.json | `"bundle"`, `"package"`, `"publish"` scripts present |
+| 5 | Author field set | `"author": "Your Name"` in package.json (drives Marketplace attribution) |
+| 6 | README banner uses absolute URL | `https://raw.githubusercontent.com/...` not relative path |
+| 7 | CHANGELOG documenting this version | At least `## [0.1.0]` entry present |
+| 8 | Bundle succeeds | `npm run bundle` exits 0 |
+| 9 | Publish | `npx @vscode/vsce publish --no-dependencies` |
+
+### Author Field (Marketplace Attribution)
+
+Without `"author"` field, the extension appears with no author on the Marketplace listing:
+
+```json
+{
+  "publisher": "fabioc-aloha",
+  "author": "Fabio Correa",   // ← required for Marketplace attribution + publisher-search
+  "name": "my-extension"
+}
+```
+
+To retroactively add author to already-published extensions: add the field and publish a patch version.
+
+---
+
+*Marketplace publishing procedural memory — learned from v5.7.1 production deployment on 2026-02-15; extended with multi-extension monorepo patterns from Sprint 1–2 on 2026-02-24*
