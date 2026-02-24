@@ -1,4 +1,13 @@
-# Alex Extensions Monorepo
+<p align="center">
+  <img src="brand/logos/banner-extensions.svg" alt="Alex Extensions Banner" width="100%">
+</p>
+
+<p align="center">
+  <strong>15 VS Code extensions spun off from Alex Cognitive Architecture</strong><br>
+  <sub>Build Status: ✅ All compile | Publisher: <code>fabioc-aloha</code> | VS Code 1.109+</sub>
+</p>
+
+---
 
 A family of standalone VS Code extensions spun off from the [Alex Cognitive Architecture](https://github.com/fabioc-aloha/Alex_Plug_In). Each extension is a focused, self-contained utility that works without requiring Alex — but shares patterns, API clients, and design conventions that allow future re-integration.
 
@@ -6,23 +15,23 @@ A family of standalone VS Code extensions spun off from the [Alex Cognitive Arch
 
 ## Extensions
 
-| Extension | Category | Status | Effort | Priority |
-|---|---|:---:|:---:|:---:|
-| [Hook Studio](./extensions/hook-studio/) | 🪝 Dev Tools | 🔄 Active | 1w | 🔥 P0 |
-| [Workspace Watchdog](./extensions/workspace-watchdog/) | 👁️ Awareness | 🔄 Active | 2d | 🔥 P0 |
-| [MCP App Starter](./extensions/mcp-app-starter/) | 🛠️ Dev Tools | 🔄 Active | 3d | 🔥 P0 |
-| [SecretGuard](./extensions/secret-guard/) | 🔒 Security | 📋 Planned | 3d | P1 |
-| [Focus Timer](./extensions/focus-timer/) | ⏱️ Productivity | 📋 Planned | 2d | P1 |
-| [Knowledge Decay Tracker](./extensions/knowledge-decay-tracker/) | 📅 Knowledge | 📋 Planned | 3d | P1 |
-| [Markdown to Word](./extensions/markdown-to-word/) | 📄 Converter | 📋 Planned | 3d | P1 |
-| [AI Voice Reader](./extensions/ai-voice-reader/) | 🔊 Accessibility | 📋 Planned | 3d | P2 |
-| [Brandfetch Logo Fetcher](./extensions/brandfetch-logo-fetcher/) | 🏢 Utility | 📋 Planned | 2d | P2 |
-| [Dev Wellbeing](./extensions/dev-wellbeing/) | 🧘 Wellness | 📋 Planned | 3d | P2 |
-| [PPTX Builder](./extensions/pptx-builder/) | 📊 Converter | 📋 Planned | 4d | P2 |
-| [Replicate Image Studio](./extensions/replicate-image-studio/) | 🎨 Image Gen | 📋 Planned | 1w | P2 |
-| [Mermaid Diagram Pro](./extensions/mermaid-diagram-pro/) | 📐 Diagramming | 📋 Planned | 1w | P3 |
-| [SVG Toolkit](./extensions/svg-toolkit/) | 🖼️ Image Gen | 📋 Planned | 1w | P3 |
-| [Gamma Slide Assistant](./extensions/gamma-slide-assistant/) | 🎤 Presenter | 📋 Planned | 1w | P3 |
+| Extension | Category | Status | Priority |
+|---|---|:---:|:---:|
+| [Hook Studio](./extensions/hook-studio/) | 🪝 Dev Tools | ✅ Ready to ship | 🔥 P0 |
+| [Workspace Watchdog](./extensions/workspace-watchdog/) | 👁️ Awareness | ✅ Ready to ship | 🔥 P0 |
+| [MCP App Starter](./extensions/mcp-app-starter/) | 🛠️ Dev Tools | ✅ Ready to ship | 🔥 P0 |
+| [SecretGuard](./extensions/secret-guard/) | 🔒 Security | ✅ Implemented | P1 |
+| [Focus Timer](./extensions/focus-timer/) | ⏱️ Productivity | ✅ Implemented | P1 |
+| [Knowledge Decay Tracker](./extensions/knowledge-decay-tracker/) | 📅 Knowledge | ✅ Implemented | P1 |
+| [Markdown to Word](./extensions/markdown-to-word/) | 📄 Converter | ✅ Implemented | P1 |
+| [AI Voice Reader](./extensions/ai-voice-reader/) | 🔊 Accessibility | ✅ Implemented | P2 |
+| [Brandfetch Logo Fetcher](./extensions/brandfetch-logo-fetcher/) | 🏢 Utility | ✅ Implemented | P2 |
+| [Dev Wellbeing](./extensions/dev-wellbeing/) | 🧘 Wellness | ✅ Implemented | P2 |
+| [PPTX Builder](./extensions/pptx-builder/) | 📊 Converter | ✅ Implemented | P2 |
+| [Replicate Image Studio](./extensions/replicate-image-studio/) | 🎨 Image Gen | ✅ Implemented | P2 |
+| [Mermaid Diagram Pro](./extensions/mermaid-diagram-pro/) | 📐 Diagramming | ✅ Implemented | P3 |
+| [SVG Toolkit](./extensions/svg-toolkit/) | 🖼️ Image Gen | ✅ Implemented | P3 |
+| [Gamma Slide Assistant](./extensions/gamma-slide-assistant/) | 🎤 Presenter | ✅ Implemented | P3 |
 
 ---
 
