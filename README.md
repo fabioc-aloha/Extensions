@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <strong>15 VS Code extensions spun off from Alex Cognitive Architecture</strong><br>
-  <sub>Build Status: ✅ All compile | Publisher: <code>fabioc-aloha</code> | VS Code 1.109+</sub>
+  <strong>16 VS Code extensions spun off from Alex Cognitive Architecture</strong><br>
+  <sub>9 live on Marketplace | Publisher: <code>fabioc-aloha</code> | VS Code 1.109+</sub>
 </p>
 
 ---
@@ -15,23 +15,43 @@ A family of standalone VS Code extensions spun off from the [Alex Cognitive Arch
 
 ## Extensions
 
-| Extension | Category | Status | Priority |
-|---|---|:---:|:---:|
-| [Hook Studio](./extensions/hook-studio/) | 🪝 Dev Tools | ✅ Ready to ship | 🔥 P0 |
-| [Workspace Watchdog](./extensions/workspace-watchdog/) | 👁️ Awareness | ✅ Ready to ship | 🔥 P0 |
-| [MCP App Starter](./extensions/mcp-app-starter/) | 🛠️ Dev Tools | ✅ Ready to ship | 🔥 P0 |
-| [SecretGuard](./extensions/secret-guard/) | 🔒 Security | ✅ Implemented | P1 |
-| [Focus Timer](./extensions/focus-timer/) | ⏱️ Productivity | ✅ Implemented | P1 |
-| [Knowledge Decay Tracker](./extensions/knowledge-decay-tracker/) | 📅 Knowledge | ✅ Implemented | P1 |
-| [Markdown to Word](./extensions/markdown-to-word/) | 📄 Converter | ✅ Implemented | P1 |
-| [AI Voice Reader](./extensions/ai-voice-reader/) | 🔊 Accessibility | ✅ Implemented | P2 |
-| [Brandfetch Logo Fetcher](./extensions/brandfetch-logo-fetcher/) | 🏢 Utility | ✅ Implemented | P2 |
-| [Dev Wellbeing](./extensions/dev-wellbeing/) | 🧘 Wellness | ✅ Implemented | P2 |
-| [PPTX Builder](./extensions/pptx-builder/) | 📊 Converter | ✅ Implemented | P2 |
-| [Replicate Image Studio](./extensions/replicate-image-studio/) | 🎨 Image Gen | ✅ Implemented | P2 |
-| [Mermaid Diagram Pro](./extensions/mermaid-diagram-pro/) | 📐 Diagramming | ✅ Implemented | P3 |
-| [SVG Toolkit](./extensions/svg-toolkit/) | 🖼️ Image Gen | ✅ Implemented | P3 |
-| [Gamma Slide Assistant](./extensions/gamma-slide-assistant/) | 🎤 Presenter | ✅ Implemented | P3 |
+### Sprint 1 — Published ✅
+
+| Extension | Category | Marketplace |
+|---|---|---|
+| [Hook Studio](./extensions/hook-studio/) | 🪝 Dev Tools | [fabioc-aloha.hook-studio](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |
+| [CX Workspace Watchdog](./extensions/workspace-watchdog/) | 👁️ Awareness | [fabioc-aloha.cx-workspace-watchdog](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog) |
+| [MCP App Starter](./extensions/mcp-app-starter/) | 🛠️ Dev Tools | [fabioc-aloha.mcp-app-starter](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter) |
+
+### Sprint 2 — 4/6 Published ✅
+
+| Extension | Category | Marketplace |
+|---|---|---|
+| [Knowledge Decay Tracker](./extensions/knowledge-decay-tracker/) | 📅 Knowledge | [fabioc-aloha.knowledge-decay-tracker](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker) |
+| [Brandfetch Logo Fetcher](./extensions/brandfetch-logo-fetcher/) | 🏢 Utility | [fabioc-aloha.brandfetch-logo-fetcher](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
+| [AI Voice Reader](./extensions/ai-voice-reader/) | 🔊 Accessibility | [fabioc-aloha.ai-voice-reader](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
+| [CX SecretGuard](./extensions/secret-guard/) | 🔒 Security | [fabioc-aloha.cx-secret-guard](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard) |
+| [CX Focus Timer](./extensions/focus-timer/) | ⏱️ Productivity | ⏳ Publish pending (rate limit) |
+| [CX Markdown to Word](./extensions/markdown-to-word/) | 📄 Converter | ⏳ Publish pending (rate limit) |
+
+> **Naming note**: `workspace-watchdog`, `secret-guard`, `focus-timer`, and `markdown-to-word` were taken on Marketplace by other publishers — these ship with the `cx-` prefix.
+
+### Sprint 3 — Compile-Ready
+
+| Extension | Category | Status |
+|---|---|:---:|
+| [Dev Wellbeing](./extensions/dev-wellbeing/) | 🧘 Wellness | 🔧 Next up |
+| [PPTX Builder](./extensions/pptx-builder/) | 📊 Converter | 🔧 Next up |
+| [Replicate Image Studio](./extensions/replicate-image-studio/) | 🎨 Image Gen | 🔧 Next up |
+
+### Sprint 4 — Compile-Ready
+
+| Extension | Category | Status |
+|---|---|:---:|
+| [Mermaid Diagram Pro](./extensions/mermaid-diagram-pro/) | 📐 Diagramming | 🔮 Planned |
+| [SVG Toolkit](./extensions/svg-toolkit/) | 🖼️ Image Gen | 🔮 Planned |
+| [SVG to PNG](./extensions/svg-to-png/) | 🖼️ Image Gen | 🔮 Planned |
+| [Gamma Slide Assistant](./extensions/gamma-slide-assistant/) | 🎤 Presenter | 🔮 Planned |
 
 ---
 
@@ -60,7 +80,7 @@ Extensions/
     ├── hook-studio/
     ├── workspace-watchdog/
     ├── mcp-app-starter/
-    └── ... (15 total)
+    └── ... (16 total)
 ```
 
 ---
@@ -88,10 +108,11 @@ cd extensions/hook-studio
 npm run compile
 ```
 
-### Package and test locally
+### Bundle and test locally
 ```bash
 cd extensions/hook-studio
-npx vsce package
+npm run bundle                              # esbuild → out/extension.js
+npx @vscode/vsce package
 code --install-extension hook-studio-*.vsix
 ```
 
@@ -102,8 +123,8 @@ Reload VS Code window after installation to activate the extension.
 ## Design Principles
 
 1. **Zero Alex dependency** — Every extension works as a standalone install. No dependency on `alex-cognitive-architecture`.
-2. **Code extracted, not copied** — Shared logic lives in `shared/` and is imported, not duplicated per extension.
-3. **First mover where possible** — Ship before competing extensions exist. Hook Studio and MCP App Starter have an open window right now.
+2. **Code extracted, not copied** — Shared logic lives in `shared/` and is bundled inline via esbuild — no runtime dependency on the monorepo.
+3. **First mover where possible** — Ship before competing extensions exist. Hook Studio, MCP App Starter, and Workspace Watchdog targeted the VS Code 1.109 launch window.
 4. **No AI subscription required for core** — AI features are additive, not blocking. SecretGuard, Focus Timer, and Workspace Watchdog work with zero API keys.
 5. **Alex synergy preserved** — Settings namespaces, API key storage, and UX patterns stay consistent for possible future re-integration.
 

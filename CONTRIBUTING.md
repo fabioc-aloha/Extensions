@@ -57,11 +57,21 @@ Import from shared: `import { DecayEngine } from '../../shared/utils/decay'`
 
 ## Publishing
 
-1. Bump version in `package.json` and `CHANGELOG.md`
-2. `npm run compile`
-3. `npx vsce package` → installs locally, verifies
-4. `npx vsce publish` (requires PAT in env: `VSCE_PAT`)
-5. Create git tag: `git tag {extension-name}/v{version}`
+1. Ensure a `LICENSE` file exists in the extension directory (copy from any Sprint 1 extension)
+2. Ensure `.vscodeignore` exists (copy template from any Sprint 1 extension)
+3. **Check for name collision** — search the extension `name` at `marketplace.visualstudio.com`. If taken by any publisher, prefix with `cx-` (e.g. `cx-focus-timer`). Update both `name` and `displayName`.
+4. Add esbuild bundle scripts to `package.json` if not present:
+   ```json
+   "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
+   "package": "npm run bundle && npx @vscode/vsce package",
+   "publish": "npm run bundle && npx @vscode/vsce publish"
+   ```
+5. Bump version in `package.json` and update `CHANGELOG.md`
+6. `npm run bundle` — verify `out/extension.js` builds cleanly
+7. `npx @vscode/vsce publish --no-dependencies`
+8. Create git tag: `git tag {extension-name}/v{version}`
+
+> **Rate limit**: Marketplace caps new extension creation at ~4 per 12-hour window. Plan batch publishes accordingly.
 
 ## Branching
 

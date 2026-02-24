@@ -2,15 +2,28 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "ROADMAP.md",
-    "TODO.md"
+    "CONTRIBUTING.md",
+    "README.md",
+    "extensions/hook-studio/CHANGELOG.md",
+    "extensions/mcp-app-starter/CHANGELOG.md",
+    "extensions/workspace-watchdog/CHANGELOG.md"
   ],
   "todoHotspots": [
     {
-      "file": "extensions/hook-studio/hook-studio-0.1.0.vsix",
+      "file": "CONTRIBUTING.md",
       "todoCount": 1,
-      "scannedAt": 1771953625078
+      "scannedAt": 1771956625714
+    },
+    {
+      "file": "extensions/workspace-watchdog/CHANGELOG.md",
+      "todoCount": 1,
+      "scannedAt": 1771956625714
+    },
+    {
+      "file": "README.md",
+      "todoCount": 1,
+      "scannedAt": 1771956625714
     }
   ],
-  "lastUpdated": 1771953625078
+  "lastUpdated": 1771956625714
 }
