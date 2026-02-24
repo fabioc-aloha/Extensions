@@ -5,6 +5,23 @@
 
 ---
 
+## 🚨 P0 — Marketplace Blockers (Audit 2026-02-24)
+
+> Extensions cannot be packaged/published until these are resolved.
+
+- [ ] **[P0]** Create `assets/icon.png` (128×128px) for all 16 extensions — required by Marketplace
+- [ ] **[P0]** Fix `hook-studio` — `package.json` references `assets/icon.png` but file does not exist; `npx vsce package` will hard-fail
+- [ ] **[P0]** Create `extensions/svg-to-png/assets/` folder with `banner.svg` + `banner.png` (only extension with no assets folder)
+- [ ] **[P1]** Add `"license": "MIT"` to all 16 `package.json` files
+- [ ] **[P1]** Add `"repository": { "type": "git", "url": "https://github.com/fabioc-aloha/Extensions" }` to 15 `package.json` files (hook-studio already has it)
+- [ ] **[P1]** Add `"galleryBanner": { "color": "#1a1a2e", "theme": "dark" }` to all 16 `package.json` files
+- [ ] **[P2]** Add `## Features` section to 13 READMEs: ai-voice-reader, brandfetch-logo-fetcher, dev-wellbeing, focus-timer, gamma-slide-assistant, knowledge-decay-tracker, markdown-to-word, mermaid-diagram-pro, pptx-builder, replicate-image-studio, svg-toolkit, secret-guard *(implicitly missing)*, svg-to-png *(implicitly missing)*
+- [ ] **[P2]** Add `## Requirements` section to 13 READMEs: ai-voice-reader, brandfetch-logo-fetcher, dev-wellbeing, focus-timer, knowledge-decay-tracker, mermaid-diagram-pro, replicate-image-studio, secret-guard, svg-to-png, svg-toolkit, workspace-watchdog, gamma-slide-assistant, pptx-builder
+- [ ] **[P2]** Add `CHANGELOG.md` to 13 extensions: ai-voice-reader, brandfetch-logo-fetcher, dev-wellbeing, focus-timer, gamma-slide-assistant, knowledge-decay-tracker, markdown-to-word, mermaid-diagram-pro, pptx-builder, replicate-image-studio, secret-guard, svg-to-png, svg-toolkit
+- [ ] **[P3]** Upgrade `eslint` to v10 to fix 5 high-severity `minimatch` ReDoS vulnerabilities (`@vscode/vsce` + `eslint` dev deps only — not user-facing)
+
+---
+
 ## ✅ Done — Audit Confirmed 2026-02-24
 
 All implementation work is complete. These are no longer tasks.
