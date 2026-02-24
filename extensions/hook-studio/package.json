@@ -2,7 +2,7 @@
   "name": "hook-studio",
   "displayName": "Hook Studio",
   "description": "Visual GUI for VS Code agent hooks — build, debug, and test hooks.json without reading docs.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "fabioc-aloha",
   "icon": "assets/icon.png",
   "engines": {
