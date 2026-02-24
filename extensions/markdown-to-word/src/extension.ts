@@ -49,8 +49,8 @@ async function convert(inputPath: string, outputPath?: string): Promise<void> {
     const outPath = outputPath ?? inputPath.replace(/\.md$/, '.docx');
 
     const args = [inputPath, '-o', outPath, '--standalone'];
-    if (referenceDoc && fs.existsSync(referenceDoc)) {
-        args.push(`--reference-doc=${referenceDoc}`);
+    if (referenceDoc) {
+        try { await fs.promises.access(referenceDoc); args.push(`--reference-doc=${referenceDoc}`); } catch { /* ref doc not found, skip */ }
     }
 
     try {

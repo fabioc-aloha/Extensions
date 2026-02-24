@@ -6,6 +6,7 @@
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.hook-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio)
 
 ---
 
@@ -24,6 +25,7 @@ Hook Studio fills that gap with a visual, tabbed interface directly inside VS Co
 | **Condition Tester** | Simulate a tool call to preview which hooks would activate |
 | **Import from Alex** | One-click import from the Alex Cognitive Architecture hooks |
 | **File Watch** | Auto-reloads when `hooks.json` changes externally |
+| **Right-click menus** | Right-click any `hooks.json` in Explorer or Editor to access all commands directly |
 
 ## Requirements
 
@@ -33,7 +35,7 @@ Hook Studio fills that gap with a visual, tabbed interface directly inside VS Co
 ## Usage
 
 1. Open the Command Palette (`Ctrl+Shift+P`)
-2. Run **Hook Studio: Open**
+2. Run **Hook Studio: Open** — or right-click any `hooks.json` file and select from the context menu
 3. Use the **Rule Builder** tab to edit your hooks
 4. Click **Validate** to check JSON syntax
 5. Click **Save** to write back to `.github/hooks.json`
@@ -56,21 +58,17 @@ Hook Studio fills that gap with a visual, tabbed interface directly inside VS Co
 
 ## Commands
 
-| Command | Description |
-|---|---|
-| `Hook Studio: Open` | Open the visual editor panel |
-| `Hook Studio: Test Condition` | Run condition tester with a tool name |
-| `Hook Studio: Import from Alex Hooks` | Load hooks from Alex architecture |
-| `Hook Studio: Export hooks.json` | Export to a custom path |
-| `Hook Studio: Open Execution Log` | Show log view in Explorer sidebar |
+| Command | Where | Description |
+|---|---|---|
+| `Hook Studio: Open` | Palette · Right-click `hooks.json` | Open the visual editor panel |
+| `Hook Studio: Test Condition` | Palette · Right-click `hooks.json` | Run condition tester with a tool name |
+| `Hook Studio: Import from Alex Hooks` | Palette | Load hooks from Alex architecture |
+| `Hook Studio: Export hooks.json` | Palette · Right-click `hooks.json` | Export to a custom path |
+| `Hook Studio: Open Execution Log` | Palette · Right-click `hooks.json` | Show log view in Explorer sidebar |
 
 ## Extension Settings
 
 No configuration required. Hook Studio auto-activates when `.github/hooks.json` exists in the workspace.
-
-## Source
-
-Extracted from [Alex Cognitive Architecture v5.9.8](https://github.com/fabioc-aloha/Alex_Plug_In). Hook system patterns from `platforms/vscode-extension/`.
 
 ## License
 

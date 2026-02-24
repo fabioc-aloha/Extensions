@@ -48,7 +48,33 @@
         {
           "command": "markdownToWord.convert",
           "when": "resourceExtname == .md",
-          "group": "navigation"
+          "group": "navigation@1"
+        },
+        {
+          "command": "markdownToWord.convertWithOptions",
+          "when": "resourceExtname == .md",
+          "group": "navigation@2"
+        },
+        {
+          "command": "markdownToWord.preview",
+          "when": "resourceExtname == .md",
+          "group": "navigation@3"
+        },
+        {
+          "command": "markdownToWord.checkPandoc",
+          "group": "7_modification@1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "markdownToWord.convert",
+          "when": "resourceExtname == .md",
+          "group": "navigation@1"
+        },
+        {
+          "command": "markdownToWord.convertWithOptions",
+          "when": "resourceExtname == .md",
+          "group": "navigation@2"
         }
       ]
     },

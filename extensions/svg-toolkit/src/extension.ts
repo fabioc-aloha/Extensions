@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as fs from 'fs';
 
 let outputChannel: vscode.OutputChannel;
 
@@ -25,21 +24,21 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel.appendLine('[SVG Toolkit] Activated.');
 }
 
-function getSvgContent(uri?: vscode.Uri): string | null {
+async function getSvgContent(uri?: vscode.Uri): Promise<string | null> {
     const targetUri = uri ?? vscode.window.activeTextEditor?.document.uri;
     if (!targetUri) { return null; }
-    try { return fs.readFileSync(targetUri.fsPath, 'utf-8'); } catch { return null; }
+    try { return Buffer.from(await vscode.workspace.fs.readFile(targetUri)).toString('utf-8'); } catch { return null; }
 }
 
-function previewSvg(uri?: vscode.Uri): void {
-    const svg = getSvgContent(uri);
+async function previewSvg(uri?: vscode.Uri): Promise<void> {
+    const svg = await getSvgContent(uri);
     if (!svg) { vscode.window.showWarningMessage('No SVG file found.'); return; }
     const panel = vscode.window.createWebviewPanel('svgPreview', 'SVG Preview', vscode.ViewColumn.Beside, { enableScripts: false });
     panel.webview.html = `<!DOCTYPE html><html><body style="background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;">${svg}</body></html>`;
 }
 
 async function copyDataUri(uri?: vscode.Uri): Promise<void> {
-    const svg = getSvgContent(uri);
+    const svg = await getSvgContent(uri);
     if (!svg) { vscode.window.showWarningMessage('No SVG file found.'); return; }
     const encoded = Buffer.from(svg).toString('base64');
     const dataUri = `data:image/svg+xml;base64,${encoded}`;
@@ -50,7 +49,7 @@ async function copyDataUri(uri?: vscode.Uri): Promise<void> {
 async function copyMarkdown(uri?: vscode.Uri): Promise<void> {
     const targetUri = uri ?? vscode.window.activeTextEditor?.document.uri;
     if (!targetUri) { return; }
-    const svg = getSvgContent(targetUri);
+    const svg = await getSvgContent(targetUri);
     if (!svg) { return; }
     const encoded = Buffer.from(svg).toString('base64');
     const md = `![icon](data:image/svg+xml;base64,${encoded})`;

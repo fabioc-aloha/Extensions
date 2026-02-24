@@ -5,21 +5,34 @@
 **Surface time-decayed knowledge — find docs going stale before they mislead**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.knowledge-decay-tracker)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker)
+
+---
+
+## What It Does
 
 Uses the Forgetting Curve algorithm to score every tracked file by freshness. Files you haven't touched in months surface as `stale` or `critical` so you can review and refresh before they cause confusion.
 
 ## Features
 
-- **Forgetting Curve scoring** — files decay on a configurable half-life schedule
-- **Four decay profiles** — aggressive (14d), moderate (60d), slow (180d), permanent
-- **Status bar badge** — overdue file count always visible in the status bar
-- **Staleness report** — full workspace scan in the output channel
-- **Critical files quick pick** — jump to worst offenders immediately
-- **Mark as fresh** — reset the decay clock on reviewed files with one command
+| Feature | Description |
+|---|---|
+| **Forgetting Curve scoring** | Files decay on a configurable half-life schedule |
+| **Four decay profiles** | Aggressive (14d), moderate (60d), slow (180d), permanent |
+| **Status bar badge** | Overdue file count always visible in the status bar |
+| **Staleness report** | Full workspace scan in the output channel |
+| **Critical files quick pick** | Jump to worst offenders immediately |
+| **Mark as fresh** | Reset the decay clock on reviewed files with one command |
+| **Right-click menus** | Right-click any file in Explorer or Editor → **Mark as Fresh** or **Show Report** |
 
 ## Requirements
 
-No external tools required. Optionally tag files with a decay profile comment at the top of the file: <!-- decay: moderate -->
+No external tools required. Optionally tag files with a decay profile by adding a comment at the top:
+
+```
+<!-- decay: moderate -->
+```
 
 ## Decay Profiles
 
@@ -32,12 +45,12 @@ No external tools required. Optionally tag files with a decay profile comment at
 
 ## Commands
 
-| Command | Description |
-|---|---|
-| `Knowledge Decay: Scan Workspace` | Score all tracked files and generate report |
-| `Knowledge Decay: Show Staleness Report` | Show output channel report |
-| `Knowledge Decay: Show Critical Files` | QuickPick of critical-tier files |
-| `Knowledge Decay: Mark File as Fresh` | Touch current file (reset decay clock) |
+| Command | Where | Description |
+|---|---|---|
+| `Knowledge Decay: Scan Workspace` | Palette · Editor right-click | Score all tracked files and generate report |
+| `Knowledge Decay: Show Staleness Report` | Palette · Editor right-click | Show output channel report |
+| `Knowledge Decay: Show Critical Files` | Palette · Editor right-click | QuickPick of critical-tier files |
+| `Knowledge Decay: Mark File as Fresh` | Palette · Right-click any file | Touch current file (reset decay clock) |
 
 ## License
 

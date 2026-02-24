@@ -6,6 +6,7 @@
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.cx-workspace-watchdog)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog)
 
 ---
 
@@ -22,6 +23,7 @@ Workspace Watchdog silently watches your files in the background and alerts you 
 | **TODO Hotspots** | Files with the most TODO/FIXME comments |
 | **Health Dashboard** | Green/Yellow/Red workspace health at a glance |
 | **Passive scan** | Runs every 30 minutes in background, no manual action needed |
+| **Right-click menus** | Right-click any folder in Explorer → **Show Dashboard** or **Scan Now** without opening the Palette |
 
 ## Stall Severity Tiers
 
@@ -33,13 +35,13 @@ Workspace Watchdog silently watches your files in the background and alerts you 
 
 ## Commands
 
-| Command | Description |
-|---|---|
-| `Workspace Watchdog: Show Dashboard` | Open health dashboard in output panel |
-| `Workspace Watchdog: Scan Now` | Force immediate scan |
-| `Workspace Watchdog: Hot Files` | QuickPick of most-opened files |
-| `Workspace Watchdog: Stalled Files` | QuickPick of stalled files |
-| `Workspace Watchdog: Clear History` | Reset all tracking data |
+| Command | Where | Description |
+|---|---|---|
+| `Workspace Watchdog: Show Dashboard` | Palette · Right-click folder | Open health dashboard in output panel |
+| `Workspace Watchdog: Scan Now` | Palette · Right-click folder | Force immediate scan |
+| `Workspace Watchdog: Hot Files` | Palette | QuickPick of most-opened files |
+| `Workspace Watchdog: Stalled Files` | Palette | QuickPick of stalled files |
+| `Workspace Watchdog: Clear History` | Palette | Reset all tracking data |
 
 ## Requirements
 
@@ -48,10 +50,6 @@ No external tools required. Works entirely within VS Code using the local file s
 ## Data Storage
 
 Observations are stored locally in `.github/episodic/peripheral/file-observations.json`. No data leaves your machine.
-
-## Source
-
-Extracted from [Alex Cognitive Architecture v5.9.8](https://github.com/fabioc-aloha/Alex_Plug_In) Background File Watcher system. Shared engine in `shared/utils/fileObservations.ts`.
 
 ## License
 

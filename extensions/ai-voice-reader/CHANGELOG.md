@@ -1,5 +1,20 @@
 # Changelog — AI Voice Reader
 
+## [0.1.3] — 2026-02-25
+
+### Fixed
+- Corrected extension description — removed inaccurate Azure Cognitive Speech reference
+
+### Changed
+- Added `Education` category for better Marketplace discoverability
+
+## [0.1.2] — 2026-02-24
+
+### Added
+- Right-click context menu on any editor file: **Read Selection**, **Read Entire Document**, **Stop**
+- Right-click context menu in Explorer: **Read File...** on any file
+- All commands now activate the extension on invocation (expanded `activationEvents`)
+
 ## [0.1.1] — 2026-02-24
 
 ### Changed

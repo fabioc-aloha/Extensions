@@ -2,7 +2,7 @@
     "name": "cx-secret-guard",
     "displayName": "CX SecretGuard",
     "description": "Pre-commit secret scanner — catch leaked API keys, tokens, and credentials before they leave your machine",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "publisher": "fabioc-aloha",
     "author": "Fabio Correa",
     "icon": "assets/icon.png",
@@ -10,7 +10,8 @@
         "vscode": "^1.109.0"
     },
     "categories": [
-        "Other"
+        "Other",
+        "Linters"
     ],
     "keywords": [
         "security",
@@ -42,6 +43,40 @@
                 "title": "SecretGuard: Add Ignore Pattern"
             }
         ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "secretGuard.scanFile",
+                    "when": "resourceScheme == file",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "secretGuard.addIgnorePattern",
+                    "when": "resourceScheme == file",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "secretGuard.viewReport",
+                    "group": "7_modification@1"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "command": "secretGuard.scanFile",
+                    "when": "!explorerResourceIsFolder",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "secretGuard.addIgnorePattern",
+                    "when": "!explorerResourceIsFolder",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "secretGuard.scanWorkspace",
+                    "group": "7_modification@1"
+                }
+            ]
+        },
         "configuration": {
             "title": "SecretGuard",
             "properties": {

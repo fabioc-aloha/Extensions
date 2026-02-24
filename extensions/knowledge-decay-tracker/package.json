@@ -2,7 +2,7 @@
     "name": "knowledge-decay-tracker",
     "displayName": "Knowledge Decay Tracker",
     "description": "Surface time-decayed knowledge in your codebase — find docs going stale before they mislead",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "publisher": "fabioc-aloha",
     "author": "Fabio Correa",
     "icon": "assets/icon.png",
@@ -42,6 +42,38 @@
                 "title": "Knowledge Decay: Show Critical Files"
             }
         ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "knowledgeDecay.touchFile",
+                    "when": "resourceScheme == file",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "knowledgeDecay.showCritical",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "knowledgeDecay.scanWorkspace",
+                    "group": "7_modification@1"
+                },
+                {
+                    "command": "knowledgeDecay.showReport",
+                    "group": "7_modification@2"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "command": "knowledgeDecay.touchFile",
+                    "when": "!explorerResourceIsFolder",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "knowledgeDecay.showReport",
+                    "group": "navigation@2"
+                }
+            ]
+        },
         "configuration": {
             "title": "Knowledge Decay Tracker",
             "properties": {

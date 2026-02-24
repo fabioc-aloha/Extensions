@@ -1,5 +1,17 @@
 # Changelog — Knowledge Decay Tracker
 
+## [0.1.3] — 2026-02-25
+
+### Fixed
+- Replaced synchronous `fs.statSync` calls with async `vscode.workspace.fs.stat()` in scan and critical-file routines
+- Replaced `fs.utimesSync` with `fs.promises.utimes` in `touchCurrentFile`
+
+## [0.1.2] — 2026-02-24
+
+### Added
+- Right-click any file in editor: **Mark File as Fresh**, **Show Critical Files**, **Scan Workspace**, **Show Staleness Report**
+- Right-click any file in Explorer: **Mark File as Fresh**, **Show Staleness Report**
+
 ## [0.1.1] — 2026-02-24
 
 ### Changed

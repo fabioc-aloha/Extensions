@@ -2,7 +2,7 @@
   "name": "mcp-app-starter",
   "displayName": "MCP App Starter",
   "description": "Scaffold Model Context Protocol (MCP) servers for VS Code 1.109+ — no boilerplate, just code",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -21,7 +21,11 @@
     "ai"
   ],
   "activationEvents": [
-    "onCommand:mcpAppStarter.create"
+    "onCommand:mcpAppStarter.create",
+    "onCommand:mcpAppStarter.addTool",
+    "onCommand:mcpAppStarter.addResource",
+    "onCommand:mcpAppStarter.validate",
+    "onCommand:mcpAppStarter.openDocs"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -46,7 +50,48 @@
         "command": "mcpAppStarter.openDocs",
         "title": "MCP App Starter: Open MCP Documentation"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "mcpAppStarter.create",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mcpAppStarter.addTool",
+          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
+          "group": "navigation@2"
+        },
+        {
+          "command": "mcpAppStarter.addResource",
+          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
+          "group": "navigation@3"
+        },
+        {
+          "command": "mcpAppStarter.validate",
+          "when": "resourceExtname == .json",
+          "group": "navigation@4"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "mcpAppStarter.addTool",
+          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mcpAppStarter.addResource",
+          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
+          "group": "navigation@2"
+        },
+        {
+          "command": "mcpAppStarter.validate",
+          "when": "resourceExtname == .json",
+          "group": "navigation@3"
+        }
+      ]
+    }
   },
   "scripts": {
     "compile": "tsc -p ./ --noEmit",

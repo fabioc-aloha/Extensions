@@ -1,8 +1,8 @@
 {
   "name": "ai-voice-reader",
   "displayName": "AI Voice Reader",
-  "description": "Text-to-speech for VS Code — read documents, comments, and notes aloud using OS TTS or Azure Cognitive Speech",
-  "version": "0.1.1",
+  "description": "Text-to-speech for VS Code — read documents, selections, and notes aloud using your OS built-in TTS engine (no API key required)",
+  "version": "0.1.3",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -10,7 +10,8 @@
     "vscode": "^1.109.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Education"
   ],
   "keywords": [
     "tts",
@@ -20,7 +21,11 @@
     "read-aloud"
   ],
   "activationEvents": [
-    "onCommand:voiceReader.readSelection"
+    "onCommand:voiceReader.readSelection",
+    "onCommand:voiceReader.readDocument",
+    "onCommand:voiceReader.readFile",
+    "onCommand:voiceReader.stop",
+    "onCommand:voiceReader.setVoice"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -46,6 +51,32 @@
         "title": "Voice Reader: Set Voice"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "voiceReader.readSelection",
+          "when": "editorHasSelection",
+          "group": "navigation@1"
+        },
+        {
+          "command": "voiceReader.readDocument",
+          "when": "editorFocus",
+          "group": "navigation@2"
+        },
+        {
+          "command": "voiceReader.stop",
+          "when": "editorFocus",
+          "group": "navigation@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "voiceReader.readFile",
+          "when": "!explorerResourceIsFolder",
+          "group": "navigation"
+        }
+      ]
+    },
     "configuration": {
       "title": "AI Voice Reader",
       "properties": {

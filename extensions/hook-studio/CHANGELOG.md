@@ -2,6 +2,13 @@
 
 All notable changes to this extension will be documented here.
 
+## [0.1.5] — 2026-02-24
+
+### Added
+- Right-click `hooks.json` in Explorer: **Open GUI**, **Test Hook Condition**, **Export hooks.json**, **Open Execution Log**
+- Right-click `hooks.json` in editor: same four commands in context menu
+- All hook commands now activate the extension on invocation (expanded `activationEvents`)
+
 ## [0.1.4] — 2026-02-24
 
 ### Changed

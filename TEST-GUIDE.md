@@ -36,9 +36,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ## Sprint 1 — First Movers (Priority)
 
-### Hook Studio
+### Hook Studio ✅ Published
 
-**Install**: `code --install-extension hook-studio-*.vsix`
+**Install**: `code --install-extension fabioc-aloha.hook-studio` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -56,9 +56,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Workspace Watchdog
+### Workspace Watchdog ✅ Published
 
-**Install**: `code --install-extension workspace-watchdog-*.vsix`
+**Install**: `code --install-extension fabioc-aloha.cx-workspace-watchdog` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -78,9 +78,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### MCP App Starter
+### MCP App Starter ✅ Published
 
-**Install**: `code --install-extension mcp-app-starter-*.vsix`
+**Install**: `code --install-extension fabioc-aloha.mcp-app-starter` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -101,9 +101,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ## Sprint 2 — Code Extracted
 
-### SecretGuard
+### SecretGuard ✅ Published
 
-**Install**: `code --install-extension secret-guard-*.vsix`
+**Install**: `code --install-extension fabioc-aloha.cx-secret-guard` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -120,9 +120,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Focus Timer
+### Focus Timer ⏳ Pending
 
-**Install**: `code --install-extension focus-timer-*.vsix`
+**Install**: `code --install-extension focus-timer-*.vsix` — ⏳ Rate-limited, not yet on Marketplace (use local VSIX)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -140,9 +140,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Knowledge Decay Tracker
+### Knowledge Decay Tracker ✅ Published
 
-**Install**: `code --install-extension knowledge-decay-tracker-*.vsix`
+**Install**: `code --install-extension fabioc-aloha.knowledge-decay-tracker` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -158,9 +158,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Markdown to Word
+### Markdown to Word ⏳ Pending
 
-**Install**: `code --install-extension markdown-to-word-*.vsix`
+**Install**: `code --install-extension markdown-to-word-*.vsix` — ⏳ Rate-limited, not yet on Marketplace (use local VSIX)
 
 **Prerequisite**: Pandoc must be installed (`pandoc --version`)
 
@@ -179,9 +179,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Brandfetch Logo Fetcher
+### Brandfetch Logo Fetcher ✅ Published
 
-**Install**: `code --install-extension brandfetch-logo-fetcher-*.vsix`
+**Install**: `code --install-extension fabioc-aloha.brandfetch-logo-fetcher` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher)
 
 **Prerequisite**: Brandfetch API key (optional — Logo.dev fallback works without)
 
@@ -201,9 +201,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### AI Voice Reader
+### AI Voice Reader ✅ Published
 
-**Install**: `code --install-extension ai-voice-reader-*.vsix`
+**Install**: `code --install-extension fabioc-aloha.ai-voice-reader` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -222,9 +222,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ## Sprint 3 — Moderate Builds
 
-### Dev Wellbeing
+### Dev Wellbeing ⏳ Not Published
 
-**Install**: `code --install-extension dev-wellbeing-*.vsix`
+**Install**: `code --install-extension dev-wellbeing-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -242,9 +242,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### PPTX Builder
+### PPTX Builder ⏳ Not Published
 
-**Install**: `code --install-extension pptx-builder-*.vsix`
+**Install**: `code --install-extension pptx-builder-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -261,9 +261,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Replicate Image Studio
+### Replicate Image Studio ⏳ Not Published
 
-**Install**: `code --install-extension replicate-image-studio-*.vsix`
+**Install**: `code --install-extension replicate-image-studio-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
 
 **Prerequisite**: Replicate API key
 
@@ -284,9 +284,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ## Sprint 4 — Larger Builds
 
-### Mermaid Diagram Pro
+### Mermaid Diagram Pro ⏳ Not Published
 
-**Install**: `code --install-extension mermaid-diagram-pro-*.vsix`
+**Install**: `code --install-extension mermaid-diagram-pro-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -304,9 +304,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### SVG Toolkit
+### SVG Toolkit ⏳ Not Published
 
-**Install**: `code --install-extension svg-toolkit-*.vsix`
+**Install**: `code --install-extension svg-toolkit-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -320,9 +320,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Gamma Slide Assistant
+### Gamma Slide Assistant ⏳ Not Published
 
-**Install**: `code --install-extension gamma-slide-assistant-*.vsix`
+**Install**: `code --install-extension gamma-slide-assistant-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
 
 **Prerequisite**: Marp CLI for PDF export (`npm install -g @marp-team/marp-cli`)
 

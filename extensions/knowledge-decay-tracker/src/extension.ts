@@ -33,15 +33,15 @@ async function scanWorkspace(): Promise<void> {
                 const files = await vscode.workspace.findFiles(pattern, '**/node_modules/**');
                 for (const file of files) {
                     try {
-                        const stat = fs.statSync(file.fsPath);
+                        const stat = await vscode.workspace.fs.stat(file);
                         const entry: DecayEntry = {
                             id: file.fsPath,
-                            lastAccessed: new Date(stat.mtimeMs),
+                            lastAccessed: new Date(stat.mtime),
                             referenceCount: 1,
                             profile
                         };
                         const result = DecayEngine.score(entry);
-                        allFiles.push({ path: file.fsPath, score: result.score, tier: result.tier, lastModified: stat.mtimeMs });
+                        allFiles.push({ path: file.fsPath, score: result.score, tier: result.tier, lastModified: stat.mtime });
                     } catch { /* skip */ }
                 }
             }
@@ -81,10 +81,10 @@ async function showCritical(): Promise<void> {
         const files = await vscode.workspace.findFiles(pattern, '**/node_modules/**');
         for (const file of files) {
             try {
-                const stat = fs.statSync(file.fsPath);
+                const stat = await vscode.workspace.fs.stat(file);
                 const entry: DecayEntry = {
                     id: file.fsPath,
-                    lastAccessed: new Date(stat.mtimeMs),
+                    lastAccessed: new Date(stat.mtime),
                     referenceCount: 1,
                     profile
                 };
@@ -106,7 +106,7 @@ async function touchCurrentFile(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
     const now = Date.now();
-    fs.utimesSync(editor.document.uri.fsPath, new Date(now), new Date(now));
+    await fs.promises.utimes(editor.document.uri.fsPath, new Date(now), new Date(now));
     vscode.window.showInformationMessage(`✅ Marked "${path.basename(editor.document.uri.fsPath)}" as fresh.`);
 }
 

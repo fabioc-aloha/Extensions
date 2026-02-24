@@ -1,4 +1,16 @@
 # Changelog — CX Workspace Watchdog
+## [0.1.6] — 2026-02-25
+
+### Fixed
+- `FileObservationStore.save()` now uses async `fs.promises.writeFile` / `fs.promises.mkdir` instead of sync equivalents
+
+### Changed
+- Added `Visualization` category for better Marketplace discoverability
+## [0.1.5] — 2026-02-24
+
+### Added
+- Right-click any folder in Explorer: **Show Dashboard**, **Scan Now** in context menu
+- Right-click in any editor: **Show Dashboard**, **Scan Now** in context menu
 
 ## [0.1.4] — 2026-02-24
 

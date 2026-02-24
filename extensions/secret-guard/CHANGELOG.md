@@ -1,4 +1,13 @@
 # Changelog — CX SecretGuard
+## [0.1.3] — 2026-02-25
+
+### Changed
+- Added `Linters` category for better Marketplace discoverability
+## [0.1.2] — 2026-02-24
+
+### Added
+- Right-click any file in editor: **Scan Current File**, **Add Ignore Pattern**, **View Audit Report**
+- Right-click any file in Explorer: **Scan Current File**, **Add Ignore Pattern**; right-click Explorer root: **Scan Workspace**
 
 ## [0.1.1] — 2026-02-24
 

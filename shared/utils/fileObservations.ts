@@ -72,11 +72,11 @@ export class FileObservationStore {
         return { version: STORE_VERSION, lastUpdated: new Date().toISOString(), files: {} };
     }
 
-    save(): void {
+    async save(): Promise<void> {
         this.store.lastUpdated = new Date().toISOString();
         const dir = path.dirname(this.storePath);
-        if (!fs.existsSync(dir)) { fs.mkdirSync(dir, { recursive: true }); }
-        fs.writeFileSync(this.storePath, JSON.stringify(this.store, null, 2), 'utf-8');
+        await fs.promises.mkdir(dir, { recursive: true });
+        await fs.promises.writeFile(this.storePath, JSON.stringify(this.store, null, 2), 'utf-8');
     }
 
     recordOpen(filePath: string): void {

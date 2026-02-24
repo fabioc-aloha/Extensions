@@ -2,7 +2,7 @@
   "name": "hook-studio",
   "displayName": "Hook Studio",
   "description": "Visual GUI for VS Code agent hooks — build, debug, and test hooks.json without reading docs.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -26,6 +26,10 @@
   },
   "activationEvents": [
     "onCommand:hookStudio.open",
+    "onCommand:hookStudio.testCondition",
+    "onCommand:hookStudio.importFromAlex",
+    "onCommand:hookStudio.exportHooks",
+    "onCommand:hookStudio.openLog",
     "workspaceContains:.github/hooks.json"
   ],
   "main": "./out/extension.js",
@@ -58,7 +62,44 @@
         {
           "command": "hookStudio.open",
           "when": "resourceFilename == hooks.json",
-          "group": "navigation"
+          "group": "navigation@1"
+        },
+        {
+          "command": "hookStudio.testCondition",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation@2"
+        },
+        {
+          "command": "hookStudio.exportHooks",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation@3"
+        },
+        {
+          "command": "hookStudio.openLog",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation@4"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "hookStudio.open",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation@1"
+        },
+        {
+          "command": "hookStudio.testCondition",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation@2"
+        },
+        {
+          "command": "hookStudio.exportHooks",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation@3"
+        },
+        {
+          "command": "hookStudio.openLog",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation@4"
         }
       ]
     }

@@ -2,14 +2,15 @@
     "name": "cx-workspace-watchdog",
     "displayName": "CX Workspace Watchdog",
     "description": "Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots",
-    "version": "0.1.4",
+    "version": "0.1.6",
     "publisher": "fabioc-aloha",
     "author": "Fabio Correa",
     "engines": {
         "vscode": "^1.109.0"
     },
     "categories": [
-        "Other"
+        "Other",
+        "Visualization"
     ],
     "keywords": [
         "productivity",
@@ -45,6 +46,30 @@
                 "title": "Workspace Watchdog: Clear History"
             }
         ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "workspaceWatchdog.showDashboard",
+                    "group": "7_modification@1"
+                },
+                {
+                    "command": "workspaceWatchdog.scanNow",
+                    "group": "7_modification@2"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "command": "workspaceWatchdog.showDashboard",
+                    "when": "explorerResourceIsFolder",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "workspaceWatchdog.scanNow",
+                    "when": "explorerResourceIsFolder",
+                    "group": "navigation@2"
+                }
+            ]
+        },
         "views": {
             "explorer": [
                 {

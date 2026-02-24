@@ -51,12 +51,49 @@
         {
           "command": "svgToolkit.preview",
           "when": "resourceExtname == .svg",
-          "group": "navigation"
+          "group": "navigation@1"
         },
         {
           "command": "svgToolkit.copyDataUri",
           "when": "resourceExtname == .svg",
-          "group": "navigation"
+          "group": "navigation@2"
+        },
+        {
+          "command": "svgToolkit.copyMarkdown",
+          "when": "resourceExtname == .svg",
+          "group": "navigation@3"
+        },
+        {
+          "command": "svgToolkit.validateSvg",
+          "when": "resourceExtname == .svg",
+          "group": "navigation@4"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "svgToolkit.preview",
+          "when": "resourceExtname == .svg",
+          "group": "navigation@1"
+        },
+        {
+          "command": "svgToolkit.copyDataUri",
+          "when": "resourceExtname == .svg",
+          "group": "navigation@2"
+        },
+        {
+          "command": "svgToolkit.copyMarkdown",
+          "when": "resourceExtname == .svg",
+          "group": "navigation@3"
+        },
+        {
+          "command": "svgToolkit.insertIconTemplate",
+          "when": "resourceExtname == .svg",
+          "group": "navigation@4"
+        },
+        {
+          "command": "svgToolkit.validateSvg",
+          "when": "resourceExtname == .svg",
+          "group": "navigation@5"
         }
       ]
     }

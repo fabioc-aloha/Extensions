@@ -21,7 +21,11 @@
     "generative-ai"
   ],
   "activationEvents": [
-    "onCommand:replicateStudio.generate"
+    "onCommand:replicateStudio.generate",
+    "onCommand:replicateStudio.generateVideo",
+    "onCommand:replicateStudio.setApiKey",
+    "onCommand:replicateStudio.viewHistory",
+    "onCommand:replicateStudio.insertMarkdown"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -46,7 +50,31 @@
         "command": "replicateStudio.insertMarkdown",
         "title": "Replicate: Insert Last Image as Markdown"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "replicateStudio.generate",
+          "when": "editorFocus",
+          "group": "navigation@1"
+        },
+        {
+          "command": "replicateStudio.generateVideo",
+          "when": "editorFocus",
+          "group": "navigation@2"
+        },
+        {
+          "command": "replicateStudio.insertMarkdown",
+          "when": "resourceExtname == .md",
+          "group": "navigation@3"
+        },
+        {
+          "command": "replicateStudio.viewHistory",
+          "when": "editorFocus",
+          "group": "7_modification@1"
+        }
+      ]
+    }
   },
   "scripts": {
     "compile": "tsc -p ./",

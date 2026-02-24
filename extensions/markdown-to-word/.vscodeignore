@@ -1,9 +1,13 @@
+../**
+../../**
 .vscode/**
 .gitignore
+.env
+**/.env
 tsconfig.json
 src/**
 node_modules/**
 **/*.map
 **/*.ts
-!out/**
+!out/*.js
 !assets/**

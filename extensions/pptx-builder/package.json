@@ -42,7 +42,37 @@
         "command": "pptxBuilder.openDocs",
         "title": "PPTX Builder: Open pptxgenjs Docs"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "pptxBuilder.create",
+          "when": "resourceExtname == .md || resourceExtname == .yaml",
+          "group": "navigation@1"
+        },
+        {
+          "command": "pptxBuilder.preview",
+          "when": "resourceExtname == .md || resourceExtname == .yaml",
+          "group": "navigation@2"
+        },
+        {
+          "command": "pptxBuilder.newTemplate",
+          "group": "navigation@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "pptxBuilder.create",
+          "when": "resourceExtname == .md || resourceExtname == .yaml",
+          "group": "navigation@1"
+        },
+        {
+          "command": "pptxBuilder.preview",
+          "when": "resourceExtname == .md || resourceExtname == .yaml",
+          "group": "navigation@2"
+        }
+      ]
+    }
   },
   "scripts": {
     "compile": "tsc -p ./",

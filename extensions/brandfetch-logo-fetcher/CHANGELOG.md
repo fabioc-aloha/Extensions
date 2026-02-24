@@ -1,5 +1,11 @@
 # Changelog — Brandfetch Logo Fetcher
 
+## [0.1.2] — 2026-02-24
+
+### Added
+- Right-click context menu in any open editor: **Fetch Logo by Domain**, **Insert Logo at Cursor**
+- All commands now activate the extension on invocation (expanded `activationEvents`)
+
 ## [0.1.1] — 2026-02-24
 
 ### Changed

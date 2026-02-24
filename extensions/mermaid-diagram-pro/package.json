@@ -41,7 +41,43 @@
         "command": "mermaidPro.validateAll",
         "title": "Mermaid Pro: Validate All Diagrams in File"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "mermaidPro.preview",
+          "when": "resourceExtname == .md",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mermaidPro.exportSvg",
+          "when": "resourceExtname == .md",
+          "group": "navigation@2"
+        },
+        {
+          "command": "mermaidPro.insertTemplate",
+          "when": "resourceExtname == .md",
+          "group": "navigation@3"
+        },
+        {
+          "command": "mermaidPro.validateAll",
+          "when": "resourceExtname == .md",
+          "group": "navigation@4"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "mermaidPro.validateAll",
+          "when": "resourceExtname == .md",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mermaidPro.exportSvg",
+          "when": "resourceExtname == .md",
+          "group": "navigation@2"
+        }
+      ]
+    }
   },
   "scripts": {
     "compile": "tsc -p ./",

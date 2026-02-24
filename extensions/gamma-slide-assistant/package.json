@@ -45,7 +45,52 @@
         "command": "gammaSlides.newPresentation",
         "title": "Gamma Slides: New Presentation"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "gammaSlides.convertToHtml",
+          "when": "resourceExtname == .md",
+          "group": "navigation@1"
+        },
+        {
+          "command": "gammaSlides.convertToPdf",
+          "when": "resourceExtname == .md",
+          "group": "navigation@2"
+        },
+        {
+          "command": "gammaSlides.preview",
+          "when": "resourceExtname == .md",
+          "group": "navigation@3"
+        },
+        {
+          "command": "gammaSlides.insertFrontmatter",
+          "when": "resourceExtname == .md",
+          "group": "navigation@4"
+        },
+        {
+          "command": "gammaSlides.newPresentation",
+          "group": "navigation@5"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "gammaSlides.convertToHtml",
+          "when": "resourceExtname == .md",
+          "group": "navigation@1"
+        },
+        {
+          "command": "gammaSlides.convertToPdf",
+          "when": "resourceExtname == .md",
+          "group": "navigation@2"
+        },
+        {
+          "command": "gammaSlides.preview",
+          "when": "resourceExtname == .md",
+          "group": "navigation@3"
+        }
+      ]
+    }
   },
   "scripts": {
     "compile": "tsc -p ./",
