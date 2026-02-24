@@ -8,6 +8,19 @@
 
 Uses the Forgetting Curve algorithm to score every tracked file by freshness. Files you haven't touched in months surface as `stale` or `critical` so you can review and refresh before they cause confusion.
 
+## Features
+
+- **Forgetting Curve scoring** — files decay on a configurable half-life schedule
+- **Four decay profiles** — aggressive (14d), moderate (60d), slow (180d), permanent
+- **Status bar badge** — overdue file count always visible in the status bar
+- **Staleness report** — full workspace scan in the output channel
+- **Critical files quick pick** — jump to worst offenders immediately
+- **Mark as fresh** — reset the decay clock on reviewed files with one command
+
+## Requirements
+
+No external tools required. Optionally tag files with a decay profile comment at the top of the file: <!-- decay: moderate -->
+
 ## Decay Profiles
 
 | Profile | Half-life | Use case |

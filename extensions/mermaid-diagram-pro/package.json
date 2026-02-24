@@ -1,55 +1,64 @@
 {
-    "name": "mermaid-diagram-pro",
-    "displayName": "Mermaid Diagram Pro",
-    "description": "Enhanced Mermaid diagram support — live preview, PNG/SVG export, diagram templates, and syntax validation",
-    "version": "0.1.0",
-    "publisher": "fabioc-aloha",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "Other"
-    ],
-    "keywords": [
-        "mermaid",
-        "diagram",
-        "flowchart",
-        "uml",
-        "visualization"
-    ],
-    "activationEvents": [
-        "onLanguage:markdown"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "mermaidPro.preview",
-                "title": "Mermaid Pro: Preview Diagram at Cursor"
-            },
-            {
-                "command": "mermaidPro.exportSvg",
-                "title": "Mermaid Pro: Export as SVG"
-            },
-            {
-                "command": "mermaidPro.insertTemplate",
-                "title": "Mermaid Pro: Insert Diagram Template"
-            },
-            {
-                "command": "mermaidPro.validateAll",
-                "title": "Mermaid Pro: Validate All Diagrams in File"
-            }
-        ]
-    },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "package": "npx @vscode/vsce package"
-    },
-    "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@types/node": "^20.0.0",
-        "typescript": "^5.7.0"
-    }
+  "name": "mermaid-diagram-pro",
+  "displayName": "Mermaid Diagram Pro",
+  "description": "Enhanced Mermaid diagram support — live preview, PNG/SVG export, diagram templates, and syntax validation",
+  "version": "0.1.0",
+  "publisher": "fabioc-aloha",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "mermaid",
+    "diagram",
+    "flowchart",
+    "uml",
+    "visualization"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mermaidPro.preview",
+        "title": "Mermaid Pro: Preview Diagram at Cursor"
+      },
+      {
+        "command": "mermaidPro.exportSvg",
+        "title": "Mermaid Pro: Export as SVG"
+      },
+      {
+        "command": "mermaidPro.insertTemplate",
+        "title": "Mermaid Pro: Insert Diagram Template"
+      },
+      {
+        "command": "mermaidPro.validateAll",
+        "title": "Mermaid Pro: Validate All Diagrams in File"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

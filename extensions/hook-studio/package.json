@@ -1,77 +1,82 @@
 {
-    "name": "hook-studio",
-    "displayName": "Hook Studio",
-    "description": "Visual GUI for VS Code agent hooks — build, debug, and test hooks.json without reading docs.",
-    "version": "0.1.0",
-    "publisher": "fabioc-aloha",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "Other",
-        "Debuggers"
+  "name": "hook-studio",
+  "displayName": "Hook Studio",
+  "description": "Visual GUI for VS Code agent hooks — build, debug, and test hooks.json without reading docs.",
+  "version": "0.1.0",
+  "publisher": "fabioc-aloha",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other",
+    "Debuggers"
+  ],
+  "keywords": [
+    "hooks",
+    "agent",
+    "copilot",
+    "automation",
+    "hooks.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "activationEvents": [
+    "onCommand:hookStudio.open",
+    "workspaceContains:.github/hooks.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hookStudio.open",
+        "title": "Hook Studio: Open GUI",
+        "icon": "$(symbol-event)"
+      },
+      {
+        "command": "hookStudio.testCondition",
+        "title": "Hook Studio: Test Hook Condition"
+      },
+      {
+        "command": "hookStudio.importFromAlex",
+        "title": "Hook Studio: Import hooks.json from Alex"
+      },
+      {
+        "command": "hookStudio.exportHooks",
+        "title": "Hook Studio: Export hooks.json"
+      },
+      {
+        "command": "hookStudio.openLog",
+        "title": "Hook Studio: Open Execution Log"
+      }
     ],
-    "keywords": [
-        "hooks",
-        "agent",
-        "copilot",
-        "automation",
-        "hooks.json"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/fabioc-aloha/Extensions"
-    },
-    "activationEvents": [
-        "onCommand:hookStudio.open",
-        "workspaceContains:.github/hooks.json"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "hookStudio.open",
-                "title": "Hook Studio: Open GUI",
-                "icon": "$(symbol-event)"
-            },
-            {
-                "command": "hookStudio.testCondition",
-                "title": "Hook Studio: Test Hook Condition"
-            },
-            {
-                "command": "hookStudio.importFromAlex",
-                "title": "Hook Studio: Import hooks.json from Alex"
-            },
-            {
-                "command": "hookStudio.exportHooks",
-                "title": "Hook Studio: Export hooks.json"
-            },
-            {
-                "command": "hookStudio.openLog",
-                "title": "Hook Studio: Open Execution Log"
-            }
-        ],
-        "menus": {
-            "explorer/context": [
-                {
-                    "command": "hookStudio.open",
-                    "when": "resourceFilename == hooks.json",
-                    "group": "navigation"
-                }
-            ]
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "hookStudio.open",
+          "when": "resourceFilename == hooks.json",
+          "group": "navigation"
         }
-    },
-    "scripts": {
-        "compile": "tsc -p tsconfig.json",
-        "watch": "tsc -p tsconfig.json --watch",
-        "package": "npx vsce package",
-        "publish": "npx vsce publish"
-    },
-    "devDependencies": {
-        "@types/node": "^20.0.0",
-        "@types/vscode": "^1.109.0",
-        "typescript": "^5.7.0",
-        "@vscode/vsce": "^3.0.0"
+      ]
     }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "package": "npx vsce package",
+    "publish": "npx vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.109.0",
+    "typescript": "^5.7.0",
+    "@vscode/vsce": "^3.0.0"
+  },
+  "license": "MIT",
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

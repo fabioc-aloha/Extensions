@@ -8,6 +8,18 @@
 
 Type a domain name, choose your format, and the logo is ready to paste. Powered by Brandfetch API with Logo.dev fallback. LRU cache keeps repeated lookups instant.
 
+## Features
+
+- **Instant logo lookup** — type a domain, get a logo URL in seconds
+- **Multiple output formats** — Markdown image, SVG URL, PNG URL, or HTML img tag
+- **Logo.dev fallback** — automatic fallback when Brandfetch returns nothing
+- **LRU cache** — repeated lookups never hit the network twice
+- **Secure key storage** — API key stored in VS Code SecretStorage, never in settings
+
+## Requirements
+
+A [Brandfetch API key](https://brandfetch.com/developers) is required for full access (generous free tier). Logo.dev fallback works without a key — set yours via Brandfetch: Set API Key.
+
 ## Commands
 
 | Command | Description |

@@ -1,73 +1,82 @@
 {
-    "name": "svg-toolkit",
-    "displayName": "SVG Toolkit",
-    "description": "SVG utilities for VS Code — inline preview, optimize with SVGO, generate from templates, and copy as data URI",
-    "version": "0.1.0",
-    "publisher": "fabioc-aloha",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "Other"
+  "name": "svg-toolkit",
+  "displayName": "SVG Toolkit",
+  "description": "SVG utilities for VS Code — inline preview, optimize with SVGO, generate from templates, and copy as data URI",
+  "version": "0.1.0",
+  "publisher": "fabioc-aloha",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "svg",
+    "icons",
+    "optimize",
+    "preview",
+    "graphics"
+  ],
+  "activationEvents": [
+    "onLanguage:xml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "svgToolkit.preview",
+        "title": "SVG Toolkit: Preview SVG"
+      },
+      {
+        "command": "svgToolkit.copyDataUri",
+        "title": "SVG Toolkit: Copy as Data URI"
+      },
+      {
+        "command": "svgToolkit.copyMarkdown",
+        "title": "SVG Toolkit: Copy as Markdown Image"
+      },
+      {
+        "command": "svgToolkit.insertIconTemplate",
+        "title": "SVG Toolkit: Insert Icon Template"
+      },
+      {
+        "command": "svgToolkit.validateSvg",
+        "title": "SVG Toolkit: Validate SVG"
+      }
     ],
-    "keywords": [
-        "svg",
-        "icons",
-        "optimize",
-        "preview",
-        "graphics"
-    ],
-    "activationEvents": [
-        "onLanguage:xml"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "svgToolkit.preview",
-                "title": "SVG Toolkit: Preview SVG"
-            },
-            {
-                "command": "svgToolkit.copyDataUri",
-                "title": "SVG Toolkit: Copy as Data URI"
-            },
-            {
-                "command": "svgToolkit.copyMarkdown",
-                "title": "SVG Toolkit: Copy as Markdown Image"
-            },
-            {
-                "command": "svgToolkit.insertIconTemplate",
-                "title": "SVG Toolkit: Insert Icon Template"
-            },
-            {
-                "command": "svgToolkit.validateSvg",
-                "title": "SVG Toolkit: Validate SVG"
-            }
-        ],
-        "menus": {
-            "explorer/context": [
-                {
-                    "command": "svgToolkit.preview",
-                    "when": "resourceExtname == .svg",
-                    "group": "navigation"
-                },
-                {
-                    "command": "svgToolkit.copyDataUri",
-                    "when": "resourceExtname == .svg",
-                    "group": "navigation"
-                }
-            ]
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "svgToolkit.preview",
+          "when": "resourceExtname == .svg",
+          "group": "navigation"
+        },
+        {
+          "command": "svgToolkit.copyDataUri",
+          "when": "resourceExtname == .svg",
+          "group": "navigation"
         }
-    },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "package": "npx @vscode/vsce package"
-    },
-    "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@types/node": "^20.0.0",
-        "typescript": "^5.7.0"
+      ]
     }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

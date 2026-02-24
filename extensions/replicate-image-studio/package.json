@@ -1,63 +1,72 @@
 {
-    "name": "replicate-image-studio",
-    "displayName": "Replicate Image Studio",
-    "description": "Generate images inside VS Code using Replicate AI models — Flux, SDXL, WAN video generation",
-    "version": "0.1.0",
-    "publisher": "fabioc-aloha",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "AI"
-    ],
-    "keywords": [
-        "ai",
-        "image-generation",
-        "replicate",
-        "flux",
-        "sdxl",
-        "generative-ai"
-    ],
-    "activationEvents": [
-        "onCommand:replicateStudio.generate"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "replicateStudio.generate",
-                "title": "Replicate: Generate Image"
-            },
-            {
-                "command": "replicateStudio.generateVideo",
-                "title": "Replicate: Generate Video (WAN)"
-            },
-            {
-                "command": "replicateStudio.setApiKey",
-                "title": "Replicate: Set API Key"
-            },
-            {
-                "command": "replicateStudio.viewHistory",
-                "title": "Replicate: View Generation History"
-            },
-            {
-                "command": "replicateStudio.insertMarkdown",
-                "title": "Replicate: Insert Last Image as Markdown"
-            }
-        ]
-    },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "package": "npx @vscode/vsce package"
-    },
-    "dependencies": {
-        "@alex-extensions/shared": "*"
-    },
-    "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@types/node": "^20.0.0",
-        "typescript": "^5.7.0"
-    }
+  "name": "replicate-image-studio",
+  "displayName": "Replicate Image Studio",
+  "description": "Generate images inside VS Code using Replicate AI models — Flux, SDXL, WAN video generation",
+  "version": "0.1.0",
+  "publisher": "fabioc-aloha",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "AI"
+  ],
+  "keywords": [
+    "ai",
+    "image-generation",
+    "replicate",
+    "flux",
+    "sdxl",
+    "generative-ai"
+  ],
+  "activationEvents": [
+    "onCommand:replicateStudio.generate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "replicateStudio.generate",
+        "title": "Replicate: Generate Image"
+      },
+      {
+        "command": "replicateStudio.generateVideo",
+        "title": "Replicate: Generate Video (WAN)"
+      },
+      {
+        "command": "replicateStudio.setApiKey",
+        "title": "Replicate: Set API Key"
+      },
+      {
+        "command": "replicateStudio.viewHistory",
+        "title": "Replicate: View Generation History"
+      },
+      {
+        "command": "replicateStudio.insertMarkdown",
+        "title": "Replicate: Insert Last Image as Markdown"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package"
+  },
+  "dependencies": {
+    "@alex-extensions/shared": "*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

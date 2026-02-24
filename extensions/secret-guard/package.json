@@ -1,78 +1,87 @@
 {
-    "name": "secret-guard",
-    "displayName": "SecretGuard",
-    "description": "Pre-commit secret scanner — catch leaked API keys, tokens, and credentials before they leave your machine",
-    "version": "0.1.0",
-    "publisher": "fabioc-aloha",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "Other"
+  "name": "secret-guard",
+  "displayName": "SecretGuard",
+  "description": "Pre-commit secret scanner — catch leaked API keys, tokens, and credentials before they leave your machine",
+  "version": "0.1.0",
+  "publisher": "fabioc-aloha",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "security",
+    "secrets",
+    "api-keys",
+    "pre-commit",
+    "scanner"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "secretGuard.scanWorkspace",
+        "title": "SecretGuard: Scan Workspace"
+      },
+      {
+        "command": "secretGuard.scanFile",
+        "title": "SecretGuard: Scan Current File"
+      },
+      {
+        "command": "secretGuard.viewReport",
+        "title": "SecretGuard: View Audit Report"
+      },
+      {
+        "command": "secretGuard.addIgnorePattern",
+        "title": "SecretGuard: Add Ignore Pattern"
+      }
     ],
-    "keywords": [
-        "security",
-        "secrets",
-        "api-keys",
-        "pre-commit",
-        "scanner"
-    ],
-    "activationEvents": [
-        "onStartupFinished"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "secretGuard.scanWorkspace",
-                "title": "SecretGuard: Scan Workspace"
-            },
-            {
-                "command": "secretGuard.scanFile",
-                "title": "SecretGuard: Scan Current File"
-            },
-            {
-                "command": "secretGuard.viewReport",
-                "title": "SecretGuard: View Audit Report"
-            },
-            {
-                "command": "secretGuard.addIgnorePattern",
-                "title": "SecretGuard: Add Ignore Pattern"
-            }
-        ],
-        "configuration": {
-            "title": "SecretGuard",
-            "properties": {
-                "secretGuard.enabled": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Enable SecretGuard scanning"
-                },
-                "secretGuard.scanOnSave": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Scan files on save"
-                },
-                "secretGuard.ignorePatterns": {
-                    "type": "array",
-                    "default": [],
-                    "description": "Glob patterns to ignore"
-                }
-            }
+    "configuration": {
+      "title": "SecretGuard",
+      "properties": {
+        "secretGuard.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable SecretGuard scanning"
+        },
+        "secretGuard.scanOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Scan files on save"
+        },
+        "secretGuard.ignorePatterns": {
+          "type": "array",
+          "default": [],
+          "description": "Glob patterns to ignore"
         }
-    },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "package": "npx @vscode/vsce package"
-    },
-    "dependencies": {
-        "@alex-extensions/shared": "*"
-    },
-    "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@types/node": "^20.0.0",
-        "typescript": "^5.7.0"
+      }
     }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package"
+  },
+  "dependencies": {
+    "@alex-extensions/shared": "*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

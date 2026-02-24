@@ -1,104 +1,113 @@
 {
-    "name": "svg-to-png",
-    "displayName": "SVG to PNG",
-    "description": "Convert SVG files to pixel-perfect PNGs using resvg-js (Rust-based renderer) — right-click any SVG or run from command palette",
-    "version": "0.1.0",
-    "publisher": "fabioc-aloha",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "Other"
+  "name": "svg-to-png",
+  "displayName": "SVG to PNG",
+  "description": "Convert SVG files to pixel-perfect PNGs using resvg-js (Rust-based renderer) — right-click any SVG or run from command palette",
+  "version": "0.1.0",
+  "publisher": "fabioc-aloha",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "svg",
+    "png",
+    "convert",
+    "image",
+    "resvg",
+    "vector",
+    "rasterize"
+  ],
+  "activationEvents": [
+    "onLanguage:xml",
+    "onCommand:svgToPng.convert",
+    "onCommand:svgToPng.convertBatch"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "svgToPng.convert",
+        "title": "SVG to PNG: Convert SVG File"
+      },
+      {
+        "command": "svgToPng.convertBatch",
+        "title": "SVG to PNG: Convert All SVGs in Workspace"
+      },
+      {
+        "command": "svgToPng.convertWithWidth",
+        "title": "SVG to PNG: Convert SVG at Custom Width"
+      }
     ],
-    "keywords": [
-        "svg",
-        "png",
-        "convert",
-        "image",
-        "resvg",
-        "vector",
-        "rasterize"
-    ],
-    "activationEvents": [
-        "onLanguage:xml",
-        "onCommand:svgToPng.convert",
-        "onCommand:svgToPng.convertBatch"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "svgToPng.convert",
-                "title": "SVG to PNG: Convert SVG File"
-            },
-            {
-                "command": "svgToPng.convertBatch",
-                "title": "SVG to PNG: Convert All SVGs in Workspace"
-            },
-            {
-                "command": "svgToPng.convertWithWidth",
-                "title": "SVG to PNG: Convert SVG at Custom Width"
-            }
-        ],
-        "menus": {
-            "explorer/context": [
-                {
-                    "command": "svgToPng.convert",
-                    "when": "resourceExtname == .svg",
-                    "group": "7_modification@1"
-                },
-                {
-                    "command": "svgToPng.convertWithWidth",
-                    "when": "resourceExtname == .svg",
-                    "group": "7_modification@2"
-                }
-            ],
-            "editor/context": [
-                {
-                    "command": "svgToPng.convert",
-                    "when": "resourceExtname == .svg",
-                    "group": "1_modification@1"
-                },
-                {
-                    "command": "svgToPng.convertWithWidth",
-                    "when": "resourceExtname == .svg",
-                    "group": "1_modification@2"
-                }
-            ]
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "svgToPng.convert",
+          "when": "resourceExtname == .svg",
+          "group": "7_modification@1"
         },
-        "configuration": {
-            "title": "SVG to PNG",
-            "properties": {
-                "svgToPng.defaultWidth": {
-                    "type": "number",
-                    "default": 0,
-                    "description": "Default output width in pixels (0 = use SVG's natural size)"
-                },
-                "svgToPng.loadSystemFonts": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Load system fonts for accurate text rendering"
-                },
-                "svgToPng.openAfterConvert": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Open the generated PNG after conversion"
-                }
-            }
+        {
+          "command": "svgToPng.convertWithWidth",
+          "when": "resourceExtname == .svg",
+          "group": "7_modification@2"
         }
+      ],
+      "editor/context": [
+        {
+          "command": "svgToPng.convert",
+          "when": "resourceExtname == .svg",
+          "group": "1_modification@1"
+        },
+        {
+          "command": "svgToPng.convertWithWidth",
+          "when": "resourceExtname == .svg",
+          "group": "1_modification@2"
+        }
+      ]
     },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "package": "npx @vscode/vsce package"
-    },
-    "dependencies": {
-        "@resvg/resvg-js": "^2.6.2"
-    },
-    "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@types/node": "^20.0.0",
-        "typescript": "^5.7.0"
+    "configuration": {
+      "title": "SVG to PNG",
+      "properties": {
+        "svgToPng.defaultWidth": {
+          "type": "number",
+          "default": 0,
+          "description": "Default output width in pixels (0 = use SVG's natural size)"
+        },
+        "svgToPng.loadSystemFonts": {
+          "type": "boolean",
+          "default": true,
+          "description": "Load system fonts for accurate text rendering"
+        },
+        "svgToPng.openAfterConvert": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open the generated PNG after conversion"
+        }
+      }
     }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

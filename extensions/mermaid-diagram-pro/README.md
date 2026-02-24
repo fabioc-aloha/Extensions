@@ -8,6 +8,18 @@
 
 6 built-in diagram templates. Quick access to Mermaid Live Editor with your diagram pre-loaded. Validation of all diagram blocks in the active file.
 
+## Features
+
+- **6 diagram templates** — flowchart, sequence, class diagram, git graph, ER, timeline
+- **Live preview** — open any diagram in Mermaid Live Editor pre-loaded with your code
+- **Inline validation** — count and list all mermaid code blocks in the active file
+- **SVG export guidance** — instructions for mmdc CLI export
+- **Works in .md and .mmd files**
+
+## Requirements
+
+No external tools required for templates, preview, and validation. For local SVG export only: npm install -g @mermaid-js/mermaid-cli
+
 ## Diagram Templates
 
 - `flowchart` — Decision flow

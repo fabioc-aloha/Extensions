@@ -15,6 +15,10 @@ Scans files for 13+ secret patterns including OpenAI, GitHub, AWS, Azure, Replic
 - **Problems Panel** — findings appear as errors/warnings with line numbers
 - **Ignore Patterns** — glob-based exclusions for test files, fixtures, etc.
 
+## Requirements
+
+No external tools required. The scanner engine runs entirely within VS Code.
+
 ## Commands
 
 | Command | Description |

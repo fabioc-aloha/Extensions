@@ -30,6 +30,10 @@ Command Palette → **SVG to PNG: Convert All SVGs in Workspace**
 | `svgToPng.loadSystemFonts` | `true` | Load system fonts for text rendering |
 | `svgToPng.openAfterConvert` | `true` | Open PNG in preview after conversion |
 
+## Requirements
+
+No installation required. `@resvg/resvg-js` (the Rust-based SVG renderer) is **bundled with the extension** — no system dependencies, no ImageMagick, no Inkscape needed.
+
 ## Why resvg?
 
 ImageMagick's SVG parser is incomplete and often mangles gradients, paths, and text at small scales. resvg-js uses a Rust implementation of the full SVG spec — the same engine used in browser-quality rendering pipelines.

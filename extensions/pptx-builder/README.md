@@ -8,6 +8,14 @@
 
 Powered by [pptxgenjs](https://gitbrent.github.io/PptxGenJS/). Write your presentation as Markdown, export as `.pptx`. Speaker notes supported via `<!--notes: ... -->` comments.
 
+## Features
+
+- **Markdown to PowerPoint** — each ## heading becomes a new slide automatically
+- **Speaker notes** — html comment notes become presenter notes
+- **Fully local** — no cloud upload, everything runs via pptxgenjs
+- **Starter template** — scaffold a presentation.md with one command
+- **Slide structure preview** — list all slides in the output channel before exporting
+
 ## Slide Format
 
 ```markdown

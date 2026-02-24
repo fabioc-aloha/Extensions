@@ -41,6 +41,10 @@ Workspace Watchdog silently watches your files in the background and alerts you 
 | `Workspace Watchdog: Stalled Files` | QuickPick of stalled files |
 | `Workspace Watchdog: Clear History` | Reset all tracking data |
 
+## Requirements
+
+No external tools required. Works entirely within VS Code using the local file system. No cloud connection, no sign-in.
+
 ## Data Storage
 
 Observations are stored locally in `.github/episodic/peripheral/file-observations.json`. No data leaves your machine.

@@ -8,6 +8,19 @@
 
 Right-click any `.svg` file in the Explorer for quick actions. Or use commands from the Command Palette.
 
+## Features
+
+- **Inline SVG preview** — render any SVG in a VS Code side panel instantly
+- **Data URI copy** — copy data:image/svg+xml;base64,... for use in CSS or HTML
+- **Markdown image copy** — paste directly as an inline Markdown image
+- **Icon templates** — insert circle, checkmark, arrow, or star starter SVG
+- **Validation** — check for required svg, viewBox, and xmlns attributes
+- **Right-click context menu** — Explorer right-click for Preview and Copy actions
+
+## Requirements
+
+No external tools required. Works entirely within VS Code.
+
 ## Commands
 
 | Command | Description |

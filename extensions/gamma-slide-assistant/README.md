@@ -10,6 +10,14 @@
 
 Write slides in Markdown using `---` as separators. One command exports to HTML, PDF, or launches a browser preview.
 
+## Features
+
+- **In-editor slide authoring** — write presentations as Markdown without leaving VS Code
+- **Marp rendering** — full Marp spec: themes, pagination, backgrounds, speaker notes
+- **One-click export** — HTML, PDF, or browser preview from the Command Palette
+- **Starter template** — New Presentation scaffolds the Marp frontmatter automatically
+- **Works offline** — no internet connection or cloud account needed
+
 ## Usage
 
 1. Run **Gamma Slides: New Presentation** to create a starter deck

@@ -2,20 +2,16 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "assets/",
-    "scripts/generate-icons.js"
+    "assets/icon-options/ai-voice-reader/option-b.png",
+    "assets/icon-options/brandfetch-logo-fetcher/option-b.png",
+    "assets/icon-options/dev-wellbeing/option-a.png",
+    "assets/icon-options/focus-timer/option-b.png",
+    "assets/icon-options/gamma-slide-assistant/option-b.png",
+    "assets/icon-options/hook-studio/option-b.png",
+    "assets/icon-options/knowledge-decay-tracker/option-b.png",
+    "assets/icon-options/markdown-to-word/option-b.png",
+    "assets/icon-options/mcp-app-starter/option-b.png"
   ],
-  "todoHotspots": [
-    {
-      "file": "assets/icon-options/svg-toolkit/option-b.png",
-      "todoCount": 3,
-      "scannedAt": 1771950380997
-    },
-    {
-      "file": "assets/icon-options/secret-guard/option-a.png",
-      "todoCount": 1,
-      "scannedAt": 1771950380997
-    }
-  ],
-  "lastUpdated": 1771950380997
+  "todoHotspots": [],
+  "lastUpdated": 1771951395796
 }

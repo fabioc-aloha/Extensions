@@ -1,85 +1,94 @@
 {
-    "name": "markdown-to-word",
-    "displayName": "Markdown to Word",
-    "description": "Convert Markdown files with Mermaid diagrams to professional Word (.docx) documents via Pandoc",
-    "version": "0.1.0",
-    "publisher": "fabioc-aloha",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "Other"
+  "name": "markdown-to-word",
+  "displayName": "Markdown to Word",
+  "description": "Convert Markdown files with Mermaid diagrams to professional Word (.docx) documents via Pandoc",
+  "version": "0.1.0",
+  "publisher": "fabioc-aloha",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "markdown",
+    "word",
+    "docx",
+    "pandoc",
+    "mermaid",
+    "convert"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "markdownToWord.convert",
+        "title": "Markdown to Word: Convert Current File"
+      },
+      {
+        "command": "markdownToWord.convertWithOptions",
+        "title": "Markdown to Word: Convert With Options"
+      },
+      {
+        "command": "markdownToWord.preview",
+        "title": "Markdown to Word: Preview Diagrams"
+      },
+      {
+        "command": "markdownToWord.checkPandoc",
+        "title": "Markdown to Word: Check Pandoc Installation"
+      }
     ],
-    "keywords": [
-        "markdown",
-        "word",
-        "docx",
-        "pandoc",
-        "mermaid",
-        "convert"
-    ],
-    "activationEvents": [
-        "onLanguage:markdown"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "markdownToWord.convert",
-                "title": "Markdown to Word: Convert Current File"
-            },
-            {
-                "command": "markdownToWord.convertWithOptions",
-                "title": "Markdown to Word: Convert With Options"
-            },
-            {
-                "command": "markdownToWord.preview",
-                "title": "Markdown to Word: Preview Diagrams"
-            },
-            {
-                "command": "markdownToWord.checkPandoc",
-                "title": "Markdown to Word: Check Pandoc Installation"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "command": "markdownToWord.convert",
-                    "when": "resourceExtname == .md",
-                    "group": "navigation"
-                }
-            ]
-        },
-        "configuration": {
-            "title": "Markdown to Word",
-            "properties": {
-                "markdownToWord.pandocPath": {
-                    "type": "string",
-                    "default": "pandoc",
-                    "description": "Path to pandoc executable"
-                },
-                "markdownToWord.referenceDoc": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Path to reference .docx for styling"
-                },
-                "markdownToWord.renderMermaid": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Render Mermaid diagrams as images"
-                }
-            }
+    "menus": {
+      "editor/context": [
+        {
+          "command": "markdownToWord.convert",
+          "when": "resourceExtname == .md",
+          "group": "navigation"
         }
+      ]
     },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "package": "npx @vscode/vsce package"
-    },
-    "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@types/node": "^20.0.0",
-        "typescript": "^5.7.0"
+    "configuration": {
+      "title": "Markdown to Word",
+      "properties": {
+        "markdownToWord.pandocPath": {
+          "type": "string",
+          "default": "pandoc",
+          "description": "Path to pandoc executable"
+        },
+        "markdownToWord.referenceDoc": {
+          "type": "string",
+          "default": "",
+          "description": "Path to reference .docx for styling"
+        },
+        "markdownToWord.renderMermaid": {
+          "type": "boolean",
+          "default": true,
+          "description": "Render Mermaid diagrams as images"
+        }
+      }
     }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

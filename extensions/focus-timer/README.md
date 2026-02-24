@@ -8,6 +8,18 @@
 
 25-minute work sessions. 5-minute breaks. Long break every 4 sessions. All in the status bar, all via commands. No web UI, no sign-in, no distractions.
 
+## Features
+
+- **Pomodoro timer in the status bar** — always visible, never intrusive
+- **Customizable cadence** — configure work, short break, and long break durations
+- **Auto long break** — triggers automatically after 4 completed work sessions
+- **Session history** — log of all completed sessions for the current VS Code session
+- **Pause/resume** — click the status bar item or use the command to pause mid-sprint
+
+## Requirements
+
+No external tools required. Works entirely within VS Code.
+
 ## Usage
 
 1. `Focus Timer: Start Focus Session` — starts the countdown in status bar
