@@ -15,16 +15,16 @@
     {
       "target": ".github/skills/svg-graphics/SKILL.md",
       "type": "uses",
-      "strength": 0.8,
+      "strength": 0.9,
       "when": "creating or modifying SVG banners and logos",
-      "yields": "SVG asset creation, animated banner generation"
+      "yields": "SVG asset creation, embedded logo patterns, gradient handling"
     },
     {
       "target": ".github/skills/image-handling/SKILL.md",
       "type": "uses",
-      "strength": 0.7,
+      "strength": 0.8,
       "when": "generating PNG from SVG or managing raster assets",
-      "yields": "PNG generation, image optimization"
+      "yields": "ImageMagick/Sharp conversion, density optimization"
     },
     {
       "target": ".github/skills/writing-publication/SKILL.md",
@@ -42,7 +42,7 @@
     }
   ],
   "schemaVersion": "1.0",
-  "lastValidated": "2026-02-15",
+  "lastValidated": "2026-02-24",
   "triggers": [
     "branding",
     "logo",

@@ -106,8 +106,41 @@ Expert in Alex brand hierarchy, visual identity systems, asset deployment, and p
 
 ## PNG Generation
 
+**ImageMagick (preferred for complex SVG)**:
+```powershell
+magick -density 200 -background none banner.svg banner.png
+```
+
+**Sharp CLI (faster for simple SVG)**:
 ```powershell
 npx sharp-cli --input source.svg --output output.png -f png --density 150
+```
+
+### SVG Banner Best Practices
+
+| Technique | Recommendation |
+|-----------|----------------|
+| **Gradient IDs** | Use unique IDs per SVG (`cxGrad`, `bgGrad`) to avoid conflicts |
+| **Logo scaling** | 0.75 scale renders cleanly; 0.5 can distort during PNG conversion |
+| **Embedding logos** | Embed actual SVG paths rather than text approximations |
+| **Render density** | Density 200 for marketplace; density 150 for previews |
+| **Banner dimensions** | 1280×320 px for VS Code Marketplace banners |
+
+### Embedded Logo Pattern
+
+```xml
+<g transform="translate(1095, 268)">
+  <defs>
+    <linearGradient id="cxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0078d4"/>
+      <stop offset="100%" stop-color="#005a9e"/>
+    </linearGradient>
+  </defs>
+  <g transform="scale(0.75)">
+    <!-- Logo paths here -->
+  </g>
+  <text x="32" y="18" font-family="Segoe UI" font-size="12" fill="rgba(255,255,255,0.4)">CorreaX</text>
+</g>
 ```
 
 ## Example Prompts
