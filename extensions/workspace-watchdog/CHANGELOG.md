@@ -1,6 +1,9 @@
 # Changelog — CX Workspace Watchdog
 
-## [0.1.3] — 2026-02-24
+## [0.1.4] — 2026-02-24
+
+### Changed
+- Added `author` field for Marketplace discoverability
 
 ### Added
 - Initial release (published as `cx-workspace-watchdog` — `workspace-watchdog` name taken on Marketplace)

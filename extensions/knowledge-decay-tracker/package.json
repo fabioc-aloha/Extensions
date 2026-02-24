@@ -2,7 +2,7 @@
     "name": "knowledge-decay-tracker",
     "displayName": "Knowledge Decay Tracker",
     "description": "Surface time-decayed knowledge in your codebase — find docs going stale before they mislead",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "fabioc-aloha",
     "author": "Fabio Correa",
     "icon": "assets/icon.png",

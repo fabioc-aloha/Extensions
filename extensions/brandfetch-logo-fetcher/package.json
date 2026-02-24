@@ -2,7 +2,7 @@
     "name": "brandfetch-logo-fetcher",
     "displayName": "Brandfetch Logo Fetcher",
     "description": "Fetch company logos and brand assets by domain name — insert as Markdown, SVG URL, or HTML",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "fabioc-aloha",
     "author": "Fabio Correa",
     "icon": "assets/icon.png",

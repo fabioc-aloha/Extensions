@@ -1,4 +1,9 @@
-# Changelog — Secret Guard
+# Changelog — CX SecretGuard
+
+## [0.1.1] — 2026-02-24
+
+### Changed
+- Added `author` field for Marketplace discoverability
 
 ## [0.1.0] — 2026-02-24
 

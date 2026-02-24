@@ -1,6 +1,9 @@
 # Changelog — MCP App Starter
 
-## [0.1.3] — 2026-02-24
+## [0.1.4] — 2026-02-24
+
+### Changed
+- Added `author` field for Marketplace discoverability
 
 ### Added
 - Initial release

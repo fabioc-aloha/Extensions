@@ -2,7 +2,7 @@
   "name": "ai-voice-reader",
   "displayName": "AI Voice Reader",
   "description": "Text-to-speech for VS Code — read documents, comments, and notes aloud using OS TTS or Azure Cognitive Speech",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -60,9 +60,9 @@
         },
         "voiceReader.rate": {
           "type": "number",
-          "default": 1.0,
+          "default": 1,
           "minimum": 0.5,
-          "maximum": 2.0,
+          "maximum": 2,
           "description": "Speech rate multiplier"
         },
         "voiceReader.stripMarkdown": {

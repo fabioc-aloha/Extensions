@@ -2,6 +2,11 @@
 
 All notable changes to this extension will be documented here.
 
+## [0.1.4] — 2026-02-24
+
+### Changed
+- Added `author` field for Marketplace discoverability
+
 ## [0.1.3] — 2026-02-24
 
 ### Added
