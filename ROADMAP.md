@@ -28,12 +28,12 @@ All foundation work is done. Every extension compiles successfully and all share
 | All 15 extensions compile | ✅ Verified (npm run compile:all) |
 | VSCE Publisher PAT | ✅ Verified (fabioc-aloha) |
 
-**Next step for all sprints**: `F5` test in Extension Development Host → `npx vsce package` → publish.
+**Next step for all sprints**: `npx vsce package` → `code --install-extension *.vsix` → test locally → publish.
 
 ### 🔨 Sprint 1 — First Movers (✅ Compile-Ready — Ship Next)
 
 These three have open first-mover windows tied to VS Code 1.109 (released Feb 4, 2026). No competing extensions exist yet.
-**Status**: All compile successfully. Ready for F5 testing and publishing.
+**Status**: All compile successfully. Ready for local VSIX testing and publishing.
 
 | Extension | Effort | Status | Why Now |
 |---|:---:|:---:|---|

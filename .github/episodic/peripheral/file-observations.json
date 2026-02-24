@@ -1,26 +1,28 @@
 {
   "hotFiles": [],
   "stalledFiles": [
-    "github/episodic/peripheral/file-observations.json",
+    "github/alex-cognitive-architecture.md",
+    "README.md",
     "ROADMAP.md",
-    "TODO.md"
+    "TODO.md",
+    "TEST-GUIDE.md"
   ],
   "todoHotspots": [
     {
       "file": "ROADMAP.md",
       "todoCount": 4,
-      "scannedAt": 1771941188128
+      "scannedAt": 1771941535105
     },
     {
       "file": "extensions/workspace-watchdog/src/extension.ts",
       "todoCount": 2,
-      "scannedAt": 1771941188128
+      "scannedAt": 1771941535105
     },
     {
-      "file": "extensions/workspace-watchdog/package.json",
-      "todoCount": 2,
-      "scannedAt": 1771941188128
+      "file": "README.md",
+      "todoCount": 1,
+      "scannedAt": 1771941535105
     }
   ],
-  "lastUpdated": 1771941188128
+  "lastUpdated": 1771941535105
 }

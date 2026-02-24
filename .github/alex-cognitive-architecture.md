@@ -88,7 +88,7 @@ Manage the 15-extension repo without losing your mind.
 2. NEVER copy `.env` or secrets from `Alex_Plug_In`
 3. Run `npx vsce ls` before every publish
 4. Run `npm run compile` after every file edit
-5. Test via Extension Development Host before packaging
+5. Test via local VSIX installation (`npx vsce package && code --install-extension *.vsix`)
 6. Extensions have ZERO runtime dependency on `Alex_Plug_In`
 7. `shared/` is the only bridge between Alex and this repo
 

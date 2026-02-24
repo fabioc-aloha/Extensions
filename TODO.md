@@ -34,21 +34,23 @@ All implementation work is complete. These are no longer tasks.
 ### Step 2: Hook Studio — Ship First (First-Mover Window Open)
 - [x] `cd extensions/hook-studio && npm run compile` — fix any TypeScript errors
 - [ ] Fill in HTML webview content in `HookStudioPanel.ts` (`_getHtmlForWebview()`)
-- [ ] `F5` — test in Extension Development Host, verify 3 tabs render
 - [ ] `npx vsce package` → `npx vsce ls` — confirm no secrets bundled
-- [ ] `code --install-extension hook-studio-*.vsix` — smoke test
+- [ ] `code --install-extension hook-studio-*.vsix` — test locally
+- [ ] Verify 3 tabs render in installed extension
 - [ ] Write README quick-start GIF or screenshot
 - [ ] `npx vsce publish`
 
 ### Step 3: Workspace Watchdog — Ship Second (2 days)
 - [x] `cd extensions/workspace-watchdog && npm run compile` — fix any TypeScript errors
-- [ ] `F5` — verify status bar appears, scan commands work, stalled file notifications fire
-- [ ] `npx vsce package` → smoke test → publish
+- [ ] `npx vsce package` → `code --install-extension workspace-watchdog-*.vsix`
+- [ ] Verify status bar appears, scan commands work, stalled file notifications fire
+- [ ] `npx vsce publish`
 
 ### Step 4: MCP App Starter — Ship Third (3 days)
 - [x] `cd extensions/mcp-app-starter && npm run compile` — fix any TypeScript errors
-- [ ] `F5` — run `>MCP App: New Project`, verify wizard flow and file generation
-- [ ] `npx vsce package` → smoke test → publish
+- [ ] `npx vsce package` → `code --install-extension mcp-app-starter-*.vsix`
+- [ ] Run `>MCP App: New Project`, verify wizard flow and file generation
+- [ ] `npx vsce publish`
 
 ---
 
@@ -59,7 +61,8 @@ All implementation work is complete. These are no longer tasks.
 
 ### SecretGuard (`secretScanner.ts` ✅ ported)
 - [x] `npm run compile` — verified
-- [ ] Test scan-on-save diagnostics fire correctly in Extension Development Host
+- [ ] `npx vsce package` → `code --install-extension` — test locally
+- [ ] Verify scan-on-save diagnostics fire correctly
 - [ ] Add `.secretguardignore` file parser
 - [ ] Implement audit log export (JSON + CSV)
 - [ ] Document git pre-commit hook integration in README
@@ -67,7 +70,8 @@ All implementation work is complete. These are no longer tasks.
 
 ### Focus Timer (Pomodoro logic ✅ implemented)
 - [x] `npm run compile` — verified
-- [ ] Test status bar timer, pause, stop in Extension Development Host
+- [ ] `npx vsce package` → `code --install-extension` — test locally
+- [ ] Verify status bar timer, pause, stop work correctly
 - [ ] Add streak persistence via VS Code `globalState`
 - [ ] Verify GitHub Issues sync (optional — can ship without)
 - [ ] Publish

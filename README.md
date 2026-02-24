@@ -38,11 +38,12 @@ Extensions/
 ├── tsconfig.base.json          — Shared TypeScript configuration
 ├── .gitignore
 ├── .github/
-│   └── copilot-instructions.md — Alex guidance for this repo
+│   └── copilot-instructions.md — Alex heir guidance for this repo
 ├── shared/                     — Shared utilities extracted from Alex
-│   ├── api/                    — API clients (Replicate, Brandfetch, Graph)
-│   ├── utils/                  — Decay engine, secret scanner, TTS
-│   └── ui/                     — Shared webview patterns
+│   ├── index.ts                — Barrel export for all shared code
+│   ├── tsconfig.json           — Shared package TypeScript config
+│   ├── api/                    — API clients (Replicate, Brandfetch)
+│   └── utils/                  — Decay engine, secret scanner, file observations
 ├── templates/
 │   ├── basic-extension/        — Minimal VS Code extension scaffold
 │   └── webview-extension/      — Extension with Webview scaffold
@@ -67,21 +68,25 @@ Extensions/
 npm install
 ```
 
+### Build all extensions
+```bash
+npm run compile:all
+```
+
 ### Build a single extension
 ```bash
 cd extensions/hook-studio
 npm run compile
 ```
 
-### Package a single extension for local install
+### Package and test locally
 ```bash
 cd extensions/hook-studio
 npx vsce package
 code --install-extension hook-studio-*.vsix
 ```
 
-### Run extension in development
-Open the extension folder in VS Code and press `F5` to launch Extension Development Host.
+Reload VS Code window after installation to activate the extension.
 
 ---
 

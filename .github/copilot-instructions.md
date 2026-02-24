@@ -78,7 +78,7 @@ S1: NEVER hardcode API keys — always VS Code SecretStorage
 S2: NEVER copy `.env` files or credentials from `Alex_Plug_In`
 S3: Run `npx vsce ls` before every publish to verify package contents
 S4: Run `npm run compile` after EVERY file edit — catch errors early
-S5: Test via Extension Development Host (`F5`) before packaging
+S5: Test via local VSIX installation (`npx vsce package && code --install-extension *.vsix`)
 S6: NEVER publish with `REPLICATE_API_KEY`, `BRANDFETCH_API_KEY`, or any credential hardcoded
 S7: Extensions have ZERO runtime dependency on `Alex_Plug_In`
 
@@ -95,7 +95,7 @@ S7: Extensions have ZERO runtime dependency on `Alex_Plug_In`
 2. Read the extension's own `package.json` — understand declared commands and activation events
 3. Check `shared/` before writing any utility — it may already exist
 4. `npm run compile` from the extension folder to verify after each change
-5. Test via `F5` or `npx vsce package && code --install-extension *.vsix`
+5. Test via `npx vsce package && code --install-extension *.vsix`
 
 ## Relationship to Master Alex
 Extensions do NOT import from `Alex_Plug_In` at runtime.
@@ -127,10 +127,9 @@ npm install
 # Per extension (hook-studio first)
 cd extensions/hook-studio
 npm run compile          # TypeScript errors surface here
-F5                       # Runtime errors surface here (Extension Development Host)
 npx vsce package         # Packaging errors surface here
 npx vsce ls              # Verify nothing secret is bundled
-code --install-extension hook-studio-*.vsix   # smoke test
+code --install-extension hook-studio-*.vsix   # Test locally (reload window)
 npx vsce publish         # ship
 ```
 
