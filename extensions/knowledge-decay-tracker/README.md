@@ -39,10 +39,6 @@ No external tools required. Optionally tag files with a decay profile comment at
 | `Knowledge Decay: Show Critical Files` | QuickPick of critical-tier files |
 | `Knowledge Decay: Mark File as Fresh` | Touch current file (reset decay clock) |
 
-## Source
-
-Decay engine: `shared/utils/decay.ts` (extracted from Alex Cognitive Architecture Forgetting Curve v5.9.6).
-
 ## License
 
 MIT

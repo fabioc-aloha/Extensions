@@ -28,10 +28,6 @@ No external tools required. The scanner engine runs entirely within VS Code.
 | `SecretGuard: View Audit Report` | Show output channel log |
 | `SecretGuard: Add Ignore Pattern` | Exclude a glob pattern |
 
-## Source
-
-Shared scanner engine: `shared/utils/secretScanner.ts` (extracted from Alex Cognitive Architecture v5.8.4).
-
 ## License
 
 MIT

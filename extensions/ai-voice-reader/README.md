@@ -34,14 +34,6 @@ No external tools required. Uses your operating system's built-in text-to-speech
 | `Voice Reader: Read File...` | Pick any text file to read |
 | `Voice Reader: Stop` | Stop playback immediately |
 
-## Platform Support
-
-| OS | Engine |
-|---|---|
-| Windows | PowerShell `System.Speech.Synthesis.SpeechSynthesizer` |
-| macOS | `say` command |
-| Linux | `espeak` |
-
 ## Settings
 
 | Setting | Default | Description |

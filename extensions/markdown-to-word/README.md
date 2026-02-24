@@ -35,6 +35,6 @@ Right-click any `.md` file → **Convert to Word**. Outputs a `.docx` alongside 
 | `markdownToWord.pandocPath` | `pandoc` | Path to pandoc |
 | `markdownToWord.referenceDoc` | `` | Custom .docx style template |
 
-## Source
+## License
 
-Extracted from Alex md-to-word skill. License: MIT
+MIT

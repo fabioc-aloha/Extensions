@@ -36,6 +36,6 @@ A [Brandfetch API key](https://brandfetch.com/developers) is required for full a
 - **PNG URL** — raw URL for PNG logo
 - **HTML `<img>`** — full img tag
 
-## Source
+## License
 
-Shared client: `shared/api/brandfetch.ts`. API key stored via VS Code SecretStorage. License: MIT
+MIT

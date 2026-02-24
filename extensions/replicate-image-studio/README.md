@@ -39,6 +39,6 @@ A [Replicate API key](https://replicate.com/account/api-tokens) is required. Set
 | `Replicate: View Generation History` | Show session log |
 | `Replicate: Insert Last Image as Markdown` | Insert at cursor |
 
-## Source
+## License
 
-Shared client: `shared/api/replicate.ts`. API key in SecretStorage. License: MIT
+MIT
