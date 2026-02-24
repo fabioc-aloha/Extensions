@@ -1,24 +1,24 @@
 {
   "hotFiles": [],
   "stalledFiles": [
-    "github/episodic/peripheral/file-observations.json"
+    "github/episodic/meditation-2026-02-24-sprint2-consolidation.md"
   ],
   "todoHotspots": [
     {
       "file": "CONTRIBUTING.md",
       "todoCount": 1,
-      "scannedAt": 1771957039316
+      "scannedAt": 1771957523062
     },
     {
       "file": "extensions/workspace-watchdog/CHANGELOG.md",
       "todoCount": 1,
-      "scannedAt": 1771957039316
+      "scannedAt": 1771957523062
     },
     {
       "file": "README.md",
       "todoCount": 1,
-      "scannedAt": 1771957039316
+      "scannedAt": 1771957523062
     }
   ],
-  "lastUpdated": 1771957039316
+  "lastUpdated": 1771957523062
 }
