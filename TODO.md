@@ -75,7 +75,7 @@ All implementation work is complete. These are no longer tasks.
 
 ## 🔥 Sprint 2 — 4/6 Shipped ✅ 2026-02-24
 
-> ⚠️ **Rate limit hit**: Marketplace caps new extension creation. `cx-focus-timer` and `cx-markdown-to-word` are renamed, bundled, and ready — publish when quota resets (~12h).
+> ⚠️ **Rate limit still active** (2nd attempt 2026-02-24): Marketplace caps new extension creation per 12h window. `cx-focus-timer` and `cx-markdown-to-word` are bundled, renamed, and ready — retry publish tomorrow.
 
 *All shared utility ports are complete. All 15 extensions compile successfully (2026-02-24).*
 *VSCE publisher credentials verified — ready to publish.*
@@ -88,7 +88,7 @@ All implementation work is complete. These are no longer tasks.
 ### CX Focus Timer (Pomodoro logic ✅ implemented)
 > Note: `focus-timer` name taken on Marketplace; renamed to `cx-focus-timer`.
 - [x] esbuild bundle — 3.1 KB
-- [ ] **Publish** (queued — Marketplace rate limit, publish when quota resets)
+- [ ] **Publish** (rate limit still active — retry 2026-02-25)
 
 ### Knowledge Decay Tracker (`decay.ts` ✅ ported)
 - [x] esbuild bundle — 15.5 KB including `@alex-extensions/shared` inlined
@@ -97,7 +97,7 @@ All implementation work is complete. These are no longer tasks.
 ### CX Markdown to Word
 > Note: `markdown-to-word` name taken on Marketplace; renamed to `cx-markdown-to-word`.
 - [x] esbuild bundle — 3.1 KB
-- [ ] **Publish** (queued — Marketplace rate limit, publish when quota resets)
+- [ ] **Publish** (rate limit still active — retry 2026-02-25)
 
 ### Brandfetch Logo Fetcher (`brandfetch.ts` ✅ ported)
 - [x] esbuild bundle — 14.6 KB including `@alex-extensions/shared` inlined
