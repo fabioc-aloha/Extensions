@@ -1,7 +1,7 @@
 # Extensions Roadmap
 
 **Last Updated**: February 24, 2026
-**Build Status**: ✅ All 15 extensions compile successfully
+**Build Status**: ✅ All 16 extensions compile — Marketplace-ready (icons, banners, fields, READMEs, CHANGELOGs)
 **Publisher**: `fabioc-aloha` (PAT verified)
 
 ---
@@ -24,9 +24,14 @@ All foundation work is done. Every extension compiles successfully and all share
 | `shared/index.ts` (barrel export) | ✅ Created |
 | `shared/tsconfig.json` | ✅ Configured |
 | Alex Extensions `.github/` heir | ✅ Deployed (v1.0.0) |
-| All 15 extension `extension.ts` files | ✅ Implemented |
-| All 15 extensions compile | ✅ Verified (npm run compile:all) |
+| All 16 extension `extension.ts` files | ✅ Implemented |
+| All 16 extensions compile | ✅ Verified (npm run compile:all) |
 | VSCE Publisher PAT | ✅ Verified (fabioc-aloha) |
+| Icons (`assets/icon.png` 128×128px) | ✅ All 16 — AI-generated via Ideogram v2 |
+| Banners (`assets/banner.svg/png`) | ✅ All 16 — 1280×320px dark navy |
+| `package.json` marketplace fields | ✅ All 16 — license, repository, galleryBanner, icon |
+| `## Features` + `## Requirements` | ✅ All READMEs updated |
+| `CHANGELOG.md` | ✅ All 16 extensions |
 
 **Next step for all sprints**: `npx vsce package` → `code --install-extension *.vsix` → test locally → publish.
 

@@ -5,19 +5,8 @@
 
 ---
 
-## 🚨 P0 — Marketplace Blockers (Audit 2026-02-24)
+## 🚨 Open — Security (P3)
 
-> Extensions cannot be packaged/published until these are resolved.
-
-- [ ] **[P0]** Create `assets/icon.png` (128×128px) for all 16 extensions — required by Marketplace
-- [ ] **[P0]** Fix `hook-studio` — `package.json` references `assets/icon.png` but file does not exist; `npx vsce package` will hard-fail
-- [ ] **[P0]** Create `extensions/svg-to-png/assets/` folder with `banner.svg` + `banner.png` (only extension with no assets folder)
-- [ ] **[P1]** Add `"license": "MIT"` to all 16 `package.json` files
-- [ ] **[P1]** Add `"repository": { "type": "git", "url": "https://github.com/fabioc-aloha/Extensions" }` to 15 `package.json` files (hook-studio already has it)
-- [ ] **[P1]** Add `"galleryBanner": { "color": "#1a1a2e", "theme": "dark" }` to all 16 `package.json` files
-- [ ] **[P2]** Add `## Features` section to 13 READMEs: ai-voice-reader, brandfetch-logo-fetcher, dev-wellbeing, focus-timer, gamma-slide-assistant, knowledge-decay-tracker, markdown-to-word, mermaid-diagram-pro, pptx-builder, replicate-image-studio, svg-toolkit, secret-guard *(implicitly missing)*, svg-to-png *(implicitly missing)*
-- [ ] **[P2]** Add `## Requirements` section to 13 READMEs: ai-voice-reader, brandfetch-logo-fetcher, dev-wellbeing, focus-timer, knowledge-decay-tracker, mermaid-diagram-pro, replicate-image-studio, secret-guard, svg-to-png, svg-toolkit, workspace-watchdog, gamma-slide-assistant, pptx-builder
-- [ ] **[P2]** Add `CHANGELOG.md` to 13 extensions: ai-voice-reader, brandfetch-logo-fetcher, dev-wellbeing, focus-timer, gamma-slide-assistant, knowledge-decay-tracker, markdown-to-word, mermaid-diagram-pro, pptx-builder, replicate-image-studio, secret-guard, svg-to-png, svg-toolkit
 - [ ] **[P3]** Upgrade `eslint` to v10 to fix 5 high-severity `minimatch` ReDoS vulnerabilities (`@vscode/vsce` + `eslint` dev deps only — not user-facing)
 
 ---
@@ -25,6 +14,20 @@
 ## ✅ Done — Audit Confirmed 2026-02-24
 
 All implementation work is complete. These are no longer tasks.
+
+### Marketplace Readiness (resolved 2026-02-24, commit af964da)
+
+- [x] **[P0]** Created `assets/icon.png` (128×128px, AI-generated via Ideogram v2) for all 16 extensions
+- [x] **[P0]** Fixed `hook-studio` — icon file deployed and `package.json` verified
+- [x] **[P0]** Created `extensions/svg-to-png/assets/banner.svg` + `banner.png` (emerald `#10b981` accent)
+- [x] **[P1]** Added `"license": "MIT"` to all 16 `package.json` files
+- [x] **[P1]** Added `"repository"` field to all 16 `package.json` files
+- [x] **[P1]** Added `"galleryBanner": { "color": "#1a1a2e", "theme": "dark" }` to all 16 `package.json` files
+- [x] **[P2]** Added `## Features` section to all 14 READMEs that were missing it
+- [x] **[P2]** Added `## Requirements` section to all 13 READMEs that were missing it
+- [x] **[P2]** Created `CHANGELOG.md` for all 13 extensions that were missing it
+
+### Implementation (compile-verified 2026-02-24)
 
 - [x] All 15 `extension.ts` files implemented (69–251 lines, real logic)
 - [x] `shared/utils/fileObservations.ts` — 166 lines, FileObservationStore + 5 interfaces
