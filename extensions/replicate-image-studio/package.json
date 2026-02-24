@@ -51,6 +51,9 @@
         "watch": "tsc -watch -p ./",
         "package": "npx @vscode/vsce package"
     },
+    "dependencies": {
+        "@alex-extensions/shared": "*"
+    },
     "devDependencies": {
         "@types/vscode": "^1.109.0",
         "@types/node": "^20.0.0",

@@ -62,7 +62,7 @@ export class ReplicateClient {
             throw new Error(`Replicate API error ${response.status}: ${await response.text()}`);
         }
 
-        return response.json();
+        return response.json() as Promise<ReplicatePrediction>;
     }
 
     async waitForPrediction(predictionId: string, timeoutMs = 120_000): Promise<ReplicatePrediction> {
@@ -78,7 +78,7 @@ export class ReplicateClient {
                 throw new Error(`Replicate poll error ${response.status}`);
             }
 
-            const prediction: ReplicatePrediction = await response.json();
+            const prediction = await response.json() as ReplicatePrediction;
 
             if (prediction.status === 'succeeded') { return prediction; }
             if (prediction.status === 'failed')    { throw new Error(prediction.error ?? 'Prediction failed'); }

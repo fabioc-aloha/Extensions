@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
 
 let outputChannel: vscode.OutputChannel;
-let postureTimer: NodeJS.Timer | undefined;
-let eyeTimer: NodeJS.Timer | undefined;
-let hydrationTimer: NodeJS.Timer | undefined;
+let postureTimer: ReturnType<typeof setInterval> | undefined;
+let eyeTimer: ReturnType<typeof setInterval> | undefined;
+let hydrationTimer: ReturnType<typeof setInterval> | undefined;
 let sessionStart: number | undefined;
 let keystrokeCount = 0;
 

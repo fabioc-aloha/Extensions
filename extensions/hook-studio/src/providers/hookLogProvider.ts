@@ -44,4 +44,8 @@ export class HookLogProvider implements vscode.TreeDataProvider<HookLogEntry> {
     getChildren(_element?: HookLogEntry): HookLogEntry[] {
         return _element ? [] : this.entries;
     }
+
+    dispose(): void {
+        this._onDidChangeTreeData.dispose();
+    }
 }

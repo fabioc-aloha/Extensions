@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 let outputChannel: vscode.OutputChannel;
 let statusBar: vscode.StatusBarItem;
-let timer: NodeJS.Timer | undefined;
+let timer: ReturnType<typeof setInterval> | undefined;
 let secondsLeft = 0;
 let isRunning = false;
 let isPaused = false;

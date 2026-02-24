@@ -1,10 +1,9 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import { DecayEngine, DecayProfile } from '../../shared/utils/decay';
+import { DecayEngine, DecayProfile, DecayEntry } from '@alex-extensions/shared';
 
 let outputChannel: vscode.OutputChannel;
-const engine = new DecayEngine();
 
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('Knowledge Decay Tracker');
@@ -35,18 +34,22 @@ async function scanWorkspace(): Promise<void> {
                 for (const file of files) {
                     try {
                         const stat = fs.statSync(file.fsPath);
-                        const tag = { lastTouched: stat.mtimeMs, referenceCount: 1 };
-                        const score = engine.score(tag, profile);
-                        const tier = engine.tier(score);
-                        allFiles.push({ path: file.fsPath, score, tier, lastModified: stat.mtimeMs });
+                        const entry: DecayEntry = {
+                            id: file.fsPath,
+                            lastAccessed: new Date(stat.mtimeMs),
+                            referenceCount: 1,
+                            profile
+                        };
+                        const result = DecayEngine.score(entry);
+                        allFiles.push({ path: file.fsPath, score: result.score, tier: result.tier, lastModified: stat.mtimeMs });
                     } catch { /* skip */ }
                 }
             }
         }
     );
 
-    const critical = allFiles.filter(f => f.tier === 'critical');
-    const stale = allFiles.filter(f => f.tier === 'stale');
+    const critical = allFiles.filter(f => f.tier === 'dormant');
+    const stale = allFiles.filter(f => f.tier === 'fading');
     outputChannel.clear();
     outputChannel.appendLine(`Knowledge Decay Report — ${new Date().toLocaleString()}`);
     outputChannel.appendLine(`Profile: ${profile} | Files scanned: ${allFiles.length}`);
@@ -79,8 +82,14 @@ async function showCritical(): Promise<void> {
         for (const file of files) {
             try {
                 const stat = fs.statSync(file.fsPath);
-                const score = engine.score({ lastTouched: stat.mtimeMs, referenceCount: 1 }, profile);
-                if (engine.tier(score) === 'critical') {
+                const entry: DecayEntry = {
+                    id: file.fsPath,
+                    lastAccessed: new Date(stat.mtimeMs),
+                    referenceCount: 1,
+                    profile
+                };
+                const result = DecayEngine.score(entry);
+                if (result.tier === 'dormant') {
                     critical.push({ label: path.basename(file.fsPath), description: file.fsPath });
                 }
             } catch { /* skip */ }

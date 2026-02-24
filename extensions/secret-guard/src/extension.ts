@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { SecretScanner } from '../../shared/utils/secretScanner';
+import { SecretScanner } from '@alex-extensions/shared';
 
 let outputChannel: vscode.OutputChannel;
 let diagnosticCollection: vscode.DiagnosticCollection;
@@ -80,10 +80,10 @@ function scanDocument(doc: vscode.TextDocument): number {
             Math.max(0, line), lineText.length
         );
         const severity = finding.severity === 'critical' ? vscode.DiagnosticSeverity.Error : vscode.DiagnosticSeverity.Warning;
-        const diag = new vscode.Diagnostic(range, `[SecretGuard] ${finding.type}: ${finding.description}`, severity);
+        const diag = new vscode.Diagnostic(range, `[SecretGuard] ${finding.patternName}: potential secret detected`, severity);
         diag.source = 'SecretGuard';
         diagnostics.push(diag);
-        outputChannel.appendLine(`[${finding.severity.toUpperCase()}] ${doc.fileName}:${finding.line} — ${finding.type}`);
+        outputChannel.appendLine(`[${finding.severity.toUpperCase()}] ${doc.fileName}:${finding.line} — ${finding.patternName}`);
     }
 
     if (diagnostics.length > 0) {

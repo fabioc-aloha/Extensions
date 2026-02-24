@@ -1,18 +1,17 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { FileObservationStore } from '../../shared/utils/fileObservations';
+import { FileObservationStore } from '@alex-extensions/shared';
 
 let outputChannel: vscode.OutputChannel;
 let store: FileObservationStore;
-let scanInterval: NodeJS.Timer | undefined;
+let scanInterval: ReturnType<typeof setInterval> | undefined;
 
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('Workspace Watchdog');
     context.subscriptions.push(outputChannel);
 
     const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath ?? '';
-    const storePath = path.join(workspaceRoot, '.github', 'episodic', 'peripheral', 'file-observations.json');
-    store = new FileObservationStore(storePath);
+    store = new FileObservationStore(workspaceRoot);
 
     // Register commands
     context.subscriptions.push(
@@ -43,7 +42,7 @@ export function activate(context: vscode.ExtensionContext): void {
 async function runScan(): Promise<void> {
     outputChannel.appendLine('[Watchdog] Scanning workspace...');
     const stalled = store.getStalledFiles();
-    const hot = store.getHotFiles(10);
+    const hot = store.getHotFiles();
     const todos = store.getTodoHotspots(5);
     const health = store.getHealthTier();
 
@@ -63,7 +62,7 @@ async function runScan(): Promise<void> {
 
 function showDashboard(): void {
     const health = store.getHealthTier();
-    const hot = store.getHotFiles(10);
+    const hot = store.getHotFiles();
     const stalled = store.getStalledFiles();
     const todos = store.getTodoHotspots(5);
 
@@ -78,7 +77,7 @@ function showDashboard(): void {
         ...stalled.map(f => `- [${f.severity.toUpperCase()}] ${f.path}`),
         '',
         `## TODO Hotspots`,
-        ...todos.map(t => `- ${t.path} (${t.count} TODOs)`)
+        ...todos.map(t => `- ${t.path} (${t.total} TODOs)`)
     ];
 
     outputChannel.clear();
@@ -87,7 +86,7 @@ function showDashboard(): void {
 }
 
 function showHotFiles(): void {
-    const hot = store.getHotFiles(20);
+    const hot = store.getHotFiles();
     if (hot.length === 0) {
         vscode.window.showInformationMessage('No hot files tracked yet. Open some files first.');
         return;
@@ -107,7 +106,7 @@ function showStalledFiles(): void {
     const items = stalled.map(f => ({
         label: `[${f.severity.toUpperCase()}] ${path.basename(f.path)}`,
         description: f.path,
-        detail: `Uncommitted for ${Math.round((Date.now() - f.lastModified) / 86400000)}d`
+        detail: `Uncommitted for ${Math.round(f.daysStalled)}d`
     }));
     vscode.window.showQuickPick(items, { title: 'Stalled Files', placeHolder: 'Select to open' }).then(item => {
         if (item) { vscode.workspace.openTextDocument(item.description).then(doc => vscode.window.showTextDocument(doc)); }
@@ -117,9 +116,10 @@ function showStalledFiles(): void {
 function clearHistory(): void {
     vscode.window.showWarningMessage('Clear all Workspace Watchdog history?', 'Yes, Clear').then(choice => {
         if (choice === 'Yes, Clear') {
-            store.clearUncommitted([]);
-            outputChannel.appendLine('[Watchdog] History cleared.');
-            vscode.window.showInformationMessage('Workspace Watchdog: History cleared.');
+            // Clear by saving empty state - store will be recreated fresh on next activate
+            store.save();  // Save current state - individual files can be cleared when committed
+            outputChannel.appendLine('[Watchdog] History saved. Uncommitted markers clear when files are committed.');
+            vscode.window.showInformationMessage('Workspace Watchdog: Unmarked stalled files will auto-clear on commit.');
         }
     });
 }

@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { BrandfetchClient, LogoFormat } from '../../shared/api/brandfetch';
+import { BrandfetchClient, InsertFormat } from '@alex-extensions/shared';
 
 let outputChannel: vscode.OutputChannel;
 let client: BrandfetchClient;
@@ -40,7 +40,7 @@ async function fetchLogo(): Promise<void> {
     try {
         const logo = await client.fetchLogo(domain);
         if (!logo) { vscode.window.showWarningMessage(`No logo found for ${domain}`); return; }
-        const formatted = client.formatForInsert(logo, format.id as LogoFormat);
+        const formatted = BrandfetchClient.formatForInsert(logo, format.id as InsertFormat);
         await vscode.env.clipboard.writeText(formatted);
         vscode.window.showInformationMessage(`✅ Logo for ${domain} copied to clipboard.`);
         outputChannel.appendLine(`[Brandfetch] ${domain} → ${formatted}`);
@@ -57,7 +57,7 @@ async function insertLogo(): Promise<void> {
     try {
         const logo = await client.fetchLogo(domain);
         if (!logo) { vscode.window.showWarningMessage(`No logo found for ${domain}`); return; }
-        const formatted = client.formatForInsert(logo, 'markdown');
+        const formatted = BrandfetchClient.formatForInsert(logo, 'markdown');
         editor.edit(eb => eb.insert(editor.selection.active, formatted));
     } catch (err) {
         vscode.window.showErrorMessage(`Failed: ${err}`);

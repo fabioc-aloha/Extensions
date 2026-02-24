@@ -53,7 +53,7 @@ export const SECRET_PATTERNS: SecretPattern[] = [
       pattern: /gho_[a-zA-Z0-9]{36}/,
       description: 'GitHub OAuth token (gho_...)' },
     { id: 'azure-key', name: 'Azure API Key', severity: 'high',
-      pattern: /(?i)azure.*['"=:\s][a-zA-Z0-9/+]{32,}/,
+      pattern: /azure.*['"=:\s][a-zA-Z0-9/+]{32,}/i,
       description: 'Potential Azure API key or connection string' },
     { id: 'aws-access-key', name: 'AWS Access Key ID', severity: 'high',
       pattern: /AKIA[0-9A-Z]{16}/,
@@ -61,13 +61,13 @@ export const SECRET_PATTERNS: SecretPattern[] = [
 
     // Medium — passwords and credentials
     { id: 'generic-password', name: 'Generic Password', severity: 'medium',
-      pattern: /(?i)password\s*[=:]\s*['"][^'"]{8,}['"]/,
+      pattern: /password\s*[=:]\s*['"][^'"]{8,}['"]/i,
       description: 'Potential hardcoded password assignment' },
     { id: 'generic-secret', name: 'Generic Secret', severity: 'medium',
-      pattern: /(?i)secret\s*[=:]\s*['"][^'"]{8,}['"]/,
+      pattern: /secret\s*[=:]\s*['"][^'"]{8,}['"]/i,
       description: 'Potential hardcoded secret assignment' },
     { id: 'connection-string', name: 'Connection String', severity: 'medium',
-      pattern: /(?i)(connection[-_]?string|mongodb\+srv:\/\/|postgres:\/\/|mysql:\/\/)[^\s'"]{10,}/,
+      pattern: /(connection[-_]?string|mongodb\+srv:\/\/|postgres:\/\/|mysql:\/\/)[^\s'"]{10,}/i,
       description: 'Database connection string detected' },
 
     // Low — potentially sensitive URLs

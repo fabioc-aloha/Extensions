@@ -82,38 +82,40 @@ async function exportWith(format: 'html' | 'pdf'): Promise<void> {
     const ext = format === 'html' ? '.html' : '.pdf';
     const outputPath = inputPath.replace(/\.md$/, ext);
 
-    await vscode.window.withProgress(
-        { location: vscode.ProgressLocation.Notification, title: `Exporting as ${format.toUpperCase()}...`, cancellable: false },
-        () => new Promise<void>((resolve, reject) => {
-            const proc = cp.spawn('npx', ['@marp-team/marp-cli', inputPath, '--output', outputPath], { shell: true });
-            let stderr = '';
-            proc.stderr?.on('data', d => { stderr += d.toString(); });
-            proc.on('close', code => {
-                if (code === 0) {
-                    outputChannel.appendLine(`✅ Exported: ${outputPath}`);
-                    resolve();
-                } else {
-                    outputChannel.appendLine(`❌ Marp error: ${stderr}`);
-                    reject(new Error(stderr || 'Marp export failed'));
-                }
-            });
-            proc.on('error', () => reject(new Error('npx not found. Install Node.js.')));
-        })
-    ).then(() => {
+    try {
+        await vscode.window.withProgress(
+            { location: vscode.ProgressLocation.Notification, title: `Exporting as ${format.toUpperCase()}...`, cancellable: false },
+            () => new Promise<void>((resolve, reject) => {
+                const proc = cp.spawn('npx', ['@marp-team/marp-cli', inputPath, '--output', outputPath], { shell: true });
+                let stderr = '';
+                proc.stderr?.on('data', d => { stderr += d.toString(); });
+                proc.on('close', code => {
+                    if (code === 0) {
+                        outputChannel.appendLine(`✅ Exported: ${outputPath}`);
+                        resolve();
+                    } else {
+                        outputChannel.appendLine(`❌ Marp error: ${stderr}`);
+                        reject(new Error(stderr || 'Marp export failed'));
+                    }
+                });
+                proc.on('error', () => reject(new Error('npx not found. Install Node.js.')));
+            })
+        );
         vscode.window.showInformationMessage(`✅ Exported to ${path.basename(outputPath)}`, 'Open').then(c => {
             if (c) { vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(outputPath)); }
         });
-    }).catch(err => {
-        vscode.window.showErrorMessage(`Export failed: ${err.message}\n\nInstall Marp: npm install -g @marp-team/marp-cli`);
+    } catch (err) {
+        const error = err instanceof Error ? err : new Error(String(err));
+        vscode.window.showErrorMessage(`Export failed: ${error.message}\n\nInstall Marp: npm install -g @marp-team/marp-cli`);
         outputChannel.show();
-    });
+    }
 }
 
 async function previewInBrowser(): Promise<void> {
     const inputPath = getActiveMarkdownPath();
     if (!inputPath) { return; }
     const outputPath = inputPath.replace(/\.md$/, '-preview.html');
-    cp.exec(`npx @marp-team/marp-cli "${inputPath}" --output "${outputPath}"`, { shell: true as boolean }, (err) => {
+    cp.exec(`npx @marp-team/marp-cli "${inputPath}" --output "${outputPath}"`, (err) => {
         if (err) {
             vscode.window.showErrorMessage('Marp not available. Install: npm install -g @marp-team/marp-cli');
             return;

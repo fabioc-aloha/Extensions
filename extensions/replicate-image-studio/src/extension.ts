@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import { ReplicateClient } from '../../shared/api/replicate';
+import { ReplicateClient, SupportedModel } from '@alex-extensions/shared';
 
 let outputChannel: vscode.OutputChannel;
 let client: ReplicateClient;
-const history: { prompt: string; url: string; model: string; createdAt: string }[] = [];
+const history: { prompt: string; urls: string[]; model: string; createdAt: string }[] = [];
 
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('Replicate Image Studio');
@@ -45,12 +45,13 @@ async function generateImage(): Promise<void> {
         { location: vscode.ProgressLocation.Notification, title: `Generating image with ${model.label}...`, cancellable: false },
         async () => {
             try {
-                const url = await client.generate(prompt, model.id as 'flux-schnell' | 'flux-dev' | 'sdxl');
-                history.unshift({ prompt, url, model: model.id, createdAt: new Date().toISOString() });
+                const urls = await client.generate(model.id as SupportedModel, { prompt });
+                const url = urls[0] ?? '';
+                history.unshift({ prompt, urls, model: model.id, createdAt: new Date().toISOString() });
                 outputChannel.appendLine(`✅ Generated: ${url}`);
                 await vscode.env.clipboard.writeText(`![${prompt}](${url})`);
                 vscode.window.showInformationMessage('✅ Image generated! Markdown copied to clipboard.', 'Open in Browser').then(c => {
-                    if (c) { vscode.env.openExternal(vscode.Uri.parse(url)); }
+                    if (c && url) { vscode.env.openExternal(vscode.Uri.parse(url)); }
                 });
             } catch (err) {
                 vscode.window.showErrorMessage(`Generation failed: ${err}`);
@@ -68,11 +69,12 @@ async function generateVideo(): Promise<void> {
         { location: vscode.ProgressLocation.Notification, title: 'Generating video (this may take a few minutes)...', cancellable: false },
         async () => {
             try {
-                const url = await client.generate(prompt, 'wan-2-1');
-                history.unshift({ prompt, url, model: 'wan-2-1', createdAt: new Date().toISOString() });
+                const urls = await client.generate('wan-2-1', { prompt });
+                const url = urls[0] ?? '';
+                history.unshift({ prompt, urls, model: 'wan-2-1', createdAt: new Date().toISOString() });
                 outputChannel.appendLine(`✅ Video generated: ${url}`);
                 vscode.window.showInformationMessage('✅ Video generated!', 'Open in Browser').then(c => {
-                    if (c) { vscode.env.openExternal(vscode.Uri.parse(url)); }
+                    if (c && url) { vscode.env.openExternal(vscode.Uri.parse(url)); }
                 });
             } catch (err) {
                 vscode.window.showErrorMessage(`Video generation failed: ${err}`);
@@ -86,7 +88,7 @@ function viewHistory(): void {
     outputChannel.clear();
     outputChannel.appendLine('Replicate Generation History');
     outputChannel.appendLine('─'.repeat(50));
-    history.forEach((h, i) => { outputChannel.appendLine(`${i + 1}. [${h.model}] "${h.prompt.slice(0, 50)}..." → ${h.url}`); });
+    history.forEach((h, i) => { outputChannel.appendLine(`${i + 1}. [${h.model}] "${h.prompt.slice(0, 50)}..." → ${h.urls[0] ?? 'no url'}`); });
     outputChannel.show();
 }
 
@@ -94,7 +96,8 @@ function insertLastImage(): void {
     const editor = vscode.window.activeTextEditor;
     if (!editor || history.length === 0) { vscode.window.showWarningMessage('No image generated yet.'); return; }
     const last = history[0];
-    editor.edit(eb => eb.insert(editor.selection.active, `![${last.prompt}](${last.url})`));
+    const url = last.urls[0] ?? '';
+    editor.edit(eb => eb.insert(editor.selection.active, `![${last.prompt}](${url})`));
 }
 
 export function deactivate(): void {

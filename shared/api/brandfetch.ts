@@ -16,6 +16,21 @@ export interface LogoResult {
 
 export type InsertFormat = 'markdown' | 'svg-url' | 'png-url' | 'html-img';
 
+interface BrandfetchLogoFormat {
+    format: string;
+    src: string;
+}
+
+interface BrandfetchLogo {
+    type: string;
+    formats?: BrandfetchLogoFormat[];
+}
+
+interface BrandfetchResponse {
+    name?: string;
+    logos?: BrandfetchLogo[];
+}
+
 export class BrandfetchClient {
     private apiKey?: string;
     private cache = new Map<string, LogoResult>();
@@ -60,19 +75,23 @@ export class BrandfetchClient {
 
         if (!response.ok) { return null; }
 
-        const data = await response.json();
+        const data = await response.json() as BrandfetchResponse;
         const logos = data?.logos ?? [];
-        const svgLogo = logos.find((l: any) => l.type === 'logo' && l.formats?.some((f: any) => f.format === 'svg'));
+        const svgLogo = logos.find(l => l.type === 'logo' && l.formats?.some(f => f.format === 'svg'));
 
         if (svgLogo) {
-            const format = svgLogo.formats.find((f: any) => f.format === 'svg');
-            return { url: format.src, format: 'svg', source: 'brandfetch', domain, companyName: data.name };
+            const format = svgLogo.formats?.find(f => f.format === 'svg');
+            if (format) {
+                return { url: format.src, format: 'svg', source: 'brandfetch', domain, companyName: data.name };
+            }
         }
 
-        const pngLogo = logos.find((l: any) => l.formats?.some((f: any) => f.format === 'png'));
+        const pngLogo = logos.find(l => l.formats?.some(f => f.format === 'png'));
         if (pngLogo) {
-            const format = pngLogo.formats.find((f: any) => f.format === 'png');
-            return { url: format.src, format: 'png', source: 'brandfetch', domain, companyName: data.name };
+            const format = pngLogo.formats?.find(f => f.format === 'png');
+            if (format) {
+                return { url: format.src, format: 'png', source: 'brandfetch', domain, companyName: data.name };
+            }
         }
 
         return null;

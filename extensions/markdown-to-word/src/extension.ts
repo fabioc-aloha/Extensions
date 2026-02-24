@@ -53,31 +53,33 @@ async function convert(inputPath: string, outputPath?: string): Promise<void> {
         args.push(`--reference-doc=${referenceDoc}`);
     }
 
-    await vscode.window.withProgress(
-        { location: vscode.ProgressLocation.Notification, title: 'Converting to Word...', cancellable: false },
-        () => new Promise<void>((resolve, reject) => {
-            const proc = cp.spawn(pandocPath, args);
-            let stderr = '';
-            proc.stderr.on('data', d => { stderr += d.toString(); });
-            proc.on('close', code => {
-                if (code === 0) {
-                    outputChannel.appendLine(`✅ Converted: ${outPath}`);
-                    resolve();
-                } else {
-                    outputChannel.appendLine(`❌ Pandoc error: ${stderr}`);
-                    reject(new Error(stderr));
-                }
-            });
-            proc.on('error', err => { reject(new Error(`Could not run pandoc: ${err.message}. Install from https://pandoc.org`)); });
-        })
-    ).then(() => {
+    try {
+        await vscode.window.withProgress(
+            { location: vscode.ProgressLocation.Notification, title: 'Converting to Word...', cancellable: false },
+            () => new Promise<void>((resolve, reject) => {
+                const proc = cp.spawn(pandocPath, args);
+                let stderr = '';
+                proc.stderr.on('data', d => { stderr += d.toString(); });
+                proc.on('close', code => {
+                    if (code === 0) {
+                        outputChannel.appendLine(`✅ Converted: ${outPath}`);
+                        resolve();
+                    } else {
+                        outputChannel.appendLine(`❌ Pandoc error: ${stderr}`);
+                        reject(new Error(stderr));
+                    }
+                });
+                proc.on('error', err => { reject(new Error(`Could not run pandoc: ${err.message}. Install from https://pandoc.org`)); });
+            })
+        );
         vscode.window.showInformationMessage(`✅ Converted to ${path.basename(outPath)}`, 'Open Folder').then(c => {
             if (c) { vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(outPath)); }
         });
-    }).catch(err => {
-        vscode.window.showErrorMessage(`Conversion failed: ${err.message}`);
+    } catch (err) {
+        const error = err instanceof Error ? err : new Error(String(err));
+        vscode.window.showErrorMessage(`Conversion failed: ${error.message}`);
         outputChannel.show();
-    });
+    }
 }
 
 function previewDiagrams(): void {
