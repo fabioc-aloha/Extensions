@@ -2,9 +2,16 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "package-lock.json",
-    "extensions/svg-to-png/"
+    "extensions/ai-voice-reader/assets/banner.png",
+    "extensions/ai-voice-reader/assets/banner.svg",
+    "extensions/brandfetch-logo-fetcher/assets/banner.png",
+    "extensions/brandfetch-logo-fetcher/assets/banner.svg",
+    "extensions/dev-wellbeing/assets/banner.png",
+    "extensions/dev-wellbeing/assets/banner.svg",
+    "extensions/focus-timer/assets/banner.png",
+    "extensions/focus-timer/assets/banner.svg",
+    "extensions/gamma-slide-assistant/assets/banner.png"
   ],
   "todoHotspots": [],
-  "lastUpdated": 1771946509575
+  "lastUpdated": 1771946697886
 }
