@@ -1,6 +1,6 @@
 # Knowledge Decay Tracker
 
-![Knowledge Decay Tracker Banner](assets/banner.png)
+![Knowledge Decay Tracker Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/knowledge-decay-tracker/assets/banner.png)
 
 **Surface time-decayed knowledge — find docs going stale before they mislead**
 

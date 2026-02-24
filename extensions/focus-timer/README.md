@@ -1,6 +1,6 @@
 # Focus Timer
 
-![Focus Timer Banner](assets/banner.png)
+![Focus Timer Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/focus-timer/assets/banner.png)
 
 **Pomodoro timer in the status bar — work sprints, break reminders, session history**
 

@@ -3,24 +3,21 @@
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
     "extensions/ai-voice-reader/README.md",
+    "extensions/ai-voice-reader/package.json",
     "extensions/brandfetch-logo-fetcher/README.md",
+    "extensions/brandfetch-logo-fetcher/package.json",
+    "extensions/focus-timer/README.md",
+    "extensions/focus-timer/package.json",
     "extensions/knowledge-decay-tracker/README.md",
-    "extensions/markdown-to-word/README.md",
-    "extensions/replicate-image-studio/README.md",
-    "extensions/secret-guard/README.md",
-    "extensions/svg-to-png/README.md"
+    "extensions/knowledge-decay-tracker/package.json",
+    "extensions/markdown-to-word/README.md"
   ],
   "todoHotspots": [
     {
-      "file": "ROADMAP.md",
-      "todoCount": 4,
-      "scannedAt": 1771953176484
-    },
-    {
       "file": "extensions/hook-studio/hook-studio-0.1.0.vsix",
       "todoCount": 1,
-      "scannedAt": 1771953176484
+      "scannedAt": 1771953533106
     }
   ],
-  "lastUpdated": 1771953176484
+  "lastUpdated": 1771953533106
 }

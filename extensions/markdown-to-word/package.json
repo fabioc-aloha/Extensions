@@ -1,6 +1,6 @@
 {
-  "name": "markdown-to-word",
-  "displayName": "Markdown to Word",
+  "name": "cx-markdown-to-word",
+  "displayName": "CX Markdown to Word",
   "description": "Convert Markdown files with Mermaid diagrams to professional Word (.docx) documents via Pandoc",
   "version": "0.1.0",
   "publisher": "fabioc-aloha",
@@ -75,7 +75,9 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "npx @vscode/vsce package"
+    "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
+    "package": "npm run bundle && npx @vscode/vsce package",
+    "publish": "npm run bundle && npx @vscode/vsce publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.109.0",

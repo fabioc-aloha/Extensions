@@ -1,6 +1,6 @@
 # Markdown to Word
 
-![Markdown to Word Banner](assets/banner.png)
+![Markdown to Word Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/markdown-to-word/assets/banner.png)
 
 **Convert Markdown + Mermaid diagrams to professional Word (.docx) via Pandoc**
 

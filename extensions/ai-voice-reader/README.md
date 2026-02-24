@@ -1,6 +1,6 @@
 ﻿# AI Voice Reader
 
-![AI Voice Reader Banner](assets/banner.png)
+![AI Voice Reader Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/ai-voice-reader/assets/banner.png)
 
 **Text-to-speech for VS Code — read documents, selections, and notes aloud**
 

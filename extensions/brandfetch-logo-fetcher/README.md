@@ -1,6 +1,6 @@
 # Brandfetch Logo Fetcher
 
-![Brandfetch Logo Fetcher Banner](assets/banner.png)
+![Brandfetch Logo Fetcher Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/brandfetch-logo-fetcher/assets/banner.png)
 
 **Fetch company logos and brand assets by domain — insert as Markdown, SVG URL, or HTML**
 

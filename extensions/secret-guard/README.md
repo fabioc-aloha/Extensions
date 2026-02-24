@@ -1,6 +1,6 @@
 # SecretGuard
 
-![SecretGuard Banner](assets/banner.png)
+![SecretGuard Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/secret-guard/assets/banner.png)
 
 **Pre-commit secret scanner — catch leaked API keys, tokens, and credentials before they leave your machine**
 
