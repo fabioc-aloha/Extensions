@@ -1,28 +1,19 @@
 {
   "hotFiles": [],
   "stalledFiles": [
-    "github/episodic/peripheral/file-observations.json",
-    "ROADMAP.md",
-    "TODO.md",
-    "extensions/hook-studio/package.json",
-    "extensions/mcp-app-starter/package.json",
-    "extensions/workspace-watchdog/package.json",
-    "package-lock.json",
-    "package.json",
-    "extensions/hook-studio/LICENSE",
-    "extensions/mcp-app-starter/LICENSE"
+    "github/episodic/peripheral/file-observations.json"
   ],
   "todoHotspots": [
     {
       "file": "ROADMAP.md",
       "todoCount": 4,
-      "scannedAt": 1771952126535
+      "scannedAt": 1771952181721
     },
     {
       "file": "extensions/hook-studio/hook-studio-0.1.0.vsix",
       "todoCount": 1,
-      "scannedAt": 1771952126535
+      "scannedAt": 1771952181721
     }
   ],
-  "lastUpdated": 1771952126535
+  "lastUpdated": 1771952181721
 }
