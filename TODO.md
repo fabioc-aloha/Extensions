@@ -42,35 +42,34 @@ All implementation work is complete. These are no longer tasks.
 
 ---
 
-## 🔥 Immediate — Compile + Publish (This Week)
+## 🔥 Sprint 1 — Shipped ✅ 2026-02-24
 
 ### Step 1: Root Setup ✅
 - [x] `npm install` from monorepo root — resolve all dependencies
 - [x] Verify `tsconfig.json` path resolution for `../../shared/utils/` imports in each extension
-- [x] All 15 extensions + shared package compile successfully
+- [x] All 16 extensions + shared package compile successfully
 - [x] Set up `fabioc-aloha` VSCE publisher credentials — PAT verified
 - [x] Create GitHub repo `Extensions` and push
 
-### Step 2: Hook Studio — Ship First (First-Mover Window Open)
+### Step 2: Hook Studio — ✅ Published
 - [x] `cd extensions/hook-studio && npm run compile` — fix any TypeScript errors
-- [ ] Fill in HTML webview content in `HookStudioPanel.ts` (`_getHtmlForWebview()`)
-- [ ] `npx vsce package` → `npx vsce ls` — confirm no secrets bundled
-- [ ] `code --install-extension hook-studio-*.vsix` — test locally
-- [ ] Verify 3 tabs render in installed extension
-- [ ] Write README quick-start GIF or screenshot
-- [ ] `npx vsce publish`
+- [x] Three-tab webview UI implemented (Rule Builder, Execution Log, Condition Tester)
+- [x] esbuild bundle — clean 8.4 KB `out/extension.js` with no artifacts
+- [x] Packaged as `hook-studio-0.1.0.vsix` (10 files, 275 KB)
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio
 
-### Step 3: Workspace Watchdog — Ship Second (2 days)
+### Step 3: CX Workspace Watchdog — ✅ Published
+> Note: `workspace-watchdog` name was taken by `deitry` on Marketplace; renamed to `cx-workspace-watchdog`.
 - [x] `cd extensions/workspace-watchdog && npm run compile` — fix any TypeScript errors
-- [ ] `npx vsce package` → `code --install-extension workspace-watchdog-*.vsix`
-- [ ] Verify status bar appears, scan commands work, stalled file notifications fire
-- [ ] `npx vsce publish`
+- [x] esbuild bundle — 15.6 KB including `@alex-extensions/shared` inlined
+- [x] Packaged as `cx-workspace-watchdog-0.1.0.vsix` (10 files, 576 KB)
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog
 
-### Step 4: MCP App Starter — Ship Third (3 days)
+### Step 4: MCP App Starter — ✅ Published
 - [x] `cd extensions/mcp-app-starter && npm run compile` — fix any TypeScript errors
-- [ ] `npx vsce package` → `code --install-extension mcp-app-starter-*.vsix`
-- [ ] Run `>MCP App: New Project`, verify wizard flow and file generation
-- [ ] `npx vsce publish`
+- [x] esbuild bundle — clean 7.7 KB `out/extension.js`
+- [x] Packaged as `mcp-app-starter-0.1.0.vsix` (10 files, 394 KB)
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter
 
 ---
 

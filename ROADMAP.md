@@ -35,16 +35,17 @@ All foundation work is done. Every extension compiles successfully and all share
 
 **Next step for all sprints**: `npx vsce package` → `code --install-extension *.vsix` → test locally → publish.
 
-### 🔨 Sprint 1 — First Movers (✅ Compile-Ready — Ship Next)
+### ✅ Sprint 1 — First Movers (Shipped 2026-02-24)
 
-These three have open first-mover windows tied to VS Code 1.109 (released Feb 4, 2026). No competing extensions exist yet.
-**Status**: All compile successfully. Ready for local VSIX testing and publishing.
+All three shipped on the same day VS Code 1.109 first-mover window was identified.
 
-| Extension | Effort | Status | Why Now |
-|---|:---:|:---:|---|
-| [Hook Studio](#hook-studio) | 1w | ✅ Compiles | VS Code 1.109 shipped agent hooks with zero tooling. Every Copilot agent user is a potential customer. |
-| [Workspace Watchdog](#workspace-watchdog) | 2d | ✅ Compiles | Background File Watcher engine fully built in Alex v5.9.8. Zero AI needed. Broadest audience. |
-| [MCP App Starter](#mcp-app-starter) | 3d | ✅ Compiles | MCP Apps went stable in VS Code 1.109. No scaffolding tool exists. Developer tooling for developers. |
+| Extension | Size | Marketplace |
+|---|:---:|---|
+| [Hook Studio](#hook-studio) | 275 KB | [fabioc-aloha.hook-studio](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |
+| [CX Workspace Watchdog](#workspace-watchdog) | 576 KB | [fabioc-aloha.cx-workspace-watchdog](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog) |
+| [MCP App Starter](#mcp-app-starter) | 394 KB | [fabioc-aloha.mcp-app-starter](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter) |
+
+> Note: `workspace-watchdog` name was taken by `deitry` on Marketplace; published as `cx-workspace-watchdog` / **CX Workspace Watchdog**.
 
 ### ✅ Sprint 2 — Code Extracted & Implemented (✅ Compile-Ready)
 

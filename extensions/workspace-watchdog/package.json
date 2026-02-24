@@ -1,80 +1,79 @@
 {
-  "name": "workspace-watchdog",
-  "displayName": "Workspace Watchdog",
-  "description": "Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots",
-  "version": "0.1.0",
-  "publisher": "fabioc-aloha",
-  "engines": {
-    "vscode": "^1.109.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "keywords": [
-    "productivity",
-    "file-health",
-    "todo",
-    "git",
-    "monitoring"
-  ],
-  "activationEvents": [
-    "onStartupFinished"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "workspaceWatchdog.showDashboard",
-        "title": "Workspace Watchdog: Show Dashboard"
-      },
-      {
-        "command": "workspaceWatchdog.scanNow",
-        "title": "Workspace Watchdog: Scan Now"
-      },
-      {
-        "command": "workspaceWatchdog.showHotFiles",
-        "title": "Workspace Watchdog: Hot Files"
-      },
-      {
-        "command": "workspaceWatchdog.showStalledFiles",
-        "title": "Workspace Watchdog: Stalled Files"
-      },
-      {
-        "command": "workspaceWatchdog.clearHistory",
-        "title": "Workspace Watchdog: Clear History"
-      }
+    "name": "cx-workspace-watchdog",
+    "displayName": "CX Workspace Watchdog",
+    "description": "Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots",
+    "version": "0.1.0",
+    "publisher": "fabioc-aloha",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
     ],
-    "views": {
-      "explorer": [
-        {
-          "id": "workspaceWatchdog.fileHealth",
-          "name": "File Health",
-          "icon": "$(pulse)"
+    "keywords": [
+        "productivity",
+        "file-health",
+        "todo",
+        "git",
+        "monitoring"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "workspaceWatchdog.showDashboard",
+                "title": "Workspace Watchdog: Show Dashboard"
+            },
+            {
+                "command": "workspaceWatchdog.scanNow",
+                "title": "Workspace Watchdog: Scan Now"
+            },
+            {
+                "command": "workspaceWatchdog.showHotFiles",
+                "title": "Workspace Watchdog: Hot Files"
+            },
+            {
+                "command": "workspaceWatchdog.showStalledFiles",
+                "title": "Workspace Watchdog: Stalled Files"
+            },
+            {
+                "command": "workspaceWatchdog.clearHistory",
+                "title": "Workspace Watchdog: Clear History"
+            }
+        ],
+        "views": {
+            "explorer": [
+                {
+                    "id": "workspaceWatchdog.fileHealth",
+                    "name": "File Health",
+                    "icon": "$(pulse)"
+                }
+            ]
         }
-      ]
+    },
+    "scripts": {
+        "compile": "tsc -p ./ --noEmit",
+        "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
+        "watch": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --watch",
+        "package": "npm run bundle && npx @vscode/vsce package",
+        "publish": "npm run bundle && npx @vscode/vsce publish"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.109.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.7.0"
+    },
+    "license": "MIT",
+    "icon": "assets/icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fabioc-aloha/Extensions"
+    },
+    "galleryBanner": {
+        "color": "#1a1a2e",
+        "theme": "dark"
     }
-  },
-  "scripts": {
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "package": "npx @vscode/vsce package"
-  },
-  "dependencies": {
-    "@alex-extensions/shared": "*"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.109.0",
-    "@types/node": "^20.0.0",
-    "typescript": "^5.7.0"
-  },
-  "license": "MIT",
-  "icon": "assets/icon.png",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fabioc-aloha/Extensions"
-  },
-  "galleryBanner": {
-    "color": "#1a1a2e",
-    "theme": "dark"
-  }
 }

@@ -2,16 +2,27 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "assets/icon-options/ai-voice-reader/option-b.png",
-    "assets/icon-options/brandfetch-logo-fetcher/option-b.png",
-    "assets/icon-options/dev-wellbeing/option-a.png",
-    "assets/icon-options/focus-timer/option-b.png",
-    "assets/icon-options/gamma-slide-assistant/option-b.png",
-    "assets/icon-options/hook-studio/option-b.png",
-    "assets/icon-options/knowledge-decay-tracker/option-b.png",
-    "assets/icon-options/markdown-to-word/option-b.png",
-    "assets/icon-options/mcp-app-starter/option-b.png"
+    "ROADMAP.md",
+    "TODO.md",
+    "extensions/hook-studio/package.json",
+    "extensions/mcp-app-starter/package.json",
+    "extensions/workspace-watchdog/package.json",
+    "package-lock.json",
+    "package.json",
+    "extensions/hook-studio/LICENSE",
+    "extensions/mcp-app-starter/LICENSE"
   ],
-  "todoHotspots": [],
-  "lastUpdated": 1771951395796
+  "todoHotspots": [
+    {
+      "file": "ROADMAP.md",
+      "todoCount": 4,
+      "scannedAt": 1771952126535
+    },
+    {
+      "file": "extensions/hook-studio/hook-studio-0.1.0.vsix",
+      "todoCount": 1,
+      "scannedAt": 1771952126535
+    }
+  ],
+  "lastUpdated": 1771952126535
 }

@@ -63,10 +63,11 @@
     }
   },
   "scripts": {
-    "compile": "tsc -p tsconfig.json",
-    "watch": "tsc -p tsconfig.json --watch",
-    "package": "npx vsce package",
-    "publish": "npx vsce publish"
+    "compile": "tsc -p tsconfig.json --noEmit",
+    "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
+    "watch": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --watch",
+    "package": "npm run bundle && npx @vscode/vsce package",
+    "publish": "npm run bundle && npx @vscode/vsce publish"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
