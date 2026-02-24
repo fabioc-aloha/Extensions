@@ -2,28 +2,32 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "CONTRIBUTING.md",
-    "README.md",
-    "extensions/hook-studio/CHANGELOG.md",
-    "extensions/mcp-app-starter/CHANGELOG.md",
-    "extensions/workspace-watchdog/CHANGELOG.md"
+    "extensions/ai-voice-reader/package.json",
+    "extensions/brandfetch-logo-fetcher/package.json",
+    "extensions/dev-wellbeing/package.json",
+    "extensions/focus-timer/package.json",
+    "extensions/gamma-slide-assistant/package.json",
+    "extensions/hook-studio/package.json",
+    "extensions/knowledge-decay-tracker/package.json",
+    "extensions/markdown-to-word/package.json",
+    "extensions/mcp-app-starter/package.json"
   ],
   "todoHotspots": [
     {
       "file": "CONTRIBUTING.md",
       "todoCount": 1,
-      "scannedAt": 1771956625714
+      "scannedAt": 1771956744711
     },
     {
       "file": "extensions/workspace-watchdog/CHANGELOG.md",
       "todoCount": 1,
-      "scannedAt": 1771956625714
+      "scannedAt": 1771956744711
     },
     {
       "file": "README.md",
       "todoCount": 1,
-      "scannedAt": 1771956625714
+      "scannedAt": 1771956744711
     }
   ],
-  "lastUpdated": 1771956625714
+  "lastUpdated": 1771956744711
 }

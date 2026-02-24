@@ -4,6 +4,7 @@
   "description": "Convert Markdown files with Mermaid diagrams to professional Word (.docx) documents via Pandoc",
   "version": "0.1.0",
   "publisher": "fabioc-aloha",
+  "author": "Fabio Correa",
   "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.109.0"

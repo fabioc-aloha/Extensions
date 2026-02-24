@@ -4,6 +4,7 @@
   "description": "Convert Markdown or structured YAML to PowerPoint (.pptx) presentations — layout templates, code slides, and speaker notes",
   "version": "0.1.0",
   "publisher": "fabioc-aloha",
+  "author": "Fabio Correa",
   "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.109.0"

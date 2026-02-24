@@ -4,6 +4,7 @@
     "description": "Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots",
     "version": "0.1.3",
     "publisher": "fabioc-aloha",
+    "author": "Fabio Correa",
     "engines": {
         "vscode": "^1.109.0"
     },

@@ -4,6 +4,7 @@
   "description": "Visual GUI for VS Code agent hooks — build, debug, and test hooks.json without reading docs.",
   "version": "0.1.3",
   "publisher": "fabioc-aloha",
+  "author": "Fabio Correa",
   "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.109.0"
