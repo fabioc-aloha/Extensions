@@ -73,7 +73,7 @@ All implementation work is complete. These are no longer tasks.
 
 ---
 
-## � Sprint 2 — 4/6 Shipped ✅ 2026-02-24
+## 🔥 Sprint 2 — 4/6 Shipped ✅ 2026-02-24
 
 > ⚠️ **Rate limit hit**: Marketplace caps new extension creation. `cx-focus-timer` and `cx-markdown-to-word` are renamed, bundled, and ready — publish when quota resets (~12h).
 
