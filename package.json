@@ -1,0 +1,34 @@
+{
+    "name": "alex-extensions",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Alex Cognitive Architecture — Standalone VS Code Extensions Monorepo",
+    "workspaces": [
+        "shared",
+        "extensions/*"
+    ],
+    "scripts": {
+        "compile:all": "npm run compile --workspaces --if-present",
+        "lint:all": "npm run lint --workspaces --if-present",
+        "test:all": "npm run test --workspaces --if-present",
+        "package:all": "node scripts/package-all.js",
+        "clean:all": "node scripts/clean-all.js"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "@types/vscode": "^1.109.0",
+        "@typescript-eslint/eslint-plugin": "^8.0.0",
+        "@typescript-eslint/parser": "^8.0.0",
+        "@vscode/vsce": "^3.0.0",
+        "eslint": "^9.0.0",
+        "typescript": "^5.7.0"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "author": {
+        "name": "Fabio Correa",
+        "email": "fabioc@aloha.ms"
+    },
+    "license": "MIT"
+}

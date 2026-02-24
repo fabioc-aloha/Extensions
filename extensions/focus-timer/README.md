@@ -1,0 +1,26 @@
+# Focus Timer
+
+**Pomodoro timer in the status bar — work sprints, break reminders, session history**
+
+[![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+
+25-minute work sessions. 5-minute breaks. Long break every 4 sessions. All in the status bar, all via commands. No web UI, no sign-in, no distractions.
+
+## Usage
+
+1. `Focus Timer: Start Focus Session` — starts the countdown in status bar
+2. Click the status bar item to pause/resume
+3. `Focus Timer: Start Break` — short (5m) or long break (15m after 4 sessions)
+4. `Focus Timer: Show Session History` — log of all completed sessions
+
+## Settings
+
+| Setting | Default | Description |
+|---|---|---|
+| `focusTimer.workMinutes` | 25 | Work session length |
+| `focusTimer.shortBreakMinutes` | 5 | Short break length |
+| `focusTimer.longBreakMinutes` | 15 | Long break length |
+
+## License
+
+MIT

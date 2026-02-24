@@ -1,0 +1,54 @@
+{
+    "name": "brandfetch-logo-fetcher",
+    "displayName": "Brandfetch Logo Fetcher",
+    "description": "Fetch company logos and brand assets by domain name — insert as Markdown, SVG URL, or HTML",
+    "version": "0.1.0",
+    "publisher": "fabioc-aloha",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "logo",
+        "brand",
+        "brandfetch",
+        "assets",
+        "markdown"
+    ],
+    "activationEvents": [
+        "onCommand:brandfetch.fetchLogo"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "brandfetch.fetchLogo",
+                "title": "Brandfetch: Fetch Logo by Domain"
+            },
+            {
+                "command": "brandfetch.insertLogo",
+                "title": "Brandfetch: Insert Logo at Cursor"
+            },
+            {
+                "command": "brandfetch.clearCache",
+                "title": "Brandfetch: Clear Logo Cache"
+            },
+            {
+                "command": "brandfetch.setApiKey",
+                "title": "Brandfetch: Set API Key"
+            }
+        ]
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "package": "npx @vscode/vsce package"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.109.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.7.0"
+    }
+}

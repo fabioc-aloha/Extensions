@@ -1,0 +1,79 @@
+{
+    "name": "dev-wellbeing",
+    "displayName": "Dev Wellbeing",
+    "description": "Healthy coding habits — posture reminders, eye strain breaks, hydration nudges, and session pacing",
+    "version": "0.1.0",
+    "publisher": "fabioc-aloha",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "wellbeing",
+        "health",
+        "breaks",
+        "pomodoro",
+        "ergonomics"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "devWellbeing.start",
+                "title": "Dev Wellbeing: Start Monitoring"
+            },
+            {
+                "command": "devWellbeing.stop",
+                "title": "Dev Wellbeing: Stop Monitoring"
+            },
+            {
+                "command": "devWellbeing.showStats",
+                "title": "Dev Wellbeing: Show Session Stats"
+            },
+            {
+                "command": "devWellbeing.configureLimits",
+                "title": "Dev Wellbeing: Configure Thresholds"
+            }
+        ],
+        "configuration": {
+            "title": "Dev Wellbeing",
+            "properties": {
+                "devWellbeing.postureReminderMinutes": {
+                    "type": "number",
+                    "default": 45,
+                    "description": "Posture reminder interval (minutes)"
+                },
+                "devWellbeing.eyeBreakMinutes": {
+                    "type": "number",
+                    "default": 20,
+                    "description": "20-20-20 eye break interval (minutes)"
+                },
+                "devWellbeing.hydrationMinutes": {
+                    "type": "number",
+                    "default": 60,
+                    "description": "Hydration reminder interval (minutes)"
+                },
+                "devWellbeing.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable wellbeing reminders"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "package": "npx @vscode/vsce package"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.109.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.7.0"
+    }
+}

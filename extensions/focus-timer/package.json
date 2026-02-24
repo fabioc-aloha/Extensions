@@ -1,0 +1,78 @@
+{
+    "name": "focus-timer",
+    "displayName": "Focus Timer",
+    "description": "Pomodoro timer in the status bar — work sprints, break reminders, and session history",
+    "version": "0.1.0",
+    "publisher": "fabioc-aloha",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "pomodoro",
+        "timer",
+        "focus",
+        "productivity",
+        "breaks"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "focusTimer.start",
+                "title": "Focus Timer: Start Focus Session"
+            },
+            {
+                "command": "focusTimer.stop",
+                "title": "Focus Timer: Stop"
+            },
+            {
+                "command": "focusTimer.pause",
+                "title": "Focus Timer: Pause / Resume"
+            },
+            {
+                "command": "focusTimer.startBreak",
+                "title": "Focus Timer: Start Break"
+            },
+            {
+                "command": "focusTimer.showHistory",
+                "title": "Focus Timer: Show Session History"
+            }
+        ],
+        "configuration": {
+            "title": "Focus Timer",
+            "properties": {
+                "focusTimer.workMinutes": {
+                    "type": "number",
+                    "default": 25,
+                    "description": "Work session length in minutes"
+                },
+                "focusTimer.shortBreakMinutes": {
+                    "type": "number",
+                    "default": 5,
+                    "description": "Short break length in minutes"
+                },
+                "focusTimer.longBreakMinutes": {
+                    "type": "number",
+                    "default": 15,
+                    "description": "Long break after 4 sessions"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "package": "npx @vscode/vsce package"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.109.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.7.0"
+    }
+}

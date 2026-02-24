@@ -1,0 +1,79 @@
+{
+    "name": "knowledge-decay-tracker",
+    "displayName": "Knowledge Decay Tracker",
+    "description": "Surface time-decayed knowledge in your codebase — find docs going stale before they mislead",
+    "version": "0.1.0",
+    "publisher": "fabioc-aloha",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "documentation",
+        "decay",
+        "knowledge",
+        "staleness",
+        "maintenance"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "knowledgeDecay.scanWorkspace",
+                "title": "Knowledge Decay: Scan Workspace"
+            },
+            {
+                "command": "knowledgeDecay.showReport",
+                "title": "Knowledge Decay: Show Staleness Report"
+            },
+            {
+                "command": "knowledgeDecay.touchFile",
+                "title": "Knowledge Decay: Mark File as Fresh"
+            },
+            {
+                "command": "knowledgeDecay.showCritical",
+                "title": "Knowledge Decay: Show Critical Files"
+            }
+        ],
+        "configuration": {
+            "title": "Knowledge Decay Tracker",
+            "properties": {
+                "knowledgeDecay.profile": {
+                    "type": "string",
+                    "enum": [
+                        "aggressive",
+                        "moderate",
+                        "slow",
+                        "permanent"
+                    ],
+                    "default": "moderate",
+                    "description": "Decay profile (half-lives: 14d / 60d / 180d / never)"
+                },
+                "knowledgeDecay.filePatterns": {
+                    "type": "array",
+                    "default": [
+                        "**/*.md",
+                        "**/*.instructions.md",
+                        "**/SKILLS/**"
+                    ],
+                    "description": "File patterns to track"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "package": "npx @vscode/vsce package"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.109.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.7.0"
+    }
+}

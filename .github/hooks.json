@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "description": "Alex Extensions Architecture — session hooks",
+    "hooks": [
+        {
+            "event": "onChatSessionStart",
+            "command": "node .github/muscles/hooks/session-start.js"
+        },
+        {
+            "event": "onChatSessionStop",
+            "command": "node .github/muscles/hooks/session-stop.js"
+        },
+        {
+            "event": "beforeFileCreate",
+            "command": "node .github/muscles/hooks/pre-file-write.js"
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+name: Build & Test All Extensions
+
+on:
+    push:
+        branches: [main, develop]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build:
+        name: Build ${{ matrix.extension }}
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                extension:
+                    - hook-studio
+                    - workspace-watchdog
+                    - mcp-app-starter
+                    - secret-guard
+                    - focus-timer
+                    - knowledge-decay-tracker
+                    - markdown-to-word
+                    - brandfetch-logo-fetcher
+                    - ai-voice-reader
+                    - dev-wellbeing
+                    - pptx-builder
+                    - replicate-image-studio
+                    - mermaid-diagram-pro
+                    - svg-toolkit
+                    - gamma-slide-assistant
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "npm"
+
+            - name: Install shared dependencies
+              run: npm install
+              working-directory: shared
+
+            - name: Install extension dependencies
+              run: npm install
+              working-directory: extensions/${{ matrix.extension }}
+
+            - name: Compile TypeScript
+              run: npm run compile
+              working-directory: extensions/${{ matrix.extension }}
+
+            - name: Package .vsix
+              run: npx @vscode/vsce package --no-dependencies
+              working-directory: extensions/${{ matrix.extension }}
+
+            - name: Upload .vsix artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: ${{ matrix.extension }}-vsix
+                  path: extensions/${{ matrix.extension }}/*.vsix
+                  retention-days: 7
+
+    build-summary:
+        name: Build Summary
+        needs: build
+        runs-on: ubuntu-latest
+        if: always()
+        steps:
+            - name: Check build results
+              run: |
+                  echo "All extension builds completed."
+                  echo "Check individual jobs above for results."

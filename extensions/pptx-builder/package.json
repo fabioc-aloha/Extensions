@@ -1,0 +1,58 @@
+{
+    "name": "pptx-builder",
+    "displayName": "PPTX Builder",
+    "description": "Convert Markdown or structured YAML to PowerPoint (.pptx) presentations — layout templates, code slides, and speaker notes",
+    "version": "0.1.0",
+    "publisher": "fabioc-aloha",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "powerpoint",
+        "pptx",
+        "presentation",
+        "markdown",
+        "slides"
+    ],
+    "activationEvents": [
+        "onLanguage:markdown",
+        "onLanguage:yaml"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "pptxBuilder.create",
+                "title": "PPTX Builder: Create Presentation from Markdown"
+            },
+            {
+                "command": "pptxBuilder.newTemplate",
+                "title": "PPTX Builder: New Presentation Template"
+            },
+            {
+                "command": "pptxBuilder.preview",
+                "title": "PPTX Builder: Preview Slide Structure"
+            },
+            {
+                "command": "pptxBuilder.openDocs",
+                "title": "PPTX Builder: Open pptxgenjs Docs"
+            }
+        ]
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "package": "npx @vscode/vsce package"
+    },
+    "dependencies": {
+        "pptxgenjs": "^3.12.0"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.109.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.7.0"
+    }
+}

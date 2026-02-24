@@ -1,0 +1,67 @@
+{
+    "name": "workspace-watchdog",
+    "displayName": "Workspace Watchdog",
+    "description": "Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots",
+    "version": "0.1.0",
+    "publisher": "fabioc-aloha",
+    "engines": {
+        "vscode": "^1.109.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "productivity",
+        "file-health",
+        "todo",
+        "git",
+        "monitoring"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "workspaceWatchdog.showDashboard",
+                "title": "Workspace Watchdog: Show Dashboard"
+            },
+            {
+                "command": "workspaceWatchdog.scanNow",
+                "title": "Workspace Watchdog: Scan Now"
+            },
+            {
+                "command": "workspaceWatchdog.showHotFiles",
+                "title": "Workspace Watchdog: Hot Files"
+            },
+            {
+                "command": "workspaceWatchdog.showStalledFiles",
+                "title": "Workspace Watchdog: Stalled Files"
+            },
+            {
+                "command": "workspaceWatchdog.clearHistory",
+                "title": "Workspace Watchdog: Clear History"
+            }
+        ],
+        "views": {
+            "explorer": [
+                {
+                    "id": "workspaceWatchdog.fileHealth",
+                    "name": "File Health",
+                    "icon": "$(pulse)"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "package": "npx @vscode/vsce package"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.109.0",
+        "@types/node": "^20.0.0",
+        "typescript": "^5.7.0"
+    }
+}
