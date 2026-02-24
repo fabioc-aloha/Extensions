@@ -85,6 +85,6 @@
       <path d="M20 10l-4 6 4 6h4l-4-6 4-6h-4z" fill="url(#cxGrad)"/>
       <path d="M24 10l4 6-4 6h4l4-6-4-6h-4z" fill="url(#cxGrad)" opacity="0.5"/>
     </g>
-    <text x="24" y="22" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(160,160,160,0.75)">CorreaX</text>
+    <text x="24" y="13" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="rgba(160,160,160,0.75)">CorreaX</text>
   </g>
 </svg>
