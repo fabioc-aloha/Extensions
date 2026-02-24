@@ -1,12 +1,26 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
+  "skillId": "citation-management",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "version": "1.0.0",
-  "skill": "citation-management",
-  "created": "2026-02-10",
-  "connectionCount": 4,
   "connections": [],
+  "activationContexts": [
+    {
+      "trigger": "citation|APA|reference|bibliography",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "format.*reference|cite.*source",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "DOI|in-text|reference list",
+      "confidence": 0.85
+    }
+  ],
+  "schemaVersion": "2.1.0",
+  "connectionCount": 4,
   "synapses": [
     {
       "id": "CITE-001",
@@ -43,20 +57,6 @@
       "strength": 0.5,
       "description": "AIRS research provides example of proper UTAUT2 citation chain",
       "bidirectional": false
-    }
-  ],
-  "activationPatterns": [
-    {
-      "trigger": "citation|APA|reference|bibliography",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "format.*reference|cite.*source",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "DOI|in-text|reference list",
-      "confidence": 0.85
     }
   ]
 }

@@ -1,9 +1,8 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
   "skillId": "root-cause-analysis",
-  "version": "1.1.0",
-  "lastValidated": "2026-02-14",
+  "version": "1.2.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -27,17 +26,19 @@
     {
       "target": ".github/skills/vscode-extension-patterns/SKILL.md",
       "type": "informs",
-      "strength": 0.70,
+      "strength": 0.7,
       "reason": "Systematic debugging techniques for production build issues"
     }
   ],
-  "activationPatterns": [
+  "activationContexts": [
     "systematic debugging",
     "find root cause",
     "post-mortem analysis",
     "prevent future failures",
     "investigate production errors"
   ],
+  "schemaVersion": "2.1.0",
+  "lastValidated": "2026-02-14",
   "triggers": [
     "root cause",
     "5 whys",

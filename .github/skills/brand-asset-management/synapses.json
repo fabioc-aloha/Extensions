@@ -1,9 +1,8 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "1.0",
-  "skill": "brand-asset-management",
-  "version": "1.0.0",
-  "lastValidated": "2026-02-15",
+  "skillId": "brand-asset-management",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -42,6 +41,8 @@
       "yields": "Asset completeness check during release preflight"
     }
   ],
+  "schemaVersion": "1.0",
+  "lastValidated": "2026-02-15",
   "triggers": [
     "branding",
     "logo",

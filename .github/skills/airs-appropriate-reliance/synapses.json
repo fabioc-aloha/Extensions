@@ -1,5 +1,7 @@
 {
-  "skill": "airs-appropriate-reliance",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "airs-appropriate-reliance",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -47,6 +49,5 @@
     "under-reliance",
     "behavioral intention"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

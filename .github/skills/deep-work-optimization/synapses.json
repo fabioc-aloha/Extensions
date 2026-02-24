@@ -1,12 +1,34 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
+  "skillId": "deep-work-optimization",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "version": "1.0.0",
-  "skill": "deep-work-optimization",
-  "created": "2026-02-10",
-  "connectionCount": 6,
   "connections": [],
+  "activationContexts": [
+    {
+      "trigger": "deep work|focus session|concentration|undistracted",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "dissertation time|writing session|academic writing",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "distracted|can't focus|scattered|interruption",
+      "confidence": 0.85
+    },
+    {
+      "trigger": "flow state|zone|peak performance",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "time block|schedule focus|protect time",
+      "confidence": 0.85
+    }
+  ],
+  "schemaVersion": "2.1.0",
+  "connectionCount": 6,
   "synapses": [
     {
       "id": "DEEP-001",
@@ -61,28 +83,6 @@
       "strength": 0.6,
       "description": "Deep work sessions benefit from appropriate reliance calibration",
       "bidirectional": false
-    }
-  ],
-  "activationPatterns": [
-    {
-      "trigger": "deep work|focus session|concentration|undistracted",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "dissertation time|writing session|academic writing",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "distracted|can't focus|scattered|interruption",
-      "confidence": 0.85
-    },
-    {
-      "trigger": "flow state|zone|peak performance",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "time block|schedule focus|protect time",
-      "confidence": 0.85
     }
   ]
 }

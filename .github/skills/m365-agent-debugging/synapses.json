@@ -1,15 +1,18 @@
 {
-  "skill": "m365-agent-debugging",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "m365-agent-debugging",
+  "lastUpdated": "2026-02-24",
   "inheritance": "heir:m365",
   "connections": [
     {
       "target": ".github/skills/teams-app-patterns/SKILL.md",
       "type": "extends",
       "strength": 0.85,
-      "context": "Shared MCP tools and @m365agents participant"
+      "when": "Shared MCP tools and @m365agents participant",
+      "yields": "See target skill"
     }
   ],
-  "activationPatterns": [
+  "activationContexts": [
     "agent not working",
     "agent not responding",
     "schema version",
@@ -63,6 +66,5 @@
     "Teams development",
     "agent development"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "1.0"
 }

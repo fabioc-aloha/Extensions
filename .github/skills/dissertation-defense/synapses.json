@@ -1,11 +1,21 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
-  "inheritance": "inheritable",
   "skillId": "dissertation-defense",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "lastUpdated": "2026-02-10",
+  "inheritance": "inheritable",
   "connections": [],
+  "activationContexts": [
+    "defense",
+    "dissertation",
+    "thesis",
+    "viva",
+    "doctoral",
+    "committee",
+    "defend",
+    "examination"
+  ],
+  "schemaVersion": "2.1.0",
   "synapses": [
     {
       "target": ".github/skills/defense-qa-practice/SKILL.md",
@@ -63,16 +73,6 @@
       "direction": "incoming",
       "context": "Stress management during defense preparation"
     }
-  ],
-  "activationPatterns": [
-    "defense",
-    "dissertation",
-    "thesis",
-    "viva",
-    "doctoral",
-    "committee",
-    "defend",
-    "examination"
   ],
   "inhibitionPatterns": [
     "simple-task",

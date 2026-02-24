@@ -1,12 +1,33 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
+  "skillId": "literature-review",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "version": "1.0.0",
-  "skill": "literature-review",
-  "created": "2026-02-10",
-  "connectionCount": 5,
   "connections": [],
+  "activationContexts": [
+    {
+      "trigger": "literature review|lit review|sources|scholarly sources",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "search strategy|database search|systematic search",
+      "module": "1",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "synthesize|synthesis|themes|patterns across",
+      "module": "4",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "research gap|what's missing|gap identification",
+      "module": "5",
+      "confidence": 0.9
+    }
+  ],
+  "schemaVersion": "2.1.0",
+  "connectionCount": 5,
   "synapses": [
     {
       "id": "LIT-001",
@@ -52,27 +73,6 @@
       "strength": 0.6,
       "description": "Lit review is structured knowledge acquisition",
       "bidirectional": false
-    }
-  ],
-  "activationPatterns": [
-    {
-      "trigger": "literature review|lit review|sources|scholarly sources",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "search strategy|database search|systematic search",
-      "module": "1",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "synthesize|synthesis|themes|patterns across",
-      "module": "4",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "research gap|what's missing|gap identification",
-      "module": "5",
-      "confidence": 0.9
     }
   ]
 }

@@ -1,5 +1,7 @@
 {
-  "skill": "refactoring-patterns",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "refactoring-patterns",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -30,6 +32,5 @@
     "code smell",
     "clean up"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

@@ -1,11 +1,25 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
-  "inheritance": "inheritable",
   "skillId": "frustration-recognition",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "lastUpdated": "2026-02-10",
+  "inheritance": "inheritable",
   "connections": [],
+  "activationContexts": [
+    "frustrated",
+    "frustrating",
+    "annoying",
+    "annoyed",
+    "this is broken",
+    "nothing works",
+    "still not working",
+    "I give up",
+    "WTF",
+    "why won't this",
+    "been trying for",
+    "stuck"
+  ],
+  "schemaVersion": "2.1.0",
   "synapses": [
     {
       "target": ".github/skills/rubber-duck-debugging/SKILL.md",
@@ -63,20 +77,6 @@
       "direction": "outgoing",
       "context": "When pattern suggests systemic issue causing repeated failure"
     }
-  ],
-  "activationPatterns": [
-    "frustrated",
-    "frustrating",
-    "annoying",
-    "annoyed",
-    "this is broken",
-    "nothing works",
-    "still not working",
-    "I give up",
-    "WTF",
-    "why won't this",
-    "been trying for",
-    "stuck"
   ],
   "inhibitionPatterns": [
     "productive-struggle",

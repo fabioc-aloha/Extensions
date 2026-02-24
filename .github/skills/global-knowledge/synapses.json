@@ -1,7 +1,8 @@
 {
-  "skill": "global-knowledge",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "global-knowledge",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "externalRepository": "fabioc-aloha/Alex-Global-Knowledge",
   "connections": [
     {
       "target": ".github/skills/knowledge-synthesis/SKILL.md",
@@ -40,6 +41,7 @@
       "reason": "Auto-promotion during meditation sessions"
     }
   ],
+  "externalRepository": "fabioc-aloha/Alex-Global-Knowledge",
   "triggers": [
     "knowledge",
     "insight",
@@ -93,6 +95,5 @@
     "organizational knowledge",
     "team knowledge"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "1.0"
 }

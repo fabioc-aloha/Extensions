@@ -1,5 +1,7 @@
 {
-  "skill": "prompt-engineering",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "prompt-engineering",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -56,6 +58,5 @@
     "AI agent",
     "copilot"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

@@ -1,5 +1,7 @@
 {
-  "skill": "code-review",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "code-review",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -87,6 +89,5 @@
     "request changes",
     "LGTM"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

@@ -1,12 +1,30 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
+  "skillId": "executive-storytelling",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "version": "1.0.0",
-  "skill": "executive-storytelling",
-  "created": "2026-02-10",
-  "connectionCount": 5,
   "connections": [],
+  "activationContexts": [
+    {
+      "trigger": "executive|senior leadership|C-suite|VP|director",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "elevator pitch|30 seconds|quick summary",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "SCQA|pyramid principle|minto",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "data storytelling|present findings|business case",
+      "confidence": 0.85
+    }
+  ],
+  "schemaVersion": "2.1.0",
+  "connectionCount": 5,
   "synapses": [
     {
       "id": "EXEC-001",
@@ -52,24 +70,6 @@
       "strength": 0.5,
       "description": "Clear communication reduces stakeholder frustration",
       "bidirectional": false
-    }
-  ],
-  "activationPatterns": [
-    {
-      "trigger": "executive|senior leadership|C-suite|VP|director",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "elevator pitch|30 seconds|quick summary",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "SCQA|pyramid principle|minto",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "data storytelling|present findings|business case",
-      "confidence": 0.85
     }
   ]
 }

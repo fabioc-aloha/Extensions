@@ -1,5 +1,7 @@
 {
-  "skill": "privacy-responsible-ai",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "privacy-responsible-ai",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -52,6 +54,5 @@
     "HAX",
     "human oversight"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

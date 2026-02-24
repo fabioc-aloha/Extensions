@@ -1,28 +1,33 @@
 {
-  "skill": "ascii-art-alignment",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "ascii-art-alignment",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "description": "Create perfectly aligned ASCII diagrams",
   "connections": [
     {
       "target": ".github/skills/markdown-mermaid/SKILL.md",
       "type": "complements",
       "strength": 0.9,
       "bidirectional": true,
-      "context": "ASCII for precise control, Mermaid for auto-layout"
+      "when": "ASCII for precise control, Mermaid for auto-layout",
+      "yields": "See target skill"
     },
     {
       "target": ".github/skills/lint-clean-markdown/SKILL.md",
       "type": "related",
       "strength": 0.7,
-      "context": "Both require attention to character-level detail"
+      "when": "Both require attention to character-level detail",
+      "yields": "See target skill"
     },
     {
       "target": ".github/skills/writing-publication/SKILL.md",
       "type": "supports",
       "strength": 0.7,
-      "context": "Visual diagrams enhance documentation quality"
+      "when": "Visual diagrams enhance documentation quality",
+      "yields": "See target skill"
     }
   ],
+  "notes": "Create perfectly aligned ASCII diagrams",
   "triggers": [
     "ASCII diagram misaligned",
     "box drawing characters",
@@ -30,6 +35,5 @@
     "lines don't match up",
     "right border jagged"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

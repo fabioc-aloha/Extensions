@@ -1,12 +1,30 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
+  "skillId": "azure-devops-automation",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "heir:vscode",
-  "version": "1.0.0",
-  "skill": "azure-devops-automation",
-  "created": "2026-02-10",
-  "connectionCount": 4,
   "connections": [],
+  "activationContexts": [
+    {
+      "trigger": "CI/CD|pipeline|DevOps|deploy|release",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "GitHub Actions|workflow|Azure Pipelines",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "Bicep|IaC|infrastructure as code",
+      "confidence": 0.85
+    },
+    {
+      "trigger": "rollback|blue-green|slot|feature flag",
+      "confidence": 0.8
+    }
+  ],
+  "schemaVersion": "2.1.0",
+  "connectionCount": 4,
   "synapses": [
     {
       "id": "DEVOPS-001",
@@ -43,24 +61,6 @@
       "strength": 0.5,
       "description": "Automation reduces manual ops, enabling focus on deep work",
       "bidirectional": false
-    }
-  ],
-  "activationPatterns": [
-    {
-      "trigger": "CI/CD|pipeline|DevOps|deploy|release",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "GitHub Actions|workflow|Azure Pipelines",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "Bicep|IaC|infrastructure as code",
-      "confidence": 0.85
-    },
-    {
-      "trigger": "rollback|blue-green|slot|feature flag",
-      "confidence": 0.8
     }
   ]
 }

@@ -1,5 +1,7 @@
 {
-  "skill": "knowledge-synthesis",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "knowledge-synthesis",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -68,6 +70,5 @@
     "encode insight",
     "formalize learning"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

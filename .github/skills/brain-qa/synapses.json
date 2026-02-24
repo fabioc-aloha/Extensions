@@ -1,8 +1,9 @@
 {
-  "skill": "brain-qa",
-  "version": "1.2.0",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "brain-qa",
+  "version": "1.3.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "lastValidated": "2026-02-15",
   "connections": [
     {
       "target": ".github/copilot-instructions.md",
@@ -77,6 +78,7 @@
       "note": "Trifecta: prompt provides interactive /brainqa workflow combining script + semantic review"
     }
   ],
+  "lastValidated": "2026-02-15",
   "activationBoost": [
     "brain qa",
     "brain audit",
@@ -97,6 +99,5 @@
     "iterative validation",
     "schema compliance"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "1.0"
 }

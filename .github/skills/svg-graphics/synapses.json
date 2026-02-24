@@ -1,5 +1,7 @@
 {
-  "skill": "svg-graphics",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "svg-graphics",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -102,6 +104,5 @@
     "minify SVG",
     "svgo"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

@@ -1,5 +1,7 @@
 {
-  "skill": "bootstrap-learning",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "bootstrap-learning",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -80,6 +82,5 @@
     "domain learning",
     "skill learning"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

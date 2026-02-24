@@ -1,5 +1,7 @@
 {
-  "skill": "markdown-mermaid",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "markdown-mermaid",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -115,6 +117,5 @@
     "pie chart",
     "block diagram"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

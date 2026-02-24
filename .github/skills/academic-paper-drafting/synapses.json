@@ -1,11 +1,27 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
-  "inheritance": "inheritable",
   "skillId": "academic-paper-drafting",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "lastUpdated": "2026-02-10",
+  "inheritance": "inheritable",
   "connections": [],
+  "activationContexts": [
+    "paper",
+    "manuscript",
+    "journal",
+    "conference",
+    "CHI",
+    "HBR",
+    "Harvard Business Review",
+    "Cognitive Systems Research",
+    "Minds and Machines",
+    "publication",
+    "submit",
+    "draft",
+    "write paper",
+    "academic writing"
+  ],
+  "schemaVersion": "2.1.0",
   "synapses": [
     {
       "target": ".github/skills/writing-publication/SKILL.md",
@@ -63,22 +79,6 @@
       "direction": "incoming",
       "context": "Narrative techniques for HBR-style articles"
     }
-  ],
-  "activationPatterns": [
-    "paper",
-    "manuscript",
-    "journal",
-    "conference",
-    "CHI",
-    "HBR",
-    "Harvard Business Review",
-    "Cognitive Systems Research",
-    "Minds and Machines",
-    "publication",
-    "submit",
-    "draft",
-    "write paper",
-    "academic writing"
   ],
   "inhibitionPatterns": [],
   "venueMapping": {

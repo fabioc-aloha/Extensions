@@ -1,9 +1,8 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "1.0",
   "skillId": "vscode-extension-patterns",
-  "version": "1.4.0",
-  "lastValidated": "2026-02-15",
+  "version": "1.5.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "heir:vscode",
   "connections": [
     {
@@ -56,7 +55,7 @@
       "reason": "SecretStorage API, VSCE secret scanner avoidance during packaging"
     }
   ],
-  "activationPatterns": [
+  "activationContexts": [
     "VS Code extension development",
     "webview implementation",
     "publishing extension",
@@ -81,6 +80,8 @@
     "welcome sidebar",
     "cognitive state switching"
   ],
+  "schemaVersion": "1.0",
+  "lastValidated": "2026-02-15",
   "triggers": [
     "extension",
     "VS Code API",

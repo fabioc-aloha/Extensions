@@ -1,12 +1,9 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "1.0",
   "skillId": "security-review",
-  "version": "2.0.0",
-  "inheritance": "inheritable",
-  "created": "2026-02-01",
+  "version": "2.1.0",
   "lastUpdated": "2026-02-20T07:45:33.347Z",
-  "description": "Security-focused code analysis, OWASP patterns, STRIDE threat modeling, Microsoft SFI",
+  "inheritance": "inheritable",
   "connections": [
     {
       "target": ".github/skills/incident-response/SKILL.md",
@@ -51,7 +48,7 @@
       "description": "Dependency security practices and vulnerability scanning"
     }
   ],
-  "activationTriggers": [
+  "activationContexts": [
     "security review",
     "vulnerability",
     "OWASP",
@@ -79,5 +76,7 @@
     "secure by default",
     "CVE",
     "dependency security"
-  ]
+  ],
+  "notes": "Security-focused code analysis, OWASP patterns, STRIDE threat modeling, Microsoft SFI",
+  "schemaVersion": "1.0"
 }

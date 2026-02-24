@@ -1,11 +1,9 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.0.0",
   "skillId": "socratic-questioning",
-  "version": "1.1.0",
+  "version": "1.2.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "created": "2026-02-01",
-  "description": "Guide thinking, help users discover answers themselves",
   "connections": [
     {
       "target": ".github/skills/learning-psychology/SKILL.md",
@@ -44,7 +42,7 @@
       "description": "Socratic questioning helps find root causes"
     }
   ],
-  "activationTriggers": [
+  "activationContexts": [
     "teach me",
     "help me understand",
     "explain",
@@ -53,5 +51,7 @@
     "I don't get",
     "walk me through",
     "confused about"
-  ]
+  ],
+  "notes": "Guide thinking, help users discover answers themselves",
+  "schemaVersion": "2.0.0"
 }

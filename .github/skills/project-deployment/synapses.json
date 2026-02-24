@@ -1,5 +1,7 @@
 {
-  "skill": "project-deployment",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "project-deployment",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -35,6 +37,5 @@
     "cargo publish",
     "dotnet publish"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

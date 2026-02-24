@@ -1,9 +1,8 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "1.0",
-  "skill": "secrets-management",
-  "version": "1.2.0",
-  "lastValidated": "2026-02-20",
+  "skillId": "secrets-management",
+  "version": "1.3.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -42,6 +41,8 @@
       "yields": "Exported .env file with REPLICATE_API_TOKEN for script access"
     }
   ],
+  "schemaVersion": "1.0",
+  "lastValidated": "2026-02-20",
   "triggers": [
     "API key",
     "token",

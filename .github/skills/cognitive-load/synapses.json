@@ -1,5 +1,7 @@
 {
-  "skill": "cognitive-load",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "cognitive-load",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -29,6 +31,5 @@
     "explain simply",
     "break it down"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

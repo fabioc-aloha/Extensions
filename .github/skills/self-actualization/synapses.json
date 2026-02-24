@@ -1,5 +1,7 @@
 {
-  "skill": "self-actualization",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "self-actualization",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -69,6 +71,5 @@
     "learning progress",
     "capability growth"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

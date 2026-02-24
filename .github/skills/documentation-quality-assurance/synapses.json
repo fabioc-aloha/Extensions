@@ -1,17 +1,17 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "1.0",
-  "version": "1.1.0",
-  "skill": "documentation-quality-assurance",
-  "description": "Systematic documentation audit, drift detection, preflight validation, and multi-pass quality pipelines",
+  "skillId": "documentation-quality-assurance",
+  "version": "1.2.0",
+  "lastUpdated": "2026-02-20T07:45:33.299Z",
   "inheritance": "inheritable",
   "connections": [
     {
       "target": ".github/skills/release-process/SKILL.md",
       "strength": 0.85,
       "type": "operational",
-      "direction": "bidirectional",
-      "context": "DoD Criterion #8 (CHANGELOG documents delta) relies on doc QA principles"
+      "when": "DoD Criterion #8 (CHANGELOG documents delta) relies on doc QA principles",
+      "yields": "See target skill",
+      "bidirectional": true
     }
   ],
   "activationContexts": [
@@ -25,6 +25,8 @@
     "operational documentation",
     "document headers"
   ],
+  "notes": "Systematic documentation audit, drift detection, preflight validation, and multi-pass quality pipelines",
+  "schemaVersion": "1.0",
   "yields": [
     {
       "concept": "5-pass quality pipeline",
@@ -39,7 +41,6 @@
       "whenNeeded": "operational docs lack at-a-glance context (regression checklists, deployment guides)"
     }
   ],
-  "lastUpdated": "2026-02-20T07:45:33.299Z",
   "changelog": [
     {
       "version": "1.1.0",

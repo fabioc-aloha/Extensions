@@ -1,5 +1,7 @@
 {
-  "skill": "image-handling",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "image-handling",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -71,6 +73,5 @@
     "logo generation",
     "icon generation"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

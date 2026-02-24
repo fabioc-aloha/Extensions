@@ -1,5 +1,7 @@
 {
-  "skill": "teams-app-patterns",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "teams-app-patterns",
+  "lastUpdated": "2026-02-24",
   "inheritance": "heir:m365",
   "connections": [
     {
@@ -77,6 +79,5 @@
     "Bot registration",
     "messaging endpoint"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

@@ -1,5 +1,7 @@
 {
-  "skill": "work-life-balance",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "work-life-balance",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -43,6 +45,5 @@
     "streak",
     "goal"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

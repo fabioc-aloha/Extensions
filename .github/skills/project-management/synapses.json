@@ -1,5 +1,8 @@
 {
-  "skill": "project-management",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "project-management",
+  "lastUpdated": "2026-02-24",
+  "inheritance": "inheritable",
   "connections": [
     {
       "bidirectional": true,
@@ -39,7 +42,6 @@
       "target": ".github/skills/incident-response/SKILL.md"
     }
   ],
-  "inheritance": "inheritable",
   "triggers": [
     "project",
     "timeline",
@@ -51,6 +53,5 @@
     "backlog",
     "estimation"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

@@ -1,5 +1,7 @@
 {
-  "skill": "error-recovery-patterns",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "error-recovery-patterns",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -29,6 +31,5 @@
     "graceful degradation",
     "error handling"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

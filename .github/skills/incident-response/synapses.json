@@ -1,5 +1,7 @@
 {
-  "skill": "incident-response",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "incident-response",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -30,6 +32,5 @@
     "on-call",
     "post-mortem"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

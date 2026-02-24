@@ -1,9 +1,0 @@
-{
-    "_comment": "Update this file with your actual details. Used by session-start hook.",
-    "name": "Fabio",
-    "currentPersona": "Extension Developer",
-    "preferredModel": "Claude Sonnet 4",
-    "codingStyle": "TypeScript strict mode, functional patterns, minimal classes",
-    "publisher": "fabioc-aloha",
-    "timezone": "America/Sao_Paulo"
-}

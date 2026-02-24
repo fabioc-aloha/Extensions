@@ -1,5 +1,8 @@
 {
-  "skill": "skill-catalog-generator",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "skill-catalog-generator",
+  "lastUpdated": "2026-02-24",
+  "inheritance": "inheritable",
   "connections": [
     {
       "reason": "Generates Mermaid network diagrams",
@@ -35,7 +38,5 @@
     "generate catalog",
     "/skills"
   ],
-  "inheritance": "inheritable",
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

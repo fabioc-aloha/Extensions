@@ -1,11 +1,9 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.0.0",
   "skillId": "api-design",
-  "version": "1.1.0",
+  "version": "1.2.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "created": "2026-02-01",
-  "description": "RESTful best practices, contract-first design, versioning",
   "connections": [
     {
       "target": ".github/skills/security-review/SKILL.md",
@@ -38,7 +36,7 @@
       "description": "Extension APIs follow similar patterns"
     }
   ],
-  "activationTriggers": [
+  "activationContexts": [
     "API design",
     "REST API",
     "endpoint",
@@ -48,5 +46,7 @@
     "HTTP methods",
     "status codes",
     "request response"
-  ]
+  ],
+  "notes": "RESTful best practices, contract-first design, versioning",
+  "schemaVersion": "2.0.0"
 }

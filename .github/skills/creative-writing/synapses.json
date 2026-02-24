@@ -1,5 +1,8 @@
 {
-  "skill": "creative-writing",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "creative-writing",
+  "lastUpdated": "2026-02-24",
+  "inheritance": "inheritable",
   "connections": [
     {
       "bidirectional": true,
@@ -35,7 +38,6 @@
       "target": ".github/skills/appropriate-reliance/SKILL.md"
     }
   ],
-  "inheritance": "inheritable",
   "triggers": [
     "story",
     "narrative",
@@ -51,6 +53,5 @@
     "manuscript",
     "chapter"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

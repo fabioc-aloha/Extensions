@@ -1,5 +1,7 @@
 {
-  "skill": "learning-psychology",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "learning-psychology",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -35,6 +37,5 @@
     "scaffolding",
     "zone of proximal"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

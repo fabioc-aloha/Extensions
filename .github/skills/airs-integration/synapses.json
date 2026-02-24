@@ -1,12 +1,39 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
+  "skillId": "airs-integration",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
-  "version": "1.0.0",
-  "skill": "airs-integration",
-  "created": "2026-02-10",
-  "connectionCount": 8,
   "connections": [],
+  "activationContexts": [
+    {
+      "trigger": "AI readiness|ready for AI|should we add AI|project assessment",
+      "module": "A",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "calibrate|reliance check|over-rely|under-rely",
+      "module": "B",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "enterprise AI|org deployment|scale AI|organizational readiness",
+      "module": "C",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "self-monitor|acceptance rate|rejection rate",
+      "module": "D",
+      "confidence": 0.85
+    },
+    {
+      "trigger": "airs.correax.com|take assessment|AIRS-16",
+      "action": "direct-to-assessment",
+      "confidence": 0.95
+    }
+  ],
+  "schemaVersion": "2.1.0",
+  "connectionCount": 8,
   "synapses": [
     {
       "id": "AIRS-INT-001",
@@ -79,33 +106,6 @@
       "strength": 0.7,
       "description": "Self-monitoring generates insights for deep self-actualization analysis",
       "bidirectional": false
-    }
-  ],
-  "activationPatterns": [
-    {
-      "trigger": "AI readiness|ready for AI|should we add AI|project assessment",
-      "module": "A",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "calibrate|reliance check|over-rely|under-rely",
-      "module": "B",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "enterprise AI|org deployment|scale AI|organizational readiness",
-      "module": "C",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "self-monitor|acceptance rate|rejection rate",
-      "module": "D",
-      "confidence": 0.85
-    },
-    {
-      "trigger": "airs.correax.com|take assessment|AIRS-16",
-      "action": "direct-to-assessment",
-      "confidence": 0.95
     }
   ],
   "keyInsights": [

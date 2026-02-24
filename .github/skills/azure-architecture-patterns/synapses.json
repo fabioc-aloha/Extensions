@@ -1,12 +1,43 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.1.0",
+  "skillId": "azure-architecture-patterns",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "heir:vscode",
-  "version": "1.0.0",
-  "skill": "azure-architecture-patterns",
-  "created": "2026-02-10",
-  "connectionCount": 5,
   "connections": [],
+  "activationContexts": [
+    {
+      "trigger": "Azure|cloud architecture|well-architected",
+      "confidence": 0.95
+    },
+    {
+      "trigger": "reliability|availability|resilience|DR",
+      "module": "1",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "security|zero trust|managed identity|RBAC",
+      "module": "2",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "cost|optimize|savings|reserved instance",
+      "module": "3",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "Bicep|Terraform|IaC|observability",
+      "module": "4",
+      "confidence": 0.9
+    },
+    {
+      "trigger": "performance|scaling|caching|autoscale",
+      "module": "5",
+      "confidence": 0.9
+    }
+  ],
+  "schemaVersion": "2.1.0",
+  "connectionCount": 5,
   "synapses": [
     {
       "id": "AZURE-001",
@@ -52,37 +83,6 @@
       "strength": 0.6,
       "description": "Cost optimization in architecture parallels PV in adoption - value clarity drives decisions",
       "bidirectional": false
-    }
-  ],
-  "activationPatterns": [
-    {
-      "trigger": "Azure|cloud architecture|well-architected",
-      "confidence": 0.95
-    },
-    {
-      "trigger": "reliability|availability|resilience|DR",
-      "module": "1",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "security|zero trust|managed identity|RBAC",
-      "module": "2",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "cost|optimize|savings|reserved instance",
-      "module": "3",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "Bicep|Terraform|IaC|observability",
-      "module": "4",
-      "confidence": 0.9
-    },
-    {
-      "trigger": "performance|scaling|caching|autoscale",
-      "module": "5",
-      "confidence": 0.9
     }
   ]
 }

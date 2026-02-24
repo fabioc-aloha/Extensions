@@ -1,5 +1,8 @@
 {
-  "skill": "academic-research",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "academic-research",
+  "lastUpdated": "2026-02-24",
+  "inheritance": "inheritable",
   "connections": [
     {
       "bidirectional": true,
@@ -27,7 +30,6 @@
       "target": ".github/skills/cognitive-load/SKILL.md"
     }
   ],
-  "inheritance": "inheritable",
   "triggers": [
     "academic",
     "research",
@@ -39,6 +41,5 @@
     "dissertation",
     "scholarly"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

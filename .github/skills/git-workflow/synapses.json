@@ -1,5 +1,7 @@
 {
-  "skill": "git-workflow",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "git-workflow",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -33,6 +35,5 @@
     "cherry-pick",
     "conflict"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

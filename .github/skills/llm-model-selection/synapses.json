@@ -1,5 +1,7 @@
 {
-  "skill": "llm-model-selection",
+  "$schema": "../SYNAPSE-SCHEMA.json",
+  "skillId": "llm-model-selection",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
@@ -51,6 +53,5 @@
     "wrong model",
     "model warning"
   ],
-  "$schema": "../SYNAPSE-SCHEMA.json",
   "schemaVersion": "2.0.0"
 }

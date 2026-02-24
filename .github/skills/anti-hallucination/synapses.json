@@ -1,47 +1,47 @@
 {
   "$schema": "../SYNAPSE-SCHEMA.json",
-  "schemaVersion": "2.0.0",
   "skillId": "anti-hallucination",
-  "version": "1.1.0",
+  "version": "1.2.0",
+  "lastUpdated": "2026-02-24",
   "inheritance": "inheritable",
   "connections": [
     {
       "id": "confidence-calibration",
-      "target": "../appropriate-reliance/SKILL.md",
-      "relationship": "Complement",
+      "target": ".github/skills/appropriate-reliance/SKILL.md",
       "strength": 0.9,
-      "description": "Appropriate reliance provides confidence calibration framework"
+      "description": "Appropriate reliance provides confidence calibration framework",
+      "type": "COMPLEMENT"
     },
     {
       "id": "honest-uncertainty",
-      "target": "../../instructions/alex-core.instructions.md",
-      "relationship": "Implements",
+      "target": ".github/skills/../instructions/alex-core.instructions.md",
       "strength": 0.9,
-      "description": "Core identity principle: empirical honesty"
+      "description": "Core identity principle: empirical honesty",
+      "type": "IMPLEMENTS"
     },
     {
       "id": "capability-boundaries",
-      "target": "../m365-agent-debugging/SKILL.md",
-      "relationship": "Extends",
+      "target": ".github/skills/m365-agent-debugging/SKILL.md",
       "strength": 0.7,
-      "description": "M365 debugging includes platform limitation awareness"
+      "description": "M365 debugging includes platform limitation awareness",
+      "type": "EXTENDS"
     },
     {
       "id": "error-recovery",
-      "target": "../error-recovery-patterns/SKILL.md",
-      "relationship": "Collaborates",
+      "target": ".github/skills/error-recovery-patterns/SKILL.md",
       "strength": 0.7,
-      "description": "Error recovery when hallucination is caught"
+      "description": "Error recovery when hallucination is caught",
+      "type": "COLLABORATES"
     },
     {
       "id": "grounded-factual",
-      "target": "../../instructions/empirical-validation.instructions.md",
-      "relationship": "Implements",
+      "target": ".github/skills/../instructions/empirical-validation.instructions.md",
       "strength": 0.9,
-      "description": "Empirical validation prevents fabricated claims"
+      "description": "Empirical validation prevents fabricated claims",
+      "type": "IMPLEMENTS"
     }
   ],
-  "activationTriggers": [
+  "activationContexts": [
     "hallucination",
     "made up",
     "invented",
@@ -50,5 +50,6 @@
     "that's not real",
     "you're wrong",
     "that doesn't work"
-  ]
+  ],
+  "schemaVersion": "2.0.0"
 }
