@@ -24,14 +24,15 @@ All implementation work is complete. These are no longer tasks.
 
 ## 🔥 Immediate — Compile + Publish (This Week)
 
-### Step 1: Root Setup
-- [ ] `npm install` from monorepo root — resolve all dependencies
-- [ ] Verify `tsconfig.json` path resolution for `../../shared/utils/` imports in each extension
-- [ ] Set up `fabioc-aloha` VSCE publisher credentials (`npx vsce login fabioc-aloha`)
-- [ ] Create GitHub repo `Extensions` and push
+### Step 1: Root Setup ✅
+- [x] `npm install` from monorepo root — resolve all dependencies
+- [x] Verify `tsconfig.json` path resolution for `../../shared/utils/` imports in each extension
+- [x] All 15 extensions + shared package compile successfully
+- [ ] Set up `fabioc-aloha` VSCE publisher credentials (`npx vsce login fabioc-aloha`) — skipped for now
+- [x] Create GitHub repo `Extensions` and push
 
 ### Step 2: Hook Studio — Ship First (First-Mover Window Open)
-- [ ] `cd extensions/hook-studio && npm run compile` — fix any TypeScript errors
+- [x] `cd extensions/hook-studio && npm run compile` — fix any TypeScript errors
 - [ ] Fill in HTML webview content in `HookStudioPanel.ts` (`_getHtmlForWebview()`)
 - [ ] `F5` — test in Extension Development Host, verify 3 tabs render
 - [ ] `npx vsce package` → `npx vsce ls` — confirm no secrets bundled
@@ -40,12 +41,12 @@ All implementation work is complete. These are no longer tasks.
 - [ ] `npx vsce publish`
 
 ### Step 3: Workspace Watchdog — Ship Second (2 days)
-- [ ] `cd extensions/workspace-watchdog && npm run compile` — fix any TypeScript errors
+- [x] `cd extensions/workspace-watchdog && npm run compile` — fix any TypeScript errors
 - [ ] `F5` — verify status bar appears, scan commands work, stalled file notifications fire
 - [ ] `npx vsce package` → smoke test → publish
 
 ### Step 4: MCP App Starter — Ship Third (3 days)
-- [ ] `cd extensions/mcp-app-starter && npm run compile` — fix any TypeScript errors
+- [x] `cd extensions/mcp-app-starter && npm run compile` — fix any TypeScript errors
 - [ ] `F5` — run `>MCP App: New Project`, verify wizard flow and file generation
 - [ ] `npx vsce package` → smoke test → publish
 
@@ -54,9 +55,10 @@ All implementation work is complete. These are no longer tasks.
 ## 📋 Sprint 2 (Next Month)
 
 *All shared utility ports are complete. Sprint 2 is now: compile-verify + polish + publish.*
+*All 15 extensions now compile successfully (2026-02-24).*
 
 ### SecretGuard (`secretScanner.ts` ✅ ported)
-- [ ] `npm run compile` — verify build
+- [x] `npm run compile` — verify build
 - [ ] Test scan-on-save diagnostics fire correctly in Extension Development Host
 - [ ] Add `.secretguardignore` file parser
 - [ ] Implement audit log export (JSON + CSV)
