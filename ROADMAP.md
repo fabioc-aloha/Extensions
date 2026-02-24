@@ -47,18 +47,20 @@ All three shipped on the same day VS Code 1.109 first-mover window was identifie
 
 > Note: `workspace-watchdog` name was taken by `deitry` on Marketplace; published as `cx-workspace-watchdog` / **CX Workspace Watchdog**.
 
-### ✅ Sprint 2 — Code Extracted & Implemented (✅ Compile-Ready)
+### 🔥 Sprint 2 — 4/6 Shipped (2026-02-24)
 
-Logic exists in Alex. All compile successfully. Ready for testing and packaging.
+> ⚠️ `cx-focus-timer` and `cx-markdown-to-word` bundled and renamed — pending Marketplace rate limit reset.
 
-| Extension | Effort | Status | Source in Alex |
-|---|:---:|:---:|---|
-| [SecretGuard](#secret-guard) | 3d | ✅ Compiles | `secretScanner.ts` — enterprise secret scan already built |
-| [Focus Timer](#focus-timer) | 2d | ✅ Compiles | Focus/goals system, Pomodoro logic in Alex |
-| [Knowledge Decay Tracker](#knowledge-decay-tracker) | 3d | ✅ Compiles | Forgetting Curve decay engine (`v5.9.6`) — exact same math |
-| [Markdown to Word](#markdown-to-word) | 3d | ✅ Compiles | `md-to-word` skill — Pandoc pipeline already documented |
-| [Brandfetch Logo Fetcher](#brandfetch-logo-fetcher) | 2d | ✅ Compiles | Brandfetch API client already in Alex extension |
-| [AI Voice Reader](#ai-voice-reader) | 3d | ✅ Compiles | TTS module built in Alex v5.4.x |
+| Extension | Size | Marketplace |
+|---|:---:|---|
+| [Knowledge Decay Tracker](#knowledge-decay-tracker) | 15.5 KB | [fabioc-aloha.knowledge-decay-tracker](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker) |
+| [Brandfetch Logo Fetcher](#brandfetch-logo-fetcher) | 14.6 KB | [fabioc-aloha.brandfetch-logo-fetcher](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
+| [AI Voice Reader](#ai-voice-reader) | 2.8 KB | [fabioc-aloha.ai-voice-reader](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
+| [CX SecretGuard](#secret-guard) | 15.1 KB | [fabioc-aloha.cx-secret-guard](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard) |
+| CX Focus Timer | 3.1 KB | ⏳ Rate limit — ready to publish |
+| CX Markdown to Word | 3.1 KB | ⏳ Rate limit — ready to publish |
+
+> Renames: `secret-guard` → `cx-secret-guard`, `focus-timer` → `cx-focus-timer`, `markdown-to-word` → `cx-markdown-to-word` (names taken on Marketplace).
 
 ### 🔧 Sprint 3 — Moderate Builds (✅ Compile-Ready)
 

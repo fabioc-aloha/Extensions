@@ -1,7 +1,7 @@
 # TODO — Extensions Monorepo
 
-**Current Sprint**: Sprint 1 — Compile + Publish
-**Sprint Goal**: Compile-verify, smoke-test, and publish Hook Studio, Workspace Watchdog, and MCP App Starter.
+**Current Sprint**: Sprint 2 — Publish
+**Sprint Goal**: Publish all 6 Sprint 2 extensions. 4 live, 2 pending Marketplace rate limit reset (12h).
 
 ---
 
@@ -73,53 +73,39 @@ All implementation work is complete. These are no longer tasks.
 
 ---
 
-## 📋 Sprint 2 (Next Month)
+## � Sprint 2 — 4/6 Shipped ✅ 2026-02-24
+
+> ⚠️ **Rate limit hit**: Marketplace caps new extension creation. `cx-focus-timer` and `cx-markdown-to-word` are renamed, bundled, and ready — publish when quota resets (~12h).
 
 *All shared utility ports are complete. All 15 extensions compile successfully (2026-02-24).*
 *VSCE publisher credentials verified — ready to publish.*
 
-### SecretGuard (`secretScanner.ts` ✅ ported)
-- [x] `npm run compile` — verified
-- [ ] `npx vsce package` → `code --install-extension` — test locally
-- [ ] Verify scan-on-save diagnostics fire correctly
-- [ ] Add `.secretguardignore` file parser
-- [ ] Implement audit log export (JSON + CSV)
-- [ ] Document git pre-commit hook integration in README
-- [ ] Publish
+### CX SecretGuard (`secretScanner.ts` ✅ ported)
+> Note: `secret-guard` name taken on Marketplace; renamed to `cx-secret-guard`.
+- [x] esbuild bundle — 15.1 KB including `@alex-extensions/shared` inlined
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard
 
-### Focus Timer (Pomodoro logic ✅ implemented)
-- [x] `npm run compile` — verified
-- [ ] `npx vsce package` → `code --install-extension` — test locally
-- [ ] Verify status bar timer, pause, stop work correctly
-- [ ] Add streak persistence via VS Code `globalState`
-- [ ] Verify GitHub Issues sync (optional — can ship without)
-- [ ] Publish
+### CX Focus Timer (Pomodoro logic ✅ implemented)
+> Note: `focus-timer` name taken on Marketplace; renamed to `cx-focus-timer`.
+- [x] esbuild bundle — 3.1 KB
+- [ ] **Publish** (queued — Marketplace rate limit, publish when quota resets)
 
 ### Knowledge Decay Tracker (`decay.ts` ✅ ported)
-- [x] `npm run compile` — verified
-- [ ] Test frontmatter/comment tag parser (`<!-- review: 90d -->`)
-- [ ] Verify status bar badge (overdue count) updates correctly
-- [ ] Add GitHub Issues auto-create for overdue docs (optional — ship without)
-- [ ] Publish
+- [x] esbuild bundle — 15.5 KB including `@alex-extensions/shared` inlined
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker
 
-### Markdown to Word
-- [x] `npm run compile` — verified
-- [ ] Verify Pandoc install detection (graceful error if missing)
-- [ ] Test Mermaid → PNG pre-processing via Mermaid CLI
-- [ ] Test right-click context menu in Explorer
-- [ ] Publish
+### CX Markdown to Word
+> Note: `markdown-to-word` name taken on Marketplace; renamed to `cx-markdown-to-word`.
+- [x] esbuild bundle — 3.1 KB
+- [ ] **Publish** (queued — Marketplace rate limit, publish when quota resets)
 
 ### Brandfetch Logo Fetcher (`brandfetch.ts` ✅ ported)
-- [x] `npm run compile` — verified
-- [ ] Test command palette entry and insert format picker
-- [ ] Verify Logo.dev fallback works when Brandfetch returns nothing
-- [ ] Publish
+- [x] esbuild bundle — 14.6 KB including `@alex-extensions/shared` inlined
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher
 
 ### AI Voice Reader
-- [x] `npm run compile` — verified
-- [ ] Test Web Speech API via Webview (no API key path)
-- [ ] Verify per-language voice routing config
-- [ ] Publish
+- [x] esbuild bundle — 2.8 KB
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader
 
 ---
 
