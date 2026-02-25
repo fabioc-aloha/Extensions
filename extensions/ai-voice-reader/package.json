@@ -67,23 +67,18 @@
       "cx.tools": [
         {
           "command": "voiceReader.readSelection",
-          "when": "editorHasSelection",
-          "group": "navigation@1"
-        },
-        {
-          "command": "voiceReader.readDocument",
           "when": "editorFocus",
-          "group": "navigation@2"
+          "group": "navigation@1"
         },
         {
           "command": "voiceReader.stop",
           "when": "editorFocus",
-          "group": "navigation@3"
+          "group": "navigation@2"
         },
         {
           "command": "voiceReader.readFile",
           "when": "!explorerResourceIsFolder",
-          "group": "navigation"
+          "group": "navigation@3"
         }
       ]
     },

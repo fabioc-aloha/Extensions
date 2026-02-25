@@ -2,17 +2,17 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
+    "extensions/ai-voice-reader/package.json",
     "extensions/ai-voice-reader/src/extension.ts",
-    "extensions/knowledge-decay-tracker/src/extension.ts",
-    "extensions/markdown-to-word/src/extension.ts",
-    "extensions/secret-guard/src/extension.ts"
+    "extensions/brandfetch-logo-fetcher/src/extension.ts",
+    "extensions/replicate-image-studio/src/extension.ts"
   ],
   "todoHotspots": [
     {
       "file": "extensions/workspace-watchdog/package.json",
       "todoCount": 2,
-      "scannedAt": 1772023936873
+      "scannedAt": 1772024127123
     }
   ],
-  "lastUpdated": 1772023936873
+  "lastUpdated": 1772024127123
 }

@@ -27,8 +27,14 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel.appendLine('[Brandfetch Logo Fetcher] Activated.');
 }
 
+function getSelectedText(): string {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) { return ''; }
+    return editor.document.getText(editor.selection).trim();
+}
+
 async function fetchLogo(): Promise<void> {
-    const domain = await vscode.window.showInputBox({ title: 'Fetch Logo', prompt: 'Enter domain (e.g. github.com)' });
+    const domain = await vscode.window.showInputBox({ title: 'Fetch Logo', prompt: 'Enter domain (e.g. github.com)', value: getSelectedText() });
     if (!domain) { return; }
 
     const format = await vscode.window.showQuickPick(
@@ -52,7 +58,7 @@ async function fetchLogo(): Promise<void> {
 async function insertLogo(): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { vscode.window.showWarningMessage('No active editor.'); return; }
-    const domain = await vscode.window.showInputBox({ title: 'Insert Logo', prompt: 'Enter domain (e.g. github.com)' });
+    const domain = await vscode.window.showInputBox({ title: 'Insert Logo', prompt: 'Enter domain (e.g. github.com)', value: getSelectedText() });
     if (!domain) { return; }
     try {
         const logo = await client.fetchLogo(domain);

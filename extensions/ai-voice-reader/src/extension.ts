@@ -61,7 +61,7 @@ function speak(text: string): void {
 function readSelection(): void {
     const editor = vscode.window.activeTextEditor;
     if (!editor) { return; }
-    const text = editor.document.getText(editor.selection) || editor.document.lineAt(editor.selection.active.line).text;
+    const text = editor.document.getText(editor.selection) || editor.document.getText();
     speak(text);
 }
 

@@ -5,6 +5,12 @@ let outputChannel: vscode.OutputChannel;
 let client: ReplicateClient;
 const history: { prompt: string; urls: string[]; model: string; createdAt: string }[] = [];
 
+function getSelectedText(): string {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) { return ''; }
+    return editor.document.getText(editor.selection).trim();
+}
+
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('Replicate Image Studio');
     context.subscriptions.push(outputChannel);
@@ -16,8 +22,8 @@ export function activate(context: vscode.ExtensionContext): void {
     loadClient();
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('replicateStudio.generate', () => generateImage()),
-        vscode.commands.registerCommand('replicateStudio.generateVideo', () => generateVideo()),
+        vscode.commands.registerCommand('replicateStudio.generate', () => generateImage(getSelectedText())),
+        vscode.commands.registerCommand('replicateStudio.generateVideo', () => generateVideo(getSelectedText())),
         vscode.commands.registerCommand('replicateStudio.setApiKey', async () => {
             const key = await vscode.window.showInputBox({ title: 'Replicate API Key', password: true, prompt: 'Get your key at replicate.com/account/api-tokens' });
             if (key) { await context.secrets.store('replicate.apiKey', key); client = new ReplicateClient(key); vscode.window.showInformationMessage('API key saved.'); }
@@ -29,7 +35,7 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel.appendLine('[Replicate Image Studio] Activated.');
 }
 
-async function generateImage(): Promise<void> {
+async function generateImage(selectedText = ''): Promise<void> {
     if (!client) { vscode.window.showErrorMessage('Set your Replicate API key first.'); return; }
 
     const model = await vscode.window.showQuickPick(
@@ -38,7 +44,7 @@ async function generateImage(): Promise<void> {
     );
     if (!model) { return; }
 
-    const prompt = await vscode.window.showInputBox({ title: 'Image Prompt', prompt: 'Describe the image you want to generate' });
+    const prompt = await vscode.window.showInputBox({ title: 'Image Prompt', prompt: 'Describe the image you want to generate', value: selectedText });
     if (!prompt) { return; }
 
     await vscode.window.withProgress(
@@ -61,9 +67,9 @@ async function generateImage(): Promise<void> {
     );
 }
 
-async function generateVideo(): Promise<void> {
+async function generateVideo(selectedText = ''): Promise<void> {
     if (!client) { vscode.window.showErrorMessage('Set your Replicate API key first.'); return; }
-    const prompt = await vscode.window.showInputBox({ title: 'Video Prompt (WAN 2.1)', prompt: 'Describe the video' });
+    const prompt = await vscode.window.showInputBox({ title: 'Video Prompt (WAN 2.1)', prompt: 'Describe the video', value: selectedText });
     if (!prompt) { return; }
     await vscode.window.withProgress(
         { location: vscode.ProgressLocation.Notification, title: 'Generating video (this may take a few minutes)...', cancellable: false },
