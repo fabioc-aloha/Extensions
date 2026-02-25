@@ -68,8 +68,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "$(tools) CX Tools",
-        "icon": "$(tools)"
+        "label": "🔷 CX Tools"
       }
     ]
   },
