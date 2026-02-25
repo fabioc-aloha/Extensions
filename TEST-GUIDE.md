@@ -160,9 +160,9 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ---
 
-### Focus Timer ✅ Installed Locally · ⏳ Marketplace Pending
+### Focus Timer ✅ Published
 
-**Install**: `code --install-extension cx-focus-timer-*.vsix --force` (or use bulk script)
+**Marketplace**: [fabioc-aloha.cx-focus-timer](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -201,9 +201,9 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ---
 
-### Markdown to Word ✅ Installed Locally · ⏳ Marketplace Pending
+### Markdown to Word ✅ Published
 
-**Install**: `code --install-extension cx-markdown-to-word-*.vsix --force` (or use bulk script)
+**Marketplace**: [fabioc-aloha.cx-markdown-to-word](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word)
 
 **Prerequisite**: Pandoc must be installed (`pandoc --version`)
 
@@ -276,9 +276,9 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ## Sprint 3 — Moderate Builds
 
-### Dev Wellbeing ✅ Installed Locally · ⏳ Marketplace Pending
+### Dev Wellbeing ✅ Published
 
-**Install**: `code --install-extension dev-wellbeing-*.vsix --force` (or use bulk script)
+**Marketplace**: [fabioc-aloha.dev-wellbeing](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -296,9 +296,9 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ---
 
-### PPTX Builder ✅ Installed Locally · ⏳ Marketplace Pending
+### PPTX Builder ✅ Published
 
-**Install**: `code --install-extension pptx-builder-*.vsix --force` (or use bulk script)
+**Marketplace**: [fabioc-aloha.pptx-builder](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -315,9 +315,9 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ---
 
-### Replicate Image Studio ✅ Installed Locally · ⏳ Marketplace Pending
+### Replicate Image Studio ✅ Published
 
-**Install**: `code --install-extension replicate-image-studio-*.vsix --force` (or use bulk script)
+**Marketplace**: [fabioc-aloha.replicate-image-studio](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio)
 
 **Prerequisite**: Replicate API key
 
@@ -342,9 +342,9 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ## Sprint 4 — Larger Builds
 
-### Mermaid Diagram Pro ✅ Installed Locally · ⏳ Marketplace Pending
+### Mermaid Diagram Pro ✅ Published
 
-**Install**: `code --install-extension mermaid-diagram-pro-*.vsix --force` (or use bulk script)
+**Marketplace**: [fabioc-aloha.mermaid-diagram-pro](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -362,9 +362,9 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ---
 
-### SVG Toolkit ✅ Installed Locally · ⏳ Marketplace Pending
+### SVG Toolkit ✅ Published
 
-**Install**: `code --install-extension svg-toolkit-*.vsix --force` (or use bulk script)
+**Marketplace**: [fabioc-aloha.svg-toolkit](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-toolkit)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -378,7 +378,7 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 ---
 
-### Gamma Slide Assistant ✅ Installed Locally · ⏳ Marketplace Pending
+### Gamma Slide Assistant ✅ Installed Locally · ⏳ Marketplace Pending (rate-limited — publish after ~12h)
 
 **Install**: `code --install-extension gamma-slide-assistant-*.vsix --force` (or use bulk script)
 
@@ -406,19 +406,19 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 |-----------|-------------|---------|--------|
 | AI Voice Reader | `fabioc-aloha.ai-voice-reader` | 0.1.3 | ✅ Published |
 | Brandfetch Logo Fetcher | `fabioc-aloha.brandfetch-logo-fetcher` | 0.1.2 | ✅ Published |
-| Dev Wellbeing | `fabioc-aloha.dev-wellbeing` | 0.1.0 | ✅ Local · ⏳ Marketplace |
-| Focus Timer | `fabioc-aloha.cx-focus-timer` | 0.1.0 | ✅ Local · ⏳ Marketplace |
-| Gamma Slide Assistant | `fabioc-aloha.gamma-slide-assistant` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Dev Wellbeing | `fabioc-aloha.dev-wellbeing` | 0.1.0 | ✅ Published |
+| Focus Timer | `fabioc-aloha.cx-focus-timer` | 0.1.0 | ✅ Published |
+| Gamma Slide Assistant | `fabioc-aloha.gamma-slide-assistant` | 0.1.0 | ✅ Local · ⏳ Rate-limited |
 | Hook Studio | `fabioc-aloha.hook-studio` | 0.1.5 | ✅ Published |
 | Knowledge Decay Tracker | `fabioc-aloha.knowledge-decay-tracker` | 0.1.3 | ✅ Published |
-| Markdown to Word | `fabioc-aloha.cx-markdown-to-word` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Markdown to Word | `fabioc-aloha.cx-markdown-to-word` | 0.1.0 | ✅ Published |
 | MCP App Starter | `fabioc-aloha.mcp-app-starter` | 0.1.5 | ✅ Published |
-| Mermaid Diagram Pro | `fabioc-aloha.mermaid-diagram-pro` | 0.1.0 | ✅ Local · ⏳ Marketplace |
-| PPTX Builder | `fabioc-aloha.pptx-builder` | 0.1.0 | ✅ Local · ⏳ Marketplace |
-| Replicate Image Studio | `fabioc-aloha.replicate-image-studio` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Mermaid Diagram Pro | `fabioc-aloha.mermaid-diagram-pro` | 0.1.0 | ✅ Published |
+| PPTX Builder | `fabioc-aloha.pptx-builder` | 0.1.0 | ✅ Published |
+| Replicate Image Studio | `fabioc-aloha.replicate-image-studio` | 0.1.0 | ✅ Published |
 | SecretGuard | `fabioc-aloha.cx-secret-guard` | 0.1.3 | ✅ Published |
-| SVG To PNG | `fabioc-aloha.svg-to-png` | 0.1.0 | ✅ Local · ⏳ Marketplace |
-| SVG Toolkit | `fabioc-aloha.svg-toolkit` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| SVG To PNG | `fabioc-aloha.svg-to-png` | 0.1.0 | ✅ Local · ⏳ Rate-limited |
+| SVG Toolkit | `fabioc-aloha.svg-toolkit` | 0.1.0 | ✅ Published |
 | Workspace Watchdog | `fabioc-aloha.cx-workspace-watchdog` | 0.1.6 | ✅ Published |
 
 ---
