@@ -1,26 +1,17 @@
 {
   "hotFiles": [],
-  "stalledFiles": [
-    "github/episodic/peripheral/file-observations.json",
-    "AUDIT-REPORT.md",
-    "extensions/mcp-app-starter/CHANGELOG.md",
-    "extensions/mcp-app-starter/package.json",
-    "extensions/mcp-app-starter/src/extension.ts",
-    "extensions/svg-to-png/CHANGELOG.md",
-    "extensions/svg-to-png/src/extension.ts",
-    "package-lock.json"
-  ],
+  "stalledFiles": [],
   "todoHotspots": [
     {
       "file": "extensions/workspace-watchdog/package.json",
       "todoCount": 2,
-      "scannedAt": 1772028131615
+      "scannedAt": 1772028305789
     },
     {
       "file": "extensions/workspace-watchdog/CHANGELOG.md",
       "todoCount": 1,
-      "scannedAt": 1772028131615
+      "scannedAt": 1772028305789
     }
   ],
-  "lastUpdated": 1772028131615
+  "lastUpdated": 1772028305789
 }
