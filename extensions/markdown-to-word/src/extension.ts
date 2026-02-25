@@ -10,8 +10,8 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(outputChannel);
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('markdownToWord.convert', () => convertCurrent()),
-        vscode.commands.registerCommand('markdownToWord.convertWithOptions', () => convertWithOptions()),
+        vscode.commands.registerCommand('markdownToWord.convert', (uri?: vscode.Uri) => convertCurrent(uri)),
+        vscode.commands.registerCommand('markdownToWord.convertWithOptions', (uri?: vscode.Uri) => convertWithOptions(uri)),
         vscode.commands.registerCommand('markdownToWord.preview', () => previewDiagrams()),
         vscode.commands.registerCommand('markdownToWord.checkPandoc', () => checkPandoc())
     );
@@ -19,27 +19,27 @@ export function activate(context: vscode.ExtensionContext): void {
     outputChannel.appendLine('[Markdown to Word] Activated.');
 }
 
-async function convertCurrent(): Promise<void> {
-    const editor = vscode.window.activeTextEditor;
-    if (!editor || editor.document.languageId !== 'markdown') {
-        vscode.window.showWarningMessage('Open a Markdown file first.');
+async function convertCurrent(uri?: vscode.Uri): Promise<void> {
+    const target = uri ?? vscode.window.activeTextEditor?.document.uri;
+    if (!target || path.extname(target.fsPath).toLowerCase() !== '.md') {
+        vscode.window.showWarningMessage('Open or select a Markdown file first.');
         return;
     }
-    await convert(editor.document.uri.fsPath);
+    await convert(target.fsPath);
 }
 
-async function convertWithOptions(): Promise<void> {
-    const editor = vscode.window.activeTextEditor;
-    if (!editor || editor.document.languageId !== 'markdown') {
-        vscode.window.showWarningMessage('Open a Markdown file first.');
+async function convertWithOptions(uri?: vscode.Uri): Promise<void> {
+    const target = uri ?? vscode.window.activeTextEditor?.document.uri;
+    if (!target || path.extname(target.fsPath).toLowerCase() !== '.md') {
+        vscode.window.showWarningMessage('Open or select a Markdown file first.');
         return;
     }
     const outputUri = await vscode.window.showSaveDialog({
-        defaultUri: vscode.Uri.file(editor.document.uri.fsPath.replace(/\.md$/, '.docx')),
+        defaultUri: vscode.Uri.file(target.fsPath.replace(/\.md$/, '.docx')),
         filters: { 'Word Document': ['docx'] }
     });
     if (!outputUri) { return; }
-    await convert(editor.document.uri.fsPath, outputUri.fsPath);
+    await convert(target.fsPath, outputUri.fsPath);
 }
 
 async function convert(inputPath: string, outputPath?: string): Promise<void> {

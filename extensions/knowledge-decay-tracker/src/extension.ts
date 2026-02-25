@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
         vscode.commands.registerCommand('knowledgeDecay.scanWorkspace', () => scanWorkspace()),
         vscode.commands.registerCommand('knowledgeDecay.showReport', () => showReport()),
-        vscode.commands.registerCommand('knowledgeDecay.touchFile', () => touchCurrentFile()),
+        vscode.commands.registerCommand('knowledgeDecay.touchFile', (uri?: vscode.Uri) => touchCurrentFile(uri)),
         vscode.commands.registerCommand('knowledgeDecay.showCritical', () => showCritical())
     );
 
@@ -102,12 +102,12 @@ async function showCritical(): Promise<void> {
     });
 }
 
-async function touchCurrentFile(): Promise<void> {
-    const editor = vscode.window.activeTextEditor;
-    if (!editor) { return; }
+async function touchCurrentFile(uri?: vscode.Uri): Promise<void> {
+    const target = uri ?? vscode.window.activeTextEditor?.document.uri;
+    if (!target) { return; }
     const now = Date.now();
-    await fs.promises.utimes(editor.document.uri.fsPath, new Date(now), new Date(now));
-    vscode.window.showInformationMessage(`✅ Marked "${path.basename(editor.document.uri.fsPath)}" as fresh.`);
+    await fs.promises.utimes(target.fsPath, new Date(now), new Date(now));
+    vscode.window.showInformationMessage(`✅ Marked "${path.basename(target.fsPath)}" as fresh.`);
 }
 
 export function deactivate(): void {

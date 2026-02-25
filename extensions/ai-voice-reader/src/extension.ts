@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
         vscode.commands.registerCommand('voiceReader.readSelection', () => readSelection()),
         vscode.commands.registerCommand('voiceReader.readDocument', () => readDocument()),
-        vscode.commands.registerCommand('voiceReader.readFile', () => readFile()),
+        vscode.commands.registerCommand('voiceReader.readFile', (uri?: vscode.Uri) => readFile(uri)),
         vscode.commands.registerCommand('voiceReader.stop', () => stop()),
         vscode.commands.registerCommand('voiceReader.setVoice', () => setVoice())
     );
@@ -71,10 +71,14 @@ function readDocument(): void {
     speak(editor.document.getText());
 }
 
-async function readFile(): Promise<void> {
-    const uri = await vscode.window.showOpenDialog({ filters: { 'Text Files': ['md', 'txt', 'ts', 'js', 'py'] } });
-    if (!uri?.[0]) { return; }
-    const doc = await vscode.workspace.openTextDocument(uri[0]);
+async function readFile(uri?: vscode.Uri): Promise<void> {
+    let target = uri;
+    if (!target) {
+        const picked = await vscode.window.showOpenDialog({ filters: { 'Text Files': ['md', 'txt', 'ts', 'js', 'py'] } });
+        if (!picked?.[0]) { return; }
+        target = picked[0];
+    }
+    const doc = await vscode.workspace.openTextDocument(target);
     speak(doc.getText());
 }
 

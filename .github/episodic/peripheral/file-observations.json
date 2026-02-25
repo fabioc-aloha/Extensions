@@ -2,22 +2,17 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "extensions/ai-voice-reader/package.json",
-    "extensions/brandfetch-logo-fetcher/package.json",
-    "extensions/gamma-slide-assistant/package.json",
-    "extensions/hook-studio/package.json",
-    "extensions/knowledge-decay-tracker/package.json",
-    "extensions/markdown-to-word/package.json",
-    "extensions/mcp-app-starter/package.json",
-    "extensions/mermaid-diagram-pro/package.json",
-    "extensions/pptx-builder/package.json"
+    "extensions/ai-voice-reader/src/extension.ts",
+    "extensions/knowledge-decay-tracker/src/extension.ts",
+    "extensions/markdown-to-word/src/extension.ts",
+    "extensions/secret-guard/src/extension.ts"
   ],
   "todoHotspots": [
     {
       "file": "extensions/workspace-watchdog/package.json",
       "todoCount": 2,
-      "scannedAt": 1772023811899
+      "scannedAt": 1772023936873
     }
   ],
-  "lastUpdated": 1772023811899
+  "lastUpdated": 1772023936873
 }

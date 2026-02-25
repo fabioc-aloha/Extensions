@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
     context.subscriptions.push(
         vscode.commands.registerCommand('secretGuard.scanWorkspace', () => scanWorkspace()),
-        vscode.commands.registerCommand('secretGuard.scanFile', () => scanCurrentFile()),
+        vscode.commands.registerCommand('secretGuard.scanFile', (uri?: vscode.Uri) => scanCurrentFile(uri)),
         vscode.commands.registerCommand('secretGuard.viewReport', () => outputChannel.show()),
         vscode.commands.registerCommand('secretGuard.addIgnorePattern', () => addIgnorePattern())
     );
@@ -56,10 +56,16 @@ async function scanWorkspace(): Promise<void> {
     vscode.window.showInformationMessage(msg, 'View Report').then(c => { if (c) outputChannel.show(); });
 }
 
-function scanCurrentFile(): void {
-    const editor = vscode.window.activeTextEditor;
-    if (!editor) { vscode.window.showInformationMessage('No active editor.'); return; }
-    const count = scanDocument(editor.document);
+async function scanCurrentFile(uri?: vscode.Uri): Promise<void> {
+    let doc: vscode.TextDocument;
+    if (uri) {
+        doc = await vscode.workspace.openTextDocument(uri);
+    } else {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) { vscode.window.showInformationMessage('No active editor.'); return; }
+        doc = editor.document;
+    }
+    const count = scanDocument(doc);
     if (count === 0) {
         vscode.window.showInformationMessage('✅ No secrets found in current file.');
     } else {
