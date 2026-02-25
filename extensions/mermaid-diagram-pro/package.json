@@ -45,6 +45,18 @@
     "menus": {
       "editor/context": [
         {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
+        {
           "command": "mermaidPro.preview",
           "when": "resourceExtname == .md",
           "group": "navigation@1"
@@ -64,20 +76,15 @@
           "when": "resourceExtname == .md",
           "group": "navigation@4"
         }
-      ],
-      "explorer/context": [
-        {
-          "command": "mermaidPro.validateAll",
-          "when": "resourceExtname == .md",
-          "group": "navigation@1"
-        },
-        {
-          "command": "mermaidPro.exportSvg",
-          "when": "resourceExtname == .md",
-          "group": "navigation@2"
-        }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./",

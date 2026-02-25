@@ -52,46 +52,48 @@
       }
     ],
     "menus": {
+      "editor/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
       "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
+        {
+          "command": "mcpAppStarter.addTool",
+          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
+          "group": "navigation@1"
+        },
+        {
+          "command": "mcpAppStarter.addResource",
+          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
+          "group": "navigation@2"
+        },
+        {
+          "command": "mcpAppStarter.validate",
+          "when": "resourceExtname == .json",
+          "group": "navigation@3"
+        },
         {
           "command": "mcpAppStarter.create",
           "when": "explorerResourceIsFolder",
           "group": "navigation@1"
-        },
-        {
-          "command": "mcpAppStarter.addTool",
-          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
-          "group": "navigation@2"
-        },
-        {
-          "command": "mcpAppStarter.addResource",
-          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
-          "group": "navigation@3"
-        },
-        {
-          "command": "mcpAppStarter.validate",
-          "when": "resourceExtname == .json",
-          "group": "navigation@4"
-        }
-      ],
-      "editor/context": [
-        {
-          "command": "mcpAppStarter.addTool",
-          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
-          "group": "navigation@1"
-        },
-        {
-          "command": "mcpAppStarter.addResource",
-          "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
-          "group": "navigation@2"
-        },
-        {
-          "command": "mcpAppStarter.validate",
-          "when": "resourceExtname == .json",
-          "group": "navigation@3"
         }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./ --noEmit",

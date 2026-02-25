@@ -49,6 +49,18 @@
     "menus": {
       "editor/context": [
         {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
+        {
           "command": "gammaSlides.convertToHtml",
           "when": "resourceExtname == .md",
           "group": "navigation@1"
@@ -72,25 +84,15 @@
           "command": "gammaSlides.newPresentation",
           "group": "navigation@5"
         }
-      ],
-      "explorer/context": [
-        {
-          "command": "gammaSlides.convertToHtml",
-          "when": "resourceExtname == .md",
-          "group": "navigation@1"
-        },
-        {
-          "command": "gammaSlides.convertToPdf",
-          "when": "resourceExtname == .md",
-          "group": "navigation@2"
-        },
-        {
-          "command": "gammaSlides.preview",
-          "when": "resourceExtname == .md",
-          "group": "navigation@3"
-        }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./",

@@ -46,6 +46,18 @@
     "menus": {
       "editor/context": [
         {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
+        {
           "command": "markdownToWord.convert",
           "when": "resourceExtname == .md",
           "group": "navigation@1"
@@ -63,18 +75,6 @@
         {
           "command": "markdownToWord.checkPandoc",
           "group": "7_modification@1"
-        }
-      ],
-      "explorer/context": [
-        {
-          "command": "markdownToWord.convert",
-          "when": "resourceExtname == .md",
-          "group": "navigation@1"
-        },
-        {
-          "command": "markdownToWord.convertWithOptions",
-          "when": "resourceExtname == .md",
-          "group": "navigation@2"
         }
       ]
     },
@@ -97,7 +97,14 @@
           "description": "Render Mermaid diagrams as images"
         }
       }
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./",

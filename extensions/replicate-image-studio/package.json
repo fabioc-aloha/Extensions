@@ -54,6 +54,12 @@
     "menus": {
       "editor/context": [
         {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
+        {
           "command": "replicateStudio.generate",
           "when": "editorFocus",
           "group": "navigation@1"
@@ -74,7 +80,14 @@
           "group": "7_modification@1"
         }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./",

@@ -58,29 +58,19 @@
       }
     ],
     "menus": {
-      "explorer/context": [
+      "editor/context": [
         {
-          "command": "hookStudio.open",
-          "when": "resourceFilename == hooks.json",
-          "group": "navigation@1"
-        },
-        {
-          "command": "hookStudio.testCondition",
-          "when": "resourceFilename == hooks.json",
-          "group": "navigation@2"
-        },
-        {
-          "command": "hookStudio.exportHooks",
-          "when": "resourceFilename == hooks.json",
-          "group": "navigation@3"
-        },
-        {
-          "command": "hookStudio.openLog",
-          "when": "resourceFilename == hooks.json",
-          "group": "navigation@4"
+          "submenu": "cx.tools",
+          "group": "navigation@99"
         }
       ],
-      "editor/context": [
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
         {
           "command": "hookStudio.open",
           "when": "resourceFilename == hooks.json",
@@ -102,7 +92,14 @@
           "group": "navigation@4"
         }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p tsconfig.json --noEmit",

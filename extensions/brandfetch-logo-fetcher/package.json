@@ -1,84 +1,97 @@
 {
-    "name": "brandfetch-logo-fetcher",
-    "displayName": "Brandfetch Logo Fetcher",
-    "description": "Fetch company logos and brand assets by domain name — insert as Markdown, SVG URL, or HTML",
-    "version": "0.1.2",
-    "publisher": "fabioc-aloha",
-    "author": "Fabio Correa",
-    "icon": "assets/icon.png",
-    "engines": {
-        "vscode": "^1.109.0"
-    },
-    "categories": [
-        "Other"
+  "name": "brandfetch-logo-fetcher",
+  "displayName": "Brandfetch Logo Fetcher",
+  "description": "Fetch company logos and brand assets by domain name — insert as Markdown, SVG URL, or HTML",
+  "version": "0.1.2",
+  "publisher": "fabioc-aloha",
+  "author": "Fabio Correa",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "logo",
+    "brand",
+    "brandfetch",
+    "assets",
+    "markdown"
+  ],
+  "activationEvents": [
+    "onCommand:brandfetch.fetchLogo",
+    "onCommand:brandfetch.insertLogo",
+    "onCommand:brandfetch.clearCache",
+    "onCommand:brandfetch.setApiKey"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "brandfetch.fetchLogo",
+        "title": "Brandfetch: Fetch Logo by Domain"
+      },
+      {
+        "command": "brandfetch.insertLogo",
+        "title": "Brandfetch: Insert Logo at Cursor"
+      },
+      {
+        "command": "brandfetch.clearCache",
+        "title": "Brandfetch: Clear Logo Cache"
+      },
+      {
+        "command": "brandfetch.setApiKey",
+        "title": "Brandfetch: Set API Key"
+      }
     ],
-    "keywords": [
-        "logo",
-        "brand",
-        "brandfetch",
-        "assets",
-        "markdown"
-    ],
-    "activationEvents": [
-        "onCommand:brandfetch.fetchLogo",
-        "onCommand:brandfetch.insertLogo",
-        "onCommand:brandfetch.clearCache",
-        "onCommand:brandfetch.setApiKey"
-    ],
-    "main": "./out/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "brandfetch.fetchLogo",
-                "title": "Brandfetch: Fetch Logo by Domain"
-            },
-            {
-                "command": "brandfetch.insertLogo",
-                "title": "Brandfetch: Insert Logo at Cursor"
-            },
-            {
-                "command": "brandfetch.clearCache",
-                "title": "Brandfetch: Clear Logo Cache"
-            },
-            {
-                "command": "brandfetch.setApiKey",
-                "title": "Brandfetch: Set API Key"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "command": "brandfetch.fetchLogo",
-                    "when": "editorFocus",
-                    "group": "navigation@1"
-                },
-                {
-                    "command": "brandfetch.insertLogo",
-                    "when": "editorFocus",
-                    "group": "navigation@2"
-                }
-            ]
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
         }
+      ],
+      "cx.tools": [
+        {
+          "command": "brandfetch.fetchLogo",
+          "when": "editorFocus",
+          "group": "navigation@1"
+        },
+        {
+          "command": "brandfetch.insertLogo",
+          "when": "editorFocus",
+          "group": "navigation@2"
+        }
+      ]
     },
-    "scripts": {
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
-        "package": "npm run bundle && npx @vscode/vsce package",
-        "publish": "npm run bundle && npx @vscode/vsce publish"
-    },
-    "devDependencies": {
-        "@types/vscode": "^1.109.0",
-        "@types/node": "^20.0.0",
-        "typescript": "^5.7.0"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/fabioc-aloha/Extensions"
-    },
-    "galleryBanner": {
-        "color": "#1a1a2e",
-        "theme": "dark"
-    }
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
+    "package": "npm run bundle && npx @vscode/vsce package",
+    "publish": "npm run bundle && npx @vscode/vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.109.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabioc-aloha/Extensions"
+  },
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  }
 }

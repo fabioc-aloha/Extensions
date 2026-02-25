@@ -46,6 +46,18 @@
     "menus": {
       "editor/context": [
         {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
+        {
           "command": "pptxBuilder.create",
           "when": "resourceExtname == .md || resourceExtname == .yaml",
           "group": "navigation@1"
@@ -59,20 +71,15 @@
           "command": "pptxBuilder.newTemplate",
           "group": "navigation@3"
         }
-      ],
-      "explorer/context": [
-        {
-          "command": "pptxBuilder.create",
-          "when": "resourceExtname == .md || resourceExtname == .yaml",
-          "group": "navigation@1"
-        },
-        {
-          "command": "pptxBuilder.preview",
-          "when": "resourceExtname == .md || resourceExtname == .yaml",
-          "group": "navigation@2"
-        }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./",

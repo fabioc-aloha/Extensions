@@ -43,24 +43,19 @@
       }
     ],
     "menus": {
-      "explorer/context": [
+      "editor/context": [
         {
-          "command": "svgToPng.convert",
-          "when": "resourceExtname == .svg",
-          "group": "7_modification@1"
-        },
-        {
-          "command": "svgToPng.convertWithWidth",
-          "when": "resourceExtname == .svg",
-          "group": "7_modification@2"
-        },
-        {
-          "command": "svgToPng.convertBatch",
-          "when": "explorerResourceIsFolder",
-          "group": "7_modification@3"
+          "submenu": "cx.tools",
+          "group": "navigation@99"
         }
       ],
-      "editor/context": [
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "navigation@99"
+        }
+      ],
+      "cx.tools": [
         {
           "command": "svgToPng.convert",
           "when": "resourceExtname == .svg",
@@ -97,7 +92,14 @@
           "description": "Open the generated PNG after conversion"
         }
       }
-    }
+    },
+    "submenus": [
+      {
+        "id": "cx.tools",
+        "label": "$(tools) CX Tools",
+        "icon": "$(tools)"
+      }
+    ]
   },
   "scripts": {
     "compile": "tsc -p ./",
