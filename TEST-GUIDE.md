@@ -6,23 +6,33 @@
 
 ## General Testing Workflow
 
-For every extension:
+### Bulk Install (Recommended)
+
+Builds, packages, and installs all 16 extensions in one step:
+
+```bash
+node scripts/install-all-local.js
+```
+
+Then reload VS Code: `Ctrl+Shift+P` → `Developer: Reload Window`
+
+### Single Extension
 
 ```bash
 # 1. Navigate to extension folder
 cd extensions/<extension-name>
 
 # 2. Compile
-npm run compile
+npm run compile     # or: npm run bundle
 
 # 3. Package
-npx vsce package
+npx vsce package --no-dependencies
 
 # 4. Verify no secrets bundled
 npx vsce ls
 
 # 5. Install locally
-code --install-extension <extension-name>-*.vsix
+code --install-extension <extension-name>-*.vsix --force
 
 # 6. Reload VS Code window (Ctrl+Shift+P → "Developer: Reload Window")
 
@@ -34,11 +44,38 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-## Sprint 1 — First Movers (Priority)
+## CX Tools Submenu — Global Verification
+
+All 14 extensions with context menu contributions share a unified **CX Tools** submenu. Verify once after install:
+
+**Explorer context menu:**
+- [ ] Right-click any file in Explorer → `$(tools) CX Tools` entry appears
+- [ ] Hover over `CX Tools` → submenu expands with relevant extension commands
+- [ ] Right-click a `.md` file → CX Tools contains Markdown to Word, Mermaid, Gamma Slides commands
+- [ ] Right-click a `.svg` file → CX Tools contains SVG Toolkit commands
+
+**Editor context menu:**
+- [ ] Right-click inside any editor → `$(tools) CX Tools` entry appears
+- [ ] Submenu shows appropriate commands for the current file type
+
+**URI consumption (Explorer right-click):**
+- [ ] Right-click a file → CX Tools → SecretGuard Scan File → scans that file directly (no dialog)
+- [ ] Right-click a `.md` file → CX Tools → Convert to Word → converts that file directly
+- [ ] Right-click any file → CX Tools → Mark as Fresh → marks that file directly
+
+**Selected text pre-fill (Editor right-click):**
+- [ ] Select a domain name (e.g. `github.com`) → CX Tools → Fetch Logo → domain field pre-filled
+- [ ] Select prompt text → CX Tools → Generate Image → prompt field pre-filled
+- [ ] Select text → CX Tools → Read Selection/Document → reads selection
+- [ ] No selection → CX Tools → Read Selection/Document → reads entire document
+
+---
+
+## Sprint 1 — First Movers
 
 ### Hook Studio ✅ Published
 
-**Install**: `code --install-extension fabioc-aloha.hook-studio` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio)
+**Marketplace**: [fabioc-aloha.hook-studio](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -58,7 +95,7 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ### Workspace Watchdog ✅ Published
 
-**Install**: `code --install-extension fabioc-aloha.cx-workspace-watchdog` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog)
+**Marketplace**: [fabioc-aloha.cx-workspace-watchdog](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -80,7 +117,7 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ### MCP App Starter ✅ Published
 
-**Install**: `code --install-extension fabioc-aloha.mcp-app-starter` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter)
+**Marketplace**: [fabioc-aloha.mcp-app-starter](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -103,7 +140,7 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ### SecretGuard ✅ Published
 
-**Install**: `code --install-extension fabioc-aloha.cx-secret-guard` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard)
+**Marketplace**: [fabioc-aloha.cx-secret-guard](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -111,6 +148,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 | `SecretGuard: Scan Current File` | Open a file, run command | Scans only active file |
 | `SecretGuard: View Audit Report` | After scan, run command | Opens report (JSON/CSV options) |
 | `SecretGuard: Add Ignore Pattern` | Run command | Prompts for pattern, adds to `.secretguardignore` |
+
+**Context menu test** (URI consumption):
+- [ ] Right-click any file in Explorer → CX Tools → Scan File → scans **that file directly** (no picker dialog)
 
 **Test scenarios**:
 - [ ] Create a file with `AKIA...` (AWS key pattern) — should detect as Critical
@@ -120,9 +160,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Focus Timer ⏳ Pending
+### Focus Timer ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension focus-timer-*.vsix` — ⏳ Rate-limited, not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension cx-focus-timer-*.vsix --force` (or use bulk script)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -142,7 +182,7 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ### Knowledge Decay Tracker ✅ Published
 
-**Install**: `code --install-extension fabioc-aloha.knowledge-decay-tracker` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker)
+**Marketplace**: [fabioc-aloha.knowledge-decay-tracker](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -151,6 +191,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 | `Knowledge Decay: Mark File as Fresh` | Open a file, run command | Updates file's freshness timestamp |
 | `Knowledge Decay: Show Critical Files` | Run command | Shows only critical/overdue files |
 
+**Context menu test** (URI consumption):
+- [ ] Right-click any file in Explorer → CX Tools → Mark as Fresh → marks **that file** (no picker dialog)
+
 **Test scenarios**:
 - [ ] Create a markdown file with `<!-- review: 1d -->` — should show as due soon
 - [ ] Create a file with `review: 2020-01-01` in frontmatter — should show as overdue
@@ -158,9 +201,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Markdown to Word ⏳ Pending
+### Markdown to Word ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension markdown-to-word-*.vsix` — ⏳ Rate-limited, not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension cx-markdown-to-word-*.vsix --force` (or use bulk script)
 
 **Prerequisite**: Pandoc must be installed (`pandoc --version`)
 
@@ -171,17 +214,20 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 | `Markdown to Word: Preview Diagrams` | Open .md with Mermaid, run command | Shows diagram preview |
 | `Markdown to Word: Check Pandoc Installation` | Run command | Shows Pandoc version or error message |
 
+**Context menu test** (URI consumption):
+- [ ] Right-click a `.md` file in Explorer → CX Tools → Convert to Word → converts **that file directly** (no picker dialog)
+- [ ] File does not need to be open first — works from Explorer before the file is loaded
+
 **Test scenarios**:
 - [ ] Convert markdown with headings, tables, code blocks
 - [ ] Convert markdown with Mermaid diagram — should render as image
-- [ ] Right-click .md file in Explorer — "Convert to Word" appears in context menu
 - [ ] If Pandoc not installed, graceful error message
 
 ---
 
 ### Brandfetch Logo Fetcher ✅ Published
 
-**Install**: `code --install-extension fabioc-aloha.brandfetch-logo-fetcher` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher)
+**Marketplace**: [fabioc-aloha.brandfetch-logo-fetcher](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher)
 
 **Prerequisite**: Brandfetch API key (optional — Logo.dev fallback works without)
 
@@ -191,6 +237,10 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 | `Brandfetch: Insert Logo at Cursor` | After fetch, run command | Inserts logo as markdown/SVG/URL |
 | `Brandfetch: Clear Logo Cache` | Run command | Clears cached logos |
 | `Brandfetch: Set API Key` | Run command | Prompts for Brandfetch API key, stores securely |
+
+**Selected text pre-fill test**:
+- [ ] Select `github.com` in editor → CX Tools → Fetch Logo → domain input pre-filled with `github.com`
+- [ ] Select `github.com` in editor → CX Tools → Insert Logo → domain input pre-filled
 
 **Test scenarios**:
 - [ ] Fetch logo for `github.com` — should return GitHub logo
@@ -203,15 +253,19 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ### AI Voice Reader ✅ Published
 
-**Install**: `code --install-extension fabioc-aloha.ai-voice-reader` — [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader)
+**Marketplace**: [fabioc-aloha.ai-voice-reader](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
-| `Voice Reader: Read Selection` | Select text, run command | Computer reads selection aloud |
-| `Voice Reader: Read Entire Document` | Open file, run command | Reads entire file |
-| `Voice Reader: Read File...` | Run command | File picker, then reads selected file |
-| `Voice Reader: Stop` | While reading, run command | Stops playback |
+| `Voice Reader: Read Selection / Document` | Select text or open file, run command | Reads selection if selected, else reads full document |
+| `Voice Reader: Read File...` | Run command | File picker opens, then reads the selected file |
+| `Voice Reader: Stop` | While reading, run command | Stops playback immediately |
 | `Voice Reader: Set Voice` | Run command | Shows available system voices |
+
+**Selection behavior test**:
+- [ ] Select a paragraph → CX Tools → Read Selection/Document → reads **only the selection**
+- [ ] No selection → CX Tools → Read Selection/Document → reads **entire document**
+- [ ] Both cases use the same single command — no separate "read document" entry needed
 
 **Features to verify**:
 - [ ] Web Speech API works (no API key required)
@@ -222,9 +276,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ## Sprint 3 — Moderate Builds
 
-### Dev Wellbeing ⏳ Not Published
+### Dev Wellbeing ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension dev-wellbeing-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension dev-wellbeing-*.vsix --force` (or use bulk script)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -242,9 +296,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### PPTX Builder ⏳ Not Published
+### PPTX Builder ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension pptx-builder-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension pptx-builder-*.vsix --force` (or use bulk script)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -261,19 +315,23 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### Replicate Image Studio ⏳ Not Published
+### Replicate Image Studio ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension replicate-image-studio-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension replicate-image-studio-*.vsix --force` (or use bulk script)
 
 **Prerequisite**: Replicate API key
 
 | Command | How to Test | Expected Result |
-|---------|-------------|-----------------|
+|---------|-------------|-----------------||
 | `Replicate: Generate Image` | Run command | Prompts for prompt, model, generates image |
 | `Replicate: Generate Video (WAN)` | Run command | Prompts for prompt, generates video |
 | `Replicate: Set API Key` | Run command | Prompts for key, stores securely |
 | `Replicate: View Generation History` | After generations, run command | Shows history |
 | `Replicate: Insert Last Image as Markdown` | After generation, run command | Inserts `![](url)` |
+
+**Selected text pre-fill test**:
+- [ ] Select a prompt in editor (e.g. `a red fox in a snowy forest`) → CX Tools → Generate Image → prompt pre-filled
+- [ ] Select text → CX Tools → Generate Video → prompt pre-filled
 
 **Model options to verify**:
 - [ ] FLUX
@@ -284,9 +342,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ## Sprint 4 — Larger Builds
 
-### Mermaid Diagram Pro ⏳ Not Published
+### Mermaid Diagram Pro ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension mermaid-diagram-pro-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension mermaid-diagram-pro-*.vsix --force` (or use bulk script)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -304,9 +362,9 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-### SVG Toolkit ⏳ Not Published
+### SVG Toolkit ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension svg-toolkit-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension svg-toolkit-*.vsix --force` (or use bulk script)
 
 | Command | How to Test | Expected Result |
 |---------|-------------|-----------------|
@@ -316,13 +374,13 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 | `SVG Toolkit: Insert Icon Template` | Run command | Shows icon template picker |
 | `SVG Toolkit: Validate SVG` | Open .svg file, run command | Shows validation results |
 
-**Context menu test**: Right-click .svg file in Explorer — preview option should appear.
+**Context menu test**: Right-click `.svg` file in Explorer → CX Tools → Preview/Copy commands appear.
 
 ---
 
-### Gamma Slide Assistant ⏳ Not Published
+### Gamma Slide Assistant ✅ Installed Locally · ⏳ Marketplace Pending
 
-**Install**: `code --install-extension gamma-slide-assistant-*.vsix` — ⏳ Not yet on Marketplace (use local VSIX)
+**Install**: `code --install-extension gamma-slide-assistant-*.vsix --force` (or use bulk script)
 
 **Prerequisite**: Marp CLI for PDF export (`npm install -g @marp-team/marp-cli`)
 
@@ -342,7 +400,30 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 
 ---
 
-## Quick Reference — All Commands by Extension
+## Quick Reference — Installed Versions
+
+| Extension | Publisher ID | Version | Status |
+|-----------|-------------|---------|--------|
+| AI Voice Reader | `fabioc-aloha.ai-voice-reader` | 0.1.3 | ✅ Published |
+| Brandfetch Logo Fetcher | `fabioc-aloha.brandfetch-logo-fetcher` | 0.1.2 | ✅ Published |
+| Dev Wellbeing | `fabioc-aloha.dev-wellbeing` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Focus Timer | `fabioc-aloha.cx-focus-timer` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Gamma Slide Assistant | `fabioc-aloha.gamma-slide-assistant` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Hook Studio | `fabioc-aloha.hook-studio` | 0.1.5 | ✅ Published |
+| Knowledge Decay Tracker | `fabioc-aloha.knowledge-decay-tracker` | 0.1.3 | ✅ Published |
+| Markdown to Word | `fabioc-aloha.cx-markdown-to-word` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| MCP App Starter | `fabioc-aloha.mcp-app-starter` | 0.1.5 | ✅ Published |
+| Mermaid Diagram Pro | `fabioc-aloha.mermaid-diagram-pro` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| PPTX Builder | `fabioc-aloha.pptx-builder` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Replicate Image Studio | `fabioc-aloha.replicate-image-studio` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| SecretGuard | `fabioc-aloha.cx-secret-guard` | 0.1.3 | ✅ Published |
+| SVG To PNG | `fabioc-aloha.svg-to-png` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| SVG Toolkit | `fabioc-aloha.svg-toolkit` | 0.1.0 | ✅ Local · ⏳ Marketplace |
+| Workspace Watchdog | `fabioc-aloha.cx-workspace-watchdog` | 0.1.6 | ✅ Published |
+
+---
+
+## Quick Reference — All Commands
 
 | Extension | Commands |
 |-----------|----------|
@@ -354,7 +435,7 @@ code --uninstall-extension fabioc-aloha.<extension-name>
 | **Knowledge Decay Tracker** | `knowledgeDecay.scanWorkspace`, `knowledgeDecay.showReport`, `knowledgeDecay.touchFile`, `knowledgeDecay.showCritical` |
 | **Markdown to Word** | `markdownToWord.convert`, `markdownToWord.convertWithOptions`, `markdownToWord.preview`, `markdownToWord.checkPandoc` |
 | **Brandfetch Logo Fetcher** | `brandfetch.fetchLogo`, `brandfetch.insertLogo`, `brandfetch.clearCache`, `brandfetch.setApiKey` |
-| **AI Voice Reader** | `voiceReader.readSelection`, `voiceReader.readDocument`, `voiceReader.readFile`, `voiceReader.stop`, `voiceReader.setVoice` |
+| **AI Voice Reader** | `voiceReader.readSelection`, `voiceReader.readFile`, `voiceReader.stop`, `voiceReader.setVoice` |
 | **Dev Wellbeing** | `devWellbeing.start`, `devWellbeing.stop`, `devWellbeing.showStats`, `devWellbeing.configureLimits` |
 | **PPTX Builder** | `pptxBuilder.create`, `pptxBuilder.newTemplate`, `pptxBuilder.preview`, `pptxBuilder.openDocs` |
 | **Replicate Image Studio** | `replicateStudio.generate`, `replicateStudio.generateVideo`, `replicateStudio.setApiKey`, `replicateStudio.viewHistory`, `replicateStudio.insertMarkdown` |
