@@ -60,24 +60,25 @@ async function createMcpServer(): Promise<void> {
     }
 
     const outputDir = path.join(workspaceRoot, serverName);
-    if (fs.existsSync(outputDir)) {
+    try {
+        await fs.promises.access(outputDir);
         vscode.window.showErrorMessage(`Directory ${serverName} already exists.`);
         return;
-    }
+    } catch { /* doesn't exist — safe to create */ }
 
     // Step 4: Scaffold
     await vscode.window.withProgress(
         { location: vscode.ProgressLocation.Notification, title: `Creating MCP server: ${serverName}`, cancellable: false },
         async () => {
-            fs.mkdirSync(outputDir, { recursive: true });
-            fs.mkdirSync(path.join(outputDir, 'src'), { recursive: true });
+            await fs.promises.mkdir(outputDir, { recursive: true });
+            await fs.promises.mkdir(path.join(outputDir, 'src'), { recursive: true });
 
             if (langChoice.id === 'typescript') {
-                scaffoldTypeScript(outputDir, serverName);
+                await scaffoldTypeScript(outputDir, serverName);
             } else if (langChoice.id === 'javascript') {
-                scaffoldJavaScript(outputDir, serverName);
+                await scaffoldJavaScript(outputDir, serverName);
             } else {
-                scaffoldPython(outputDir, serverName);
+                await scaffoldPython(outputDir, serverName);
             }
 
             outputChannel.appendLine(`[MCP App Starter] Created ${serverName} at ${outputDir}`);
@@ -92,14 +93,12 @@ async function createMcpServer(): Promise<void> {
         vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(outputDir), true);
     } else if (openChoice === 'Open README') {
         const readmePath = path.join(outputDir, 'README.md');
-        if (fs.existsSync(readmePath)) {
-            vscode.workspace.openTextDocument(readmePath).then(doc => vscode.window.showTextDocument(doc));
-        }
+        vscode.workspace.openTextDocument(readmePath).then(doc => vscode.window.showTextDocument(doc));
     }
 }
 
-function scaffoldTypeScript(dir: string, name: string): void {
-    fs.writeFileSync(path.join(dir, 'package.json'), JSON.stringify({
+async function scaffoldTypeScript(dir: string, name: string): Promise<void> {
+    await fs.promises.writeFile(path.join(dir, 'package.json'), JSON.stringify({
         name,
         version: '0.1.0',
         description: `MCP server: ${name}`,
@@ -114,11 +113,11 @@ function scaffoldTypeScript(dir: string, name: string): void {
         devDependencies: { typescript: '^5.7.0', tsx: '^4.0.0', '@types/node': '^20.0.0' }
     }, null, 2));
 
-    fs.writeFileSync(path.join(dir, 'tsconfig.json'), JSON.stringify({
+    await fs.promises.writeFile(path.join(dir, 'tsconfig.json'), JSON.stringify({
         compilerOptions: { target: 'ES2022', module: 'Node16', moduleResolution: 'Node16', outDir: 'dist', strict: true }
     }, null, 2));
 
-    fs.writeFileSync(path.join(dir, 'src', 'index.ts'), `import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+    await fs.promises.writeFile(path.join(dir, 'src', 'index.ts'), `import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 
@@ -157,7 +156,7 @@ await server.connect(transport);
 console.error('${name} MCP server running on stdio');
 `);
 
-    fs.writeFileSync(path.join(dir, '.vscode', 'mcp.json').replace(path.join(dir, '.vscode', 'mcp.json'), path.join(dir, 'mcp.json')), JSON.stringify({
+    await fs.promises.writeFile(path.join(dir, 'mcp.json'), JSON.stringify({
         mcpServers: {
             [name]: {
                 type: 'stdio',
@@ -167,17 +166,17 @@ console.error('${name} MCP server running on stdio');
         }
     }, null, 2));
 
-    fs.writeFileSync(path.join(dir, 'README.md'), `# ${name}\n\nAn MCP server scaffolded by MCP App Starter.\n\n## Setup\n\n\`\`\`bash\nnpm install\nnpm run build\n\`\`\`\n\n## Add to VS Code\n\nAdd to your \`.vscode/mcp.json\`:\n\n\`\`\`json\n{\n  "mcpServers": {\n    "${name}": { "type": "stdio", "command": "node", "args": ["dist/index.js"] }\n  }\n}\n\`\`\`\n`);
+    await fs.promises.writeFile(path.join(dir, 'README.md'), `# ${name}\n\nAn MCP server scaffolded by MCP App Starter.\n\n## Setup\n\n\`\`\`bash\nnpm install\nnpm run build\n\`\`\`\n\n## Add to VS Code\n\nAdd to your \`.vscode/mcp.json\`:\n\n\`\`\`json\n{\n  "mcpServers": {\n    "${name}": { "type": "stdio", "command": "node", "args": ["dist/index.js"] }\n  }\n}\n\`\`\`\n`);
 }
 
-function scaffoldJavaScript(dir: string, name: string): void {
-    fs.writeFileSync(path.join(dir, 'package.json'), JSON.stringify({
+async function scaffoldJavaScript(dir: string, name: string): Promise<void> {
+    await fs.promises.writeFile(path.join(dir, 'package.json'), JSON.stringify({
         name, version: '0.1.0', type: 'module', main: 'src/index.js',
         scripts: { start: 'node src/index.js' },
         dependencies: { '@modelcontextprotocol/sdk': '^1.0.0' }
     }, null, 2));
 
-    fs.writeFileSync(path.join(dir, 'src', 'index.js'), `import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+    await fs.promises.writeFile(path.join(dir, 'src', 'index.js'), `import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 
 const server = new Server({ name: '${name}', version: '1.0.0' }, { capabilities: { tools: {} } });
@@ -185,12 +184,12 @@ const transport = new StdioServerTransport();
 await server.connect(transport);
 console.error('${name} running');
 `);
-    fs.writeFileSync(path.join(dir, 'README.md'), `# ${name}\n\nMCP server (JavaScript).\n\n## Setup\n\n\`\`\`bash\nnpm install && node src/index.js\n\`\`\`\n`);
+    await fs.promises.writeFile(path.join(dir, 'README.md'), `# ${name}\n\nMCP server (JavaScript).\n\n## Setup\n\n\`\`\`bash\nnpm install && node src/index.js\n\`\`\`\n`);
 }
 
-function scaffoldPython(dir: string, name: string): void {
-    fs.writeFileSync(path.join(dir, 'requirements.txt'), 'mcp>=1.0.0\n');
-    fs.writeFileSync(path.join(dir, 'src', 'server.py'), `from mcp.server import Server
+async function scaffoldPython(dir: string, name: string): Promise<void> {
+    await fs.promises.writeFile(path.join(dir, 'requirements.txt'), 'mcp>=1.0.0\n');
+    await fs.promises.writeFile(path.join(dir, 'src', 'server.py'), `from mcp.server import Server
 from mcp.server.stdio import stdio_server
 from mcp import types
 
@@ -211,7 +210,7 @@ if __name__ == "__main__":
     import asyncio
     asyncio.run(stdio_server(server))
 `);
-    fs.writeFileSync(path.join(dir, 'README.md'), `# ${name}\n\nMCP server (Python).\n\n## Setup\n\n\`\`\`bash\npip install -r requirements.txt\npython src/server.py\n\`\`\`\n`);
+    await fs.promises.writeFile(path.join(dir, 'README.md'), `# ${name}\n\nMCP server (Python).\n\n## Setup\n\n\`\`\`bash\npip install -r requirements.txt\npython src/server.py\n\`\`\`\n`);
 }
 
 async function addTool(): Promise<void> {

@@ -99,7 +99,7 @@ async function doConvert(svgPath: string, pngPath: string, width: number): Promi
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const { Resvg } = require('@resvg/resvg-js');
 
-        const svgBuffer = fs.readFileSync(svgPath);
+        const svgBuffer = await fs.promises.readFile(svgPath);
         const opts: Record<string, unknown> = {
             font: {
                 loadSystemFonts: vscode.workspace.getConfiguration('svgToPng').get<boolean>('loadSystemFonts') ?? true
@@ -114,7 +114,7 @@ async function doConvert(svgPath: string, pngPath: string, width: number): Promi
         const pngData = resvg.render();
         const pngBuffer = pngData.asPng();
 
-        fs.writeFileSync(pngPath, pngBuffer);
+        await fs.promises.writeFile(pngPath, pngBuffer);
 
         const msg = `✅ ${path.basename(svgPath)} → ${path.basename(pngPath)} (${pngData.width}×${pngData.height})`;
         outputChannel.appendLine(msg);

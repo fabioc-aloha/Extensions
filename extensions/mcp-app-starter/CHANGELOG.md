@@ -1,5 +1,10 @@
 # Changelog — MCP App Starter
 
+## [0.1.7] — 2026-02-25
+
+### Changed
+- Refactored all synchronous file system operations to async (`fs.promises.mkdir`, `fs.promises.writeFile`, `fs.promises.access`) — eliminates blocking I/O in scaffold pipeline
+
 ## [0.1.6] — 2026-02-25
 
 ### Changed

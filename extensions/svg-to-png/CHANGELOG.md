@@ -11,3 +11,4 @@
 - Rust-powered rendering via `@resvg/resvg-js` for pixel-perfect output
 - Configurable default width and output path in extension settings
 - Progress notification with open-file link on completion
+- Async file I/O (`fs.promises.readFile` / `fs.promises.writeFile`) — non-blocking conversion pipeline
