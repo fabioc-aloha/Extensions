@@ -412,7 +412,7 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 | Hook Studio | `fabioc-aloha.hook-studio` | 0.1.6 | ✅ Published |
 | Knowledge Decay Tracker | `fabioc-aloha.knowledge-decay-tracker` | 0.1.4 | ✅ Published |
 | Markdown to Word | `fabioc-aloha.cx-markdown-to-word` | 0.1.0 | ✅ Published |
-| MCP App Starter | `fabioc-aloha.mcp-app-starter` | 0.1.6 | ✅ Published |
+| MCP App Starter | `fabioc-aloha.mcp-app-starter` | 0.1.7 | ✅ Published |
 | Mermaid Diagram Pro | `fabioc-aloha.mermaid-diagram-pro` | 0.1.0 | ✅ Published |
 | PPTX Builder | `fabioc-aloha.pptx-builder` | 0.1.0 | ✅ Published |
 | Replicate Image Studio | `fabioc-aloha.replicate-image-studio` | 0.1.0 | ✅ Published |
