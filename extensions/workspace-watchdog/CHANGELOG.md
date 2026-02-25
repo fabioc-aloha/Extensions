@@ -1,4 +1,11 @@
 # Changelog — CX Workspace Watchdog
+
+## [0.1.7] — 2026-02-25
+
+### Changed
+- Context menu submenu renamed to **🔷 CX Tools** (emoji label) for visual identity
+- README: added CX Tools Suite table with Marketplace links to all 16 extensions
+
 ## [0.1.6] — 2026-02-25
 
 ### Fixed

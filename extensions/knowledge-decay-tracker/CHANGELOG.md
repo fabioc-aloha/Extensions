@@ -1,5 +1,11 @@
 # Changelog — Knowledge Decay Tracker
 
+## [0.1.4] — 2026-02-25
+
+### Changed
+- Context menu submenu renamed to **🔷 CX Tools** (emoji label) for visual identity
+- README: added CX Tools Suite table with Marketplace links to all 16 extensions
+
 ## [0.1.3] — 2026-02-25
 
 ### Fixed

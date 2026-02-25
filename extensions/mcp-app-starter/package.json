@@ -2,7 +2,7 @@
   "name": "mcp-app-starter",
   "displayName": "MCP App Starter",
   "description": "Scaffold Model Context Protocol (MCP) servers for VS Code 1.109+ — no boilerplate, just code",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

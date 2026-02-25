@@ -2,7 +2,7 @@
   "name": "ai-voice-reader",
   "displayName": "AI Voice Reader",
   "description": "Text-to-speech for VS Code — read documents, selections, and notes aloud using your OS built-in TTS engine (no API key required)",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

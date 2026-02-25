@@ -1,5 +1,11 @@
 # Changelog — Hook Studio
 
+## [0.1.6] — 2026-02-25
+
+### Changed
+- Context menu submenu renamed to **🔷 CX Tools** (emoji label) for visual identity
+- README: added CX Tools Suite table with Marketplace links to all 16 extensions
+
 All notable changes to this extension will be documented here.
 
 ## [0.1.5] — 2026-02-24
