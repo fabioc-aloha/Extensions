@@ -552,6 +552,71 @@ MCP servers extend AI capabilities with external tools (Azure, GitHub, databases
 | `chat.useAgentsMdFile` | `true` | Use AGENTS.md |
 | `chat.mcp.gallery.enabled` | `true` | MCP tool access |
 
+## Async File System I/O
+
+All file system operations in extension command handlers should be async. Sync calls (`readFileSync`, `writeFileSync`, `existsSync`, `mkdirSync`, `statSync`) block the VS Code UI thread.
+
+### Conversion Reference
+
+| Sync (avoid) | Async (use) |
+|---|---|
+| `fs.existsSync(p)` | `try { await fs.promises.access(p) } catch { /* not found */ }` |
+| `fs.mkdirSync(p, { recursive: true })` | `await fs.promises.mkdir(p, { recursive: true })` |
+| `fs.writeFileSync(p, data)` | `await fs.promises.writeFile(p, data)` |
+| `fs.readFileSync(p)` | `await fs.promises.readFile(p)` |
+| `fs.statSync(p)` | `await fs.promises.stat(p)` |
+
+### The `existsSync` → `access` Idiom (Non-Obvious)
+
+`existsSync` has no direct async counterpart. The correct async equivalent:
+
+```typescript
+// ❌ Sync — blocks UI thread
+if (fs.existsSync(outputDir)) {
+    vscode.window.showErrorMessage('Already exists.');
+    return;
+}
+
+// ✅ Async — non-blocking
+try {
+    await fs.promises.access(outputDir);
+    // If we get here, it exists
+    vscode.window.showErrorMessage('Already exists.');
+    return;
+} catch {
+    // Does not exist — safe to proceed
+}
+```
+
+The reversed semantics (`access` succeeds = exists; throws = not found) is a common source of bugs.
+
+### Scaffold Functions Must Be `async`
+
+If a function calls `await fs.promises.*`, it must be `async` and callers must `await` it:
+
+```typescript
+// ❌ Sync scaffold called without await
+function scaffoldTypeScript(dir: string, name: string): void { ... }
+scaffoldTypeScript(outputDir, serverName); // fires-and-forgets!
+
+// ✅ Async scaffold properly awaited
+async function scaffoldTypeScript(dir: string, name: string): Promise<void> { ... }
+await scaffoldTypeScript(outputDir, serverName);
+```
+
+### Prefer `vscode.workspace.fs` for Workspace Files
+
+For files within the VS Code workspace, prefer the VS Code API over Node.js `fs.promises`:
+
+```typescript
+// For workspace files — workspace-aware, handles remote filesystems
+const bytes = await vscode.workspace.fs.readFile(uri);
+const stat = await vscode.workspace.fs.stat(uri);
+
+// For files outside workspace (scaffolding to arbitrary paths) — use fs.promises
+await fs.promises.writeFile(path.join(externalDir, 'package.json'), content);
+```
+
 ## Integration Audit Checklist
 
 **10-category audit scoring system** (5 points each, 50 total):
