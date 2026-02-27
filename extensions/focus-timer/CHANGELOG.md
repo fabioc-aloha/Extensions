@@ -1,5 +1,15 @@
 # Changelog — Focus Timer
 
+## [0.1.2] — 2026-02-27
+
+### Added
+- **Keyboard shortcuts** — `Ctrl+Shift+F` / `Cmd+Shift+F` to start a focus session; `Ctrl+Shift+P` / `Cmd+Shift+P` to pause/resume
+- **Session count badge** in status bar — shows `🍅×3` after completing sessions so you always know your progress
+- `Focus Timer: Reset Session Count` command to start fresh
+
+### Changed
+- Status bar label shortened to `Focus` when idle to reduce clutter; badge shows count
+
 ## [0.1.1] — 2026-03-01
 
 ### Fixed

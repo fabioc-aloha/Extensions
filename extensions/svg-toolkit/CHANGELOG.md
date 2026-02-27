@@ -1,5 +1,11 @@
 # Changelog — SVG Toolkit
 
+## [0.1.2] — 2026-02-27
+
+### Changed
+- Added **Visualization** category for correct Marketplace placement
+- Improved description and keywords (data URI, base64, svg preview, vector graphics)
+
 ## [0.1.1] — 2026-02-27
 
 ### Changed

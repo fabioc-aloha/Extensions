@@ -1,5 +1,10 @@
 # Changelog — MCP App Starter
 
+## [0.1.9] — 2026-02-27
+
+### Changed
+- Improved Marketplace description and keywords for better discoverability
+
 ## [0.1.8] — 2026-02-27
 
 ### Changed

@@ -1,5 +1,11 @@
 # Changelog — Markdown to Word
 
+## [0.1.1] — 2026-02-27
+
+### Changed
+- Category updated to **Formatters** for correct Marketplace placement alongside competing converters
+- Improved description and keywords (word document, docx export, markdown converter)
+
 ## [0.1.0] — 2026-02-24
 
 ### Added

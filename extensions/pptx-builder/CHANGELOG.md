@@ -1,5 +1,11 @@
 # Changelog — PPTX Builder
 
+## [0.1.2] — 2026-02-27
+
+### Changed
+- Added **Formatters** category for correct Marketplace placement
+- Improved description and keywords (markdown to pptx, speaker notes, office)
+
 ## [0.1.1] — 2026-02-27
 
 ### Changed

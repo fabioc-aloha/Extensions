@@ -1,8 +1,8 @@
 {
   "name": "pptx-builder",
   "displayName": "CX PPTX Builder",
-  "description": "Convert Markdown or structured YAML to PowerPoint (.pptx) presentations — layout templates, code slides, and speaker notes",
-  "version": "0.1.1",
+  "description": "Turn Markdown into PowerPoint (.pptx) presentations — each ## heading becomes a slide, with speaker notes and code blocks",
+  "version": "0.1.2",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -10,14 +10,20 @@
     "vscode": "^1.109.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Formatters"
   ],
   "keywords": [
     "powerpoint",
     "pptx",
     "presentation",
     "markdown",
-    "slides"
+    "slides",
+    "office",
+    "export",
+    "docx",
+    "speaker notes",
+    "markdown to pptx"
   ],
   "activationEvents": [
     "onLanguage:markdown",

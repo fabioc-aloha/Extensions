@@ -1,5 +1,10 @@
 # Changelog — Gamma Slide Assistant
 
+## [0.1.1] — 2026-02-27
+
+### Changed
+- Improved Marketplace description, keywords for better discoverability
+
 ## [0.1.0] — 2026-02-24
 
 ### Added

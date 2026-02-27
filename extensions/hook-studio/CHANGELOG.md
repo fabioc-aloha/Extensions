@@ -1,5 +1,10 @@
 # Changelog — Hook Studio
 
+## [0.1.8] — 2026-02-27
+
+### Changed
+- Improved Marketplace description and keywords for better discoverability (Copilot agent hooks, hooks.json, workflow automation)
+
 ## [0.1.7] — 2026-02-27
 
 ### Changed

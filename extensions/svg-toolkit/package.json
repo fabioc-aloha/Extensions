@@ -1,8 +1,8 @@
 {
   "name": "svg-toolkit",
   "displayName": "CX SVG Toolkit",
-  "description": "SVG utilities for VS Code — inline preview, optimize with SVGO, generate from templates, and copy as data URI",
-  "version": "0.1.1",
+  "description": "SVG tools in VS Code — inline preview, copy as data URI or Markdown, insert icon templates, validate SVG structure",
+  "version": "0.1.2",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -10,14 +10,20 @@
     "vscode": "^1.109.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Visualization"
   ],
   "keywords": [
     "svg",
     "icons",
     "optimize",
     "preview",
-    "graphics"
+    "graphics",
+    "data uri",
+    "base64",
+    "svg preview",
+    "vector graphics",
+    "icon templates"
   ],
   "activationEvents": [
     "onLanguage:xml"

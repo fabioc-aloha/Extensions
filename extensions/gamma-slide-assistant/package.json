@@ -1,8 +1,8 @@
 {
   "name": "gamma-slide-assistant",
   "displayName": "CX Gamma Slide Assistant",
-  "description": "Convert Markdown to beautiful presentations — Marp offline rendering with Gamma-inspired themes, or export to HTML/PDF",
-  "version": "0.1.0",
+  "description": "Markdown to presentation slides with Marp — export to HTML or PDF, live preview, starter templates, zero configuration",
+  "version": "0.1.1",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -17,7 +17,12 @@
     "slides",
     "marp",
     "markdown",
-    "gamma"
+    "gamma",
+    "html slides",
+    "pdf export",
+    "slideshow",
+    "marp-cli",
+    "markdown presentation"
   ],
   "activationEvents": [
     "onLanguage:markdown"

@@ -24,7 +24,13 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('focusTimer.stop', () => stop()),
         vscode.commands.registerCommand('focusTimer.pause', () => togglePause()),
         vscode.commands.registerCommand('focusTimer.startBreak', () => startBreak()),
-        vscode.commands.registerCommand('focusTimer.showHistory', () => showHistory())
+        vscode.commands.registerCommand('focusTimer.showHistory', () => showHistory()),
+        vscode.commands.registerCommand('focusTimer.resetSessions', () => {
+            sessionsCompleted = 0;
+            sessionHistory.length = 0;
+            updateStatusBar();
+            vscode.window.showInformationMessage('Focus Timer: Session count reset.');
+        })
     );
 
     outputChannel.appendLine('[Focus Timer] Activated.');
@@ -100,16 +106,20 @@ function togglePause(): void {
 
 function updateStatusBar(): void {
     if (!isRunning) {
-        statusBar.text = '$(clock) Focus Timer';
-        statusBar.tooltip = 'Click to start a focus session';
+        const badge = sessionsCompleted > 0 ? ` · 🍅×${sessionsCompleted}` : '';
+        statusBar.text = `$(clock) Focus${badge}`;
+        statusBar.tooltip = sessionsCompleted > 0
+            ? `Focus Timer — ${sessionsCompleted} session(s) completed. Click to start a new focus session.`
+            : 'Focus Timer — click to start a focus session (or use Ctrl+Shift+F)';
         return;
     }
     const m = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
     const s = (secondsLeft % 60).toString().padStart(2, '0');
     const icon = isBreak ? '$(coffee)' : '$(flame)';
     const paused = isPaused ? ' ⏸' : '';
-    statusBar.text = `${icon} ${m}:${s}${paused}`;
-    statusBar.tooltip = `${isBreak ? 'Break' : 'Focus'} — click to ${isPaused ? 'resume' : 'pause'}`;
+    const badge = sessionsCompleted > 0 ? ` 🍅×${sessionsCompleted}` : '';
+    statusBar.text = `${icon} ${m}:${s}${paused}${badge}`;
+    statusBar.tooltip = `${isBreak ? 'Break' : 'Focus'} — click to ${isPaused ? 'resume' : 'pause'}\nSessions completed: ${sessionsCompleted}`;
 }
 
 function showHistory(): void {

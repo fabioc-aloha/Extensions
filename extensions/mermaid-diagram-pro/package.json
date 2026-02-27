@@ -1,8 +1,8 @@
 {
   "name": "mermaid-diagram-pro",
   "displayName": "CX Mermaid Diagram Pro",
-  "description": "Enhanced Mermaid diagram support — live preview, PNG/SVG export, diagram templates, and syntax validation",
-  "version": "0.1.1",
+  "description": "In-editor Mermaid diagram preview, 11 templates, SVG/PNG export — no browser, no extra tools needed",
+  "version": "0.1.2",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -10,6 +10,7 @@
     "vscode": "^1.109.0"
   },
   "categories": [
+    "Visualization",
     "Other"
   ],
   "keywords": [
@@ -17,7 +18,15 @@
     "diagram",
     "flowchart",
     "uml",
-    "visualization"
+    "visualization",
+    "sequence diagram",
+    "gantt",
+    "preview",
+    "markdown",
+    "mindmap",
+    "er diagram",
+    "git graph",
+    "c4"
   ],
   "activationEvents": [
     "onLanguage:markdown"
@@ -27,7 +36,11 @@
     "commands": [
       {
         "command": "mermaidPro.preview",
-        "title": "Mermaid Pro: Preview at Cursor (Live Editor)"
+        "title": "Mermaid Pro: Preview Diagram (In-Editor)"
+      },
+      {
+        "command": "mermaidPro.openInBrowser",
+        "title": "Mermaid Pro: Open in Mermaid Live Editor"
       },
       {
         "command": "mermaidPro.exportSvg",
@@ -72,6 +85,11 @@
           "command": "mermaidPro.preview",
           "when": "resourceExtname == .md",
           "group": "navigation@1"
+        },
+        {
+          "command": "mermaidPro.openInBrowser",
+          "when": "resourceExtname == .md",
+          "group": "navigation@1b"
         },
         {
           "command": "mermaidPro.exportSvg",

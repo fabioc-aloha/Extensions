@@ -1,8 +1,8 @@
 {
   "name": "dev-wellbeing",
   "displayName": "CX Dev Wellbeing",
-  "description": "Healthy coding habits — posture reminders, eye strain breaks, hydration nudges, and session pacing",
-  "version": "0.1.1",
+  "description": "Status bar countdown to your next eye break, posture check, and hydration nudge — healthy coding habits built in",
+  "version": "0.1.2",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -17,7 +17,13 @@
     "health",
     "breaks",
     "pomodoro",
-    "ergonomics"
+    "ergonomics",
+    "eye strain",
+    "20-20-20",
+    "posture",
+    "hydration",
+    "productivity",
+    "developer health"
   ],
   "activationEvents": [
     "onStartupFinished"

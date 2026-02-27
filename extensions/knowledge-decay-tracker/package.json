@@ -1,8 +1,8 @@
 {
   "name": "knowledge-decay-tracker",
   "displayName": "CX Knowledge Decay Tracker",
-  "description": "Surface time-decayed knowledge in your codebase — find docs going stale before they mislead",
-  "version": "0.1.5",
+  "description": "Find stale documentation before it misleads — scan your codebase for knowledge decay with configurable half-life profiles",
+  "version": "0.1.6",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -17,7 +17,12 @@
     "decay",
     "knowledge",
     "staleness",
-    "maintenance"
+    "maintenance",
+    "stale docs",
+    "documentation quality",
+    "technical debt",
+    "knowledge management",
+    "doc hygiene"
   ],
   "activationEvents": [
     "onStartupFinished"

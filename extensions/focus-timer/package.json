@@ -1,8 +1,8 @@
 {
   "name": "cx-focus-timer",
   "displayName": "CX Focus Timer",
-  "description": "Pomodoro timer in the status bar — work sprints, break reminders, and session history",
-  "version": "0.1.1",
+  "description": "Pomodoro timer with keyboard shortcuts, session badge, and break history — stay in flow without leaving VS Code",
+  "version": "0.1.2",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -17,7 +17,11 @@
     "timer",
     "focus",
     "productivity",
-    "breaks"
+    "breaks",
+    "time management",
+    "work session",
+    "pomodoro technique",
+    "status bar"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -44,6 +48,24 @@
       {
         "command": "focusTimer.showHistory",
         "title": "Focus Timer: Show Session History"
+      },
+      {
+        "command": "focusTimer.resetSessions",
+        "title": "Focus Timer: Reset Session Count"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "focusTimer.start",
+        "key": "ctrl+shift+f",
+        "mac": "cmd+shift+f",
+        "when": "!focusTimer.running"
+      },
+      {
+        "command": "focusTimer.pause",
+        "key": "ctrl+shift+p",
+        "mac": "cmd+shift+p",
+        "when": "focusTimer.running"
       }
     ],
     "configuration": {

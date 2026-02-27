@@ -4,8 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
 
-let outputChannel: vscode.OutputChannel;
-
+let outputChannel: vscode.OutputChannel;let previewPanel: vscode.WebviewPanel | undefined;
 // ---------------------------------------------------------------------------
 // Diagram Templates — aligned with Alex's markdown-mermaid skill
 // ---------------------------------------------------------------------------
@@ -78,6 +77,8 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
         vscode.commands.registerCommand('mermaidPro.preview',
             () => previewAtCursor()),
+        vscode.commands.registerCommand('mermaidPro.openInBrowser',
+            () => openInBrowser()),
         vscode.commands.registerCommand('mermaidPro.exportSvg',
             () => exportDiagram('svg')),
         vscode.commands.registerCommand('mermaidPro.exportPng',
@@ -92,7 +93,22 @@ export function activate(context: vscode.ExtensionContext): void {
             () => copyDiagramSource())
     );
 
-    outputChannel.appendLine('[Mermaid Diagram Pro] Activated — 11 templates, SVG/PNG export via mmdc.');
+    // Auto-refresh preview panel when document changes
+    context.subscriptions.push(
+        vscode.workspace.onDidChangeTextDocument(e => {
+            if (previewPanel && vscode.window.activeTextEditor?.document === e.document) {
+                const editor = vscode.window.activeTextEditor;
+                if (editor) {
+                    const diagram = extractDiagramAtCursor(editor);
+                    if (diagram) {
+                        previewPanel.webview.html = getMermaidhtml(diagram, detectDiagramType(diagram));
+                    }
+                }
+            }
+        })
+    );
+
+    outputChannel.appendLine('[Mermaid Diagram Pro] Activated — 11 templates, in-editor preview, SVG/PNG export via mmdc.');
 }
 
 // ---------------------------------------------------------------------------
@@ -153,14 +169,112 @@ function previewAtCursor(): void {
     if (!editor) { return; }
     const diagram = extractDiagramAtCursor(editor);
     if (!diagram) {
+        vscode.window.showWarningMessage('No Mermaid diagram block found at cursor. Place cursor inside a ```mermaid block.');
+        return;
+    }
+    const type = detectDiagramType(diagram);
+
+    if (previewPanel) {
+        previewPanel.reveal(vscode.ViewColumn.Beside, true);
+    } else {
+        previewPanel = vscode.window.createWebviewPanel(
+            'mermaidPreview',
+            `Mermaid: ${type}`,
+            { viewColumn: vscode.ViewColumn.Beside, preserveFocus: true },
+            { enableScripts: true, retainContextWhenHidden: true }
+        );
+        previewPanel.onDidDispose(() => { previewPanel = undefined; });
+    }
+    previewPanel.title = `Mermaid: ${type}`;
+    previewPanel.webview.html = getMermaidhtml(diagram, type);
+}
+
+function openInBrowser(): void {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) { return; }
+    const diagram = extractDiagramAtCursor(editor);
+    if (!diagram) {
         vscode.window.showWarningMessage('No Mermaid diagram block found at cursor.');
         return;
     }
-    // Open Mermaid Live Editor with the diagram encoded
     const payload = JSON.stringify({ code: diagram, mermaid: { theme: 'default' } });
     const encoded = Buffer.from(payload).toString('base64');
     vscode.env.openExternal(vscode.Uri.parse(`https://mermaid.live/edit#base64:${encoded}`));
 }
+
+function getMermaidhtml(diagram: string, type: string): string {
+    const escaped = diagram
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 16px;
+      background: #1e1e1e;
+      display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .toolbar {
+      width: 100%; max-width: 900px; display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 12px;
+    }
+    .label { color: #9cdcfe; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .hint { color: #6a9955; font-size: 11px; }
+    #diagram-container {
+      background: white; border-radius: 8px; padding: 32px;
+      max-width: 900px; width: 100%; box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .mermaid { width: 100%; }
+    #error { color: #f44747; background: #2d1a1a; padding: 12px 16px; border-radius: 6px;
+      font-family: monospace; font-size: 13px; width: 100%; max-width: 900px;
+      margin-top: 12px; display: none; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span class="label">${type}</span>
+    <span class="hint">Edit the diagram in the editor — preview auto-refreshes</span>
+  </div>
+  <div id="diagram-container">
+    <div class="mermaid">${escaped}</div>
+  </div>
+  <div id="error"></div>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default',
+      securityLevel: 'loose',
+      fontFamily: 'Segoe UI, sans-serif'
+    });
+    async function render() {
+      const el = document.querySelector('.mermaid');
+      const errEl = document.getElementById('error');
+      try {
+        const id = 'mermaid-' + Date.now();
+        const { svg } = await mermaid.render(id, el.textContent.trim()
+          .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"'));
+        el.innerHTML = svg;
+        errEl.style.display = 'none';
+      } catch(e) {
+        errEl.textContent = 'Syntax error: ' + e.message;
+        errEl.style.display = 'block';
+      }
+    }
+    render();
+  </script>
+</body>
+</html>`;
+}
+
 
 async function exportDiagram(format: 'svg' | 'png'): Promise<void> {
     const editor = vscode.window.activeTextEditor;

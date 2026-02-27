@@ -1,8 +1,8 @@
 {
   "name": "hook-studio",
   "displayName": "CX Hook Studio",
-  "description": "Visual GUI for VS Code agent hooks — build, debug, and test hooks.json without reading docs.",
-  "version": "0.1.7",
+  "description": "Build, test, and debug VS Code agent hooks.json without reading docs — GUI editor for Copilot agent hooks",
+  "version": "0.1.8",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -18,7 +18,12 @@
     "agent",
     "copilot",
     "automation",
-    "hooks.json"
+    "hooks.json",
+    "vscode agent",
+    "copilot hooks",
+    "agent hooks",
+    "workflow automation",
+    "tool hooks"
   ],
   "repository": {
     "type": "git",

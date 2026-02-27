@@ -1,5 +1,13 @@
 # Changelog — CX SecretGuard
 
+## [0.1.5] — 2026-02-27
+
+### Added
+- **Real-time scanning as-you-type** — secrets are detected 600ms after you stop typing (configurable with `secretGuard.scanOnType`)
+- **Status bar badge** — shows `⚠️ N secrets` in the status bar when secrets are detected in the current file; turns red to alert you immediately
+- **`SecretGuard: Clear Findings for Current File`** command to suppress false positives
+- Active file scanned on extension activation
+
 ## [0.1.4] — 2026-02-25
 
 ### Changed

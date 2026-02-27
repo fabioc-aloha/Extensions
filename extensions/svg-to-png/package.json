@@ -1,8 +1,8 @@
 {
   "name": "svg-to-png",
   "displayName": "CX SVG to PNG",
-  "description": "Convert SVG files to pixel-perfect PNGs using resvg-js (Rust-based renderer) — right-click any SVG or run from command palette",
-  "version": "0.1.0",
+  "description": "Convert SVG to PNG with a right-click — Rust renderer (resvg), custom width, transparency, batch convert, and banner pipeline",
+  "version": "0.1.1",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -19,7 +19,11 @@
     "image",
     "resvg",
     "vector",
-    "rasterize"
+    "rasterize",
+    "svg converter",
+    "image conversion",
+    "batch convert",
+    "rust renderer"
   ],
   "activationEvents": [
     "onLanguage:xml",

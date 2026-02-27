@@ -2,42 +2,22 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "extensions/ai-voice-reader/CHANGELOG.md",
-    "extensions/ai-voice-reader/package.json",
-    "extensions/ai-voice-reader/src/extension.ts",
+    "extensions/brandfetch-logo-fetcher/CHANGELOG.md",
+    "extensions/brandfetch-logo-fetcher/package.json",
+    "extensions/dev-wellbeing/CHANGELOG.md",
+    "extensions/dev-wellbeing/package.json",
+    "extensions/dev-wellbeing/src/extension.ts",
     "extensions/focus-timer/CHANGELOG.md",
     "extensions/focus-timer/package.json",
     "extensions/focus-timer/src/extension.ts",
-    "extensions/replicate-image-studio/CHANGELOG.md",
-    "extensions/replicate-image-studio/package.json",
-    "extensions/workspace-watchdog/CHANGELOG.md"
+    "extensions/gamma-slide-assistant/CHANGELOG.md"
   ],
   "todoHotspots": [
     {
-      "file": "extensions/workspace-watchdog/package.json",
-      "todoCount": 2,
-      "scannedAt": 1772221915073
-    },
-    {
-      "file": "extensions/workspace-watchdog/src/extension.ts",
-      "todoCount": 2,
-      "scannedAt": 1772221915073
-    },
-    {
-      "file": "extensions/ai-voice-reader/ai-voice-reader-0.1.6.vsix",
+      "file": "extensions/hook-studio/hook-studio-0.1.8.vsix",
       "todoCount": 1,
-      "scannedAt": 1772221915073
-    },
-    {
-      "file": "extensions/workspace-watchdog/CHANGELOG.md",
-      "todoCount": 1,
-      "scannedAt": 1772221915073
-    },
-    {
-      "file": "shared/utils/fileObservations.ts",
-      "todoCount": 1,
-      "scannedAt": 1772221915073
+      "scannedAt": 1772223306935
     }
   ],
-  "lastUpdated": 1772221915073
+  "lastUpdated": 1772223306935
 }

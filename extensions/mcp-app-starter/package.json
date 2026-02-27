@@ -1,8 +1,8 @@
 {
   "name": "mcp-app-starter",
   "displayName": "CX MCP App Starter",
-  "description": "Scaffold Model Context Protocol (MCP) servers for VS Code 1.109+ — no boilerplate, just code",
-  "version": "0.1.8",
+  "description": "Scaffold Model Context Protocol (MCP) servers for Copilot agents — zero boilerplate, TypeScript-first, ready to publish",
+  "version": "0.1.9",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

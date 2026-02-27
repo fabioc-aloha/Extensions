@@ -1,5 +1,10 @@
 # Changelog — Knowledge Decay Tracker
 
+## [0.1.6] — 2026-02-27
+
+### Changed
+- Improved Marketplace description and keywords (stale docs, documentation quality, technical debt)
+
 ## [0.1.5] — 2026-02-27
 
 ### Changed

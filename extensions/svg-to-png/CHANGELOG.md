@@ -1,5 +1,10 @@
 # Changelog — SVG to PNG
 
+## [0.1.1] — 2026-02-27
+
+### Changed
+- Improved description and keywords (batch convert, rust renderer, image conversion)
+
 ## [0.1.0] — 2026-02-24
 
 ### Added

@@ -1,5 +1,12 @@
 # Changelog — Dev Wellbeing
 
+## [0.1.2] — 2026-02-27
+
+### Added
+- **Status bar countdown** — shows minutes until your next reminder (e.g. `♥️ 18m`). Hover to see eye break, posture, and hydration times individually.
+- Status bar click opens Session Stats
+- Countdown refreshes every 30 seconds
+
 ## [0.1.1] — 2026-02-27
 
 ### Changed

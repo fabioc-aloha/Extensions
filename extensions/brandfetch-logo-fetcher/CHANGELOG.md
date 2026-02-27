@@ -1,5 +1,10 @@
 # Changelog — Brandfetch Logo Fetcher
 
+## [0.1.5] — 2026-02-27
+
+### Changed
+- Improved Marketplace description and keywords for better discoverability
+
 ## [0.1.4] — 2026-02-27
 
 ### Changed
