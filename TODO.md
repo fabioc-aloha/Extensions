@@ -5,7 +5,11 @@
 
 ---
 
-## 🚨 Open — Security (P3)
+## � Open — Technical Debt
+
+- [ ] **[P2]** `cx-focus-timer`: keyboard shortcut `when` clauses (`focusTimer.running`) never activate because `setContext` calls are missing in `startTimer()`/`stopTimer()`. Add `vscode.commands.executeCommand('setContext', 'focusTimer.running', true/false)` to start/pause handlers and initialize to `false` in `activate()`. See vscode-extension-patterns skill: `setContext for when clauses`.
+
+## �🚨 Open — Security (P3)
 
 - [ ] **[P3]** Upgrade `eslint` to v10 to fix 5 high-severity `minimatch` ReDoS vulnerabilities (`@vscode/vsce` + `eslint` dev deps only — not user-facing)
 

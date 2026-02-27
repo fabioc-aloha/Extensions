@@ -617,6 +617,159 @@ const stat = await vscode.workspace.fs.stat(uri);
 await fs.promises.writeFile(path.join(externalDir, 'package.json'), content);
 ```
 
+## CDN WebviewPanel with Auto-Refresh
+
+**Pattern**: Create an in-editor panel that renders CDN-loaded libraries (e.g., mermaid.js, chart.js), persisting across re-opens and auto-refreshing on document edits.
+
+```typescript
+// Module-level panel variable — persist across commands
+let previewPanel: vscode.WebviewPanel | undefined;
+
+function showPreview(content: string): void {
+    if (previewPanel) {
+        // Reuse existing panel, reveal it
+        previewPanel.reveal(vscode.ViewColumn.Beside);
+        previewPanel.webview.html = getHtml(content);
+        return;
+    }
+    previewPanel = vscode.window.createWebviewPanel(
+        'myPreview',
+        'My Preview',
+        vscode.ViewColumn.Beside,
+        { enableScripts: true }
+    );
+    previewPanel.webview.html = getHtml(content);
+    previewPanel.onDidDispose(() => { previewPanel = undefined; });
+}
+
+function getHtml(content: string): string {
+    // HTML-entity-escape user content before injection!
+    const safe = content.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return `<!DOCTYPE html><html><head>
+        <meta http-equiv="Content-Security-Policy"
+              content="default-src 'none'; script-src https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'unsafe-inline';">
+    </head><body>
+        <div id="output"></div>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+        <script>
+            mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+            document.getElementById('output').innerHTML = '\`\`\`mermaid\n${safe}\n\`\`\`';
+            mermaid.run();
+        </script>
+    </body></html>`;
+}
+
+// In activate(): auto-refresh open panel on document change
+vscode.workspace.onDidChangeTextDocument(event => {
+    if (previewPanel && event.document === vscode.window.activeTextEditor?.document) {
+        previewPanel.webview.html = getHtml(extractContent(event.document));
+    }
+});
+```
+
+**Key rules**:
+- Always HTML-entity-escape user content before injecting into HTML strings
+- `onDidDispose` → set module var to `undefined` to allow re-creation
+- CSP `script-src https://cdn.jsdelivr.net 'unsafe-inline'` required for CDN + inline init script
+- Use `ViewColumn.Beside` to open beside editor, not replacing it
+
+## Status Bar Warning Badge
+
+**Pattern**: Status bar item that changes appearance (warning background) based on state — used for live error/secret counts.
+
+```typescript
+// Create once in activate()
+const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+statusBar.command = 'myExt.openPanel';
+statusBar.show();
+context.subscriptions.push(statusBar);
+
+function updateStatusBar(issueCount: number): void {
+    if (issueCount === 0) {
+        statusBar.text = '$(shield) MyExt';
+        statusBar.backgroundColor = undefined;          // Reset to default
+        statusBar.tooltip = 'No issues found';
+    } else {
+        statusBar.text = `$(warning) ${issueCount} issues`;
+        statusBar.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
+        statusBar.tooltip = `${issueCount} issues detected. Click to view.`;
+    }
+}
+```
+
+**ThemeColor tokens for status bar backgrounds**:
+| Token | Use Case |
+|---|---|
+| `statusBarItem.warningBackground` | Caution / findings |
+| `statusBarItem.errorBackground` | Errors / critical |
+| `statusBarItem.prominentBackground` | Active / running state |
+
+**Pattern for countdowns** (e.g., timer, next reminder):
+```typescript
+// Show minutes remaining, refresh every 30s
+const refreshInterval = setInterval(() => updateStatusBar(), 30_000);
+// In deactivate / stopMonitoring: clearInterval(refreshInterval)
+statusBar.text = `$(heart) ${minutesRemaining}m`;
+statusBar.tooltip = `Next eye break: 18m\nNext posture: 42m\nNext hydration: 55m`;
+```
+
+## `setContext` for Keyboard Shortcut `when` Clauses
+
+**Problem**: Defining keybindings with `when: myExt.running == true` in `package.json` does nothing unless the extension explicitly sets that context key via `executeCommand('setContext', ...)`.
+
+```typescript
+// ❌ BROKEN — keybinding `when` clause never activates
+// package.json: { "when": "focusTimer.running == true" }
+// (context key is never set, so shortcut is always inactive)
+
+// ✅ CORRECT — call setContext when state changes
+async function startTimer(): Promise<void> {
+    isRunning = true;
+    await vscode.commands.executeCommand('setContext', 'focusTimer.running', true);
+    // ... start timer logic
+}
+
+async function stopTimer(): Promise<void> {
+    isRunning = false;
+    await vscode.commands.executeCommand('setContext', 'focusTimer.running', false);
+    // ... stop timer logic
+}
+
+// Also set initial state in activate()
+export function activate(context: vscode.ExtensionContext): void {
+    vscode.commands.executeCommand('setContext', 'focusTimer.running', false);
+    // ...
+}
+```
+
+**Rule**: Every `when` clause context key in `package.json` keybindings/menus MUST have a corresponding `setContext` call in the extension. Without it, the condition is never true.
+
+## Marketplace Discoverability Formula
+
+Order of impact (highest → lowest) for search ranking and install conversion:
+
+1. **Category correctness** — Wrong category = invisible to filtered searches
+   - `Formatters` for document conversion tools (markdown→word, pptx builders)
+   - `Visualization` for diagram/chart tools (mermaid, svg)
+   - `Linters` for code analysis tools (secret scanners)
+   - Multiple categories allowed: `["Formatters", "Other"]`
+
+2. **Keyword count** — Use all 10-12 slots; include synonyms and problem-statement terms
+   ```json
+   // ❌ Too few: ["mermaid", "diagram"]
+   // ✅ Rich: ["mermaid","diagram","flowchart","sequence diagram","ERD","class diagram",
+   //            "UML","graph","visualization","preview","chart","plantuml"]
+   ```
+
+3. **Description benefit framing** — Lead with the user benefit, not the feature name
+   ```json
+   // ❌ Feature-first: "Mermaid diagram renderer for VS Code"
+   // ✅ Benefit-first: "Preview Mermaid diagrams live inside VS Code — flowcharts,
+   //                    sequence diagrams, ERDs, and more without leaving your editor"
+   ```
+
+4. **Rate limit awareness**: ≤4 **new** extension publishes per 12-hour window. Patch versions on existing extensions are not rate-limited.
+
 ## Integration Audit Checklist
 
 **10-category audit scoring system** (5 points each, 50 total):

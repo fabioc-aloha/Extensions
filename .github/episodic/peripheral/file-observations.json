@@ -2,22 +2,19 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
-    "extensions/brandfetch-logo-fetcher/CHANGELOG.md",
-    "extensions/brandfetch-logo-fetcher/package.json",
-    "extensions/dev-wellbeing/CHANGELOG.md",
-    "extensions/dev-wellbeing/package.json",
-    "extensions/dev-wellbeing/src/extension.ts",
-    "extensions/focus-timer/CHANGELOG.md",
-    "extensions/focus-timer/package.json",
-    "extensions/focus-timer/src/extension.ts",
-    "extensions/gamma-slide-assistant/CHANGELOG.md"
+    "TODO.md"
   ],
   "todoHotspots": [
     {
+      "file": "TODO.md",
+      "todoCount": 1,
+      "scannedAt": 1772224161856
+    },
+    {
       "file": "extensions/hook-studio/hook-studio-0.1.8.vsix",
       "todoCount": 1,
-      "scannedAt": 1772223306935
+      "scannedAt": 1772224161856
     }
   ],
-  "lastUpdated": 1772223306935
+  "lastUpdated": 1772224161856
 }
