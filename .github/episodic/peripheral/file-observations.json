@@ -2,16 +2,16 @@
   "hotFiles": [],
   "stalledFiles": [
     "github/episodic/peripheral/file-observations.json",
+    "AUDIT-REPORT.md",
     "TEST-GUIDE.md",
-    "TEST-GUIDE.docx",
-    "~$ST-GUIDE.docx"
+    "extensions/ai-voice-reader/CHANGELOG.md",
+    "extensions/ai-voice-reader/package.json",
+    "extensions/brandfetch-logo-fetcher/CHANGELOG.md",
+    "extensions/brandfetch-logo-fetcher/package.json",
+    "extensions/dev-wellbeing/CHANGELOG.md",
+    "extensions/dev-wellbeing/package.json",
+    "extensions/gamma-slide-assistant/package.json"
   ],
-  "todoHotspots": [
-    {
-      "file": "extensions/workspace-watchdog/CHANGELOG.md",
-      "todoCount": 1,
-      "scannedAt": 1772030085750
-    }
-  ],
-  "lastUpdated": 1772030085750
+  "todoHotspots": [],
+  "lastUpdated": 1772221521306
 }

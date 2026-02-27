@@ -28,7 +28,11 @@
     "commands": [
       {
         "command": "markdownToWord.convert",
-        "title": "Markdown to Word: Convert Current File"
+        "title": "Markdown to Word: Convert (auto-detect Mermaid)"
+      },
+      {
+        "command": "markdownToWord.convertWithMermaid",
+        "title": "Markdown to Word: Convert with Mermaid Pre-render"
       },
       {
         "command": "markdownToWord.convertWithOptions",
@@ -41,6 +45,10 @@
       {
         "command": "markdownToWord.checkPandoc",
         "title": "Markdown to Word: Check Pandoc Installation"
+      },
+      {
+        "command": "markdownToWord.checkMermaid",
+        "title": "Markdown to Word: Check Mermaid CLI (mmdc)"
       }
     ],
     "menus": {
@@ -63,18 +71,27 @@
           "group": "navigation@1"
         },
         {
-          "command": "markdownToWord.convertWithOptions",
+          "command": "markdownToWord.convertWithMermaid",
           "when": "resourceExtname == .md",
           "group": "navigation@2"
         },
         {
-          "command": "markdownToWord.preview",
+          "command": "markdownToWord.convertWithOptions",
           "when": "resourceExtname == .md",
           "group": "navigation@3"
         },
         {
+          "command": "markdownToWord.preview",
+          "when": "resourceExtname == .md",
+          "group": "navigation@4"
+        },
+        {
           "command": "markdownToWord.checkPandoc",
           "group": "7_modification@1"
+        },
+        {
+          "command": "markdownToWord.checkMermaid",
+          "group": "7_modification@2"
         }
       ]
     },
@@ -91,10 +108,21 @@
           "default": "",
           "description": "Path to reference .docx for styling"
         },
-        "markdownToWord.renderMermaid": {
-          "type": "boolean",
-          "default": true,
-          "description": "Render Mermaid diagrams as images"
+        "markdownToWord.mmdcPath": {
+          "type": "string",
+          "default": "mmdc",
+          "description": "Path to mermaid-cli (mmdc) executable. Install: npm install -g @mermaid-js/mermaid-cli"
+        },
+        "markdownToWord.mermaidTheme": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "neutral",
+            "dark",
+            "forest"
+          ],
+          "description": "Mermaid diagram rendering theme"
         }
       }
     },

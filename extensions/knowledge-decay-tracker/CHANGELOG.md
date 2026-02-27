@@ -1,5 +1,10 @@
 # Changelog — Knowledge Decay Tracker
 
+## [0.1.5] — 2026-02-27
+
+### Changed
+- Display name updated to **CX Knowledge Decay Tracker** for consistent CX brand identity
+
 ## [0.1.4] — 2026-02-25
 
 ### Changed

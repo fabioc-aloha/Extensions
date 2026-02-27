@@ -1,5 +1,10 @@
 # Changelog — Brandfetch Logo Fetcher
 
+## [0.1.4] — 2026-02-27
+
+### Changed
+- Display name updated to **CX Brandfetch Logo Fetcher** for consistent CX brand identity
+
 ## [0.1.3] — 2026-02-25
 
 ### Changed

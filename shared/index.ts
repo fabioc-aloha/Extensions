@@ -9,5 +9,5 @@ export { FileObservationStore, type FileObservation, type ObservationStore, type
 export { SecretScanner, SECRET_PATTERNS, type SecretSeverity, type SecretPattern, type SecretFinding, type ScanOptions } from './utils/secretScanner';
 
 // API Clients
-export { ReplicateClient, type ReplicateInput, type ReplicatePrediction, type SupportedModel } from './api/replicate';
+export { ReplicateClient, MODEL_CATALOG, selectModelForPrompt, type ReplicateInput, type ReplicatePrediction, type SupportedModel, type ReplicateModelInfo } from './api/replicate';
 export { BrandfetchClient, type LogoResult, type InsertFormat } from './api/brandfetch';

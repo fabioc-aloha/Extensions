@@ -1,8 +1,8 @@
 {
   "name": "replicate-image-studio",
-  "displayName": "Replicate Image Studio",
+  "displayName": "CX Replicate Image Studio",
   "description": "Generate images inside VS Code using Replicate AI models — Flux, SDXL, WAN video generation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -32,11 +32,19 @@
     "commands": [
       {
         "command": "replicateStudio.generate",
-        "title": "Replicate: Generate Image"
+        "title": "Replicate: Generate Image (Choose Model)"
+      },
+      {
+        "command": "replicateStudio.generateSmart",
+        "title": "Replicate: Smart Generate (Auto-select Model)"
+      },
+      {
+        "command": "replicateStudio.generateBanner",
+        "title": "Replicate: Generate README Banner"
       },
       {
         "command": "replicateStudio.generateVideo",
-        "title": "Replicate: Generate Video (WAN)"
+        "title": "Replicate: Generate Video (WAN 2.1)"
       },
       {
         "command": "replicateStudio.setApiKey",
@@ -49,6 +57,10 @@
       {
         "command": "replicateStudio.insertMarkdown",
         "title": "Replicate: Insert Last Image as Markdown"
+      },
+      {
+        "command": "replicateStudio.saveToFile",
+        "title": "Replicate: Save Last Image to File"
       }
     ],
     "menus": {
@@ -60,19 +72,34 @@
       ],
       "cx.tools": [
         {
-          "command": "replicateStudio.generate",
+          "command": "replicateStudio.generateSmart",
           "when": "editorFocus",
           "group": "navigation@1"
         },
         {
-          "command": "replicateStudio.generateVideo",
+          "command": "replicateStudio.generate",
           "when": "editorFocus",
           "group": "navigation@2"
         },
         {
-          "command": "replicateStudio.insertMarkdown",
+          "command": "replicateStudio.generateBanner",
           "when": "resourceExtname == .md",
           "group": "navigation@3"
+        },
+        {
+          "command": "replicateStudio.generateVideo",
+          "when": "editorFocus",
+          "group": "navigation@4"
+        },
+        {
+          "command": "replicateStudio.insertMarkdown",
+          "when": "resourceExtname == .md",
+          "group": "navigation@5"
+        },
+        {
+          "command": "replicateStudio.saveToFile",
+          "when": "editorFocus",
+          "group": "navigation@6"
         },
         {
           "command": "replicateStudio.viewHistory",

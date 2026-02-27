@@ -1,5 +1,10 @@
 # Changelog — MCP App Starter
 
+## [0.1.8] — 2026-02-27
+
+### Changed
+- Display name updated to **CX MCP App Starter** for consistent CX brand identity
+
 ## [0.1.7] — 2026-02-25
 
 ### Changed

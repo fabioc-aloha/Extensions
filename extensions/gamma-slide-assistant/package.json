@@ -1,6 +1,6 @@
 {
   "name": "gamma-slide-assistant",
-  "displayName": "Gamma Slide Assistant",
+  "displayName": "CX Gamma Slide Assistant",
   "description": "Convert Markdown to beautiful presentations — Marp offline rendering with Gamma-inspired themes, or export to HTML/PDF",
   "version": "0.1.0",
   "publisher": "fabioc-aloha",

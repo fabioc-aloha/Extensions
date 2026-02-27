@@ -1,5 +1,10 @@
 # Changelog — PPTX Builder
 
+## [0.1.1] — 2026-02-27
+
+### Changed
+- Display name updated to **CX PPTX Builder** for consistent CX brand identity
+
 ## [0.1.0] — 2026-02-24
 
 ### Added

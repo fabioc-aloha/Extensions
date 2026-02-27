@@ -1,5 +1,10 @@
 # Changelog — Hook Studio
 
+## [0.1.7] — 2026-02-27
+
+### Changed
+- Display name updated to **CX Hook Studio** for consistent CX brand identity
+
 ## [0.1.6] — 2026-02-25
 
 ### Changed

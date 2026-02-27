@@ -1,6 +1,6 @@
 {
   "name": "svg-to-png",
-  "displayName": "SVG to PNG",
+  "displayName": "CX SVG to PNG",
   "description": "Convert SVG files to pixel-perfect PNGs using resvg-js (Rust-based renderer) — right-click any SVG or run from command palette",
   "version": "0.1.0",
   "publisher": "fabioc-aloha",
@@ -24,7 +24,9 @@
   "activationEvents": [
     "onLanguage:xml",
     "onCommand:svgToPng.convert",
-    "onCommand:svgToPng.convertBatch"
+    "onCommand:svgToPng.convertBatch",
+    "onCommand:svgToPng.generateBanners",
+    "onCommand:svgToPng.convertTransparent"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -39,7 +41,15 @@
       },
       {
         "command": "svgToPng.convertWithWidth",
-        "title": "SVG to PNG: Convert SVG at Custom Width"
+        "title": "SVG to PNG: Convert at Custom Width"
+      },
+      {
+        "command": "svgToPng.generateBanners",
+        "title": "SVG to PNG: Generate All Extension Banners (1280px)"
+      },
+      {
+        "command": "svgToPng.convertTransparent",
+        "title": "SVG to PNG: Convert with Transparent Background"
       }
     ],
     "menus": {
@@ -67,9 +77,18 @@
           "group": "1_modification@2"
         },
         {
-          "command": "svgToPng.convertBatch",
+          "command": "svgToPng.convertTransparent",
           "when": "resourceExtname == .svg",
           "group": "1_modification@3"
+        },
+        {
+          "command": "svgToPng.convertBatch",
+          "when": "resourceExtname == .svg",
+          "group": "1_modification@4"
+        },
+        {
+          "command": "svgToPng.generateBanners",
+          "group": "1_modification@5"
         }
       ]
     },

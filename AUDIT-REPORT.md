@@ -1,6 +1,6 @@
 # Extensions Monorepo — Audit Report
 
-**Date**: February 25, 2026
+**Date**: February 27, 2026
 **Scope**: 16 extensions | **Auditor**: Alex
 **Publisher**: `fabioc-aloha`
 
@@ -26,21 +26,21 @@
 
 | Extension | Version | Published |
 |---|:---:|:---:|
-| ai-voice-reader | 0.1.4 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
-| brandfetch-logo-fetcher | 0.1.3 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
-| dev-wellbeing | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
+| ai-voice-reader | 0.1.5 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
+| brandfetch-logo-fetcher | 0.1.4 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
+| dev-wellbeing | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
 | focus-timer | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
-| gamma-slide-assistant | 0.1.0 | ⏳ Rate-limited — pending |
-| hook-studio | 0.1.6 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |
-| knowledge-decay-tracker | 0.1.4 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker) |
+| gamma-slide-assistant | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
+| hook-studio | 0.1.7 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |
+| knowledge-decay-tracker | 0.1.5 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker) |
 | markdown-to-word | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word) |
-| mcp-app-starter | 0.1.7 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter) |
-| mermaid-diagram-pro | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro) |
-| pptx-builder | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder) |
-| replicate-image-studio | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio) |
+| mcp-app-starter | 0.1.8 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter) |
+| mermaid-diagram-pro | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro) |
+| pptx-builder | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder) |
+| replicate-image-studio | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio) |
 | secret-guard | 0.1.4 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard) |
-| svg-to-png | 0.1.0 | ⏳ Rate-limited — pending |
-| svg-toolkit | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-toolkit) |
+| svg-to-png | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-to-png) |
+| svg-toolkit | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-toolkit) |
 | workspace-watchdog | 0.1.7 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog) |
 
 ---
@@ -107,7 +107,7 @@ All file system calls across all 16 extensions use async APIs (`fs.promises.*`, 
 
 **70 / 70 commands structurally verified.** Source handlers and `package.json` declarations are in perfect sync across all 16 extensions.
 
-Runtime smoke testing is covered in [TEST-GUIDE.md](TEST-GUIDE.md) — 14 extensions available on Marketplace for live install testing.
+Runtime smoke testing is covered in [TEST-GUIDE.md](TEST-GUIDE.md) — 16/16 extensions available on Marketplace for live install testing.
 
 ---
 
@@ -174,7 +174,7 @@ Shared library: 0 TypeScript errors
 
 ## Notes
 
-- Marketplace rate limit (~7 new extension creations per 12h window) — `gamma-slide-assistant` and `svg-to-png` are pending publish after rate limit reset.
+- All 16 extensions use `CX ` display name prefix for brand identity (e.g. **CX Hook Studio**, **CX AI Voice Reader**).
+- 4 extensions use `cx-` in their Marketplace ID (focus-timer, markdown-to-word, secret-guard, workspace-watchdog) due to name collisions at first publish.
 - `svg-to-png` uses `resvg-js` (Rust renderer) for all SVG→PNG conversion — never ImageMagick (corrupts gradients/paths).
-- All 14 published extensions include the 🔷 CX Tools Suite cross-promotion table in their READMEs.
-- All 14 context-menu extensions use `🔷 CX Tools` submenu label (emoji in label; SVG icon not supported on `contributes.submenus`).
+- All 16/16 extensions are live on the Marketplace as of Feb 27, 2026.

@@ -404,21 +404,21 @@ All 14 extensions with context menu contributions share a unified **CX Tools** s
 
 | Extension | Publisher ID | Version | Status |
 |-----------|-------------|---------|--------|
-| AI Voice Reader | `fabioc-aloha.ai-voice-reader` | 0.1.4 | ✅ Published |
-| Brandfetch Logo Fetcher | `fabioc-aloha.brandfetch-logo-fetcher` | 0.1.3 | ✅ Published |
-| Dev Wellbeing | `fabioc-aloha.dev-wellbeing` | 0.1.0 | ✅ Published |
+| AI Voice Reader | `fabioc-aloha.ai-voice-reader` | 0.1.5 | ✅ Published |
+| Brandfetch Logo Fetcher | `fabioc-aloha.brandfetch-logo-fetcher` | 0.1.4 | ✅ Published |
+| Dev Wellbeing | `fabioc-aloha.dev-wellbeing` | 0.1.1 | ✅ Published |
 | Focus Timer | `fabioc-aloha.cx-focus-timer` | 0.1.0 | ✅ Published |
-| Gamma Slide Assistant | `fabioc-aloha.gamma-slide-assistant` | 0.1.0 | ✅ Local · ⏳ Rate-limited |
-| Hook Studio | `fabioc-aloha.hook-studio` | 0.1.6 | ✅ Published |
-| Knowledge Decay Tracker | `fabioc-aloha.knowledge-decay-tracker` | 0.1.4 | ✅ Published |
+| Gamma Slide Assistant | `fabioc-aloha.gamma-slide-assistant` | 0.1.0 | ✅ Published |
+| Hook Studio | `fabioc-aloha.hook-studio` | 0.1.7 | ✅ Published |
+| Knowledge Decay Tracker | `fabioc-aloha.knowledge-decay-tracker` | 0.1.5 | ✅ Published |
 | Markdown to Word | `fabioc-aloha.cx-markdown-to-word` | 0.1.0 | ✅ Published |
-| MCP App Starter | `fabioc-aloha.mcp-app-starter` | 0.1.7 | ✅ Published |
-| Mermaid Diagram Pro | `fabioc-aloha.mermaid-diagram-pro` | 0.1.0 | ✅ Published |
-| PPTX Builder | `fabioc-aloha.pptx-builder` | 0.1.0 | ✅ Published |
-| Replicate Image Studio | `fabioc-aloha.replicate-image-studio` | 0.1.0 | ✅ Published |
+| MCP App Starter | `fabioc-aloha.mcp-app-starter` | 0.1.8 | ✅ Published |
+| Mermaid Diagram Pro | `fabioc-aloha.mermaid-diagram-pro` | 0.1.1 | ✅ Published |
+| PPTX Builder | `fabioc-aloha.pptx-builder` | 0.1.1 | ✅ Published |
+| Replicate Image Studio | `fabioc-aloha.replicate-image-studio` | 0.1.1 | ✅ Published |
 | SecretGuard | `fabioc-aloha.cx-secret-guard` | 0.1.4 | ✅ Published |
-| SVG To PNG | `fabioc-aloha.svg-to-png` | 0.1.0 | ✅ Local · ⏳ Rate-limited |
-| SVG Toolkit | `fabioc-aloha.svg-toolkit` | 0.1.0 | ✅ Published |
+| SVG To PNG | `fabioc-aloha.svg-to-png` | 0.1.0 | ✅ Published |
+| SVG Toolkit | `fabioc-aloha.svg-toolkit` | 0.1.1 | ✅ Published |
 | Workspace Watchdog | `fabioc-aloha.cx-workspace-watchdog` | 0.1.7 | ✅ Published |
 
 ---

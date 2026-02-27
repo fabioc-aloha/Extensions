@@ -1,8 +1,8 @@
 {
   "name": "mermaid-diagram-pro",
-  "displayName": "Mermaid Diagram Pro",
+  "displayName": "CX Mermaid Diagram Pro",
   "description": "Enhanced Mermaid diagram support — live preview, PNG/SVG export, diagram templates, and syntax validation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -27,11 +27,15 @@
     "commands": [
       {
         "command": "mermaidPro.preview",
-        "title": "Mermaid Pro: Preview Diagram at Cursor"
+        "title": "Mermaid Pro: Preview at Cursor (Live Editor)"
       },
       {
         "command": "mermaidPro.exportSvg",
-        "title": "Mermaid Pro: Export as SVG"
+        "title": "Mermaid Pro: Export as SVG (via mmdc)"
+      },
+      {
+        "command": "mermaidPro.exportPng",
+        "title": "Mermaid Pro: Export as PNG (via mmdc)"
       },
       {
         "command": "mermaidPro.insertTemplate",
@@ -40,6 +44,14 @@
       {
         "command": "mermaidPro.validateAll",
         "title": "Mermaid Pro: Validate All Diagrams in File"
+      },
+      {
+        "command": "mermaidPro.extractDiagram",
+        "title": "Mermaid Pro: Extract Diagram to .mmd File"
+      },
+      {
+        "command": "mermaidPro.copySource",
+        "title": "Mermaid Pro: Copy Diagram Source"
       }
     ],
     "menus": {
@@ -67,16 +79,58 @@
           "group": "navigation@2"
         },
         {
-          "command": "mermaidPro.insertTemplate",
+          "command": "mermaidPro.exportPng",
           "when": "resourceExtname == .md",
           "group": "navigation@3"
         },
         {
-          "command": "mermaidPro.validateAll",
+          "command": "mermaidPro.insertTemplate",
           "when": "resourceExtname == .md",
           "group": "navigation@4"
+        },
+        {
+          "command": "mermaidPro.copySource",
+          "when": "resourceExtname == .md",
+          "group": "navigation@5"
+        },
+        {
+          "command": "mermaidPro.extractDiagram",
+          "when": "resourceExtname == .md",
+          "group": "navigation@6"
+        },
+        {
+          "command": "mermaidPro.validateAll",
+          "when": "resourceExtname == .md",
+          "group": "7_modification@1"
         }
       ]
+    },
+    "configuration": {
+      "title": "Mermaid Diagram Pro",
+      "properties": {
+        "mermaidPro.mmdcPath": {
+          "type": "string",
+          "default": "mmdc",
+          "description": "Path to mermaid-cli (mmdc). Install: npm install -g @mermaid-js/mermaid-cli"
+        },
+        "mermaidPro.theme": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "neutral",
+            "dark",
+            "forest",
+            "base"
+          ],
+          "description": "Mermaid rendering theme for export"
+        },
+        "mermaidPro.pngBackground": {
+          "type": "string",
+          "default": "white",
+          "description": "PNG export background colour (e.g. 'white', 'transparent', '#1a1a2e')"
+        }
+      }
     },
     "submenus": [
       {

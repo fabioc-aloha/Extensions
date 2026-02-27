@@ -4,6 +4,9 @@ import * as path from 'path';
 
 let outputChannel: vscode.OutputChannel;
 
+/** Standard banner dimensions for VS Code Marketplace extension banners */
+const BANNER_WIDTH = 1280;
+
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('SVG to PNG');
     context.subscriptions.push(outputChannel);
@@ -17,13 +20,19 @@ export function activate(context: vscode.ExtensionContext): void {
         ),
         vscode.commands.registerCommand('svgToPng.convertBatch', () =>
             convertBatch()
+        ),
+        vscode.commands.registerCommand('svgToPng.generateBanners', () =>
+            generateExtensionBanners()
+        ),
+        vscode.commands.registerCommand('svgToPng.convertTransparent', (uri?: vscode.Uri) =>
+            convertSvg(uri, false, true)
         )
     );
 
     outputChannel.appendLine('[SVG to PNG] Activated — powered by resvg-js (Rust).');
 }
 
-async function convertSvg(uri?: vscode.Uri, askWidth = false): Promise<void> {
+async function convertSvg(uri?: vscode.Uri, askWidth = false, transparent = false): Promise<void> {
     const targetUri = uri ?? vscode.window.activeTextEditor?.document.uri;
     if (!targetUri || path.extname(targetUri.fsPath).toLowerCase() !== '.svg') {
         vscode.window.showWarningMessage('SVG to PNG: No SVG file selected.');
@@ -45,7 +54,7 @@ async function convertSvg(uri?: vscode.Uri, askWidth = false): Promise<void> {
     }
 
     const outputPath = targetUri.fsPath.replace(/\.svg$/i, '.png');
-    const success = await doConvert(targetUri.fsPath, outputPath, width);
+    const success = await doConvert(targetUri.fsPath, outputPath, width, transparent);
 
     if (success && config.get<boolean>('openAfterConvert')) {
         const pngUri = vscode.Uri.file(outputPath);
@@ -94,17 +103,88 @@ async function convertBatch(): Promise<void> {
     outputChannel.show();
 }
 
-async function doConvert(svgPath: string, pngPath: string, width: number): Promise<boolean> {
+/**
+ * Generate extension banners — scans extensions/{name}/assets/banner.svg at 1280px width.
+ * Follows the monorepo banner pipeline from the svg-to-png skill.
+ */
+async function generateExtensionBanners(): Promise<void> {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    if (!workspaceRoot) {
+        vscode.window.showWarningMessage('No workspace open.');
+        return;
+    }
+
+    const bannerPattern = new vscode.RelativePattern(workspaceRoot, 'extensions/*/assets/banner.svg');
+    const bannerFiles = await vscode.workspace.findFiles(bannerPattern);
+
+    if (bannerFiles.length === 0) {
+        vscode.window.showInformationMessage(
+            'No banner SVGs found at extensions/*/assets/banner.svg',
+            'Create Banners Guide'
+        ).then(c => {
+            if (c) {
+                vscode.env.openExternal(vscode.Uri.parse('https://github.com/microsoft/vscode/wiki/Extension-Gallery#banner'));
+            }
+        });
+        return;
+    }
+
+    const confirm = await vscode.window.showInformationMessage(
+        `Generate ${bannerFiles.length} extension banner(s) at ${BANNER_WIDTH}px?`,
+        { modal: true },
+        `Generate All (${BANNER_WIDTH}px)`
+    );
+    if (!confirm) { return; }
+
+    let successCount = 0;
+    let failCount = 0;
+
+    await vscode.window.withProgress(
+        { location: vscode.ProgressLocation.Notification, title: 'Generating Extension Banners...', cancellable: false },
+        async (progress) => {
+            for (let i = 0; i < bannerFiles.length; i++) {
+                const svgPath = bannerFiles[i].fsPath;
+                const pngPath = svgPath.replace(/\.svg$/i, '.png');
+                const extName = path.basename(path.dirname(path.dirname(svgPath)));
+
+                progress.report({
+                    message: `${i + 1}/${bannerFiles.length}: ${extName}`,
+                    increment: 100 / bannerFiles.length
+                });
+
+                const ok = await doConvert(svgPath, pngPath, BANNER_WIDTH);
+                ok ? successCount++ : failCount++;
+            }
+        }
+    );
+
+    outputChannel.appendLine(`\n🎨 Banner Pipeline Summary:`);
+    outputChannel.appendLine(`   ✅ ${successCount} banner(s) generated at ${BANNER_WIDTH}px`);
+    if (failCount > 0) { outputChannel.appendLine(`   ❌ ${failCount} failed (see above)`); }
+    outputChannel.show();
+
+    vscode.window.showInformationMessage(
+        `✅ ${successCount} banner(s) ready at ${BANNER_WIDTH}px` + (failCount > 0 ? `, ${failCount} failed` : ''),
+        'Show Logs'
+    ).then(c => { if (c) { outputChannel.show(); } });
+}
+
+async function doConvert(svgPath: string, pngPath: string, width: number, transparent = false): Promise<boolean> {
     try {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const { Resvg } = require('@resvg/resvg-js');
 
         const svgBuffer = await fs.promises.readFile(svgPath);
+        const config = vscode.workspace.getConfiguration('svgToPng');
         const opts: Record<string, unknown> = {
             font: {
-                loadSystemFonts: vscode.workspace.getConfiguration('svgToPng').get<boolean>('loadSystemFonts') ?? true
+                loadSystemFonts: config.get<boolean>('loadSystemFonts') ?? true
             }
         };
+
+        if (!transparent) {
+            opts['background'] = 'rgba(255,255,255,1)'; // white background by default
+        }
 
         if (width > 0) {
             opts['fitTo'] = { mode: 'width', value: width };
@@ -116,7 +196,7 @@ async function doConvert(svgPath: string, pngPath: string, width: number): Promi
 
         await fs.promises.writeFile(pngPath, pngBuffer);
 
-        const msg = `✅ ${path.basename(svgPath)} → ${path.basename(pngPath)} (${pngData.width}×${pngData.height})`;
+        const msg = `✅ ${path.basename(svgPath)} → ${path.basename(pngPath)} (${pngData.width}×${pngData.height}px)`;
         outputChannel.appendLine(msg);
         return true;
     } catch (err) {
@@ -128,3 +208,4 @@ async function doConvert(svgPath: string, pngPath: string, width: number): Promi
 }
 
 export function deactivate(): void {}
+

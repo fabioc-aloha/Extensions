@@ -1,8 +1,8 @@
 {
   "name": "hook-studio",
-  "displayName": "Hook Studio",
+  "displayName": "CX Hook Studio",
   "description": "Visual GUI for VS Code agent hooks — build, debug, and test hooks.json without reading docs.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
