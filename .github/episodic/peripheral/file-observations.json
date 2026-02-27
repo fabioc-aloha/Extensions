@@ -1,20 +1,17 @@
 {
   "hotFiles": [],
-  "stalledFiles": [
-    "github/episodic/peripheral/file-observations.json",
-    "TODO.md"
-  ],
+  "stalledFiles": [],
   "todoHotspots": [
     {
       "file": "TODO.md",
       "todoCount": 1,
-      "scannedAt": 1772224161856
+      "scannedAt": 1772225097534
     },
     {
       "file": "extensions/hook-studio/hook-studio-0.1.8.vsix",
       "todoCount": 1,
-      "scannedAt": 1772224161856
+      "scannedAt": 1772225097534
     }
   ],
-  "lastUpdated": 1772224161856
+  "lastUpdated": 1772225097534
 }
