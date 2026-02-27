@@ -2,7 +2,7 @@
   "name": "ai-voice-reader",
   "displayName": "CX AI Voice Reader",
   "description": "Text-to-speech for VS Code — read documents, selections, and notes aloud using your OS built-in TTS engine (no API key required)",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

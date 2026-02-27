@@ -158,6 +158,12 @@ export class FileObservationStore {
         return 'green';
     }
 
+    /** Clear all tracked observations and reset to empty state. */
+    clear(): void {
+        this.store.files = {};
+        this.store.lastUpdated = new Date().toISOString();
+    }
+
     private relativePath(filePath: string): string {
         // Normalize to forward slashes for cross-platform consistency
         return filePath.replace(/\\/g, '/');

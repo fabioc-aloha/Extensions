@@ -91,7 +91,18 @@ function stop(): void {
 }
 
 async function setVoice(): Promise<void> {
-    vscode.window.showInformationMessage('Voice selection: configure via OS speech settings or set `voiceReader.engine` to "azure" for Azure Cognitive Speech voices.');
+    const options = [
+        { label: '$(settings-gear) Open Voice Settings', description: 'Configure rate, engine, and strip-markdown in VS Code settings', action: 'settings' },
+        { label: '$(globe) Use Azure Cognitive Speech', description: 'Set engine to "azure" for cloud TTS voices', action: 'azure' },
+    ];
+    const choice = await vscode.window.showQuickPick(options, { title: 'CX AI Voice Reader — Voice Settings' });
+    if (!choice) { return; }
+    if (choice.action === 'settings') {
+        vscode.commands.executeCommand('workbench.action.openSettings', 'voiceReader');
+    } else if (choice.action === 'azure') {
+        vscode.commands.executeCommand('workbench.action.openSettings', 'voiceReader.engine');
+        vscode.window.showInformationMessage('Set voiceReader.engine to "azure" and configure voiceReader.azureKey and voiceReader.azureRegion.');
+    }
 }
 
 export function deactivate(): void {

@@ -1,5 +1,11 @@
 # Changelog — Focus Timer
 
+## [0.1.1] — 2026-03-01
+
+### Fixed
+- **Break duration in session history** — history entries for breaks now record the actual break duration (short or long) instead of always using the short break duration
+- Output channel log now shows the correct break length when a break session starts
+
 ## [0.1.0] — 2026-02-24
 
 ### Added

@@ -114,12 +114,16 @@ function showStalledFiles(): void {
 }
 
 function clearHistory(): void {
-    vscode.window.showWarningMessage('Clear all Workspace Watchdog history?', 'Yes, Clear').then(choice => {
+    vscode.window.showWarningMessage(
+        'Clear all Workspace Watchdog history? This removes all tracked file observations.',
+        { modal: true },
+        'Yes, Clear'
+    ).then(choice => {
         if (choice === 'Yes, Clear') {
-            // Clear by saving empty state - store will be recreated fresh on next activate
+            store.clear();
             store.save().then(() => {
-                outputChannel.appendLine('[Watchdog] History saved. Uncommitted markers clear when files are committed.');
-                vscode.window.showInformationMessage('Workspace Watchdog: Unmarked stalled files will auto-clear on commit.');
+                outputChannel.appendLine('[Watchdog] History cleared successfully.');
+                vscode.window.showInformationMessage('✅ Workspace Watchdog history cleared.');
             });
         }
     });

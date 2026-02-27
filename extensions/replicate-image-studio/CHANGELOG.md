@@ -1,5 +1,10 @@
 # Changelog — Replicate Image Studio
 
+## [0.1.2] — 2026-03-01
+
+### Fixed
+- **Activation events** — added missing `onCommand` entries for `generateSmart`, `generateBanner`, and `saveToFile` so all commands reliably activate the extension
+
 ## [0.1.1] — 2026-02-27
 
 ### Changed

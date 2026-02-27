@@ -1,5 +1,10 @@
 # Changelog — AI Voice Reader
 
+## [0.1.6] — 2026-03-01
+
+### Improved
+- **`Set Voice` command** — now opens a Quick Pick menu with direct shortcuts to VS Code settings (`voiceReader.*`) and Azure Cognitive Speech setup guidance, instead of showing a static info message
+
 ## [0.1.5] — 2026-02-27
 
 ### Changed

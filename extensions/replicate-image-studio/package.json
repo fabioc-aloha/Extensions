@@ -2,7 +2,7 @@
   "name": "replicate-image-studio",
   "displayName": "CX Replicate Image Studio",
   "description": "Generate images inside VS Code using Replicate AI models — Flux, SDXL, WAN video generation",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -22,10 +22,13 @@
   ],
   "activationEvents": [
     "onCommand:replicateStudio.generate",
+    "onCommand:replicateStudio.generateSmart",
+    "onCommand:replicateStudio.generateBanner",
     "onCommand:replicateStudio.generateVideo",
     "onCommand:replicateStudio.setApiKey",
     "onCommand:replicateStudio.viewHistory",
-    "onCommand:replicateStudio.insertMarkdown"
+    "onCommand:replicateStudio.insertMarkdown",
+    "onCommand:replicateStudio.saveToFile"
   ],
   "main": "./out/extension.js",
   "contributes": {

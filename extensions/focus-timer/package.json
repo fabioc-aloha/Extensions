@@ -2,7 +2,7 @@
   "name": "cx-focus-timer",
   "displayName": "CX Focus Timer",
   "description": "Pomodoro timer in the status bar — work sprints, break reminders, and session history",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

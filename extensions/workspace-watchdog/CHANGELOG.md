@@ -1,5 +1,11 @@
 # Changelog — CX Workspace Watchdog
 
+## [0.1.8] — 2026-03-01
+
+### Fixed
+- **`Clear History` now actually clears history** — previously called `store.save()` on unchanged data, leaving all observations intact; now calls `store.clear()` to reset all tracked file data before saving
+- Added modal confirmation dialog to prevent accidental data loss
+
 ## [0.1.7] — 2026-02-25
 
 ### Changed

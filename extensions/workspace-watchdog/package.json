@@ -2,7 +2,7 @@
   "name": "cx-workspace-watchdog",
   "displayName": "CX Workspace Watchdog",
   "description": "Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "engines": {

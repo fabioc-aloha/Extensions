@@ -8,6 +8,7 @@ let isRunning = false;
 let isPaused = false;
 let isBreak = false;
 let sessionsCompleted = 0;
+let currentSessionDurationMinutes = 0;
 const sessionHistory: { type: string; completedAt: string; durationMinutes: number }[] = [];
 
 export function activate(context: vscode.ExtensionContext): void {
@@ -42,6 +43,7 @@ function startFocus(): void {
     if (isRunning) { stop(); }
     const cfg = getConfig();
     secondsLeft = cfg.work;
+    currentSessionDurationMinutes = cfg.work / 60;
     isBreak = false;
     isRunning = true;
     isPaused = false;
@@ -54,10 +56,11 @@ function startBreak(): void {
     const cfg = getConfig();
     const isLong = sessionsCompleted > 0 && sessionsCompleted % 4 === 0;
     secondsLeft = isLong ? cfg.long : cfg.short;
+    currentSessionDurationMinutes = (isLong ? cfg.long : cfg.short) / 60;
     isBreak = true;
     isRunning = true;
     isPaused = false;
-    outputChannel.appendLine(`[Focus Timer] Starting ${isLong ? 'long' : 'short'} break.`);
+    outputChannel.appendLine(`[Focus Timer] Starting ${isLong ? 'long' : 'short'} break (${currentSessionDurationMinutes}m).`);
     tick();
 }
 
@@ -74,7 +77,7 @@ function tick(): void {
                 sessionHistory.push({ type: 'focus', completedAt: new Date().toISOString(), durationMinutes: getConfig().work / 60 });
                 vscode.window.showInformationMessage(`🍅 Focus session complete! (${sessionsCompleted} total)`, 'Start Break').then(c => { if (c) startBreak(); });
             } else {
-                sessionHistory.push({ type: 'break', completedAt: new Date().toISOString(), durationMinutes: getConfig().short / 60 });
+                sessionHistory.push({ type: 'break', completedAt: new Date().toISOString(), durationMinutes: currentSessionDurationMinutes });
                 vscode.window.showInformationMessage('☕ Break over! Ready to focus?', 'Start Focus').then(c => { if (c) startFocus(); });
             }
             updateStatusBar();
