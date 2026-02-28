@@ -41,16 +41,16 @@ Expert in Alex brand hierarchy, visual identity systems, asset deployment, and p
 | Tagline | "Strap a Rocket to Your Back" |
 | Subtitle Template | "Take Your [NOUN] to New Heights" |
 | Primary Icon | `$(rocket)` codicon |
-| Colors | Azure blue (#0078d4) + thrust orange (#ff6b35) |
+| Colors | sky blue (#38bdf8) + coral (#f97316) + indigo (#6366f1) — CorreaX dark palette |
 
 ### GK Premium Branding
 
 | Tier | Symbol | Meaning |
 |------|--------|---------|
 | Standard | A Negative Space Rocket | Individual project acceleration |
-| Premium (GK) | Space Station + Docked Rocket | Cross-project knowledge hub |
+| Premium (GK) | Knowledge Graph Network | Cross-project knowledge hub |
 | GK Tagline | "Your MISSION CONTROL for Cross-Project Wisdom" |
-| GK Colors | Azure + orange + sync green (#00ff88) |
+| GK Colors | teal (#0d9488) + teal-light (#2dd4bf) — CorreaX knowledge tier |
 
 ### Asset Locations
 
@@ -132,8 +132,8 @@ npx sharp-cli --input source.svg --output output.png -f png --density 150
 <g transform="translate(1095, 268)">
   <defs>
     <linearGradient id="cxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0078d4"/>
-      <stop offset="100%" stop-color="#005a9e"/>
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
   </defs>
   <g transform="scale(0.75)">
