@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
   <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
-
+  <!-- Three descending bars -->
+  <rect x="34" y="44" width="18" height="50" rx="3" fill="#f97316"/>
+  <rect x="55" y="56" width="18" height="38" rx="3" fill="#f97316" opacity="0.80"/>
+  <rect x="76" y="68" width="18" height="26" rx="3" fill="#f97316" opacity="0.55"/>
   </g>
   <!-- Accent bar bottom -->
   <rect x="0" y="125" width="128" height="3" fill="#f97316"/>

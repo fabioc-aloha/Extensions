@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
   <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
-
+  <!-- Tag outline -->
+  <path d="M42 38 L42 64 L64 86 L86 64 L60 38 Z" stroke="#38bdf8" stroke-width="5" fill="none" stroke-linejoin="round"/>
+  <circle cx="54" cy="52" r="7" fill="none" stroke="#38bdf8" stroke-width="4.5"/>
   </g>
   <!-- Accent bar bottom -->
   <rect x="0" y="125" width="128" height="3" fill="#38bdf8"/>
