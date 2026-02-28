@@ -30,10 +30,10 @@ $extensions = @(
 $glyphs = @{
     "ai-voice-reader"         = @'
   <!-- Sound arcs -->
-  <circle cx="50" cy="64" r="8" fill="white"/>
-  <path d="M62 52 a18 18 0 0 1 0 24" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M68 46 a26 26 0 0 1 0 36" stroke="white" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-  <path d="M74 40 a34 34 0 0 1 0 48" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <circle cx="50" cy="64" r="8" fill="#6366f1"/>
+  <path d="M62 52 a18 18 0 0 1 0 24" stroke="#6366f1" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M68 46 a26 26 0 0 1 0 36" stroke="#6366f1" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+  <path d="M74 40 a34 34 0 0 1 0 48" stroke="#6366f1" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
 '@
     "brandfetch-logo-fetcher" = @'
   <!-- Tag outline -->
@@ -109,7 +109,6 @@ $glyphs = @{
     <ellipse cx="64" cy="42" rx="8" ry="20" fill="#f43f5e" transform="rotate(90 64 64)" opacity="0.7"/>
     <ellipse cx="64" cy="42" rx="8" ry="20" fill="#f43f5e" transform="rotate(150 64 64)" opacity="0.7"/>
   </g>
-  <circle cx="64" cy="64" r="11" fill="white" opacity="0.15"/>
   <circle cx="64" cy="64" r="7" fill="none" stroke="#f43f5e" stroke-width="4.5"/>
 '@
     "secret-guard"            = @'
