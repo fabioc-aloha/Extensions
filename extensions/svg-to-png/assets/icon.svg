@@ -1,16 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
   <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
-  <!-- 3×3 dot grid -->
-  <circle cx="40" cy="40" r="8" fill="#f43f5e"/>
-  <circle cx="64" cy="40" r="8" fill="#f43f5e"/>
-  <circle cx="88" cy="40" r="8" fill="#f43f5e"/>
-  <circle cx="40" cy="64" r="8" fill="#f43f5e"/>
-  <circle cx="64" cy="64" r="8" fill="#f43f5e"/>
-  <circle cx="88" cy="64" r="8" fill="#f43f5e"/>
-  <circle cx="40" cy="88" r="8" fill="#f43f5e"/>
-  <circle cx="64" cy="88" r="8" fill="#f43f5e"/>
-  <circle cx="88" cy="88" r="8" fill="#f43f5e"/>
+
   </g>
   <!-- Accent bar bottom -->
   <rect x="0" y="125" width="128" height="3" fill="#f43f5e"/>

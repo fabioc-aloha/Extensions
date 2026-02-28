@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
   <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
-  <!-- Lightning bolt -->
-  <polygon points="72,28 48,68 65,68 56,100 84,56 66,56" fill="#6366f1"/>
+
   </g>
   <!-- Accent bar bottom -->
   <rect x="0" y="125" width="128" height="3" fill="#6366f1"/>
