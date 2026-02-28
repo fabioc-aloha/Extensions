@@ -73,26 +73,26 @@
         {
           "command": "svgToPng.convert",
           "when": "resourceExtname == .svg",
-          "group": "1_modification@1"
+          "group": "2_transform@1"
         },
         {
           "command": "svgToPng.convertWithWidth",
           "when": "resourceExtname == .svg",
-          "group": "1_modification@2"
+          "group": "2_transform@2"
         },
         {
           "command": "svgToPng.convertTransparent",
           "when": "resourceExtname == .svg",
-          "group": "1_modification@3"
+          "group": "2_transform@3"
         },
         {
           "command": "svgToPng.convertBatch",
           "when": "resourceExtname == .svg",
-          "group": "1_modification@4"
+          "group": "2_transform@4"
         },
         {
           "command": "svgToPng.generateBanners",
-          "group": "1_modification@5"
+          "group": "3_generate@1"
         }
       ]
     },
@@ -119,7 +119,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

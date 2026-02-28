@@ -62,11 +62,11 @@
       "cx.tools": [
         {
           "command": "workspaceWatchdog.showDashboard",
-          "group": "7_modification@1"
+          "group": "1_analysis@1"
         },
         {
           "command": "workspaceWatchdog.scanNow",
-          "group": "7_modification@2"
+          "group": "1_analysis@2"
         }
       ]
     },
@@ -82,7 +82,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

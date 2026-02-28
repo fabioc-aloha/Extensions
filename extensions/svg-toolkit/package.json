@@ -69,34 +69,34 @@
         {
           "command": "svgToolkit.preview",
           "when": "resourceExtname == .svg",
-          "group": "navigation@1"
+          "group": "1_analysis@1"
         },
         {
           "command": "svgToolkit.copyDataUri",
           "when": "resourceExtname == .svg",
-          "group": "navigation@2"
+          "group": "2_transform@1"
         },
         {
           "command": "svgToolkit.copyMarkdown",
           "when": "resourceExtname == .svg",
-          "group": "navigation@3"
+          "group": "2_transform@2"
         },
         {
           "command": "svgToolkit.insertIconTemplate",
           "when": "resourceExtname == .svg",
-          "group": "navigation@4"
+          "group": "3_generate@1"
         },
         {
           "command": "svgToolkit.validateSvg",
           "when": "resourceExtname == .svg",
-          "group": "navigation@5"
+          "group": "1_analysis@2"
         }
       ]
     },
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

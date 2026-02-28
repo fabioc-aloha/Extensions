@@ -77,44 +77,50 @@
         {
           "command": "replicateStudio.generateSmart",
           "when": "editorFocus",
-          "group": "navigation@1"
+          "group": "3_generate@1"
         },
         {
           "command": "replicateStudio.generate",
           "when": "editorFocus",
-          "group": "navigation@2"
+          "group": "3_generate@2"
         },
         {
           "command": "replicateStudio.generateBanner",
           "when": "resourceExtname == .md",
-          "group": "navigation@3"
+          "group": "3_generate@3"
         },
         {
           "command": "replicateStudio.generateVideo",
           "when": "editorFocus",
-          "group": "navigation@4"
+          "group": "3_generate@4"
         },
         {
           "command": "replicateStudio.insertMarkdown",
           "when": "resourceExtname == .md",
-          "group": "navigation@5"
+          "group": "3_generate@5"
         },
         {
           "command": "replicateStudio.saveToFile",
           "when": "editorFocus",
-          "group": "navigation@6"
+          "group": "2_transform@1"
         },
         {
           "command": "replicateStudio.viewHistory",
           "when": "editorFocus",
-          "group": "7_modification@1"
+          "group": "1_analysis@1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "9_cutcopypaste@last"
         }
       ]
     },
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

@@ -64,19 +64,19 @@
         {
           "command": "knowledgeDecay.touchFile",
           "when": "resourceScheme == file",
-          "group": "navigation@1"
+          "group": "2_transform@1"
         },
         {
           "command": "knowledgeDecay.showCritical",
-          "group": "navigation@2"
+          "group": "1_analysis@1"
         },
         {
           "command": "knowledgeDecay.scanWorkspace",
-          "group": "7_modification@1"
+          "group": "1_analysis@2"
         },
         {
           "command": "knowledgeDecay.showReport",
-          "group": "7_modification@2"
+          "group": "1_analysis@3"
         }
       ]
     },
@@ -108,7 +108,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

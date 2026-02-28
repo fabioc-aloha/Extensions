@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <!-- Template: replace {{ACCENT}}, {{NAME}}, {{DESC}} -->
+  <rect width="1200" height="300" fill="#0f172a"/>
+  <!-- Accent bar left (4px) — fill = category accent color -->
+  <rect x="0" y="0" width="4" height="300" fill="{{ACCENT}}"/>
+  <!-- Ghost watermark -->
+  <text x="1180" y="252" font-family="'Segoe UI', system-ui, sans-serif" font-size="96" font-weight="700" fill="#f1f5f9" opacity="0.03" text-anchor="end">ALEX</text>
+  <!-- Series label: 10px / 600 / uppercase / 5px letter-spacing -->
+  <text x="40" y="80" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" font-weight="600" fill="#94a3b8" letter-spacing="5">CX EXTENSIONS</text>
+  <!-- Extension name: 40px / 300 weight -->
+  <text x="40" y="148" font-family="'Segoe UI', system-ui, sans-serif" font-size="40" font-weight="300" fill="#f1f5f9">{{NAME}}</text>
+  <!-- Description: 16px / 400 weight / muted -->
+  <text x="40" y="190" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" font-weight="400" fill="#94a3b8">{{DESC}}</text>
+</svg>

@@ -120,6 +120,33 @@ Reload VS Code window after installation to activate the extension.
 
 ---
 
+## Branding & UX Standards
+
+All CX extensions follow the **CorreaX Brand Design Kit (DK)** — dark-first, no Azure Blue.
+
+| Standard | Spec | Status |
+|----------|------|--------|
+| Icon background | `#0f172a` + CX badge + accent bar | ✅ 16 icons |
+| Banner | `#0f172a` bg + 4px accent bar + series label | ✅ 16 banners |
+| PWA icons | `#0f172a` 72–512px, CX lettermark in sky blue | ✅ 8 sizes |
+| Context menu | `$(tools) CX Tools` submenu, semantic groups | ✅ 14 extensions · 2 N/A |
+| Palette authority | [DK-correax-brand.md](./DK-correax-brand.md) | ✅ |
+
+### Context Menu Groups
+
+Commands in the `$(tools) CX Tools` submenu are sorted into four semantic groups:
+
+| Group | ID | Purpose |
+|-------|-----|---------|
+| Analyse | `1_analysis@N` | Scan, preview, validate, view reports |
+| Transform | `2_transform@N` | Convert, export, copy, save |
+| Generate | `3_generate@N` | Create, scaffold, insert, start |
+| Settings | `4_info@N` | API keys, config, docs, history |
+
+Extensions **without** a context menu (workspace-level only): `dev-wellbeing`, `focus-timer`.
+
+---
+
 ## Design Principles
 
 1. **Zero Alex dependency** — Every extension works as a standalone install. No dependency on `alex-cognitive-architecture`.

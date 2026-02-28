@@ -75,30 +75,30 @@
         {
           "command": "markdownToWord.convert",
           "when": "resourceExtname == .md",
-          "group": "navigation@1"
+          "group": "2_transform@1"
         },
         {
           "command": "markdownToWord.convertWithMermaid",
           "when": "resourceExtname == .md",
-          "group": "navigation@2"
+          "group": "2_transform@2"
         },
         {
           "command": "markdownToWord.convertWithOptions",
           "when": "resourceExtname == .md",
-          "group": "navigation@3"
+          "group": "2_transform@3"
         },
         {
           "command": "markdownToWord.preview",
           "when": "resourceExtname == .md",
-          "group": "navigation@4"
+          "group": "1_analysis@1"
         },
         {
           "command": "markdownToWord.checkPandoc",
-          "group": "7_modification@1"
+          "group": "1_analysis@2"
         },
         {
           "command": "markdownToWord.checkMermaid",
-          "group": "7_modification@2"
+          "group": "1_analysis@3"
         }
       ]
     },
@@ -136,7 +136,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

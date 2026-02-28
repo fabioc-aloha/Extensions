@@ -69,20 +69,20 @@
         {
           "command": "secretGuard.scanFile",
           "when": "resourceScheme == file",
-          "group": "navigation@1"
+          "group": "1_analysis@1"
         },
         {
           "command": "secretGuard.addIgnorePattern",
           "when": "resourceScheme == file",
-          "group": "navigation@2"
+          "group": "3_generate@1"
         },
         {
           "command": "secretGuard.viewReport",
-          "group": "7_modification@1"
+          "group": "1_analysis@2"
         },
         {
           "command": "secretGuard.scanWorkspace",
-          "group": "7_modification@1"
+          "group": "1_analysis@3"
         }
       ]
     },
@@ -114,7 +114,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

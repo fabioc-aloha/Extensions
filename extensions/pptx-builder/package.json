@@ -66,23 +66,23 @@
         {
           "command": "pptxBuilder.create",
           "when": "resourceExtname == .md || resourceExtname == .yaml",
-          "group": "navigation@1"
+          "group": "3_generate@1"
         },
         {
           "command": "pptxBuilder.preview",
           "when": "resourceExtname == .md || resourceExtname == .yaml",
-          "group": "navigation@2"
+          "group": "1_analysis@1"
         },
         {
           "command": "pptxBuilder.newTemplate",
-          "group": "navigation@3"
+          "group": "3_generate@2"
         }
       ]
     },
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

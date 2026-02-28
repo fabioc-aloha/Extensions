@@ -68,17 +68,17 @@
         {
           "command": "voiceReader.readSelection",
           "when": "editorFocus",
-          "group": "navigation@1"
+          "group": "1_analysis@1"
         },
         {
           "command": "voiceReader.stop",
           "when": "editorFocus",
-          "group": "navigation@2"
+          "group": "4_info@1"
         },
         {
           "command": "voiceReader.readFile",
           "when": "!explorerResourceIsFolder",
-          "group": "navigation@3"
+          "group": "1_analysis@2"
         }
       ]
     },
@@ -111,7 +111,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

@@ -79,29 +79,29 @@
         {
           "command": "hookStudio.open",
           "when": "resourceFilename == hooks.json",
-          "group": "navigation@1"
+          "group": "1_analysis@1"
         },
         {
           "command": "hookStudio.testCondition",
           "when": "resourceFilename == hooks.json",
-          "group": "navigation@2"
+          "group": "1_analysis@2"
         },
         {
           "command": "hookStudio.exportHooks",
           "when": "resourceFilename == hooks.json",
-          "group": "navigation@3"
+          "group": "2_transform@1"
         },
         {
           "command": "hookStudio.openLog",
           "when": "resourceFilename == hooks.json",
-          "group": "navigation@4"
+          "group": "1_analysis@3"
         }
       ]
     },
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

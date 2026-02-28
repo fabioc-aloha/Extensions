@@ -68,29 +68,29 @@
         {
           "command": "mcpAppStarter.addTool",
           "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
-          "group": "navigation@1"
+          "group": "3_generate@1"
         },
         {
           "command": "mcpAppStarter.addResource",
           "when": "resourceExtname == .ts || resourceExtname == .js || resourceExtname == .py",
-          "group": "navigation@2"
+          "group": "3_generate@2"
         },
         {
           "command": "mcpAppStarter.validate",
           "when": "resourceExtname == .json",
-          "group": "navigation@3"
+          "group": "1_analysis@1"
         },
         {
           "command": "mcpAppStarter.create",
           "when": "explorerResourceIsFolder",
-          "group": "navigation@1"
+          "group": "3_generate@3"
         }
       ]
     },
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

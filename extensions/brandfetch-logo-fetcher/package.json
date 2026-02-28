@@ -61,19 +61,25 @@
         {
           "command": "brandfetch.fetchLogo",
           "when": "editorFocus",
-          "group": "navigation@1"
+          "group": "3_generate@1"
         },
         {
           "command": "brandfetch.insertLogo",
           "when": "editorFocus",
-          "group": "navigation@2"
+          "group": "3_generate@2"
+        }
+      ],
+      "explorer/context": [
+        {
+          "submenu": "cx.tools",
+          "group": "9_cutcopypaste@last"
         }
       ]
     },
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

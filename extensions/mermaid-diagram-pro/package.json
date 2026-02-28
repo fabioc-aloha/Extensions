@@ -84,42 +84,42 @@
         {
           "command": "mermaidPro.preview",
           "when": "resourceExtname == .md",
-          "group": "navigation@1"
+          "group": "1_analysis@1"
         },
         {
           "command": "mermaidPro.openInBrowser",
           "when": "resourceExtname == .md",
-          "group": "navigation@1b"
+          "group": "1_analysis@2"
         },
         {
           "command": "mermaidPro.exportSvg",
           "when": "resourceExtname == .md",
-          "group": "navigation@2"
+          "group": "2_transform@1"
         },
         {
           "command": "mermaidPro.exportPng",
           "when": "resourceExtname == .md",
-          "group": "navigation@3"
+          "group": "2_transform@2"
         },
         {
           "command": "mermaidPro.insertTemplate",
           "when": "resourceExtname == .md",
-          "group": "navigation@4"
+          "group": "3_generate@1"
         },
         {
           "command": "mermaidPro.copySource",
           "when": "resourceExtname == .md",
-          "group": "navigation@5"
+          "group": "2_transform@3"
         },
         {
           "command": "mermaidPro.extractDiagram",
           "when": "resourceExtname == .md",
-          "group": "navigation@6"
+          "group": "1_analysis@3"
         },
         {
           "command": "mermaidPro.validateAll",
           "when": "resourceExtname == .md",
-          "group": "7_modification@1"
+          "group": "1_analysis@4"
         }
       ]
     },
@@ -153,7 +153,7 @@
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },

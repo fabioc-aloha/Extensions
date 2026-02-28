@@ -68,33 +68,33 @@
         {
           "command": "gammaSlides.convertToHtml",
           "when": "resourceExtname == .md",
-          "group": "navigation@1"
+          "group": "2_transform@1"
         },
         {
           "command": "gammaSlides.convertToPdf",
           "when": "resourceExtname == .md",
-          "group": "navigation@2"
+          "group": "2_transform@2"
         },
         {
           "command": "gammaSlides.preview",
           "when": "resourceExtname == .md",
-          "group": "navigation@3"
+          "group": "1_analysis@1"
         },
         {
           "command": "gammaSlides.insertFrontmatter",
           "when": "resourceExtname == .md",
-          "group": "navigation@4"
+          "group": "3_generate@1"
         },
         {
           "command": "gammaSlides.newPresentation",
-          "group": "navigation@5"
+          "group": "3_generate@2"
         }
       ]
     },
     "submenus": [
       {
         "id": "cx.tools",
-        "label": "🔷 CX Tools"
+        "label": "$(tools) CX Tools"
       }
     ]
   },
