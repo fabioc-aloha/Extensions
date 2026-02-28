@@ -1,11 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
   <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Bezier anchor with handles -->
-  <line x1="64" y1="64" x2="36" y2="44" stroke="#f43f5e" stroke-width="4" stroke-linecap="round"/>
-  <line x1="64" y1="64" x2="92" y2="84" stroke="#f43f5e" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="36" cy="44" r="8" fill="none" stroke="#f43f5e" stroke-width="4.5"/>
-  <circle cx="92" cy="84" r="8" fill="none" stroke="#f43f5e" stroke-width="4.5"/>
-  <rect x="58" y="58" width="12" height="12" rx="2" fill="none" stroke="#f43f5e" stroke-width="4.5"/>
+  <!-- S-curve path with bezier handles — vector tool motif -->
+  <!-- Handle arms -->
+  <line x1="38" y1="88" x2="22" y2="66" stroke="#f43f5e" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+  <line x1="90" y1="40" x2="106" y2="62" stroke="#f43f5e" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+  <!-- Control point circles -->
+  <circle cx="22" cy="66" r="6" fill="none" stroke="#f43f5e" stroke-width="4" opacity="0.65"/>
+  <circle cx="106" cy="62" r="6" fill="none" stroke="#f43f5e" stroke-width="4" opacity="0.65"/>
+  <!-- S-curve -->
+  <path d="M38 88 C38 58 90 70 90 40" stroke="#f43f5e" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Anchor squares -->
+  <rect x="31" y="81" width="14" height="14" rx="2" fill="none" stroke="#f43f5e" stroke-width="4.5"/>
+  <rect x="83" y="33" width="14" height="14" rx="2" fill="none" stroke="#f43f5e" stroke-width="4.5"/>
   </g>
 </svg>
