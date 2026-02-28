@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <rect width="128" height="128" rx="20" fill="#0f172a"/>
-  <!-- CX badge top-right -->
-  <text x="108" y="22" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="700" fill="white" opacity="0.4" text-anchor="middle">CX</text>
+  <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
+  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
   <!-- Three connected circles -->
   <circle cx="64" cy="38" r="13" fill="none" stroke="#f43f5e" stroke-width="3"/>
   <circle cx="40" cy="82" r="13" fill="none" stroke="#f43f5e" stroke-width="3"/>
@@ -9,6 +9,7 @@
   <line x1="55" y1="50" x2="47" y2="71" stroke="#f43f5e" stroke-width="2.5"/>
   <line x1="73" y1="50" x2="81" y2="71" stroke="#f43f5e" stroke-width="2.5"/>
   <line x1="53" y1="82" x2="75" y2="82" stroke="#f43f5e" stroke-width="2.5"/>
+  </g>
   <!-- Accent bar bottom -->
   <rect x="0" y="125" width="128" height="3" fill="#f43f5e"/>
 </svg>

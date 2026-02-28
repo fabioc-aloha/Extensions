@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <rect width="128" height="128" rx="20" fill="#0f172a"/>
-  <!-- CX badge top-right -->
-  <text x="108" y="22" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="700" fill="white" opacity="0.4" text-anchor="middle">CX</text>
+  <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
+  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
   <!-- Shield with checkmark -->
   <path d="M64 30 L88 42 L88 64 Q88 82 64 92 Q40 82 40 64 L40 42 Z" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-linejoin="round"/>
   <path d="M55 64 L62 71 L76 55" stroke="#38bdf8" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
   <!-- Accent bar bottom -->
   <rect x="0" y="125" width="128" height="3" fill="#38bdf8"/>
 </svg>

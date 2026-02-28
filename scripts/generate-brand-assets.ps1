@@ -8,27 +8,27 @@ $extRoot = Join-Path $root "extensions"
 
 # ── Extension data ────────────────────────────────────────────────────────────
 $extensions = @(
-    @{ folder="ai-voice-reader";         name="CX AI Voice Reader";    accent="#6366f1"; desc="Read files aloud with AI voice synthesis" }
-    @{ folder="brandfetch-logo-fetcher"; name="CX Brandfetch";         accent="#38bdf8"; desc="Fetch brand logos and color palettes instantly" }
-    @{ folder="dev-wellbeing";           name="CX Dev Wellbeing";      accent="#f97316"; desc="Gentle nudges for sustainable development" }
-    @{ folder="focus-timer";             name="CX Focus Timer";        accent="#f97316"; desc="Pomodoro-style focus sessions for deep work" }
-    @{ folder="gamma-slide-assistant";   name="CX Gamma Slides";       accent="#0d9488"; desc="Generate Gamma presentations from Markdown" }
-    @{ folder="hook-studio";             name="CX Hook Studio";        accent="#6366f1"; desc="Build and debug VS Code agent hooks.json" }
-    @{ folder="knowledge-decay-tracker"; name="CX Knowledge Decay";   accent="#f97316"; desc="Track knowledge freshness across your codebase" }
-    @{ folder="markdown-to-word";        name="CX Markdown to Word";   accent="#0d9488"; desc="Convert Markdown with diagrams to Word documents" }
-    @{ folder="mcp-app-starter";         name="CX MCP App Starter";    accent="#6366f1"; desc="Scaffold Model Context Protocol server apps" }
-    @{ folder="mermaid-diagram-pro";     name="CX Mermaid Pro";        accent="#f43f5e"; desc="Advanced Mermaid diagram editing and export" }
-    @{ folder="pptx-builder";           name="CX PPTX Builder";        accent="#0d9488"; desc="Generate PowerPoint presentations from Markdown" }
-    @{ folder="replicate-image-studio";  name="CX Replicate Studio";   accent="#f43f5e"; desc="AI image generation powered by Replicate" }
-    @{ folder="secret-guard";            name="CX Secret Guard";       accent="#38bdf8"; desc="Detect and protect secrets in your codebase" }
-    @{ folder="svg-to-png";             name="CX SVG to PNG";          accent="#f43f5e"; desc="Precision SVG to PNG conversion with resvg" }
-    @{ folder="svg-toolkit";            name="CX SVG Toolkit";         accent="#f43f5e"; desc="SVG editing, optimisation, and conversion tools" }
-    @{ folder="workspace-watchdog";     name="CX Workspace Watchdog";  accent="#6366f1"; desc="Monitor workspace activity and health in real time" }
+    @{ folder = "ai-voice-reader"; name = "CX AI Voice Reader"; accent = "#6366f1"; desc = "Read files aloud with AI voice synthesis" }
+    @{ folder = "brandfetch-logo-fetcher"; name = "CX Brandfetch"; accent = "#38bdf8"; desc = "Fetch brand logos and color palettes instantly" }
+    @{ folder = "dev-wellbeing"; name = "CX Dev Wellbeing"; accent = "#f97316"; desc = "Gentle nudges for sustainable development" }
+    @{ folder = "focus-timer"; name = "CX Focus Timer"; accent = "#f97316"; desc = "Pomodoro-style focus sessions for deep work" }
+    @{ folder = "gamma-slide-assistant"; name = "CX Gamma Slides"; accent = "#0d9488"; desc = "Generate Gamma presentations from Markdown" }
+    @{ folder = "hook-studio"; name = "CX Hook Studio"; accent = "#6366f1"; desc = "Build and debug VS Code agent hooks.json" }
+    @{ folder = "knowledge-decay-tracker"; name = "CX Knowledge Decay"; accent = "#f97316"; desc = "Track knowledge freshness across your codebase" }
+    @{ folder = "markdown-to-word"; name = "CX Markdown to Word"; accent = "#0d9488"; desc = "Convert Markdown with diagrams to Word documents" }
+    @{ folder = "mcp-app-starter"; name = "CX MCP App Starter"; accent = "#6366f1"; desc = "Scaffold Model Context Protocol server apps" }
+    @{ folder = "mermaid-diagram-pro"; name = "CX Mermaid Pro"; accent = "#f43f5e"; desc = "Advanced Mermaid diagram editing and export" }
+    @{ folder = "pptx-builder"; name = "CX PPTX Builder"; accent = "#0d9488"; desc = "Generate PowerPoint presentations from Markdown" }
+    @{ folder = "replicate-image-studio"; name = "CX Replicate Studio"; accent = "#f43f5e"; desc = "AI image generation powered by Replicate" }
+    @{ folder = "secret-guard"; name = "CX Secret Guard"; accent = "#38bdf8"; desc = "Detect and protect secrets in your codebase" }
+    @{ folder = "svg-to-png"; name = "CX SVG to PNG"; accent = "#f43f5e"; desc = "Precision SVG to PNG conversion with resvg" }
+    @{ folder = "svg-toolkit"; name = "CX SVG Toolkit"; accent = "#f43f5e"; desc = "SVG editing, optimisation, and conversion tools" }
+    @{ folder = "workspace-watchdog"; name = "CX Workspace Watchdog"; accent = "#6366f1"; desc = "Monitor workspace activity and health in real time" }
 )
 
 # ── Glyph paths (128×128 viewbox, centered around 64,64) ─────────────────────
 $glyphs = @{
-    "ai-voice-reader" = @'
+    "ai-voice-reader"         = @'
   <!-- Sound arcs -->
   <circle cx="50" cy="64" r="7" fill="white"/>
   <path d="M62 52 a18 18 0 0 1 0 24" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -40,13 +40,13 @@ $glyphs = @{
   <path d="M42 38 L42 64 L64 86 L86 64 L60 38 Z" stroke="#38bdf8" stroke-width="3" fill="none" stroke-linejoin="round"/>
   <circle cx="54" cy="52" r="6" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
 '@
-    "dev-wellbeing" = @'
+    "dev-wellbeing"           = @'
   <!-- Leaf -->
   <path d="M64 92 C64 92 34 72 40 46 C46 22 64 22 64 22 C64 22 82 22 88 46 C94 72 64 92 64 92 Z" fill="none" stroke="#f97316" stroke-width="3"/>
   <line x1="64" y1="92" x2="64" y2="42" stroke="#f97316" stroke-width="2" opacity="0.55"/>
   <path d="M64 68 Q50 58 46 48" stroke="#f97316" stroke-width="1.5" fill="none" opacity="0.45" stroke-linecap="round"/>
 '@
-    "focus-timer" = @'
+    "focus-timer"             = @'
   <!-- Hourglass -->
   <line x1="40" y1="34" x2="88" y2="34" stroke="#f97316" stroke-width="3.5" stroke-linecap="round"/>
   <line x1="40" y1="94" x2="88" y2="94" stroke="#f97316" stroke-width="3.5" stroke-linecap="round"/>
@@ -54,11 +54,11 @@ $glyphs = @{
   <path d="M42 92 L64 64 L86 92" fill="none" stroke="#f97316" stroke-width="3" stroke-linejoin="round"/>
   <path d="M55 80 Q64 72 73 80" fill="#f97316" opacity="0.5"/>
 '@
-    "gamma-slide-assistant" = @'
+    "gamma-slide-assistant"   = @'
   <!-- γ letterform -->
   <text x="64" y="86" font-family="Georgia, serif" font-size="68" font-weight="400" fill="#0d9488" text-anchor="middle">γ</text>
 '@
-    "hook-studio" = @'
+    "hook-studio"             = @'
   <!-- Curly braces { } -->
   <path d="M60 34 Q50 34 50 44 L50 57 Q50 64 44 64 Q50 64 50 71 L50 84 Q50 94 60 94" stroke="#6366f1" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M68 34 Q78 34 78 44 L78 57 Q78 64 84 64 Q78 64 78 71 L78 84 Q78 94 68 94" stroke="#6366f1" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -69,7 +69,7 @@ $glyphs = @{
   <rect x="56" y="58" width="16" height="34" rx="3" fill="#f97316" opacity="0.70"/>
   <rect x="76" y="70" width="16" height="22" rx="3" fill="#f97316" opacity="0.40"/>
 '@
-    "markdown-to-word" = @'
+    "markdown-to-word"        = @'
   <!-- Page + arrow + page -->
   <rect x="22" y="40" width="28" height="38" rx="3" fill="none" stroke="#0d9488" stroke-width="3"/>
   <line x1="27" y1="53" x2="44" y2="53" stroke="#0d9488" stroke-width="2" opacity="0.55"/>
@@ -80,11 +80,11 @@ $glyphs = @{
   <line x1="83" y1="53" x2="100" y2="53" stroke="#0d9488" stroke-width="2" opacity="0.55"/>
   <line x1="83" y1="61" x2="100" y2="61" stroke="#0d9488" stroke-width="2" opacity="0.55"/>
 '@
-    "mcp-app-starter" = @'
+    "mcp-app-starter"         = @'
   <!-- Lightning bolt -->
   <polygon points="72,28 48,68 65,68 56,100 84,56 66,56" fill="#6366f1"/>
 '@
-    "mermaid-diagram-pro" = @'
+    "mermaid-diagram-pro"     = @'
   <!-- Three connected circles -->
   <circle cx="64" cy="38" r="13" fill="none" stroke="#f43f5e" stroke-width="3"/>
   <circle cx="40" cy="82" r="13" fill="none" stroke="#f43f5e" stroke-width="3"/>
@@ -93,13 +93,13 @@ $glyphs = @{
   <line x1="73" y1="50" x2="81" y2="71" stroke="#f43f5e" stroke-width="2.5"/>
   <line x1="53" y1="82" x2="75" y2="82" stroke="#f43f5e" stroke-width="2.5"/>
 '@
-    "pptx-builder" = @'
+    "pptx-builder"            = @'
   <!-- Three offset slide rectangles -->
   <rect x="34" y="54" width="44" height="30" rx="3" fill="none" stroke="#0d9488" stroke-width="2.5"/>
   <rect x="42" y="46" width="44" height="30" rx="3" fill="none" stroke="#0d9488" stroke-width="2.5" opacity="0.65"/>
   <rect x="50" y="38" width="44" height="30" rx="3" fill="none" stroke="#0d9488" stroke-width="2.5" opacity="0.35"/>
 '@
-    "replicate-image-studio" = @'
+    "replicate-image-studio"  = @'
   <!-- Aperture blades -->
   <g opacity="0.9">
     <ellipse cx="64" cy="42" rx="7" ry="18" fill="#f43f5e" transform="rotate(0 64 64)"/>
@@ -112,12 +112,12 @@ $glyphs = @{
   <circle cx="64" cy="64" r="10" fill="#0f172a"/>
   <circle cx="64" cy="64" r="6" fill="none" stroke="#f43f5e" stroke-width="2.5"/>
 '@
-    "secret-guard" = @'
+    "secret-guard"            = @'
   <!-- Shield with checkmark -->
   <path d="M64 30 L88 42 L88 64 Q88 82 64 92 Q40 82 40 64 L40 42 Z" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-linejoin="round"/>
   <path d="M55 64 L62 71 L76 55" stroke="#38bdf8" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 '@
-    "svg-to-png" = @'
+    "svg-to-png"              = @'
   <!-- 3×3 dot grid -->
   <circle cx="40" cy="40" r="8" fill="#f43f5e"/>
   <circle cx="64" cy="40" r="8" fill="#f43f5e"/>
@@ -129,7 +129,7 @@ $glyphs = @{
   <circle cx="64" cy="88" r="8" fill="#f43f5e"/>
   <circle cx="88" cy="88" r="8" fill="#f43f5e"/>
 '@
-    "svg-toolkit" = @'
+    "svg-toolkit"             = @'
   <!-- Bezier anchor with handles -->
   <line x1="64" y1="64" x2="36" y2="44" stroke="#f43f5e" stroke-width="2" opacity="0.65" stroke-linecap="round"/>
   <line x1="64" y1="64" x2="92" y2="84" stroke="#f43f5e" stroke-width="2" opacity="0.65" stroke-linecap="round"/>
@@ -137,7 +137,7 @@ $glyphs = @{
   <circle cx="92" cy="84" r="7" fill="none" stroke="#f43f5e" stroke-width="3"/>
   <rect x="58" y="58" width="12" height="12" rx="2" fill="none" stroke="#f43f5e" stroke-width="3"/>
 '@
-    "workspace-watchdog" = @'
+    "workspace-watchdog"      = @'
   <!-- Eye -->
   <path d="M20 64 Q40 36 64 36 Q88 36 108 64 Q88 92 64 92 Q40 92 20 64 Z" fill="none" stroke="#6366f1" stroke-width="3"/>
   <circle cx="64" cy="64" r="16" fill="none" stroke="#6366f1" stroke-width="3"/>
@@ -151,9 +151,10 @@ function Get-IconSvg($folder, $accent) {
     return @"
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <rect width="128" height="128" rx="20" fill="#0f172a"/>
-  <!-- CX badge top-right -->
-  <text x="108" y="22" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="700" fill="white" opacity="0.4" text-anchor="middle">CX</text>
+  <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
+  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
 $glyph
+  </g>
   <!-- Accent bar bottom -->
   <rect x="0" y="125" width="128" height="3" fill="$accent"/>
 </svg>
@@ -185,10 +186,10 @@ $templatePath = Join-Path $root "brand\logos\icon-template.svg"
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <!-- Template: replace {{GLYPH}} and {{ACCENT}} -->
   <rect width="128" height="128" rx="20" fill="#0f172a"/>
-  <!-- CX badge top-right (20% size, 40% opacity) -->
-  <text x="108" y="22" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" font-weight="700" fill="white" opacity="0.4" text-anchor="middle">CX</text>
-  <!-- {{GLYPH}} — white or category accent, 60% of canvas, centered at 64,64 -->
-  <text x="64" y="72" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">GLYPH GOES HERE</text>
+  <!-- {{GLYPH}} — white or category accent, scaled 1.4× around centre, minimal padding -->
+  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
+    <text x="64" y="72" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">GLYPH GOES HERE</text>
+  </g>
   <!-- Accent bar bottom (3px) — fill = category accent color -->
   <rect x="0" y="125" width="128" height="3" fill="{{ACCENT}}"/>
 </svg>
@@ -233,7 +234,7 @@ foreach ($ext in $extensions) {
 
 # ── Update PWA icons (brand/icons/) ───────────────────────────────────────────
 $iconSizes = @(72, 96, 128, 144, 152, 192, 384, 512)
-$iconsDir  = Join-Path $root "brand\icons"
+$iconsDir = Join-Path $root "brand\icons"
 
 $cxMark = @'
   <!-- CorreaX mark: CX text centered, sky blue -->
