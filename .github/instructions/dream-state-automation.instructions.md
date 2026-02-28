@@ -103,18 +103,31 @@ Synchronizes with the Global Knowledge repository (if available):
 
 **Note**: Requires `Alex-Global-Knowledge/` repo as sibling folder. Skipped if not found.
 
+#### **Phase 4.5: Brand Compliance Scan**
+Runs a lightweight deprecated-color check across TypeScript source and deployed SVG assets:
+- Scans `platforms/vscode-extension/src/**/*.ts` and `platforms/vscode-extension/assets/**/*.svg` for deprecated colors: `#0078d4`, `#005a9e`, `#ff6b35`, `#ff8c42`, `#ffc857`, `#00ff88`
+- Exceptions: `#0078D4` in `personaDetection.ts` is **intentional** (Developer persona per DK §13) — do not flag
+- Reports count of violations; 0 expected in source and deployed assets
+- If violations found: list file paths + line numbers in dream report under `## Brand Compliance`
+- Does **not** scan `alex_docs/marketing/` or `archive/` (design drafts, not deployed)
+
+**Pass criteria**: 0 violations outside intentional exceptions.
+
 #### **Phase 5: Health Reporting**
 Generates comprehensive report including:
 - Total memory files and synapses
 - Broken connections (if any)
 - Successfully repaired connections
 - Global Knowledge sync status (Master only)
+- Brand compliance scan result (pass/fail + violation count)
 - Recommendations for manual fixes
 
 #### **Phase 6: Results Display**
 - Shows notification with summary
 - Opens generated report automatically
 - Archives report with timestamp
+
+**IMPORTANT — Avatar Revert**: After Phase 6, ALWAYS call `alex_cognitive_state_update` with `state: "persona"` as the **final action** of every dream session. This resets the welcome sidebar from dream mode back to the project persona. Without this call the dream avatar persists in the welcome sidebar indefinitely.
 
 ### **📊 Dream Report Contents**
 
@@ -130,6 +143,11 @@ Each dream execution generates a comprehensive report including:
 - Total Synapses: 183
 - Broken Connections: 0
 - Repaired Connections: 3
+
+## Brand Compliance
+- Scan: src + deployed assets
+- Violations: 0 ✅
+- Exceptions: 1 intentional (#0078D4 Developer persona)
 
 ## Repaired Synapses
 - Source: alex-core.instructions.md:45
