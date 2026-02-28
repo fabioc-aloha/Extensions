@@ -149,12 +149,10 @@ function Get-IconSvg($folder, $accent) {
     $glyph = $glyphs[$folder]
     return @"
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
-  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
+  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
+  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
 $glyph
   </g>
-  <!-- Accent bar bottom -->
-  <rect x="0" y="125" width="128" height="3" fill="$accent"/>
 </svg>
 "@
 }
@@ -183,13 +181,10 @@ $templatePath = Join-Path $root "brand\logos\icon-template.svg"
 @'
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <!-- Template: replace {{GLYPH}} and {{ACCENT}} -->
-  <rect width="128" height="128" rx="20" fill="#0f172a"/>
-  <!-- {{GLYPH}} — white or category accent, scaled 1.4× around centre, minimal padding -->
-  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
+  <!-- {{GLYPH}} — category accent, scaled 1.75× around centre, fills full canvas -->
+  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
     <text x="64" y="72" font-family="'Segoe UI', sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">GLYPH GOES HERE</text>
   </g>
-  <!-- Accent bar bottom (3px) — fill = category accent color -->
-  <rect x="0" y="125" width="128" height="3" fill="{{ACCENT}}"/>
 </svg>
 '@ | Set-Content $templatePath -Encoding UTF8
 Write-Host "✅ icon-template.svg"

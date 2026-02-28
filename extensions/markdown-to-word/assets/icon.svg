@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
-  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
+  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
+  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
   <!-- Page + arrow + page -->
   <rect x="22" y="40" width="28" height="38" rx="3" fill="none" stroke="#0d9488" stroke-width="5"/>
   <line x1="27" y1="53" x2="44" y2="53" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
@@ -11,6 +11,4 @@
   <line x1="83" y1="53" x2="100" y2="53" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
   <line x1="83" y1="61" x2="100" y2="61" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
   </g>
-  <!-- Accent bar bottom -->
-  <rect x="0" y="125" width="128" height="3" fill="#0d9488"/>
 </svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.4× around centre — minimal padding, maximum presence -->
-  <g transform="translate(64 64) scale(1.4) translate(-64 -64)">
+  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
+  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
   <!-- Aperture blades -->
   <g opacity="0.95">
     <ellipse cx="64" cy="42" rx="8" ry="20" fill="#f43f5e" transform="rotate(0 64 64)"/>
@@ -12,6 +12,4 @@
   </g>
   <circle cx="64" cy="64" r="7" fill="none" stroke="#f43f5e" stroke-width="4.5"/>
   </g>
-  <!-- Accent bar bottom -->
-  <rect x="0" y="125" width="128" height="3" fill="#f43f5e"/>
 </svg>
