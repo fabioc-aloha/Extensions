@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <strong>Official Brand Guidelines v1.1</strong><br>
-  <sub>Last updated: January 2026</sub>
+  <strong>Official Brand Guidelines v2.0</strong><br>
+  <sub>Last updated: February 2026 — Added Developer/Dark palette, VS Code webview integration, updated voice</sub>
 </p>
 
 ---
@@ -503,58 +503,107 @@ When adding footer to a new page:
 
 ## Colors
 
-### General Color Scheme Philosophy
+### Surface Type Strategy
 
-> **⚡ Light Backgrounds + Azure Tones**
->
-> Applications should favor **light/white backgrounds** with **Azure accent colors**. This approach improves readability, ensures icons display crisply, aligns with modern enterprise patterns, and works well across all devices.
+CorreaX products fall into two surface categories. Choose the right palette before picking any color.
 
-### Primary Palette (Azure Tones)
+| Surface Type | Products | Palette |
+| ------------ | -------- | ------- |
+| **Enterprise Web** (light-first) | AIRS, Catalyst, PWAs, dashboards | Azure Palette (light backgrounds) |
+| **Developer / AI** (dark-first) | Alex extension, LearnAlex, AIRS dark UI, AI tools | CorreaX Developer Palette (dark backgrounds) |
 
-These are the core brand colors. Use them consistently across all materials.
+VS Code extensions always use `var(--vscode-*)` tokens to inherit the user's theme. Apply the Developer Palette as fallback values inside CSS variables. See [VS Code Integration](#vs-code-extension-integration) below.
 
-| Color | Hex | RGB | WCAG | Usage |
-| ----- | --- | --- | ---- | ----- |
-| **Azure Blue** | `#0078d4` | 0, 120, 212 | AA | Primary brand, CTAs, links, headers |
-| **Azure Dark** | `#005a9e` | 0, 90, 158 | AAA | Hover states, emphasis, borders |
-| **Azure Light** | `#00bcf2` | 0, 188, 242 | AA* | Accents, highlights, icons |
+---
 
-*AA on dark backgrounds only
+### Enterprise Palette — Azure Tones (Light-First)
 
-### Background Palette (Light-First)
-
-| Color | Hex | Usage | Priority |
-| ----- | --- | ----- | -------- |
-| **White** | `#FFFFFF` | Primary page background | ⭐ Default |
-| **Slate 50** | `#f8fafc` | Secondary backgrounds, cards | High |
-| **Slate 100** | `#f1f5f9` | Subtle sections, alternating rows | Medium |
-| **Slate 200** | `#e2e8f0` | Borders, dividers | Medium |
-
-### Dark Mode Palette (Optional)
+Use for web apps, PWAs, and enterprise dashboards where the primary background is white or near-white.
 
 | Color | Hex | Usage |
 | ----- | --- | ----- |
-| **Slate 950** | `#020617` | Dark mode backgrounds |
-| **Slate 900** | `#0f172a` | Dark mode cards, panels |
-| **Slate 800** | `#1e293b` | Dark mode elevated surfaces |
-
-### Text Colors
-
-| Color | Hex | Usage |
-| ----- | --- | ----- |
-| **Slate 900** | `#0f172a` | Primary text on light backgrounds |
+| **Azure Blue** | `#0078d4` | Primary CTAs, links, headers |
+| **Azure Dark** | `#005a9e` | Hover, emphasis, borders |
+| **Azure Light** | `#00bcf2` | Accents, highlights, icons |
+| **White** | `#ffffff` | Page background |
+| **Slate 50** | `#f8fafc` | Secondary surfaces, cards |
+| **Slate 100** | `#f1f5f9` | Subtle sections |
+| **Slate 200** | `#e2e8f0` | Borders, dividers |
+| **Slate 900** | `#0f172a` | Primary text on light bg |
 | **Slate 700** | `#334155` | Body text |
 | **Slate 500** | `#64748b` | Muted text, captions |
-| **Slate 50** | `#f8fafc` | Text on dark/Azure backgrounds |
 
-### Accent Colors
+---
 
-| Color | Hex | Usage |
+### CorreaX Developer Palette — Dark Theme (Canonical for Alex/LearnAlex)
+
+The signature CorreaX visual identity used on [learnalexai.com](https://learnalexai.com) and the Alex VS Code extension. Deep navy backgrounds, indigo-primary, with teal/coral/rose accents.
+
+#### Backgrounds
+
+| Token | Hex | Usage |
 | ----- | --- | ----- |
-| **Violet** | `#7c3aed` | AI/Neural features, special highlights |
-| **Emerald** | `#10b981` | Success states |
-| **Amber** | `#f59e0b` | Warnings |
-| **Red** | `#ef4444` | Errors, destructive actions |
+| `--bg` | `#0f172a` | Page / sidebar background — deep navy |
+| `--bg-card` | `#1e293b` | Cards, nav, banners, elevated surfaces |
+| `--bg-hover` | `#253047` | Interactive hover states |
+| `--code-bg` | `#0d1526` | Code block background |
+
+#### Text
+
+| Token | Hex | Usage |
+| ----- | --- | ----- |
+| `--text` | `#f1f5f9` | Primary text — near white |
+| `--text-muted` | `#94a3b8` | Secondary text — slate |
+| `--text-dim` | `#8a9ab0` | Tertiary text |
+| `--border` | `#334155` | Default border |
+
+#### Accent Palette
+
+Indigo is the primary brand accent. Teal, coral, and rose are secondary accents for themed sections.
+
+| Token | Hex | Role | Usage |
+| ----- | --- | ---- | ----- |
+| `--accent-indigo` | `#6366f1` | PRIMARY | CTAs, links, default accent bar |
+| `--accent-indigo-light` | `#818cf8` | PRIMARY text | Headings, series labels, link text on dark bg |
+| `--accent-teal` | `#0d9488` | SECONDARY | Study guides, AIRS, researcher persona |
+| `--accent-teal-light` | `#2dd4bf` | SECONDARY text | Labels on teal-themed surfaces |
+| `--accent-coral` | `#f97316` | TERTIARY | Warm highlights, technical-writer persona |
+| `--accent-coral-light` | `#fb923c` | TERTIARY text | |
+| `--accent-rose` | `#f43f5e` | QUATERNARY | Errors, warnings, energy moments |
+| `--accent-rose-light` | `#fb7185` | QUATERNARY text | |
+| `--success` | `#22c55e` | Semantic | Success states |
+
+#### Accent Assignment Rules
+
+| Context | Accent |
+| ------- | ------ |
+| Primary CTAs, nav active, default links | `--accent-indigo` |
+| Learning / study content | `--accent-teal` |
+| AI/creative voice content | `--accent-coral` |
+| Errors, warnings | `--accent-rose` |
+| Series label eyebrows | `-light` variant of surface accent |
+
+#### Persona Accent Colors (Alex Extension)
+
+| Persona | Hex | Notes |
+| ------- | --- | ----- |
+| Developer | `#0078D4` | Intentional — Microsoft blue |
+| Academic | `#8B5CF6` | Purple, distinct from brand |
+| Researcher | `#0d9488` | CorreaX teal |
+| Technical Writer | `#f97316` | CorreaX coral |
+| Architect | `#6366F1` | CorreaX indigo |
+| Data Engineer | `#06B6D4` | Cyan, distinct from teal |
+
+---
+
+### Accent Colors (Cross-Palette Semantic)
+
+| Purpose | Enterprise Hex | Developer Hex |
+| ------- | -------------- | ------------- |
+| Success | `#10b981` | `#22c55e` |
+| Warning | `#f59e0b` | `#f97316` |
+| Error | `#ef4444` | `#f43f5e` |
+| AI / Neural | `#7c3aed` | `#6366f1` |
 
 ### Color Accessibility
 
@@ -588,35 +637,56 @@ All visual elements must meet **WCAG 2.1 Level AA** standards (AAA recommended f
 
 ### CSS Variables
 
+**Enterprise / Light-First:**
+
 ```css
 :root {
-  /* Primary (Azure Tones) */
-  --cx-primary: #0078d4;
-  --cx-primary-dark: #005a9e;
+  /* Enterprise Palette — Azure Tones (Light-First) */
+  --cx-primary:       #0078d4;
+  --cx-primary-dark:  #005a9e;
   --cx-primary-light: #00bcf2;
 
-  /* Light-First Backgrounds (Default) */
-  --cx-bg-page: #ffffff;
-  --cx-bg-surface: #f8fafc;
-  --cx-bg-subtle: #f1f5f9;
-  --cx-border: #e2e8f0;
+  --cx-bg-page:       #ffffff;
+  --cx-bg-surface:    #f8fafc;
+  --cx-bg-subtle:     #f1f5f9;
+  --cx-border:        #e2e8f0;
 
-  /* Text on Light Backgrounds */
-  --cx-text-primary: #0f172a;
-  --cx-text-body: #334155;
-  --cx-text-muted: #64748b;
+  --cx-text-primary:  #0f172a;
+  --cx-text-body:     #334155;
+  --cx-text-muted:    #64748b;
 
-  /* Dark Mode Overrides (optional) */
-  --cx-bg-dark: #020617;
-  --cx-bg-dark-surface: #0f172a;
-  --cx-bg-dark-elevated: #1e293b;
-  --cx-text-on-dark: #f8fafc;
+  --cx-success:  #10b981;
+  --cx-warning:  #f59e0b;
+  --cx-error:    #ef4444;
+  --cx-ai:       #7c3aed;
+}
+```
 
-  /* Accents */
-  --cx-accent: #7c3aed;
-  --cx-success: #10b981;
-  --cx-warning: #f59e0b;
-  --cx-error: #ef4444;
+**Developer / Dark-First (Alex, LearnAlex, AI interfaces):**
+
+```css
+:root {
+  /* CorreaX Developer Palette — Dark Theme */
+  --cx-dev-bg:              #0f172a;  /* Page / sidebar — deep navy */
+  --cx-dev-bg-card:         #1e293b;  /* Cards, nav, banners */
+  --cx-dev-bg-hover:        #253047;  /* Hover state */
+  --cx-dev-code-bg:         #0d1526;  /* Code blocks */
+
+  --cx-dev-text:            #f1f5f9;  /* Primary text */
+  --cx-dev-text-muted:      #94a3b8;  /* Secondary text */
+  --cx-dev-text-dim:        #8a9ab0;  /* Tertiary text */
+  --cx-dev-border:          #334155;  /* Borders */
+  --cx-dev-radius:          8px;
+
+  --cx-dev-indigo:          #6366f1;  /* PRIMARY accent */
+  --cx-dev-indigo-light:    #818cf8;  /* PRIMARY on dark bg */
+  --cx-dev-teal:            #0d9488;  /* SECONDARY accent */
+  --cx-dev-teal-light:      #2dd4bf;  /* SECONDARY on dark bg */
+  --cx-dev-coral:           #f97316;  /* TERTIARY accent */
+  --cx-dev-coral-light:     #fb923c;  /* TERTIARY on dark bg */
+  --cx-dev-rose:            #f43f5e;  /* Errors / energy */
+  --cx-dev-rose-light:      #fb7185;
+  --cx-dev-success:         #22c55e;
 }
 ```
 
@@ -718,9 +788,22 @@ CorreaX communications are:
 | Trait | Description | Example |
 | ----- | ----------- | ------- |
 | **Clear** | Direct and easy to understand | "Deploy to Azure" not "Initiate cloud resource provisioning" |
-| **Professional** | Confident but not arrogant | "Built for enterprise" not "The best ever" |
+| **Confident** | States capabilities without overselling | "Built for enterprise" not "The best ever" or "world-class" |
+| **Curious** | Invites exploration rather than demanding action | "Try this" not "You must" |
+| **Warm** | One person built this — the voice reflects that | "Here's what works" not "Per documentation guidelines" |
 | **Helpful** | Solution-oriented | "Try this instead" not "That's wrong" |
 | **Technical** | Precise when needed | Use correct terminology for developers |
+
+**The short version**: Curious, not pushy. Confident, not arrogant. Warm, not corporate. Specific, not vague.
+
+**Apply differently by surface:**
+
+| Surface | Voice weight |
+| ------- | ------------ |
+| LearnAlex / Alex content | Warm, curious, personal — Alex's voice |
+| VS Code extension notifications | Concise, non-intrusive, jargon-free |
+| AIRS / enterprise docs | Professional, precise, outcome-focused |
+| GitHub READMEs | Action-verb lead, benefit-first, direct |
 
 ### Writing Guidelines
 
@@ -803,7 +886,7 @@ CorreaX communications are:
 | Minor (X.Y) | New features, backward compatible | New banner template |
 | Patch (X.Y.Z) | Bug fixes, clarifications | Typo fixes |
 
-**Current Version**: v1.1 (January 2026)
+**Current Version**: v2.0 (February 2026)
 
 ### Asset Approval Workflow
 
@@ -1167,7 +1250,7 @@ gh repo edit --add-topic correax,azure,typescript,nextjs,pwa
 
 - [ ] Add `brand/` folder to project root
 - [ ] Add banner to README header
-- [ ] Use brand colors for badges (`#0078d4`, `#005a9e`, `#00bcf2`)
+- [ ] Use brand colors for badges — Enterprise: `#0078d4`, `#005a9e` · Developer/dark: `#6366f1`, `#0d9488`
 - [ ] Add footer with CorreaX logo and copyright
 - [ ] Use `SiteFooter` component on all public pages
 - [ ] **App icon at header/top of application**
@@ -1205,7 +1288,41 @@ gh repo edit --add-topic correax,azure,typescript,nextjs,pwa
 
 ### Color Quick Reference
 
-| Purpose | Color | Hex |\n| ------- | ----- | --- |\n| **Page Background** | White | `#ffffff` |\n| **Surface/Cards** | Slate 50 | `#f8fafc` |\n| Primary | Azure Blue | `#0078d4` |\n| Hover/Dark | Azure Dark | `#005a9e` |\n| Accent | Azure Light | `#00bcf2` |\n| AI Feature | Violet | `#7c3aed` |\n| Success | Emerald | `#10b981` |\n| Warning | Amber | `#f59e0b` |\n| Error | Red | `#ef4444` |\n\n### Branding Quick Reference\n\n| Brand Level | Where | What to Display |\n| ----------- | ----- | --------------- |\n| **App** | Header, Favicon, PWA | App icon (AIRS radar, etc.) |\n| **Company** | Footer, About, Settings | CorreaX / CX logo |
+**Enterprise / Light-First:**
+
+| Purpose | Color | Hex |
+| ------- | ----- | --- |
+| Page background | White | `#ffffff` |
+| Surface / cards | Slate 50 | `#f8fafc` |
+| Primary | Azure Blue | `#0078d4` |
+| Hover / dark | Azure Dark | `#005a9e` |
+| Accent | Azure Light | `#00bcf2` |
+| AI feature | Violet | `#7c3aed` |
+| Success | Emerald | `#10b981` |
+| Warning | Amber | `#f59e0b` |
+| Error | Red | `#ef4444` |
+
+**Developer / Dark-First:**
+
+| Purpose | Token | Hex |
+| ------- | ----- | --- |
+| Page background | `--cx-dev-bg` | `#0f172a` |
+| Cards / banners | `--cx-dev-bg-card` | `#1e293b` |
+| Border | `--cx-dev-border` | `#334155` |
+| Primary text | `--cx-dev-text` | `#f1f5f9` |
+| Muted text | `--cx-dev-text-muted` | `#94a3b8` |
+| Primary accent | `--cx-dev-indigo` | `#6366f1` |
+| Accent (text on dark) | `--cx-dev-indigo-light` | `#818cf8` |
+| Secondary accent | `--cx-dev-teal` | `#0d9488` |
+| Tertiary accent | `--cx-dev-coral` | `#f97316` |
+| Error / energy | `--cx-dev-rose` | `#f43f5e` |
+
+### Branding Quick Reference
+
+| Brand Level | Where | What to Display |
+| ----------- | ----- | --------------- |
+| **App** | Header, Favicon, PWA | App icon (AIRS radar, etc.) |
+| **Company** | Footer, About, Settings | CorreaX / CX logo |
 
 ### SVG Gradients
 
@@ -1245,6 +1362,96 @@ Copy into your SVG `<defs>`:
 
 ---
 
+## VS Code Extension Integration
+
+### Color Strategy for Webviews
+
+VS Code webviews must respect the user's active theme. Hardcoding colors creates jarring light-on-dark or dark-on-light issues. The correct pattern is:
+
+1. Use `var(--vscode-*)` tokens as the primary source
+2. Fall back to Developer Palette values so the CorreaX aesthetic shows on themes that don't expose those tokens
+3. Never hardcode `#0f172a` or `#1e293b` directly — always through a CSS var
+
+```css
+/* In any VS Code webview <style> block */
+.panel {
+    background: var(--vscode-sideBar-background, var(--cx-dev-bg));
+    color: var(--vscode-foreground, var(--cx-dev-text));
+    border-color: var(--vscode-panel-border, var(--cx-dev-border));
+}
+
+/* Persona/accent-driven color — resolves to persona hex at runtime */
+.accent-element {
+    color: var(--persona-accent, var(--cx-dev-indigo));
+    border-left: 4px solid var(--persona-accent, var(--cx-dev-indigo));
+}
+```
+
+### Banner Pattern in VS Code
+
+The signature CorreaX banner (accent bar + ghost watermark + series eyebrow) works in VS Code sidebars. Adapt the website pattern with tighter sizing:
+
+```html
+<div class="cx-banner">
+    <div class="cx-banner-accent-bar"></div>
+    <div class="cx-banner-watermark">ALEX</div>
+    <div class="cx-banner-series">ALEX COGNITIVE</div>
+    <div class="cx-banner-title">Title Here</div>
+    <div class="cx-banner-sub">Subtitle here</div>
+</div>
+```
+
+```css
+.cx-banner {
+    position: relative;
+    overflow: hidden;
+    background: var(--vscode-editor-widget-background,    var(--cx-dev-bg-card));
+    border-bottom: 1px solid var(--vscode-panel-border,   var(--cx-dev-border));
+    padding: 10px 10px 10px 14px;   /* left pad for accent bar */
+    margin-bottom: 8px;
+}
+.cx-banner-accent-bar {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--persona-accent, var(--cx-dev-indigo));
+}
+.cx-banner-watermark {
+    position: absolute; right: -4px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 52px; font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    pointer-events: none; user-select: none; line-height: 1;
+}
+.cx-banner-series {
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--vscode-textLink-foreground, var(--cx-dev-indigo-light));
+    opacity: 0.85;
+    margin-bottom: 3px;
+}
+.cx-banner-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--vscode-foreground, var(--cx-dev-text));
+}
+.cx-banner-sub {
+    font-size: 11px;
+    color: var(--vscode-descriptionForeground, var(--cx-dev-text-muted));
+}
+```
+
+### Typography in Webviews
+
+Always defer to VS Code for font family:
+
+```css
+body {
+    font-family: var(--vscode-font-family, 'Segoe UI', system-ui, sans-serif);
+    font-size: var(--vscode-font-size, 13px);
+}
+```
+
+---
+
 ## Contact
 
 **Brand Questions**: Open an issue in the repository
@@ -1257,5 +1464,5 @@ Copy into your SVG `<defs>`:
   <img src="logos/logo.svg" alt="CorreaX" width="32">
 </p>
 <p align="center">
-  <sub>© 2026 CorreaX • Brand Guidelines v1.1</sub>
+  <sub>© 2026 CorreaX • Brand Guidelines v2.0 — Updated February 2026</sub>
 </p>
