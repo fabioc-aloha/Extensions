@@ -2,7 +2,7 @@
   "name": "cx-secret-guard",
   "displayName": "CX SecretGuard",
   "description": "Real-time secret scanner — catch leaked API keys, tokens, and credentials as you type, with status bar alerts",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

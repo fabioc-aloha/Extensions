@@ -1,12 +1,19 @@
 ---
-name: "Presentation Tool Selection"
-description: "Best practice decision matrix for choosing between Marp, Gamma, and PptxGenJS based on use case requirements."
-applyTo: "**/*presentation*,**/*slides*,**/*deck*,**/*pptx*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: presentation-tool-selection
+description: Best practice decision matrix for choosing between Marp, Gamma, and PptxGenJS based on use case requirements.
+tier: standard
+applyTo: '**/*presentation*,**/*slides*,**/*deck*,**/*pptx*'
+currency: 2026-04-22
 ---
 
 # Presentation Tool Selection Skill
 
 > Choose the right presentation tool for your use case — Slides, Pitch, or Auto.
+
+> **Staleness Watch**: See [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md) for source URLs and recheck cadence
 
 Alex has three presentation generation capabilities. This skill provides the decision framework for selecting the optimal tool based on requirements.
 
@@ -224,7 +231,3 @@ Sometimes the best approach combines tools:
 - "presentation strategy"
 
 ---
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

@@ -1,5 +1,15 @@
 # Changelog — Focus Timer
 
+## [0.1.4] — 2026-02-28
+
+### Changed
+- README — absolute banner URL, publisher and version shields added
+
+## [0.1.3] — 2026-02-28
+
+### Fixed
+- **Keyboard shortcuts now work** — `Ctrl+Shift+F` (start) and `Ctrl+Shift+P` (pause) were silently inactive because the `focusTimer.running` context key was never set via `setContext`. All state transitions (start, stop, session complete) now correctly call `vscode.commands.executeCommand('setContext', 'focusTimer.running', true/false)` so `when` clauses activate as expected.
+
 ## [0.1.2] — 2026-02-27
 
 ### Added
@@ -10,7 +20,7 @@
 ### Changed
 - Status bar label shortened to `Focus` when idle to reduce clutter; badge shows count
 
-## [0.1.1] — 2026-03-01
+## [0.1.1] — 2026-02-25
 
 ### Fixed
 - **Break duration in session history** — history entries for breaks now record the actual break duration (short or long) instead of always using the short break duration

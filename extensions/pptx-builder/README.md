@@ -1,10 +1,14 @@
 # PPTX Builder
 
-![PPTX Builder Banner](assets/banner.png)
+![PPTX Builder Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/pptx-builder/assets/banner.png)
 
 **Convert Markdown to PowerPoint — each `##` heading becomes a slide**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.pptx-builder)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder)
+
+---
 
 Powered by [pptxgenjs](https://gitbrent.github.io/PptxGenJS/). Write your presentation as Markdown, export as `.pptx`. Speaker notes supported via `<!--notes: ... -->` comments.
 

@@ -1,5 +1,10 @@
 # Changelog — Mermaid Diagram Pro
 
+## [0.1.3] — 2026-02-28
+
+### Changed
+- README — template count corrected to 11, SVG/PNG export clarified; absolute banner URL, publisher and version shields added
+
 ## [0.1.2] — 2026-02-27
 
 ### Added

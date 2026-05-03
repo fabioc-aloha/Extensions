@@ -1,7 +1,13 @@
 ---
-name: "M365 Declarative Agent Debugging Skill"
-description: "Debug non-functional M365 Copilot declarative agents."
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: m365-agent-debugging
+description: Debug non-functional M365 Copilot declarative agents.
+tier: standard
+applyTo: '**/*m365*,**/*copilot*,**/*declarative*agent*'
 user-invokable: false
+currency: 2026-04-22
 ---
 
 # M365 Declarative Agent Debugging Skill
@@ -11,6 +17,7 @@ user-invokable: false
 ## ⚠️ Staleness Warning
 
 M365 Copilot and Teams platform APIs are in rapid evolution. Schema versions, capabilities, and tooling change frequently.
+See [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md) for source URLs and recheck cadence.
 
 **Refresh triggers:**
 
@@ -160,7 +167,3 @@ npx teamsapp package --env local
 npx teamsapp validate --package-file appPackage/build/*.zip
 # Upload to Developer Portal → Preview in Teams
 ```
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

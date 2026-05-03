@@ -1,7 +1,13 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "proactive-assistance"
 description: "Anticipate user needs and offer help before being asked"
+tier: core
+applyTo: '**/*proactive*,**/*anticipate*,**/*suggest*'
 user-invokable: false
+currency: 2026-04-20
 ---
 
 # Proactive Assistance Skill
@@ -197,10 +203,10 @@ Adapt proactivity level to user preference:
 
 ## Related Skills
 
-- [frustration-recognition](.github/skills/frustration-recognition/SKILL.md) — Detect when user needs help
-- [cognitive-load](.github/skills/cognitive-load/SKILL.md) — Manage information overwhelm
-- [status-reporting](.github/skills/status-reporting/SKILL.md) — Proactively prepare updates
-- [scope-management](.github/skills/scope-management/SKILL.md) — Catch complexity growth early
+- [frustration-recognition](..\frustration-recognition/SKILL.md) — Detect when user needs help
+- [cognitive-load](..\cognitive-load/SKILL.md) — Manage information overwhelm
+- [status-reporting](..\status-reporting/SKILL.md) — Proactively prepare updates
+- [scope-management](..\scope-management/SKILL.md) — Catch complexity growth early
 
 ---
 

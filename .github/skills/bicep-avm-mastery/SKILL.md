@@ -1,12 +1,19 @@
 ---
-name: "Bicep AVM Mastery"
-description: "Azure Verified Modules (AVM), Bicep best practices, and MCP-powered infrastructure as code for Azure"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: bicep-avm-mastery
+description: Azure Verified Modules (AVM), Bicep best practices, and MCP-powered infrastructure as code for Azure
+tier: extended
+applyTo: '**/*.bicep,**/*avm*,**/*infrastructure*'
 user-invokable: false
+currency: 2026-04-22
 ---
 
 # Skill: Bicep AVM Mastery
 
 > Azure Verified Modules (AVM), Bicep best practices, and MCP-powered infrastructure as code for Azure.
+> **Staleness Watch**: See [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md) for source URLs and recheck cadence
 
 ## Metadata
 
@@ -419,9 +426,3 @@ az deployment group create \
 *Skill created: 2026-02-14 | Category: Cloud/Infrastructure | Status: Active | MCP-Enhanced: Yes*
 
 ---
-
-## Synapses
-
-- [.github/skills/infrastructure-as-code/SKILL.md] (High, Extends, Bidirectional) - "Bicep is an IaC tool covered in depth here"
-- [.github/skills/azure-architecture-patterns/SKILL.md] (High, Implements, Bidirectional) - "Bicep deploys architectures designed with WAF"
-- [.github/skills/azure-devops-automation/SKILL.md] (Medium, Uses, Forward) - "CI/CD pipelines deploy Bicep code"

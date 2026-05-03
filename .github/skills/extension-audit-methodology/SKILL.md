@@ -1,7 +1,12 @@
 ---
-name: "Extension Audit Methodology"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: extension-audit-methodology
 description: "Systematic 5-dimension audit framework for VS Code extensions — debug hygiene, dead code, performance, menu validation, dependency cleanup"
-applyTo: "**/*extension*,**/*audit*,**/package.json,**/tsconfig.json"
+tier: standard
+applyTo: '**/*extension*,**/*audit*,**/package.json,**/tsconfig.json'
+currency: 2026-04-22
 ---
 
 # Extension Audit Methodology

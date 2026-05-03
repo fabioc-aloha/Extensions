@@ -1,8 +1,24 @@
+---
+type: prompt
+lifecycle: stable
+inheritance: inheritable
+mode: agent
+model: claude-opus-4-6
+description: Validate VS Code extension manifest consistency: command registration, configuration keys, and graceful degradation patterns
+application: "When developing or maintaining VS Code extensions"
+currency: 2026-04-21
+---
+
 # Validate Extension Configuration
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "reviewing"`. This updates the welcome sidebar avatar.
 
 Validate VS Code extension manifest configuration and command registration
+
+Create a TODO list for all steps. Mark each in-progress before starting, completed immediately after finishing.
+
+
+
+After ANY file edit, run compilation check. Do not proceed until zero errors. If compilation or tests fail, fix and retry. Maximum 5 iterations per step.
 
 ## Prompt
 
@@ -16,18 +32,26 @@ You are reviewing a VS Code extension for configuration and manifest consistency
 
 **Process**:
 
-1. **Run automated validation**:
+1. **Find configuration updates** (manual validation):
    ```powershell
-   cd platforms/vscode-extension
-   .\scripts\validate-manifest.ps1
+   # Search for configuration writes
+   Select-String -Path src -Pattern "getConfiguration.*\.update\(" -Recurse
+   # Search for configuration reads
+   Select-String -Path src -Pattern "getConfiguration\(" -Recurse
    ```
 
-2. **Review results**:
-   - ✅ **Passing**: Report success, extension is properly configured
-   - ⚠️ **Warnings**: Review each warning to verify try-catch pattern is intentional for dynamic configs
-   - ❌ **Errors**: Critical issues that must be fixed before release
+2. **For each configuration key found**:
+   - Extract the config context: `getConfiguration('my-ext.feature')`
+   - Extract the key: `.get('settingName')` or `.update('settingName')`
+   - Build full key: `my-ext.feature.settingName`
+   - Verify key exists in `package.json` `configuration.properties`
 
-3. **For each error found**:
+3. **Review results**:
+   - ✅ **Passing**: All keys are registered in package.json
+   - ⚠️ **Warnings**: Keys using try-catch for dynamic configs
+   - ❌ **Errors**: Unregistered keys without error handling
+
+4. **For each error found**:
    - **Option A**: Register the configuration in package.json `configuration.properties`
    - **Option B**: Wrap in try-catch if it's non-critical dynamic configuration
    - Document the decision rationale
@@ -65,4 +89,10 @@ Alex:
 6. Re-running validation... ✅ All checks pass
 
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.
+## Summary
+
+After completing all steps, generate:
+- Files changed (with counts)
+- Verifications passed (compile, test, lint)
+- Issues encountered and resolutions
+- Anything requiring manual attention

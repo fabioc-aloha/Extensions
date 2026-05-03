@@ -1,7 +1,13 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "self-actualization"
 description: "Comprehensive cognitive self-assessment — honest evaluation of architecture health, growth, and optimization opportunities"
+tier: standard
+applyTo: '**/*actuali*,**/*assessment*,**/*self-assess*,**/*health*'
 disable-model-invocation: true
+currency: 2026-04-22
 ---
 
 # Self-Actualization Skill
@@ -24,8 +30,8 @@ disable-model-invocation: true
 
 | Metric | How to Measure | Healthy | Concern |
 | ------ | -------------- | ------- | ------- |
-| Synapse validity | All targets exist, bidirectional | 100% valid | Any broken links |
-| Schema compliance | All synapses.json match SYNAPSE-SCHEMA | Full compliance | Any schema violations |
+| Connection validity | All `applyTo` targets exist | 100% valid | Any broken links |
+| Schema compliance | All frontmatter matches spec | Full compliance | Any format violations |
 | Version alignment | Version string consistent across files | All match | Any drift |
 | File organization | Files in correct directories | All correct | Orphaned files |
 
@@ -57,12 +63,12 @@ The architecture has three memory types. Healthy balance varies by maturity:
 
 **The capabilities-list anti-pattern**: "Expert in X. Capabilities: validate, detect, assess..." — this adds zero value because an LLM already knows these things generically. Skills must encode *specific* knowledge.
 
-### 4. Connection Density (Synapse Network)
+### 4. Connection Density (Link Network)
 
 | Metric | How to Measure | Healthy | Concern |
 | ------ | -------------- | ------- | ------- |
-| Avg connections per skill | Total synapses / total skills | 3-6 | < 2 (isolated) or > 10 (over-connected) |
-| Orphan skills | Skills with 0 synapses | 0 | Any |
+| Avg connections per skill | Total `applyTo` links / total skills | 3-6 | < 2 (isolated) or > 10 (over-connected) |
+| Orphan skills | Skills with no `applyTo` patterns | 0 | Any |
 | Hub skills | Skills with > 8 connections | 1-2 core hubs | > 4 (over-centralized) |
 | Bidirectional coverage | % of connections that are reciprocated | > 80% | < 60% |
 
@@ -85,7 +91,7 @@ The architecture has three memory types. Healthy balance varies by maturity:
 | ------ | ------------- | --------- | ------------ |
 | Skills added this month | Count new SKILL.md files | 1-5 new skills | 0 (stagnant) or > 10 (unfocused) |
 | Skills deepened | Skills edited to add depth | Active enrichment | Only new, never deepened |
-| Global knowledge growth | New GI-* and GK-* entries | Synthesis happening | No global entries (isolated learning) |
+| Global knowledge growth | New GI-\* and GK-\* entries | Synthesis happening | No global entries (isolated learning) |
 | Trifecta progression | New instructions/prompts | Capability maturing | Skills without procedures |
 
 ## Self-Actualization Session Flow
@@ -112,92 +118,67 @@ The architecture has three memory types. Healthy balance varies by maturity:
 
 **Overall**: Weighted average. > 4.0 = healthy. 3.0-4.0 = needs attention. < 3.0 = urgent.
 
-## Relationship to Other Cognitive Processes
+## Relationship to Other Rituals
 
-| Process | Frequency | Depth | Purpose |
+Meditation is the foundational ritual. Self-Actualize is a deep meditation variant.
+
+| Ritual | Frequency | Depth | Relationship |
 | ------- | --------- | ----- | ------- |
-| Dream | On-demand | Structural | Automated validation |
-| Quick Meditation | Per-session | Light | Session consolidation |
-| Full Meditation | Weekly | Moderate | Knowledge integration |
-| **Self-Actualization** | **Monthly** | **Deep** | **Comprehensive assessment + growth plan** |
+| **Meditation** | Per-session | Moderate | Foundational — the primary ritual |
+| Dream | On-demand | Structural | Diagnostic — chains after meditation sometimes |
+| **Self-Actualize** | **Monthly** | **Deep** | **Deep meditation; dream is an optional diagnostic input (D8)** |
+
+### Session Flow
+
+1. (Optional) Dream for structural baseline → 2. Run snapshot muscle → 3. 6-dimension assessment → 4. Meditation 5 R's (persist findings as a chronicle)
 
 ## Drift Remediation Protocol
 
-Self-actualization often detects **documentation drift** — when implementation evolves faster than documentation. Common drift categories:
+Self-actualization detects documentation drift — when implementation evolves faster than docs.
 
-### 1. Version Reference Drift
+| Drift Type | Detection | Fix |
+|------------|-----------|-----|
+| Version references | Scan for outdated version strings in `.github/` | grep + multi-replace |
+| Documentation counts | Compare `copilot-instructions.md` counts vs actual file counts | Update counts |
+| Memory balance | P:E:D ratio outside maturity target | Consolidate episodic, enrich skills, prune redundant instructions |
 
-**Detection**: Self-actualization scans memory files for outdated version references (e.g., `v5.6.8` when current is `v5.7.1`)
+**Drift is not always bad** — growth causes natural ratio shifts. Remediate only when the shift indicates debt (e.g., unconsolidated sessions, stagnant skills, overlapping instructions).
 
-**Common locations**:
-- Skill examples: "as of v5.X.Y" annotations
-- Release notes embedded in skills
-- Instruction file headers
-- Comments with version-specific behavior
+## Snapshot Muscle (self-actualization-snapshot.cjs)
 
-**Remediation**:
-```typescript
-// Find all outdated version references
-grep -r "v5\.[0-6]\.\d+" .github/ --include="*.md"
+Mechanical inputs are produced by `.github/muscles/self-actualization-snapshot.cjs`. The snapshot is gitignored (D13) — it's regenerable working state. Run before each self-actualization session and re-run after writing the chronicle.
 
-// Update via multi_replace or manual edit
-// Pattern: v5.6.8 → v5.7.1
-```
+### Schema (`.github/quality/self-actualization-snapshot.json`)
 
-### 2. Documentation Count Drift
+| Field | Meaning |
+|---|---|
+| `schemaVersion` | Snapshot schema version (current: 1) |
+| `generatedAt` | ISO timestamp |
+| `recency.lastSelfActualization` | Date of newest `self-actualization-YYYY-MM-DD.md` chronicle (D7-pattern) |
+| `recency.source` | `chronicle-filename` \| `cogConfig` \| `none` |
+| `recency.daysSinceLastSelfActualization` | Days since last chronicle |
+| `recency.stale` | `true` if `≥ 30` days (D9) |
+| `dimensions.structuralIntegrity.dreamAvailable` | `false` if `dream-report.json` missing (D8 — dim 1 then N/A) |
+| `dimensions.structuralIntegrity.brokenRefs` / `trifectaIssues` / `health` | Pulled from dream report when present |
+| `dimensions.memoryBalance.ratio.{P,E,D}` | Procedural / Episodic / Domain mix |
+| `dimensions.knowledgeDepth.samples[]` | Smallest N skills for LLM-judged depth pass (D16: dim 3 LLM-judged) |
+| `dimensions.connectionDensity.{avgPatternsPerSkill, orphanSkills, hubSkills}` | applyTo network shape |
+| `dimensions.trifectaCompleteness.trifectaIssueCount` | From dream report (or null if dream unavailable) |
+| `dimensions.growthTrajectory.diff` | Per-artifact-type delta vs prior snapshot, or `priorAvailable: false` on first run |
 
-**Detection**: Compare copilot-instructions.md documented counts vs. actual file counts
+### What's mechanical vs what's LLM-judged (D16)
 
-**Verification commands** (PowerShell):
-```powershell
-# Count actual skills (directories with SKILL.md)
-(Get-ChildItem -Path .\.github\skills -Directory | Where-Object { 
-  Test-Path "$($_.FullName)\SKILL.md" 
-}).Count
+| Dimension | Producer |
+|---|---|
+| 1. Structural Integrity | Mechanical (from dream report) |
+| 2. Memory Balance | Mechanical counts; LLM interprets ratio against maturity target |
+| 3. Knowledge Depth | Muscle picks deterministic sample; **LLM judges** Deep / Adequate / Shallow / Empty-shell |
+| 4. Connection Density | Mechanical (avg / orphans / hubs); LLM interprets distribution |
+| 5. Trifecta Completeness | Mechanical (count from dream); LLM picks build priority |
+| 6. Growth Trajectory | Mechanical diff; LLM interprets as healthy growth or consolidation debt |
 
-# Count actual instructions
-(Get-ChildItem -Path .\.github\instructions -Filter "*.instructions.md").Count
+### Cadence and recency tracking
 
-# Count prompts
-(Get-ChildItem -Path .\.github\prompts -Filter "*.prompt.md").Count
-```
-
-**Remediation**:
-Update copilot-instructions.md with actual counts:
-```markdown
-Total Skills: 119 | Total Instructions: 31
-```
-
-### 3. Memory Balance Drift
-
-**Detection**: Calculate P:E:D ratio, compare to maturity-appropriate target
-
-**Not always remediation needed** — growth causes natural shifts:
-- Adding skills → D increases (good)
-- Consolidating episodic → E decreases (good)
-- Removing redundant instructions → P decreases (good)
-
-**Action required when**:
-- Episodic debt (too many unconsolidated sessions)
-- Procedural bloat (overlapping instructions)
-- Skill stagnation (no new domain knowledge)
-
-### Pre-Publish Drift Check Workflow
-
-**Order** (run before `vsce package`):
-1. **Self-Actualization** → Detect all drift categories
-2. **Remediation** → Fix version refs, update counts
-3. **Verification** → Run PowerShell counts, grep version patterns
-4. **Build & Install** → Confirm clean heir sync, 0 TypeScript errors
-5. **User Testing** → Regression checklist
-
-**Real-world example** (v5.7.1):
-- Detected: persona-detection/SKILL.md had v5.6.8 references
-- Detected: copilot-instructions.md missing skill/instruction counts
-- Fixed: Updated 3 version instances, added counts
-- Verified: PowerShell confirmed 119 skills, 31 instructions
-- Result: Clean build, 0 contamination, ready for publish
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.
+- `cogConfig.lastSelfActualization` is the **fallback** field name (D11/D12). The snapshot derives `lastSelfActualization` from chronicle filenames first; cogConfig only matters when no chronicle exists yet (e.g., heir bootstrap).
+- `session-start.cjs` warns when `daysSinceLastSelfActualization ≥ 30` (D9).
+- Always re-run the muscle after authoring a new chronicle so `recency.daysSinceLastSelfActualization` resets.

@@ -1,11 +1,27 @@
+---
+type: prompt
+lifecycle: stable
+inheritance: inheritable
+mode: agent
+model: claude-opus-4-6
+description: Systematic VS Code extension review for API correctness, security, resource management, and 1.109+ agent platform readiness
+application: "When requesting code reviews, PR feedback, or quality assessment"
+currency: 2026-04-21
+---
+
 # VS Code Extension Audit
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "reviewing"`. This updates the welcome sidebar avatar.
 
 **Purpose**: Systematic review of a VS Code extension for API correctness, security, resource management, and 1.109+ platform readiness
 **Domain**: VS Code extension development, API patterns
 **Duration**: 15-30 minutes depending on extension complexity
 **Output**: Prioritized findings with file links and exact fixes
+
+Create a TODO list for all steps. Mark each in-progress before starting, completed immediately after finishing.
+
+
+
+After ANY file edit, run compilation check. Do not proceed until zero errors. If compilation or tests fail, fix and retry. Maximum 5 iterations per step.
 
 ---
 
@@ -60,11 +76,6 @@ Select-String -Path src -Pattern "getConfiguration.*\.update\(" -Recurse
 2. Extract the key: `.update('settingName', value)`
 3. Build full key: `my-ext.feature.settingName`
 4. Verify key exists in `package.json` `configuration.properties`
-
-**Auto-validate** (if script available):
-```powershell
-.\scripts\validate-manifest.ps1
-```
 
 **Findings Template:**
 ```markdown
@@ -157,4 +168,12 @@ Alex:
 **Cross-reference**: `.github/instructions/vscode-extension-patterns.instructions.md`
 
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.
+
+
+## Summary
+
+After completing all steps, generate:
+- Files changed (with counts)
+- Verifications passed (compile, test, lint)
+- Issues encountered and resolutions
+- Anything requiring manual attention

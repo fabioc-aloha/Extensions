@@ -1,7 +1,12 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "incident-response"
 description: "Calm, systematic crisis handling — from detection through post-mortem to prevention"
+tier: standard
 applyTo: "**/*incident*,**/*outage*,**/*alert*,**/*emergency*"
+currency: 2026-04-22
 ---
 
 # Incident Response Skill
@@ -114,7 +119,3 @@ One paragraph: what happened, impact, resolution.
 - [ ] Known issues (monitoring gaps, flaky tests)
 - [ ] Pending alerts (expected noise vs real signal)
 - [ ] Escalation contacts (who to call at 3am)
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

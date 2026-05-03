@@ -1,6 +1,12 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "bootstrap-learning"
 description: "Domain-agnostic knowledge acquisition — from zero to structured expertise through conversational learning"
+tier: standard
+applyTo: '**/*learn*,**/*bootstrap*,**/*knowledge*,**/*domain*'
+currency: 2026-04-22
 ---
 
 # Bootstrap Learning Skill
@@ -57,7 +63,7 @@ Learning a new domain is hard because you don't know what you don't know. This s
 - Map analogies: "This is like [existing concept] because..."
 - Find contradictions: "This conflicts with [existing belief] — which is right?"
 - Identify synergies: "Combining this with [skill X] could improve..."
-- Update synapses: Create connections in synapses.json
+- Update connections: Add links to related skills
 
 **Exit criteria**: At least 2 connections to existing skills identified.
 
@@ -73,7 +79,7 @@ Learning a new domain is hard because you don't know what you don't know. This s
 | Cross-project pattern | GK-* | Global knowledge |
 | One-off insight | GI-* | Global insights |
 
-**Exit criteria**: At least one memory file created. Synapses updated.
+**Exit criteria**: At least one memory file created. Connections linked.
 
 ## Gap Identification Patterns
 
@@ -110,7 +116,3 @@ A good bootstrap learning output (SKILL.md) should:
 - [ ] Have tables with real data (thresholds, trade-offs, decision criteria)
 - [ ] Avoid the "capabilities list" anti-pattern ("Expert in X. Can do Y.")
 - [ ] Pass the Feynman check — any section should be explainable simply
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

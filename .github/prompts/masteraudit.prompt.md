@@ -1,46 +1,59 @@
 ---
-description: "Run Master Alex audit — 22 automated sections + semantic/logic/code/architectural review"
+type: prompt
+lifecycle: stable
+inheritance: inheritable
+description: "Multi-phase automated brain audit using existing audit scripts"
+application: "When auditing brain health, architecture consistency, or running comprehensive quality checks"
 mode: agent
 agent: Alex
+model: claude-opus-4-6
+currency: 2026-04-21
 ---
 
-# /masteraudit - Master Alex Project Audit
+# /masteraudit - Master Brain Audit
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "reviewing"`. This updates the welcome sidebar avatar.
+Multi-phase automated sweep of brain health. Create a TODO list for all phases. Mark each in-progress before starting, completed immediately after finishing.
 
-Run a comprehensive Master Alex audit: automated 22-section checks + semantic consistency review.
+## Phase 1: Architecture Audit
 
-## Procedure
+1. Run `node scripts/audit-architecture.cjs`
+2. Capture output and record any issues found
+3. If critical issues: stop and report before continuing
 
-### Step 1: Automated Audit
-Run the master audit script:
+## Phase 2: Heir Sync Drift
 
-```powershell
-.github/muscles/audit-master-alex.ps1
-```
+1. Run `node scripts/audit-heir-sync-drift.cjs`
+2. Record any files out of sync between master and heir
+3. Note which files need re-sync
 
-### Step 2: Semantic Review
-After the script passes, review the four dimensions:
+## Phase 3: Skill Activation Index
 
-1. **Semantic**: Do copilot-instructions, M365 system prompt, and README all describe Alex the same way?
-2. **Logic**: Are documented workflows (heir evolution, meditation, dream) internally consistent?
-3. **Code**: Do package.json commands map to real handlers? Do documented tools match MCP identifiers?
-4. **Architectural**: Is the memory model (trifecta, working memory, neuroanatomical mapping) consistent across all files?
+1. Run `node scripts/audit-skill-activation-index.cjs`
+2. Record orphaned skills, missing activation entries
+3. Note skills needing registration
 
-Use the checklist in the master-alex-audit skill (Semantic Review Checklist section).
+## Phase 4: Tools and Hooks
 
-### Step 3: Report
-Present findings as a structured table with severity ratings (CRITICAL/WARNING/INFO).
+1. Run `node scripts/audit-tools-hooks.cjs`
+2. Record broken tool references, missing hook handlers
+3. Note tools/hooks needing repair
 
-## Modes
+## Phase 5: Brain QA
 
-- `/masteraudit` — Full audit (all 22 sections + semantic review)
-- `/masteraudit quick` — Sections 1-9 + abbreviated semantic check
-- `/masteraudit semantic` — Skip script, semantic review only
+1. Run `node .github/muscles/brain-qa.cjs`
+2. Record pass/fail counts, broken connections, count drift
+3. This is the authoritative health score
 
-## Start
+## Phase 6: Self-Contained Check
 
-I'll run a comprehensive Master Alex audit. Which mode would you like?
+1. Run `node scripts/check-self-contained.cjs`
+2. Record any external dependencies that should be internalized
 
+## Summary
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.
+After all phases, generate:
+- Phases completed (count)
+- Issues by severity (critical / warning / info)
+- Issues by phase (architecture / sync / skills / tools / qa / self-contained)
+- Top 5 issues requiring immediate attention
+- Overall brain health score (from brain-qa)

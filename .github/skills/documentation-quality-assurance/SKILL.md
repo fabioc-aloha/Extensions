@@ -1,59 +1,67 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "documentation-quality-assurance"
 description: "Systematic documentation audit, drift detection, preflight validation, and multi-pass quality pipelines"
+tier: standard
+applyTo: '**/*doc*,**/*audit*,**/*preflight*,**/*quality*'
 metadata:
   inheritance: inheritable
+currency: 2026-04-22
 ---
 
 # Documentation Quality Assurance
 
 > Prevent documentation rot through systematic audits, automated validation, and pipeline-enforced quality gates.
 
-**Scope**: Inheritable skill. Covers drift detection, preflight validation, count elimination, link integrity, 5-pass quality pipeline, staleness detection, and large-project organization.
+**Scope**: Inheritable skill. Covers drift detection, preflight validation, semantic accuracy, link integrity, 5-pass quality pipeline, staleness detection, and large-project organization.
 
 **Complements**: The Documentarian agent uses this skill as its knowledge foundation. This skill is the "what" — the agent is the "who".
 
-## The Count Problem
+## Audit Priority: Semantics Over Syntax
 
-Hardcoded counts in documentation drift silently:
+**The most damaging documentation errors are semantic, not syntactic.** A wrong count is annoying. A false claim about functionality is dangerous.
 
-| Document Says | Reality | Impact |
-|--------------|---------|--------|
-| "109 skills" | 119 skills (10 added) | Undermines credibility |
-| "7 agents" | 8 agents (1 added) | Users miss new capability |
-| "28 instructions" | 30 instructions | Stale architecture picture |
+### Audit Priority Hierarchy
 
-### Count Elimination Rules
+| Priority | Issue Type | Impact | Example |
+|----------|-----------|--------|---------|
+| **P0 Critical** | Phantom features | Users try to use something that doesn't exist | "Entra ID SSO enabled" (code never implemented) |
+| **P0 Critical** | False security claims | Trust violations, compliance failures | "All data encrypted" (encryption not implemented) |
+| **P1 High** | Contradictions | User confusion, decision paralysis | README says X, CHANGELOG says Y |
+| **P1 High** | Stale capability claims | Users miss real features or expect removed ones | Docs describe v3 API but v5 is current |
+| **P2 Medium** | Broken cross-references | Navigation friction | Link to deleted file |
+| **P3 Low** | Count drift | Credibility erosion | "109 skills" when there are 123 |
+| **P3 Low** | Formatting issues | Aesthetic concerns | Bad table alignment |
 
-| Instead of | Write | Why |
-|-----------|-------|-----|
-| "Alex has 109 skills" | "Alex has N skills" (computed) | Auto-correct |
-| "We support 7 agents" | "See Agent Catalog for current list" | Delegate to source |
-| Inline number | Cross-reference to canonical source | Single source of truth |
+### Semantic Audit Questions
 
-### Canonical Count Sources
+Before any documentation audit, ask these questions **in order**:
 
-When a count is needed, always derive it from the file system:
+1. **Does this feature actually exist?** — Check if documented functionality has corresponding implementation
+2. **Is this claim still true?** — Validate assertions against current codebase state
+3. **Are there contradictions?** — Cross-check related documents for conflicting information
+4. **Is the version current?** — Compare documented versions against package.json/CHANGELOG
+5. **Do examples work?** — Test code snippets against actual API/CLI behavior
+6. **Do links resolve?** — Verify internal and external references (automate this)
+7. **Are counts accurate?** — Check hardcoded numbers against canonical sources (automate this)
 
-| Metric | Source | Method |
-|--------|--------|--------|
-| Skill count | `.github/skills/` | Count subdirectories |
-| Agent count | `.github/agents/` | Count `*.agent.md` files |
-| Instruction count | `.github/instructions/` | Count `*.instructions.md` files |
-| Prompt count | `.github/prompts/` | Count `*.prompt.md` files |
-| Muscle count | `.github/muscles/` | Count script files |
+**Rule**: Questions 1-5 require human judgment. Questions 6-7 can be automated. Never spend human attention on automatable checks at the expense of semantic review.
 
-## Docs-as-Architecture
+### Common Semantic Bugs
 
-Documentation is a load-bearing part of the system, not a separate artifact:
+| Bug Pattern | Detection Method | Fix |
+|-------------|------------------|-----|
+| **Phantom configuration** | Grep settings docs, verify in package.json | Remove undeclared settings or add to manifest |
+| **Removed feature still documented** | Search for deleted code references | Remove or archive documentation |
+| **Future feature documented as shipped** | Compare roadmap "planned" vs "shipped" markers | Move to correct section |
+| **Version mismatch** | Regex for version patterns, compare to source of truth | Align all occurrences |
+| **Model/API hallucination** | Verify external references against official docs | Correct or remove |
 
-| Principle | Meaning |
-|-----------|---------|
-| **Docs are code** | Same review rigor as source code |
-| **Docs have tests** | Preflight validation catches errors |
-| **Docs have dependencies** | Cross-references create a dependency graph |
-| **Docs can break** | Stale docs actively mislead users |
-| **Docs need maintenance** | Schedule regular audits like code refactoring |
+## Count Drift & Docs-as-Architecture (P3)
+
+Count elimination rules, canonical sources, and docs-as-architecture principles are defined in [doc-hygiene](../doc-hygiene/SKILL.md). Apply those rules during Pass 5 (Lint) of the quality pipeline below.
 
 ## Document Header Pattern
 
@@ -99,19 +107,22 @@ Operational documentation (regression checklists, deployment guides, QA procedur
 
 **Rule**: Include enough metadata that anyone can understand the document's context without reading the body. Operational docs reviewed during incidents need at-a-glance clarity.
 
-## 5-Pass Quality Pipeline
+## 6-Pass Quality Pipeline
 
 Run these passes in sequence on any document suite:
 
-| Pass | Focus | Catches |
-|------|-------|---------|
-| 1. **Brand** | Voice, tone, naming consistency | "Copilot" vs "Alex", passive voice, jargon |
-| 2. **Architecture** | Structural accuracy, counts, versions | Stale numbers, outdated diagrams |
-| 3. **Cross-Reference** | Link integrity, orphan files | Broken links, unreferenced docs |
-| 4. **Lint** | Formatting, markdown validity | Bad tables, broken code blocks |
-| 5. **Consolidation** | Redundancy, overlap, merge candidates | Two docs covering same topic |
+| Pass | Focus | Catches | Type |
+|------|-------|---------|------|
+| 1. **Semantic** | Claims match reality, features exist | Phantom features, false claims, contradictions | 🧠 Human |
+| 2. **Architecture** | Structural accuracy, diagrams current | Outdated visuals, wrong relationships | 🧠 Human |
+| 3. **Brand** | Voice, tone, naming consistency | "Copilot" vs "Alex", passive voice, jargon | 🧠 Human |
+| 4. **Cross-Reference** | Link integrity, orphan files | Broken links, unreferenced docs | 🤖 Automatable |
+| 5. **Lint** | Formatting, markdown validity, counts | Bad tables, stale numbers, code blocks | 🤖 Automatable |
+| 6. **Consolidation** | Redundancy, overlap, merge candidates | Two docs covering same topic | 🧠 Human |
 
-**Rule**: Don't merge passes — each pass has a single focus. Multi-focus reviews miss more than single-focus reviews applied sequentially.
+**Rule 1**: Don't merge passes — each pass has a single focus.
+**Rule 2**: Complete all semantic passes (1-3) before mechanical passes (4-5). A perfectly formatted lie is still a lie.
+**Rule 3**: Never allow automated tooling to "pass" a doc suite until human semantic review is complete.
 
 ## Preflight Validation
 
@@ -271,17 +282,50 @@ Every doc suite serves multiple readers:
 
 ## Doc Audit Checklist
 
-Run this 7-item checklist for any documentation review:
+Run this 10-item checklist for any documentation review. **Semantic checks first.**
+
+### Phase 1: Semantic Accuracy (🧠 Human Required)
 
 | # | Check | Method |
 |---|-------|--------|
-| 1 | All links resolve | Automated link checker |
-| 2 | No hardcoded counts | Grep for common count patterns |
-| 3 | Version strings current | Compare against package.json/CHANGELOG |
-| 4 | Code examples execute | Copy-paste test critical examples |
-| 5 | File references exist | Verify every referenced file path |
-| 6 | No orphan files | Cross-reference scan |
-| 7 | Consistent terminology | Search for variant spellings/names |
+| 1 | **Documented features exist** | For each feature claim, verify code/config exists |
+| 2 | **No false capability claims** | Check "shipped" items against actual implementation |
+| 3 | **No contradictions** | Cross-check related docs for conflicting statements |
+| 4 | **Examples work** | Copy-paste test critical examples |
+
+### Phase 2: Mechanical Accuracy (🤖 Automatable)
+
+| # | Check | Method |
+|---|-------|--------|
+| 5 | All links resolve | Automated link checker |
+| 6 | No hardcoded counts | Grep for common count patterns |
+| 7 | Version strings current | Compare against package.json/CHANGELOG |
+| 8 | File references exist | Verify every referenced file path |
+| 9 | No orphan files | Cross-reference scan |
+| 10 | Consistent terminology | Search for variant spellings/names |
+
+**Rule**: Never mark a doc suite "clean" based only on Phase 2 passing. Phase 1 semantic checks are non-negotiable.
+
+## TODO Files as Self-Models
+
+A TODO list that contains completed work is worse than no TODO list. TODO.md is a **self-model** — when read at session start, it forms a mental picture of what exists and what doesn't. Completed tasks masquerading as pending create:
+
+1. **Rediscovery tax** — work already done gets re-investigated
+2. **False urgency** — energy directed at "building" something already built
+
+### The Fix: Done Section First
+
+```markdown
+## Done — Audited [date]
+- [x] secretScanner.ts ported to shared/utils/
+- [x] All 15 extension.ts files implemented
+
+## Next
+- [ ] npm run compile — verify TypeScript
+- [ ] F5 smoke test in Extension Development Host
+```
+
+**Maintenance Rule**: During every meditation or sprint transition, audit TODO.md first. Move completed items to Done. A stale self-model wastes more time than the audit costs.
 
 ## CHANGELOG Best Practices
 

@@ -1,7 +1,12 @@
 ---
-name: "Observability & Monitoring"
-description: "Production visibility through logs, metrics, traces, and alerting — the three pillars of observability"
-applyTo: "**/*observ*,**/*monitor*,**/*telemetry*,**/*logging*,**/*metrics*,**/*traces*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: observability-monitoring
+description: Production visibility through logs, metrics, traces, and alerting — the three pillars of observability
+tier: standard
+applyTo: '**/*observ*,**/*monitor*,**/*telemetry*,**/*logging*,**/*metrics*,**/*traces*'
+currency: 2026-04-22
 ---
 
 # Observability & Monitoring Skill

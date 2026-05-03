@@ -1,7 +1,12 @@
 ---
-name: "Database Design"
-description: "Schema design, normalization, query optimization, and data modeling patterns"
-applyTo: "**/*database*,**/*schema*,**/*sql*,**/*postgres*,**/*mongo*,**/*prisma*,**/*drizzle*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: database-design
+description: Schema design, normalization, query optimization, and data modeling patterns
+tier: standard
+applyTo: '**/*database*,**/*schema*,**/*sql*,**/*postgres*,**/*mongo*,**/*prisma*,**/*drizzle*'
+currency: 2026-04-22
 ---
 
 # Database Design Skill

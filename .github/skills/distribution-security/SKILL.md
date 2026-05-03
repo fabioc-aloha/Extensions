@@ -1,8 +1,12 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "distribution-security"
 description: "Defense-in-depth, PII protection, secrets scanning, and secure packaging for distributed software"
-metadata:
-  inheritance: inheritable
+tier: standard
+applyTo: '**/*security*,**/*secrets*,**/*pii*,**/*distribution*'
+currency: 2026-04-22
 ---
 
 # Distribution Security

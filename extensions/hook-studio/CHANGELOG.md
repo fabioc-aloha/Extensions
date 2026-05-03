@@ -1,5 +1,10 @@
 # Changelog — Hook Studio
 
+## [0.1.9] — 2026-02-28
+
+### Changed
+- README — absolute banner URL, publisher and version shields added
+
 ## [0.1.8] — 2026-02-27
 
 ### Changed

@@ -1,10 +1,14 @@
 # SVG to PNG
 
-![SVG to PNG Banner](assets/banner.png)
+![SVG to PNG Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/svg-to-png/assets/banner.png)
 
 **Convert SVG files to pixel-perfect PNGs — Rust-based rendering, batch convert, right-click workflow**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.svg-to-png)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-to-png)
+
+---
 
 Right-click any `.svg` in the Explorer → **SVG to PNG: Convert SVG File**. Uses [resvg-js](https://github.com/yisibl/resvg-js), a Rust-based renderer that produces accurate, anti-aliased PNGs with full system font support — no ImageMagick, no Inkscape, nothing to install.
 

@@ -71,7 +71,7 @@ Import from shared: `import { DecayEngine } from '../../shared/utils/decay'`
 7. `npx @vscode/vsce publish --no-dependencies`
 8. Create git tag: `git tag {extension-name}/v{version}`
 
-> **Rate limit**: Marketplace caps new extension creation at ~4 per 12-hour window. Plan batch publishes accordingly.
+> **Rate limit**: Marketplace caps new extension creation at ~7 per 12-hour window. Plan batch publishes accordingly.
 
 ## Branching
 

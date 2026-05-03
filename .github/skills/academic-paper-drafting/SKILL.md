@@ -1,10 +1,17 @@
 ---
-name: "Academic Paper Drafting Skill"
-description: "End-to-end academic paper drafting for CHI, HBR, journals, and conferences with venue-specific templates, drafting workflows, and revision strategies."
-applyTo: "**/*paper*,**/*manuscript*,**/*journal*,**/*conference*,**/*CHI*,**/*HBR*,**/*publication*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: academic-paper-drafting
+description: End-to-end academic paper drafting for CHI, HBR, journals, and conferences with venue-specific templates, drafting workflows, and revision strategies.
+tier: standard
+applyTo: '**/*academic*,**/*paper*,**/*drafting*,**/*journal*,**/*conference*'
+currency: 2026-05-02
+lastReviewed: 2026-05-02
 ---
 
 # Academic Paper Drafting Skill
+
 
 > Turn research into published scholarship. From blank page to accepted manuscript.
 
@@ -301,7 +308,7 @@ CHI values explicit contribution statements. Choose your type:
 | **Short Communication** | Preliminary findings | 3,000-5,000 words |
 | **Commentary** | Response to published work | 2,000-4,000 words |
 
-### CSR Template (Alex Architecture Paper)
+### CSR Template (the AI assistant Architecture Paper)
 
 ```markdown
 # Title: Declarative but Specific
@@ -380,7 +387,7 @@ RQ3: [Specific question]
 [18+ months, 62+ projects, single user intensive use]
 
 ### 4.2 Metrics Collection
-[Synapse count, skill usage, memory file growth]
+[Connection count, skill usage, memory file growth]
 
 ### 4.3 Qualitative Observations
 [Emergent behaviors, user experience notes]
@@ -389,7 +396,7 @@ RQ3: [Specific question]
 
 ## 5. Results
 ### 5.1 Memory Growth Patterns
-[Quantitative: 945+ synapses, 47+ memory files]
+[Quantitative: 945+ connections, 47+ memory files]
 
 ### 5.2 Cross-Project Knowledge Transfer
 [Evidence of knowledge reuse]
@@ -428,6 +435,7 @@ RQ3: [Specific question]
 ### Philosophy of AI Focus
 
 Minds & Machines emphasizes philosophical arguments about:
+
 - Consciousness and AI
 - Ethics of artificial agents
 - Epistemology of machine learning
@@ -503,60 +511,13 @@ Minds & Machines emphasizes philosophical arguments about:
 
 ### The 5-Phase Drafting Process
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {
-  'primaryColor': '#cce5ff',
-  'primaryTextColor': '#333',
-  'primaryBorderColor': '#57606a',
-  'lineColor': '#57606a',
-  'secondaryColor': '#e6d5f2',
-  'tertiaryColor': '#c2f0d8',
-  'background': '#ffffff',
-  'mainBkg': '#cce5ff',
-  'secondBkg': '#e6d5f2',
-  'tertiaryBkg': '#c2f0d8',
-  'textColor': '#333',
-  'border1Color': '#57606a',
-  'border2Color': '#57606a',
-  'arrowheadColor': '#57606a',
-  'fontFamily': 'ui-sans-serif, system-ui, sans-serif',
-  'fontSize': '14px',
-  'nodeBorder': '1.5px',
-  'clusterBkg': '#f6f8fa',
-  'clusterBorder': '#d0d7de',
-  'edgeLabelBackground': '#ffffff'
-}}}%%
-flowchart LR
-    subgraph "Phase 1: Preparation"
-        A[Literature review] --> B[Outline creation]
-        B --> C[Key arguments mapped]
-    end
-    
-    subgraph "Phase 2: Rough Draft"
-        C --> D[Write messy first draft]
-        D --> E[Focus on getting ideas down]
-    end
-    
-    subgraph "Phase 3: Revision"
-        E --> F[Structural revision]
-        F --> G[Paragraph-level clarity]
-        G --> H[Sentence-level polish]
-    end
-    
-    subgraph "Phase 4: Feedback"
-        H --> I[Peer review]
-        I --> J[Advisor review]
-        J --> K[Incorporate feedback]
-    end
-    
-    subgraph "Phase 5: Submission"
-        K --> L[Final formatting]
-        L --> M[Submission]
-    end
-    
-    style D fill:#fff3e0,stroke:#ef6c00
-    style M fill:#e8f5e9,stroke:#2e7d32
-```
+**Preparation → Rough Draft → Revision → Feedback → Submission**
+
+1. **Preparation** (1-2 weeks): Literature review → Outline creation → Key arguments mapped
+2. **Rough Draft**: Write messy first draft → Focus on getting ideas down
+3. **Revision**: Structural revision → Paragraph-level clarity → Sentence-level polish
+4. **Feedback**: Peer review → Advisor review → Incorporate feedback
+5. **Submission**: Final formatting → Submission
 
 ### Phase 1: Preparation (1-2 weeks)
 
@@ -571,6 +532,7 @@ flowchart LR
 ### Phase 2: Rough Draft (1-2 weeks)
 
 **Rules for first draft:**
+
 1. **Don't edit while writing** — Separate generation from editing
 2. **Start with what you know** — Often Methods or Results, not Intro
 3. **Use placeholder brackets** — "[CITE Smith here]", "[need better transition]"
@@ -650,8 +612,8 @@ flowchart LR
 
 Dear Editors and Reviewers,
 
-Thank you for your thoughtful feedback on our manuscript "[Title]". 
-We have carefully addressed all comments and believe the paper 
+Thank you for your thoughtful feedback on our manuscript "[Title]".
+We have carefully addressed all comments and believe the paper
 is significantly strengthened. Below we detail our responses.
 
 Major changes include:
@@ -682,7 +644,7 @@ Changes made:
 
 ---
 
-We believe these revisions address all concerns raised. We are 
+We believe these revisions address all concerns raised. We are
 grateful for the opportunity to improve our work.
 
 Sincerely,
@@ -691,7 +653,7 @@ Sincerely,
 
 ---
 
-## Alex Assistance Commands
+## the AI assistant Assistance Commands
 
 ### Draft Generation
 
@@ -715,13 +677,7 @@ Sincerely,
 
 ## Related Skills
 
-- [writing-publication](.github/skills/writing-publication/SKILL.md) — General writing patterns
-- [academic-research](.github/skills/academic-research/SKILL.md) — Research methodology
-- [practitioner-research](.github/skills/practitioner-research/SKILL.md) — Practitioner paper style
-- [knowledge-synthesis](.github/skills/knowledge-synthesis/SKILL.md) — Literature synthesis
-- [dissertation-defense](.github/skills/dissertation-defense/SKILL.md) — Dissertation-to-paper pipeline
-- [grant-writing](.github/skills/grant-writing/SKILL.md) — Funding proposals
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.
+- [academic-research](../academic-research/SKILL.md) — Research methodology
+- [knowledge-synthesis](../knowledge-synthesis/SKILL.md) — Literature synthesis
+- [dissertation-defense](../dissertation-defense/SKILL.md) — Dissertation-to-paper pipeline
+- [grant-writing](../grant-writing/SKILL.md) — Funding proposals

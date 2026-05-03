@@ -1,26 +1,32 @@
 ---
-name: "Enterprise Integration Skill"
-description: "Patterns for Microsoft Graph, Azure AD, and enterprise feature integration in VS Code extensions"
-applyTo: "**/enterprise/**,**/graph/**,**/auth/**"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: enterprise-integration
+description: Patterns for Microsoft Graph, Microsoft Entra ID, and enterprise feature integration in VS Code extensions
+tier: standard
+applyTo: '**/enterprise/**,**/graph/**,**/auth/**'
+currency: 2026-04-22
 ---
 
 # Enterprise Integration Skill
 
-Expert in building enterprise features with Microsoft Graph API, Azure AD authentication, and enterprise-mode feature gating for VS Code extensions.
+Expert in building enterprise features with Microsoft Graph API, Microsoft Entra ID authentication, and enterprise-mode feature gating for VS Code extensions.
 
 ## ⚠️ Staleness Warning
 
-Microsoft Graph and Azure AD APIs evolve frequently. Authentication flows and permission models change.
+Microsoft Graph and Microsoft Entra ID APIs evolve frequently. Authentication flows and permission models change.
+See [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md) for source URLs and recheck cadence.
 
 **Refresh triggers:**
 - Microsoft Graph API version updates
 - MSAL library major releases
-- Azure AD becoming Microsoft Entra ID
+- Microsoft Entra ID rebranded to Microsoft Entra ID
 - New Graph scopes or permissions
 
 **Last validated:** February 2026 (MSAL 2.x, Graph v1.0)
 
-**Check current state:** [Microsoft Graph docs](https://docs.microsoft.com/graph), [MSAL.js docs](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+**Check current state:** [Microsoft Graph docs](https://learn.microsoft.com/en-us/graph/api/overview), [MSAL.js docs](https://github.com/AzureAD/microsoft-authentication-library-for-js)
 
 ---
 
@@ -233,6 +239,6 @@ async function handleCalendarCommand(
 
 ## Related Skills
 
-- [VS Code Extension Patterns](.github/skills/vscode-extension-patterns/SKILL.md) - General extension patterns
-- [API Design](.github/skills/api-design/SKILL.md) - API client patterns
-- [Security Review](.github/skills/security-review/SKILL.md) - Auth security considerations
+- [VS Code Extension Patterns](..\vscode-extension-patterns/SKILL.md) - General extension patterns
+- [API Design](..\api-design/SKILL.md) - API client patterns
+- [Security Review](..\security-review/SKILL.md) - Auth security considerations

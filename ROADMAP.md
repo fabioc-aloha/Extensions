@@ -1,7 +1,7 @@
 # Extensions Roadmap
 
-**Last Updated**: February 24, 2026
-**Build Status**: ✅ All 16 extensions compile — Marketplace-ready (icons, banners, fields, READMEs, CHANGELOGs)
+**Last Updated**: February 28, 2026
+**Build Status**: ✅ All 16 extensions live on Marketplace — icons, banners, READMEs, CHANGELOGs complete
 **Publisher**: `fabioc-aloha` (PAT verified)
 
 ---
@@ -33,7 +33,7 @@ All foundation work is done. Every extension compiles successfully and all share
 | `## Features` + `## Requirements` | ✅ All READMEs updated |
 | `CHANGELOG.md` | ✅ All 16 extensions |
 
-**Next step for all sprints**: `npx vsce package` → `code --install-extension *.vsix` → test locally → publish.
+**Next step**: All 16 published. Next: v0.2.x patch cycle — competitive improvements, bug fixes, feature expansions.
 
 ### ✅ Sprint 1 — First Movers (Shipped 2026-02-24)
 
@@ -47,9 +47,7 @@ All three shipped on the same day VS Code 1.109 first-mover window was identifie
 
 > Note: `workspace-watchdog` name was taken by `deitry` on Marketplace; published as `cx-workspace-watchdog` / **CX Workspace Watchdog**.
 
-### 🔥 Sprint 2 — 4/6 Shipped (2026-02-24)
-
-> ⚠️ `cx-focus-timer` and `cx-markdown-to-word` bundled and renamed — pending Marketplace rate limit reset.
+### ✅ Sprint 2 — All 6 Shipped (2026-02-28)
 
 | Extension | Size | Marketplace |
 |---|:---:|---|
@@ -57,30 +55,27 @@ All three shipped on the same day VS Code 1.109 first-mover window was identifie
 | [Brandfetch Logo Fetcher](#brandfetch-logo-fetcher) | 14.6 KB | [fabioc-aloha.brandfetch-logo-fetcher](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
 | [AI Voice Reader](#ai-voice-reader) | 2.8 KB | [fabioc-aloha.ai-voice-reader](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
 | [CX SecretGuard](#secret-guard) | 15.1 KB | [fabioc-aloha.cx-secret-guard](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard) |
-| CX Focus Timer | 3.1 KB | ⏳ Rate limit — ready to publish |
-| CX Markdown to Word | 3.1 KB | ⏳ Rate limit — ready to publish |
+| [CX Focus Timer](#focus-timer) | 3.1 KB | [fabioc-aloha.cx-focus-timer](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
+| [CX Markdown to Word](#markdown-to-word) | 3.1 KB | [fabioc-aloha.cx-markdown-to-word](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word) |
 
 > Renames: `secret-guard` → `cx-secret-guard`, `focus-timer` → `cx-focus-timer`, `markdown-to-word` → `cx-markdown-to-word` (names taken on Marketplace).
 
-### 🔧 Sprint 3 — Moderate Builds (✅ Compile-Ready)
+### ✅ Sprint 3 — Shipped (2026-02-28)
 
-Require more new code but have strong Alex foundations. All compile successfully.
+| Extension | Size | Marketplace |
+|---|:---:|---|
+| [Dev Wellbeing](#dev-wellbeing) | 3.2 KB | [fabioc-aloha.dev-wellbeing](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
+| [PPTX Builder](#pptx-builder) | 4.1 KB | [fabioc-aloha.pptx-builder](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder) |
+| [Replicate Image Studio](#replicate-image-studio) | 3.8 KB | [fabioc-aloha.replicate-image-studio](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio) |
 
-| Extension | Effort | Status | Foundation |
-|---|:---:|:---:|---|
-| [Dev Wellbeing](#dev-wellbeing) | 3d | ✅ Compiles | Siegel Session Health (v5.9.4), Window of Tolerance signals |
-| [PPTX Builder](#pptx-builder) | 4d | ✅ Compiles | `pptxgenjs` already in Alex deps |
-| [Replicate Image Studio](#replicate-image-studio) | 1w | ✅ Compiles | Replicate MCP wired in Alex; ADR-007 reference impl |
+### ✅ Sprint 4 — Shipped (2026-02-28)
 
-### 🔮 Sprint 4 — Larger Builds (✅ Compile-Ready)
-
-All compile successfully. Ready for testing.
-
-| Extension | Effort | Status | Notes |
-|---|:---:|:---:|---|
-| [Mermaid Diagram Pro](#mermaid-diagram-pro) | 1w | ✅ Compiles | Deep Mermaid patterns in Alex; live preview needs Mermaid.js integration |
-| [SVG Toolkit](#svg-toolkit) | 1w | ✅ Compiles | SVG skill exists; image conversion pipeline is the hard part |
-| [Gamma Slide Assistant](#gamma-slide-assistant) | 1w | ✅ Compiles | Gamma API not public yet; Marp is the offline path |
+| Extension | Size | Marketplace |
+|---|:---:|---|
+| [Mermaid Diagram Pro](#mermaid-diagram-pro) | 4.5 KB | [fabioc-aloha.mermaid-diagram-pro](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro) |
+| [SVG Toolkit](#svg-toolkit) | 3.1 KB | [fabioc-aloha.svg-toolkit](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-toolkit) |
+| [SVG to PNG](#svg-to-png) | 2.9 KB | [fabioc-aloha.svg-to-png](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-to-png) |
+| [Gamma Slide Assistant](#gamma-slide-assistant) | 2.8 KB | [fabioc-aloha.gamma-slide-assistant](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
 
 ---
 
@@ -376,9 +371,10 @@ Each extension versions independently following semantic versioning.
 
 ## Timeline
 
-| Period | Goal |
-|---|---|
-| Feb–Mar 2026 | Sprint 1: Hook Studio, Workspace Watchdog, MCP App Starter |
-| Mar–Apr 2026 | Sprint 2: SecretGuard, Focus Timer, Knowledge Decay Tracker, Markdown to Word |
-| Apr–Jun 2026 | Sprint 3: Dev Wellbeing, PPTX Builder, Replicate Image Studio |
-| Jun+ 2026 | Sprint 4: Mermaid Diagram Pro, SVG Toolkit, Gamma Slide Assistant |
+| Period | Goal | Status |
+|---|---|:---:|
+| Feb 24, 2026 | Sprint 1: Hook Studio, Workspace Watchdog, MCP App Starter | ✅ Shipped |
+| Feb 24–28, 2026 | Sprint 2: SecretGuard, Focus Timer, Knowledge Decay Tracker, Markdown to Word, AI Voice Reader, Brandfetch | ✅ Shipped |
+| Feb 28, 2026 | Sprint 3: Dev Wellbeing, PPTX Builder, Replicate Image Studio | ✅ Shipped |
+| Feb 28, 2026 | Sprint 4: Mermaid Diagram Pro, SVG Toolkit, SVG to PNG, Gamma Slide Assistant | ✅ Shipped |
+| Mar–Apr 2026 | v0.2.x patch cycle — competitive improvements, setContext bug fixes, UI polish | 🔧 In progress |

@@ -1,93 +1,164 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "dream-state"
-description: "Neural maintenance, synapse validation, automated health diagnostics, and unconscious processing"
+description: "Architecture maintenance, connection validation, automated health diagnostics, and unconscious processing"
+tier: standard
+applyTo: '**/*dream*,**/*maintenance*,**/*health*'
 disable-model-invocation: true
+currency: 2026-04-22
 ---
 
-# Dream State Automation Skill
+# Dream State Skill
 
-Expert in automated neural maintenance, synapse validation, health diagnostics, and unconscious cognitive processing.
+Automated architecture maintenance — scan every memory file, validate structural integrity, produce a diagnostic report. Dream observes and measures; it never modifies.
 
-## Capabilities
+## When to Use
 
-- Execute automated synapse validation across all memory files
-- Detect and repair broken connections using consolidation mappings
-- Generate comprehensive health reports with network statistics
-- Synchronize with Global Knowledge repository
-- Provide real-time progress feedback during maintenance
-- Classify network health (HEALTHY vs ATTENTION REQUIRED)
-
-## When to Use This Skill
-
-- User asks to "dream" or run "neural maintenance"
-- After file reorganizations that may break synapse references
-- Regular weekly health checks
-- Before major meditation sessions (clear cognitive overhead)
+- User asks to "dream" or run "architecture maintenance"
+- After file reorganizations that may break connections
+- Before major meditation sessions (establish baseline)
 - After domain learning to validate new connections
-- When architecture health is uncertain before SSO planning
+- When architecture health is uncertain before skill selection
 
-## Core Concepts
+## 6-Phase Protocol
 
-### 6-Phase Dream Protocol
-
-| Phase | Function | Output |
-|-------|----------|--------|
+| Phase | Action | Output |
+|-------|--------|--------|
 | 1. Discovery | Scan `.github/` for all memory files | File inventory |
-| 2. Validation | Parse and verify all embedded synapses | Broken connection list |
-| 3. Repair | Auto-fix using consolidation mappings | Repair log |
-| 4. GK Sync | Synchronize with Global Knowledge repo | Sync status |
+| 2. Validation | Parse frontmatter, verify trifecta completeness | Issue list |
+| 3. Repair | Auto-fix via consolidation mappings (renames only) | Repair log |
+| 4. GK Sync | Check `%OneDrive%/AI-Memory/` for cross-platform content | Sync status |
 | 5. Reporting | Generate health report with statistics | Markdown report |
-| 6. Display | Show results and open report | VS Code notification |
+| 6. Display | Show results, open report in VS Code | Notification |
 
-### Health Metrics
+## Health Metrics
 
-| Metric | Description | Healthy Threshold |
-|--------|-------------|-------------------|
-| Total Memory Files | All `.md` files in architecture | Tracked, not thresholded |
-| Total Synapses | All embedded connections | Tracked, not thresholded |
-| Broken Connections | Synapses pointing to non-existent files | 0 |
-| Repaired Connections | Fixed by consolidation mappings | Informational |
+| Metric | Healthy | Concern |
+|--------|---------|---------|
+| Broken connections | 0 | Any |
+| Missing frontmatter | 0 | Any |
+| Incomplete trifectas | 0 | Any high-use skills |
+| Brand violations | 0 (outside exceptions) | Any |
+| Version drift | All match | Any mismatch |
+| Review queue size | 0–5 pending | >10 pending (semantic debt accumulating) |
+| Review queue age | Oldest <30d | Oldest >60d (stale reviews indicate blocked curation) |
 
-### Consolidation Mappings
+### Review-Queue Backpressure (FM10)
 
-Deprecated-to-current file resolution for automatic repair:
-- Renamed files → current names
-- Merged files → unified equivalents
-- Split files → appropriate successors
+The review queue (`.github/quality/review-queue.jsonl`, defined in FM5) is a leading indicator of semantic debt. When the queue grows faster than it's resolved, the architecture is accumulating unreviewed changes.
 
-### Dream vs Meditation Distinction
+| Signal | Threshold | Health Impact | Action |
+|--------|-----------|---------------|--------|
+| Queue size growing | >10 pending entries | `needs-attention` | Prioritize review session; schedule meditation |
+| High-priority entries stale | Any `high` priority entry >14d unresolved | `needs-attention` | Escalate: these are heir-feedback or drift-detected entries |
+| Queue empty | 0 pending | `healthy` | Normal state; curation is keeping pace |
+| Oldest entry age | >60 days | `needs-attention` | Something is blocking reviews; investigate |
 
-| Aspect | Dream | Meditation |
-|--------|-------|------------|
-| Mode | Unconscious, automated | Conscious, manual |
-| Focus | Maintenance, diagnostics | Knowledge consolidation |
-| Creates files? | Reports only | Memory files + synapses |
-| Activation | VS Code command | User-requested |
-| Analogy | REM sleep | Contemplative meditation |
+**Per-volatility weighting**: High-volatility files (instructions, skills with frequent edits) generate more queue pressure than stable reference docs. Weight queue entries by the source file's edit frequency when computing backpressure score.
 
-## Quality Principles
+**Integration**: Dream protocol reads `review-queue.jsonl` during Phase 2 (architecture scan) and includes queue metrics in the dream report's health assessment.
 
-- **Non-destructive**: Never deletes memory files
-- **Reversible**: All changes tracked and reviewable
-- **Conservative**: Prioritizes system stability
-- **Comprehensive**: Reports on entire architecture
-- **Safe**: Creates repair history for audit trails
+## Ritual Hierarchy
 
-## Example Prompts
+**Meditation is the foundational ritual.** Dream is a diagnostic that runs subordinate to it.
 
-- "Run neural maintenance"
-- "Check architecture health"
-- "Are my synapses healthy?"
-- "Dream — validate connections"
+| | Dream | Meditation |
+|---|---|---|
+| Role | Diagnostic tool | Foundational ritual |
+| Mode | Automated, unconscious | Interactive, conscious |
+| Creates files? | Reports only | Memory files + insights |
+| Makes decisions? | Never | Yes |
+| Activation | `/dream`, or chained after meditation | User says "meditate" |
+| Analogy | Blood test | Doctor's visit |
 
-## Input Expectations
+### When Dream Chains After Meditation
 
-- No input required (zero-configuration)
-- Optional: specific file or folder to focus on
+Dream triggers automatically after meditation when:
 
-## Output Format
+| Trigger | Condition |
+|---|---|
+| Pattern: file reorg | Meditation touched 3+ architecture files |
+| Pattern: trifecta concern | Meditation created or modified skills/instructions |
+| Pattern: staleness | Last dream was >7 days ago |
+| Random | ~1 in 5 meditations (keeps architecture fresh) |
 
-- Health report in `.github/episodic/dream-report-*.md`
-- Summary statistics (files, synapses, broken, repaired)
-- Recommendations for manual fixes if needed
-- Network health status: HEALTHY or ATTENTION REQUIRED
+## Connection Format
+
+Skills connect via frontmatter `applyTo` patterns and semantic search:
+
+```yaml
+---
+name: "skill-name"
+description: "What this skill does"
+applyTo: '**/*pattern*,**/*files*'
+---
+```
+
+Valid relations: `applies-to`, `extends`, `requires`, `contradicts`, `supersedes`
+
+## Report Template
+
+```markdown
+# Dream Report — YYYY-MM-DD
+
+## Summary
+- **Files Scanned**: N
+- **Trifecta Completeness**: N/N
+- **Broken Links**: 0
+- **Brand Violations**: 0
+- **Status**: HEALTHY / ATTENTION REQUIRED
+
+## Issues Found
+| File | Issue | Severity |
+|------|-------|----------|
+
+## Recommendations
+Prioritized list of manual fixes needed.
+```
+
+## Interpreting Results
+
+| Status | Meaning | Action |
+|--------|---------|--------|
+| HEALTHY | All checks pass, no broken connections | None — architecture is sound |
+| ATTENTION REQUIRED | One or more issues detected | Review issues table, prioritize by severity |
+
+Severity levels: **critical** (broken trifecta), **warning** (missing frontmatter field), **info** (cosmetic).
+
+## Escalation: When Findings Need Human Judgment
+
+Dream is a diagnostic — it never modifies files. When findings require judgment (skill consolidation, content quality decisions, contradiction resolution), the natural next step is **meditation**, which reads the dream report and decides what to fix.
+
+| Finding type | Resolution path |
+|---|---|
+| Missing frontmatter, broken link with mapping | Author the fix in the next meditation; mechanical |
+| Two skills with overlapping `applyTo` | Meditation decides merge / split / keep; semantic |
+| Skill flagged as shallow | Meditation enriches or deprecates; requires domain context |
+| Trifecta where instruction contradicts skill | Meditation reconciles intent; requires understanding |
+| Version drift master/heir | Meditation picks canonical; project-specific |
+
+The handoff is the dream report file. Meditation's `Resolve` step explicitly evaluates whether a dream should chain after it; the inverse — meditation reading an existing dream report — happens naturally when a meditation session opens with "check the architecture first."
+
+*This pattern replaces the former lucid-dream ritual (retired v8.4.0). The escalation concept lives here because dream is the producer of the findings; meditation is the consumer that decides.*
+
+## Snapshot Schema (`.github/quality/dream-report.json`)
+
+`dream-cli.cjs` writes a single structural JSON snapshot every run. Heirs and graders depend on this shape; preserve it across versions.
+
+| Field | Type | Purpose |
+|---|---|---|
+| `schemaVersion` | number | Currently `1`. Bump only with a heir migration plan. |
+| `timestamp` | ISO string | Last dream run; consumed by `proactive-awareness` and `health-pulse`. |
+| `workspace` | string | Absolute path of the dreamed workspace. |
+| `inventory.skills` / `.instructions` / `.prompts` / `.agents` / `.total` | numbers | File counts under `.github/`. |
+| `trifectaIssues[]` | `{type, skill, detail}` | Workflow skills missing matching `.instructions.md` or `.prompt.md`. |
+| `brokenRefs[]` | `{sourceFile, line, target}` | Markdown / config references that no longer resolve. |
+| `health` | `"healthy"` \| `"good"` \| `"needs-attention"` | Derived bucket: 0 / ≤5 / >5 issues. |
+
+**Stability rule**: meditation, `dream-creativity-score.cjs`, and heir consumers (`health-pulse`, `proactive-awareness.instructions.md`) all read these field names directly. Adding fields is safe; renaming or removing requires a fleet-wide migration.
+
+## Chronicle Pruning
+
+`dream-cli.cjs` keeps the newest **50** `dream-report-YYYY-MM-DD*.md` chronicles in `.github/episodic/` after each run; older ones are deleted in place. Rolling architecture history lives in the JSON snapshot and `brain-qa` outputs — chronicles are only useful as recent narrative context for meditation.

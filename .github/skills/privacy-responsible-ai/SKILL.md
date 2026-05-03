@@ -1,7 +1,12 @@
 ---
-name: "Privacy & Responsible AI Skill"
-description: "Privacy by design, data protection, and responsible AI principles."
-applyTo: "**/*privacy*,**/*consent*,**/*data*,**/*PII*,**/*GDPR*,**/*responsible*,**/*ethical*,**/*bias*,**/*fairness*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: privacy-responsible-ai
+description: Privacy by design, data protection, and responsible AI principles.
+tier: standard
+applyTo: '**/*privacy*,**/*consent*,**/*data*,**/*PII*,**/*GDPR*,**/*responsible*,**/*ethical*,**/*bias*,**/*fairness*'
+currency: 2026-04-22
 ---
 
 # Privacy & Responsible AI Skill
@@ -275,7 +280,3 @@ When AI causes harm:
 3. **Notify** — Inform affected users
 4. **Fix** — Root cause + prevention
 5. **Document** — Post-mortem for learning
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

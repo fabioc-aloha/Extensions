@@ -1,6 +1,12 @@
 ---
+type: skill
+lifecycle: external-dependent
+inheritance: inheritable
 name: "secrets-management"
 description: "Secure token storage, VS Code SecretStorage API, credential management, environment variable migration"
+tier: standard
+applyTo: '**/*secret*,**/*credential*,**/*token*,**/*auth*'
+currency: 2026-04-22
 ---
 
 # Secrets Management Skill
@@ -86,39 +92,22 @@ interface TokenConfig {
 
 ### Token Lifecycle Workflow
 
-```mermaid
-graph TD
-    A[Feature Requires Token] --> B{Check Cache}
-    B -->|Hit| C[Return Token]
-    B -->|Miss| D{Check SecretStorage}
-    D -->|Found| E[Cache + Return]
-    D -->|Not Found| F{Check Env Var}
-    F -->|Found| G[Migrate + Cache + Return]
-    F -->|Not Found| H[Prompt User]
-    H --> I{User Enters Token}
-    I -->|Success| J[Store + Cache + Return]
-    I -->|Cancel| K[Return Null]
-```
+1. Feature requires token → check **cache** (hit → return)
+2. Cache miss → check **SecretStorage** (found → cache + return)
+3. Not in SecretStorage → check **env var** (found → migrate to SecretStorage + cache + return)
+4. Not in env → **prompt user** (enters token → store + cache + return; cancels → return null)
 
 ### Bidirectional Secrets Flow
 
 SecretStorage is secure but inaccessible to external tools (CLI, PowerShell scripts, CI/CD). Solution: bidirectional flow.
 
-```mermaid
-graph LR
-    subgraph "Import (Migration)"
-        ENV1[.env file] -->|alex.migrateEnvSecrets| SS1[SecretStorage]
-    end
-    subgraph "Export (External Access)"
-        SS2[SecretStorage] -->|alex.exportSecretsToEnv| ENV2[.env file]
-    end
-    SS1 -.->|Same storage| SS2
-```
+- **Import**: `.env` file → `alex.migrateEnvSecrets` → SecretStorage
+- **Export**: SecretStorage → `alex.exportSecretsToEnv` → `.env` file
 
 | Direction | Command | Use Case |
 |-----------|---------|----------|
-| **Import** | `Alex: Migrate .env to Secrets` | Secure existing plaintext tokens |
-| **Export** | `Alex: Export Secrets to .env` | Enable external tool access |
+| **Import** | Migrate .env to SecretStorage | Secure existing plaintext tokens |
+| **Export** | Export SecretStorage to .env | Enable external tool access |
 
 ### Migration Strategy
 
@@ -259,9 +248,8 @@ const envPattern = /^\s*([A-Z_][A-Z0-9_]*)\s*=\s*([^#\n]+)/i;
 6. **Guide**: Provide code migration instructions
 
 **User Commands**:
-- `Alex: Detect & Migrate .env Secrets` - Scan workspace for .env files
-- `Alex: Export Secrets to .env` - Write SecretStorage tokens to .env for external tool access
-- Quick action button in Welcome panel - "🔍 Detect .env Secrets"
+- Detect and migrate .env secrets: Scan workspace for .env files
+- Export SecretStorage to .env: Write tokens to .env for external tool access
 
 **Migration UI Flow**:
 ```
@@ -289,7 +277,7 @@ After migration, users must update their code:
 VS Code SecretStorage is inaccessible to PowerShell scripts, CLI tools, and CI/CD pipelines. The export command bridges this gap.
 
 **Why Export is Needed**:
-- PowerShell scripts (like `brain-qa.ps1`) can't access SecretStorage
+- PowerShell scripts (like `brain-qa.cjs`) can't access SecretStorage
 - External tools (Replicate CLI, OpenAI CLI) need env vars or .env
 - CI/CD pipelines require explicit secret injection
 
@@ -426,7 +414,6 @@ if (Test-Path .env) {
 ## Output Format
 
 - Complete secretsManager.ts service implementation
-- VS Code command registration
 - UI integration (quick pick + input prompts)
 - Migration logic for existing credentials
 - Security review and recommendations

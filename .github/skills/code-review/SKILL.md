@@ -1,7 +1,12 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "code-review"
 description: "Systematic code review for correctness, security, and growth — not just style enforcement"
-applyTo: "**/*review*,**/*PR*,**/*pull*,**/*merge*"
+tier: core
+applyTo: '**/*review*,**/*pr*,**/*pull-request*'
+currency: 2026-04-20
 ---
 
 # Code Review Skill
@@ -83,6 +88,37 @@ applyTo: "**/*review*,**/*PR*,**/*pull*,**/*merge*"
 | Style wars | Team friction | Automate style (ESLint, Prettier, etc.) |
 | Everything-is-blocking | Author overwhelmed | Use prefix system honestly |
 
+## Mission-Critical Review (NASA Standards)
+
+For safety-critical projects, apply NASA/JPL Power of 10 rules during review:
+
+### Blocking Violations (Must Fix)
+
+| Rule | Check For | Detection |
+| ---- | --------- | --------- |
+| **R1** | Recursive function without `maxDepth` parameter | `grep -rn "function.*\(" \| xargs grep -l "walk\|traverse\|recurse"` |
+| **R2** | `while` loop without iteration counter | Manual review of all `while` statements |
+| **R3** | Unbounded array growth | `push()` in loops without size checks |
+
+### High Priority (Strong Recommendation)
+
+| Rule | Check For | Detection |
+| ---- | --------- | --------- |
+| **R4** | Function > 60 lines | Line count per function |
+| **R5** | Missing entry assertions | Public functions without precondition checks |
+| **R8** | Nesting > 4 levels | Visual inspection of indentation |
+
+### Medium Priority (Consider)
+
+| Rule | Check For | Detection |
+| ---- | --------- | --------- |
+| **R6** | Variable declared far from use | Manual review |
+| **R7** | Unchecked return values | `grep` for ignored returns |
+| **R9** | Deep property access without `?.` | `obj.prop.prop.prop` chains |
+| **R10** | Compiler warnings | Build output |
+
+**Trigger**: User mentions "mission-critical", "NASA standards", "high reliability", or "safety-critical"
+
 ## Review Timing
 
 | PR Size | Expected Review Time | If Larger |
@@ -157,7 +193,3 @@ applyTo: "**/*review*,**/*PR*,**/*pull*,**/*merge*"
 - [ ] Smoke test: Extension activates, 3 random commands work
 
 **Pattern applies to**: VS Code extensions, Electron apps, Node.js services with UI
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

@@ -1,6 +1,12 @@
 ---
-name: "Executive Storytelling"
-description: "Data-driven narrative construction, stakeholder management, and influencing senior leadership decisions"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: executive-storytelling
+description: Data-driven narrative construction, stakeholder management, and influencing senior leadership decisions
+tier: standard
+applyTo: '**/*executive*,**/*leadership*,**/*stakeholder*,**/*narrative*'
+currency: 2026-04-22
 ---
 
 # Skill: Executive Storytelling
@@ -459,9 +465,3 @@ Opponent → Skeptic → Neutral → Supporter → Champion
 *Merged: stakeholder-management, meeting-efficiency*
 
 ---
-
-## Synapses
-
-- [.github/skills/slide-design/SKILL.md] (High, Uses, Bidirectional) - "Executive presentation design"
-- [.github/skills/coaching-techniques/SKILL.md] (Medium, Complements, Bidirectional) - "Leadership communication overlap"
-- [.github/skills/project-management/SKILL.md] (Medium, Integrates, Forward) - "Stakeholder communication in projects"

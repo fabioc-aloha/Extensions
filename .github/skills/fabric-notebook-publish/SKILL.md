@@ -1,7 +1,13 @@
 ---
-name: "Fabric Notebook Publish"
-description: "Seamless notebook publishing from VS Code to Microsoft Fabric via Azure DevOps Git integration"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: fabric-notebook-publish
+description: Seamless notebook publishing from VS Code to Microsoft Fabric via Azure DevOps Git integration
+tier: extended
+applyTo: '**/*fabric*,**/*notebook*,**/*publish*'
 user-invokable: false
+currency: 2026-04-22
 ---
 
 # Fabric Notebook Publish Skill
@@ -29,33 +35,11 @@ This skill enables seamless notebook publishing from VS Code to Microsoft Fabric
 
 ## Architecture
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#cce5ff', 'primaryTextColor': '#333', 'lineColor': '#666', 'edgeLabelBackground': '#fff'}}}%%
-flowchart LR
-    subgraph LOCAL["VS Code"]
-        NB[Notebooks]
-        SCRIPT[Sync-ToFabric.v2.ps1]
-    end
+**Three environments**: VS Code (local) → Git (version control) → Fabric (cloud)
 
-    subgraph GIT["Git"]
-        WT[Worktree]
-        ADO[Azure DevOps]
-    end
-
-    subgraph CLOUD["Fabric"]
-        WS[Workspace]
-        API[REST API]
-    end
-
-    NB --> |Copy changed| WT
-    WT --> |Push| ADO
-    SCRIPT --> |Sync| API
-    ADO --> |Git Integration| WS
-
-    style LOCAL fill:#cce5ff,stroke:#4a90d9,color:#333
-    style GIT fill:#e6d5f2,stroke:#8b6eb3,color:#333
-    style CLOUD fill:#b3d9ff,stroke:#4a90d9,color:#333
-```
+- **VS Code**: Notebooks edited locally; `Sync-ToFabric.v2.ps1` syncs via REST API
+- **Git**: Changed notebooks copied to worktree → pushed to Azure DevOps
+- **Fabric**: ADO Git Integration syncs to workspace; script syncs directly via REST API
 
 ## Fishbowl Color Palette
 
@@ -119,7 +103,7 @@ All settings in `fabric-governance/scripts/fabric-publish/fabric-publish.config.
 ## Command Reference
 
 ### Sync v2 (Recommended)
-```powershell
+```bash
 cd fabric-governance\scripts\fabric-publish
 
 # Sync changed notebooks
@@ -139,14 +123,14 @@ cd fabric-governance\scripts\fabric-publish
 ```
 
 ### Direct Publish (Dev Only)
-```powershell
+```bash
 .\Publish-ToFabric.ps1 -NotebookName "ArchiveData" `
     -NotebookPath "..\..\notebooks\Fabric\Data Engineering\Notebooks\Bronze_Layer\ArchiveData.Notebook\notebook-content.py"
 ```
 
 ## First-Time Setup
 
-```powershell
+```bash
 # From repo root
 git remote add fabric https://xodo-team.visualstudio.com/XODO/_git/XODO
 git fetch fabric FishBowl
@@ -165,14 +149,6 @@ git checkout -b FishBowl --track fabric/FishBowl
 | `401 Unauthorized` | Re-run `Connect-AzAccount` |
 | `403 Forbidden` | Check workspace Admin/Member role |
 | `Sync conflict` | Resolve in Fabric portal |
-
-## Synapses
-
-- [fabric-notebook-push.instructions.md](../../instructions/fabric-notebook-push.instructions.md) → Core procedural memory
-- [git-workflow/SKILL.md](.github/skills/git-workflow/SKILL.md) → Git worktree management
-- [microsoft-fabric/SKILL.md](.github/skills/microsoft-fabric/SKILL.md) → Fabric platform knowledge
-- [api-design/SKILL.md](.github/skills/api-design/SKILL.md) → REST API token handling
-
 ## Related Files
 
 | File | Purpose |

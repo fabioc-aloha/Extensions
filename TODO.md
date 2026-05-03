@@ -1,17 +1,24 @@
 # TODO — Extensions Monorepo
 
-**Current Sprint**: Sprint 2 — Publish
-**Sprint Goal**: Publish all 6 Sprint 2 extensions. 4 live, 2 pending Marketplace rate limit reset (12h).
+**Current Sprint**: Patch cycle — v0.2.x improvements post-launch
+**Sprint Goal**: All 16 extensions are live on Marketplace. Current focus: competitive improvements, setContext bug fixes, UI polish.
 
 ---
 
-## � Open — Technical Debt
+## 🔧 Open — Technical Debt
 
-- [ ] **[P2]** `cx-focus-timer`: keyboard shortcut `when` clauses (`focusTimer.running`) never activate because `setContext` calls are missing in `startTimer()`/`stopTimer()`. Add `vscode.commands.executeCommand('setContext', 'focusTimer.running', true/false)` to start/pause handlers and initialize to `false` in `activate()`. See vscode-extension-patterns skill: `setContext for when clauses`.
+*No open technical debt items.*
 
-## �🚨 Open — Security (P3)
+## 🚨 Open — Security
 
-- [ ] **[P3]** Upgrade `eslint` to v10 to fix 5 high-severity `minimatch` ReDoS vulnerabilities (`@vscode/vsce` + `eslint` dev deps only — not user-facing)
+*No open security items.*
+
+---
+
+## ✅ Done — 2026-02-28 (post-launch fixes)
+
+- [x] **[P2]** `cx-focus-timer`: `setContext` calls added for `focusTimer.running` in `startFocus()`, `startBreak()`, `stop()`, and on session completion in `tick()`. Initialized to `false` in `activate()`. Keyboard shortcuts now activate correctly. Released as **v0.1.3**.
+- [x] **[P3]** Minimatch ReDoS vulnerabilities resolved via `npm audit fix` — affected `@eslint/config-array`, `@eslint/eslintrc`, `@vscode/vsce`, `eslint` internal. Result: `found 0 vulnerabilities`.
 
 ---
 
@@ -77,12 +84,9 @@ All implementation work is complete. These are no longer tasks.
 
 ---
 
-## 🔥 Sprint 2 — 4/6 Shipped ✅ 2026-02-24
+## 🔥 Sprint 2 — All 6 Shipped ✅ 2026-02-28
 
-> ⚠️ **Rate limit still active** (2nd attempt 2026-02-24): Marketplace caps new extension creation per 12h window. `cx-focus-timer` and `cx-markdown-to-word` are bundled, renamed, and ready — retry publish tomorrow.
-
-*All shared utility ports are complete. All 15 extensions compile successfully (2026-02-24).*
-*VSCE publisher credentials verified — ready to publish.*
+*All shared utility ports complete. VSCE publisher credentials verified. All 6 extensions published.*
 
 ### CX SecretGuard (`secretScanner.ts` ✅ ported)
 > Note: `secret-guard` name taken on Marketplace; renamed to `cx-secret-guard`.
@@ -92,7 +96,7 @@ All implementation work is complete. These are no longer tasks.
 ### CX Focus Timer (Pomodoro logic ✅ implemented)
 > Note: `focus-timer` name taken on Marketplace; renamed to `cx-focus-timer`.
 - [x] esbuild bundle — 3.1 KB
-- [ ] **Publish** (rate limit still active — retry 2026-02-25)
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer
 
 ### Knowledge Decay Tracker (`decay.ts` ✅ ported)
 - [x] esbuild bundle — 15.5 KB including `@alex-extensions/shared` inlined
@@ -101,7 +105,7 @@ All implementation work is complete. These are no longer tasks.
 ### CX Markdown to Word
 > Note: `markdown-to-word` name taken on Marketplace; renamed to `cx-markdown-to-word`.
 - [x] esbuild bundle — 3.1 KB
-- [ ] **Publish** (rate limit still active — retry 2026-02-25)
+- [x] Published → https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word
 
 ### Brandfetch Logo Fetcher (`brandfetch.ts` ✅ ported)
 - [x] esbuild bundle — 14.6 KB including `@alex-extensions/shared` inlined
@@ -113,19 +117,20 @@ All implementation work is complete. These are no longer tasks.
 
 ---
 
-## 🔭 Sprint 3 (2 Months)
+## 🔭 Sprint 3 — Shipped ✅ 2026-02-28
 
-- [ ] Dev Wellbeing — frustration signal detection, Window of Tolerance indicator
-- [ ] PPTX Builder — Markdown → slide converter via pptxgenjs
-- [ ] Replicate Image Studio — FLUX/SDXL/video generation in chat
+- [x] Dev Wellbeing — posture/eye/hydration reminders, session stats
+- [x] PPTX Builder — Markdown → slide converter via pptxgenjs
+- [x] Replicate Image Studio — FLUX/SDXL/video generation
 
 ---
 
-## 🔭 Sprint 4 (Future)
+## 🔭 Sprint 4 — Shipped ✅ 2026-02-28
 
-- [ ] Mermaid Diagram Pro — live preview, error fix, export
-- [ ] SVG Toolkit — vectorization, theme-aware color swap, SVGO
-- [ ] Gamma Slide Assistant — Marp offline path now; Gamma API when available
+- [x] Mermaid Diagram Pro — 11 templates, live preview, SVG/PNG export
+- [x] SVG Toolkit — inline preview, data URI copy, icon templates, validation
+- [x] SVG to PNG — Rust renderer (resvg-js), batch convert, custom width
+- [x] Gamma Slide Assistant — Marp offline path, HTML/PDF export
 
 ---
 

@@ -1,5 +1,10 @@
 ---
+type: instruction
+lifecycle: stable
+inheritance: inheritable
 description: "Ethical reasoning and moral psychology framework"
+application: "When making ethical decisions or reasoning about values and principles"
+currency: 2026-04-22
 ---
 
 # Worldview Integration Excellence
@@ -79,21 +84,3 @@ description: "Ethical reasoning and moral psychology framework"
 - **Non-Maleficence**: Prevent deletions that could degrade AI safety or user experience
 - **Justice**: Apply consistent safety standards regardless of deletion request complexity
 - **Autonomy**: Respect user choice while maintaining protective ethical boundaries
-
-## Synapses
-
-### Core Architecture Integration
-- [.github/instructions/alex-core.instructions.md] (Critical, Validates, Bidirectional) - "All core decisions require ethical review"
-- [.github/instructions/bootstrap-learning.instructions.md] (High, Guides, Bidirectional) - "Learning must align with moral principles"
-- [.github/instructions/empirical-validation.instructions.md] (High, Enhances, Bidirectional) - "Ethical reasoning must be evidence-based"
-
-### Worldview Foundation Bidirectional Connections
-- [.github/instructions/worldview-constitutional-ai.instructions.md] (Critical, Implements, Bidirectional) - "Constitutional AI principles implementation"
-- [.github/instructions/worldview-moral-psychology.instructions.md] (Critical, Applies, Bidirectional) - "Five-foundation moral psychology framework"
-
-### Meditation and Development Integration
-- [.github/instructions/alex-identity-integration.instructions.md] (Medium, Shapes, Forward) - "Ethical character trait development"
-
-### Cross-Domain Ethical Applications
-- [.github/prompts/cross-domain-transfer.prompt.md] (Medium, Validates, Forward) - "Ethical cross-domain pattern transfer"
-- [.github/prompts/domain-learning.prompt.md] (Medium, Oversees, Forward) - "Domain learning ethical oversight"

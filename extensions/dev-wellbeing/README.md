@@ -1,10 +1,14 @@
 # Dev Wellbeing
 
-![Dev Wellbeing Banner](assets/banner.png)
+![Dev Wellbeing Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/dev-wellbeing/assets/banner.png)
 
 **Healthy coding habits — posture reminders, eye breaks, hydration nudges, and session stats**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.dev-wellbeing)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing)
+
+---
 
 Runs quietly in the background. Fires gentle reminders at configurable intervals. Tracks session duration and keystrokes.
 

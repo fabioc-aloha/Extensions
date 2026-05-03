@@ -1,17 +1,18 @@
 ---
+type: instruction
+lifecycle: stable
+inheritance: inheritable
 description: "Research-first development workflow — pre-project knowledge encoding and 4-dimension gap analysis"
+application: "When analyzing data, building visualizations, or creating reports"
+applyTo: "**/research/**,**/*research*,**/*gap-analysis*"
+currency: 2026-04-22
 ---
 
 # Research-First Workflow
 
 > Procedural memory for the Research → Teach → Plan → Execute paradigm
 
-**Synapse**: [.github/skills/research-first-development/SKILL.md] (Critical, Implements, Bidirectional) - "skill provides patterns; instruction provides procedures"
-**Synapse**: [.github/instructions/skill-selection-optimization.instructions.md] (High, Feeds, Forward) - "gap analysis creates skills that SSO selects from"
-**Synapse**: [.github/instructions/bootstrap-learning.instructions.md] (High, Extends, Forward) - "research phase uses bootstrap learning for unknown domains"
-**Synapse**: [.github/instructions/heir-skill-promotion.instructions.md] (High, Integrates, Forward) - "heir projects use this workflow, then promote skills"
-**Synapse**: [.github/instructions/heir-project-improvement.instructions.md] (High, Extends, Forward) - "heir improvement teaches heirs to apply research-first"
-**Synapse**: [.github/instructions/azure-enterprise-deployment.instructions.md] (High, Applies, Bidirectional) - "pre-deployment validation is research phase for infrastructure work"
+**Related**: research-first-development skill (patterns), planning-first-development (strategy after research), skill-selection-optimization (gap analysis feeds SSO), bootstrap-learning (unknown domains), heir-skill-promotion (heir workflow), heir-project-improvement (teaches heirs), azure-enterprise-deployment (pre-deployment validation)
 
 ---
 
@@ -19,7 +20,8 @@ description: "Research-first development workflow — pre-project knowledge enco
 
 | Phase | Gate | Output |
 |-------|------|--------|
-| **0: Research** | 3+ deep docs per major domain | Research documents in `/docs/` |
+| **0: Research** | 3+ deep docs per major domain | Research documents in `/docs/` or `/research/` |
+| **0.5: Strategy** | PLAN.md + UX vision + tracker exist | Strategic artifacts (see planning-first-development) |
 | **1: Encode** | All subsystems covered | Skills, Instructions, Agents, Prompts |
 | **2: Gap Analysis** | All 4 dimensions ≥ 75% | Gap report + fill plan |
 | **3: Execute** | GA passed | Implementation code |
@@ -80,8 +82,8 @@ For each research document:
 
 1. Identify **reusable patterns** (not project-specific config)
 2. Create 1-3 skills per doc in `.github/skills/{name}/SKILL.md`
-3. Each skill gets a `synapses.json` with 2-4 connections
-4. Follow [skill-building](../skills/skill-building/SKILL.md) quality gates
+3. Ensure complete frontmatter (applyTo, description)
+4. Follow [skill-creator](../skills/skill-creator/SKILL.md) quality gates
 
 ### 1.2 Create Instructions
 
@@ -124,12 +126,12 @@ For each **interactive workflow** users will repeat:
 | `{project}-deploy.prompt.md` | Deployment checklist walkthrough |
 | `{project}-redteam.prompt.md` | Adversarial testing session |
 
-### 1.5 Wire Synapse Network
+### 1.5 Ensure Discoverability
 
-**Mandatory connections:**
-- Every skill → 2-4 related files
-- Every instruction → project context hub
-- Every agent → relevant skills + instructions
+**Naming conventions for semantic search:**
+- Every skill → consistent base name across trifecta (skill/instruction/muscle)
+- Every instruction → complete frontmatter (applyTo, description)
+- Every agent → references relevant skills + instructions in system message
 
 ---
 
@@ -361,7 +363,7 @@ When heir knowledge is **generalizable** (cross-project applicability):
 
 ---
 
-## Synapse Triggers
+## Activation Triggers
 
 | Keyword | Activation |
 |---------|-----------|

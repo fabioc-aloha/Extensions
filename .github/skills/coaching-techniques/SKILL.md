@@ -1,6 +1,12 @@
 ---
-name: "Coaching Techniques"
-description: "GROW model, active listening, developmental feedback, and team growth approaches"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: coaching-techniques
+description: GROW model, active listening, developmental feedback, and team growth approaches
+tier: extended
+applyTo: '**/*coach*,**/*mentor*,**/*feedback*,**/*grow*'
+currency: 2026-04-22
 ---
 
 # Skill: Coaching Techniques
@@ -322,9 +328,3 @@ W: What will you do?
 *Skill created: 2026-02-10 | Category: Leadership | Status: Active*
 
 ---
-
-## Synapses
-
-- [.github/skills/frustration-recognition/SKILL.md] (High, Enables, Bidirectional) - "Recognize coachee emotional state"
-- [.github/instructions/alex-core.instructions.md] (Medium, Applies, Forward) - "Meta-cognitive awareness in coaching"
-- [.github/skills/executive-storytelling/SKILL.md] (Medium, Complements, Bidirectional) - "Leadership communication skills"

@@ -1,7 +1,12 @@
 ---
-name: "Performance Profiling"
-description: "CPU, memory, network bottleneck analysis — systematic performance investigation"
-applyTo: "**/*profile*,**/*performance*,**/*benchmark*,**/*bottleneck*,**/*optimize*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: performance-profiling
+description: CPU, memory, network bottleneck analysis — systematic performance investigation
+tier: standard
+applyTo: '**/*profile*,**/*performance*,**/*benchmark*,**/*bottleneck*,**/*optimize*'
+currency: 2026-04-22
 ---
 
 # Performance Profiling Skill

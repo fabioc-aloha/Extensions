@@ -1,12 +1,20 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "foundry-agent-platform"
 description: "Microsoft Foundry agent deployment, orchestration, and cloud-native AI service patterns"
+tier: extended
+applyTo: '**/*foundry*,**/*agent*platform*,**/*orchestrat*'
 user-invokable: false
+currency: 2026-04-22
 ---
 
 # Foundry Agent Platform Skill
 
 > Deploy, orchestrate, and manage AI agents on Microsoft Foundry — the unified Azure PaaS for enterprise AI.
+
+> **Staleness Watch**: See [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md) for source URLs and recheck cadence
 
 ## Rapid Evolution Domain
 
@@ -277,16 +285,3 @@ When designing a Foundry-based agent:
 - [ ] Auth model? (Entra ID keyless via DefaultAzureCredential)
 
 ---
-
-## Synapses
-
-- [.github/skills/ai-agent-design/SKILL.md] (Critical, Implements, Bidirectional) - "Foundry is the runtime for agent design patterns"
-- [.github/skills/multi-agent-orchestration/SKILL.md] (Critical, Implements, Bidirectional) - "Foundry Agent Service enables multi-agent orchestration at scale"
-- [.github/skills/azure-architecture-patterns/SKILL.md] (High, Extends, Bidirectional) - "Foundry is an Azure PaaS that follows WAF principles"
-- [.github/skills/mcp-development/SKILL.md] (High, Complements, Bidirectional) - "Foundry supports MCP servers as agent tools"
-- [.github/skills/enterprise-integration/SKILL.md] (High, Enables, Forward) - "Foundry provides enterprise-grade agent deployment"
-- [.github/instructions/meditation.instructions.md] (Medium, Created-During, Forward) - "Skill created during platform expansion meditation"
-
----
-
-*Microsoft Foundry Agent Platform — cloud-native agent deployment for the Alex ecosystem*

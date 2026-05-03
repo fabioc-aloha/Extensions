@@ -1,6 +1,12 @@
 ---
-name: "Citation Management"
-description: "APA 7th formatting, citation integration, reference validation, and bibliography generation"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: citation-management
+description: APA 7th formatting, citation integration, reference validation, and bibliography generation
+tier: extended
+applyTo: '**/*citation*,**/*apa*,**/*reference*,**/*bibliography*'
+currency: 2026-04-22
 ---
 
 # Skill: Citation Management
@@ -16,7 +22,7 @@ description: "APA 7th formatting, citation integration, reference validation, an
 | **Category** | Research |
 | **Difficulty** | Intermediate |
 | **Prerequisites** | None |
-| **Related Skills** | literature-review, academic-paper-drafting |
+| **Related Skills** | literature-review, academic-research |
 
 ---
 
@@ -75,13 +81,13 @@ Not required for:
 
 ### Basic Structure
 
-```
+```text
 Author, A. A., & Author, B. B. (Year). Title of article. Journal Name, Volume(Issue), Page–Page. https://doi.org/xxxxx
 ```
 
 ### Journal Article
 
-```
+```text
 Venkatesh, V., Thong, J. Y., & Xu, X. (2012). Consumer acceptance and use of information technology: Extending the unified theory of acceptance and use of technology. MIS Quarterly, 36(1), 157-178. https://doi.org/10.2307/41410412
 ```
 
@@ -93,7 +99,7 @@ Venkatesh, V., Thong, J. Y., & Xu, X. (2012). Consumer acceptance and use of inf
 
 ### Book
 
-```
+```text
 Newport, C. (2016). Deep work: Rules for focused success in a distracted world. Grand Central Publishing.
 ```
 
@@ -104,25 +110,25 @@ Newport, C. (2016). Deep work: Rules for focused success in a distracted world. 
 
 ### Book Chapter
 
-```
+```text
 Author, A. A. (Year). Title of chapter. In E. E. Editor (Ed.), Title of book (pp. xx–xx). Publisher.
 ```
 
 ### Conference Paper
 
-```
+```text
 Schemmer, M., Kuehl, N., Benz, C., Bartos, A., Satzger, G., & Fromm, J. (2023). Appropriate reliance on AI advice: Conceptualization and the effect of explanations. Proceedings of the 28th International Conference on Intelligent User Interfaces, 410-422. https://doi.org/10.1145/3581641.3584066
 ```
 
 ### Website/Online Source
 
-```
+```text
 Author, A. A. (Year, Month Day). Title of page. Site Name. https://www.url.com
 ```
 
 ### Dissertation/Thesis
 
-```
+```text
 Correa, F. (2025). AI readiness scale: Extending UTAUT2 to predict enterprise AI adoption [Doctoral dissertation, University Name]. ProQuest Dissertations.
 ```
 
@@ -310,9 +316,3 @@ Web:      Author. (Year, Month Day). Title. Site. URL
 *Skill created: 2026-02-10 | Category: Research | Status: Active*
 
 ---
-
-## Synapses
-
-- [.github/skills/literature-review/SKILL.md] (High, Enables, Bidirectional) - "Lit review requires proper citations"
-- [.github/skills/academic-paper-drafting/SKILL.md] (High, Enables, Forward) - "Papers need correct citations"
-- [.github/skills/dissertation-defense/SKILL.md] (Medium, Supports, Forward) - "Defense references must be accurate"

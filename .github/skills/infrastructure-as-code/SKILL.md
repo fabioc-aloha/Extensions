@@ -1,6 +1,12 @@
 ---
-name: "Infrastructure as Code Skill"
-description: "**Domain**: DevOps & Cloud Engineering"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: infrastructure-as-code
+description: '**Domain**: DevOps & Cloud Engineering'
+tier: standard
+applyTo: '**/*iac*,**/*.bicep,**/*.tf,**/*terraform*,**/*pulumi*'
+currency: 2026-04-22
 ---
 
 # Infrastructure as Code Skill
@@ -60,11 +66,14 @@ Manual Infrastructure          Infrastructure as Code
 | Tool | Provider | Language | State | Best For |
 |------|----------|----------|-------|----------|
 | **Terraform** | HashiCorp | HCL | Remote/Local | Multi-cloud, mature ecosystem |
+| **OpenTofu** | Linux Foundation | HCL | Remote/Local | OSS Terraform fork (BSL-free), drop-in replacement |
 | **Bicep** | Microsoft | Bicep DSL | Azure-managed | Azure-native, simple syntax |
 | **Pulumi** | Pulumi | TS/Python/Go/C# | Managed/Self | Developers who prefer real languages |
 | **CloudFormation** | AWS | YAML/JSON | AWS-managed | AWS-only, deep integration |
 | **ARM Templates** | Microsoft | JSON | Azure-managed | Legacy Azure (prefer Bicep) |
 | **CDK** | AWS | TS/Python/Java | AWS-managed | Developers on AWS |
+
+> **Azure Verified Modules (AVM)**: For Bicep and Terraform, prefer [AVM](https://azure.github.io/Azure-Verified-Modules/) — Microsoft-maintained, tested, WAF-aligned modules. Reduces boilerplate and enforces best practices. Tracked at `registry.terraform.io/namespaces/Azure` and Bicep public module registry.
 
 ---
 
@@ -838,9 +847,3 @@ az deployment group create --resource-group rg-name --template-file main.bicep
 *Infrastructure as Code skill — Reliable, repeatable infrastructure through code | MCP-Enhanced: Yes | Updated: 2026-02-14*
 
 ---
-
-## Synapses
-
-- [.github/skills/bicep-avm-mastery/SKILL.md] (High, Contains, Forward) - "Deep Bicep and AVM patterns"
-- [.github/skills/azure-architecture-patterns/SKILL.md] (High, Uses, Forward) - "IaC implements cloud architectures"
-- [.github/skills/azure-devops-automation/SKILL.md] (Medium, Uses, Forward) - "CI/CD deploys IaC code"

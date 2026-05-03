@@ -1,13 +1,25 @@
 ---
+type: prompt
+lifecycle: stable
+inheritance: inheritable
 description: Manage API keys and secrets with VS Code SecretStorage
+mode: agent
+model: claude-opus-4-6
+application: "When managing secrets, API keys, or credential storage"
 agent: Alex
+currency: 2026-04-21
 ---
 
 # /secrets - Secrets Management
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "reviewing"`. This updates the welcome sidebar avatar.
 
 Implement secure credential storage using VS Code SecretStorage API for API keys, tokens, and passwords.
+
+Create a TODO list for all steps. Mark each in-progress before starting, completed immediately after finishing.
+
+
+
+After ANY file edit, run compilation check. Do not proceed until zero errors. If compilation or tests fail, fix and retry. Maximum 5 iterations per step.
 
 ## What This Does
 
@@ -25,7 +37,7 @@ Implement secure credential storage using VS Code SecretStorage API for API keys
 4. **Implement UI**: Quick pick for management + input prompts with validation
 5. **Integrate features**: Update code to use `getToken()` instead of `process.env`
 6. **Add migration**: Copy env vars to SecretStorage (non-destructive)
-7. **Register command**: Add "Manage API Keys & Secrets" to Command Palette
+7. **Register command**: Add credential management to the extension's command surface
 8. **Security review**: Check for hardcoded credentials, logging issues
 
 ## Token Registry Template
@@ -90,4 +102,10 @@ if (!apiKey) {
 Beginning secrets management. What service needs credential storage, or would you like to review existing code?
 
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.
+## Summary
+
+After completing all steps, generate:
+- Files changed (with counts)
+- Verifications passed (compile, test, lint)
+- Issues encountered and resolutions
+- Anything requiring manual attention

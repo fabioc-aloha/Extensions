@@ -1,11 +1,19 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "brand-asset-management"
 description: "Brand hierarchy, visual identity, asset deployment, platform-specific branding guidelines"
+tier: standard
+applyTo: '**/*brand*,**/*asset*,**/*logo*,**/*identity*'
+currency: 2026-04-22
 ---
 
 # Brand Asset Management Skill
 
 Expert in Alex brand hierarchy, visual identity systems, asset deployment, and platform-specific branding guidelines.
+
+> **Staleness Watch**: See [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md) for source URLs and recheck cadence
 
 ## Capabilities
 
@@ -56,12 +64,10 @@ Expert in Alex brand hierarchy, visual identity systems, asset deployment, and p
 
 | Asset | Path | Purpose |
 |-------|------|---------|
-| Animated Banner | `.github/assets/banner.svg` | GitHub READMEs |
+| Animated Banner | `assets/banner.svg` | GitHub READMEs |
 | Static Banner | `assets/banner.png` | Marketplace fallback |
-| Extension Icon | `platforms/vscode-extension/assets/icon.png` | Marketplace icon |
-| Mono Logo | `platforms/vscode-extension/assets/logo-mono.svg` | Activity bar |
-| M365 Color | `platforms/m365-copilot/appPackage/color.png` | Teams color icon |
-| M365 Outline | `platforms/m365-copilot/appPackage/outline.png` | Teams outline icon |
+| Extension Icon | `assets/icon.png` | Marketplace icon |
+| Mono Logo | `assets/logo-mono.svg` | Activity bar |
 
 ### Platform Guidelines
 
@@ -106,41 +112,8 @@ Expert in Alex brand hierarchy, visual identity systems, asset deployment, and p
 
 ## PNG Generation
 
-**ImageMagick (preferred for complex SVG)**:
-```powershell
-magick -density 200 -background none banner.svg banner.png
-```
-
-**Sharp CLI (faster for simple SVG)**:
-```powershell
+```bash
 npx sharp-cli --input source.svg --output output.png -f png --density 150
-```
-
-### SVG Banner Best Practices
-
-| Technique | Recommendation |
-|-----------|----------------|
-| **Gradient IDs** | Use unique IDs per SVG (`cxGrad`, `bgGrad`) to avoid conflicts |
-| **Logo scaling** | 0.75 scale renders cleanly; 0.5 can distort during PNG conversion |
-| **Embedding logos** | Embed actual SVG paths rather than text approximations |
-| **Render density** | Density 200 for marketplace; density 150 for previews |
-| **Banner dimensions** | 1280×320 px for VS Code Marketplace banners |
-
-### Embedded Logo Pattern
-
-```xml
-<g transform="translate(1095, 268)">
-  <defs>
-    <linearGradient id="cxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#0284c7"/>
-    </linearGradient>
-  </defs>
-  <g transform="scale(0.75)">
-    <!-- Logo paths here -->
-  </g>
-  <text x="32" y="18" font-family="Segoe UI" font-size="12" fill="rgba(255,255,255,0.4)">CorreaX</text>
-</g>
 ```
 
 ## Example Prompts

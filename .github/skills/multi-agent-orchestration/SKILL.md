@@ -1,8 +1,13 @@
 ---
-name: "Multi-Agent Orchestration"
-description: "Coordinate multiple AI agents for complex tasks — decomposition, delegation, and synthesis"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: multi-agent-orchestration
+description: Coordinate multiple AI agents for complex tasks — decomposition, delegation, and synthesis
+tier: standard
 user-invokable: false
-applyTo: "**/*agent*,**/*orchestrat*,**/*multi*,**/*workflow*,**/*subagent*"
+applyTo: '**/*agent*,**/*orchestrat*,**/*multi*,**/*workflow*,**/*subagent*'
+currency: 2026-04-22
 ---
 
 # Multi-Agent Orchestration Skill

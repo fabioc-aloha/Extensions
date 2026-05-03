@@ -1,7 +1,12 @@
 ---
-name: "Rubber Duck Debugging Skill"
-description: "Be a thinking partner. The answer often emerges when explaining the problem."
-applyTo: "**/*debug*,**/*stuck*,**/*help*,**/*problem*,**/*issue*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: rubber-duck-debugging
+description: Be a thinking partner. The answer often emerges when explaining the problem.
+tier: extended
+applyTo: '**/*debug*,**/*stuck*,**/*help*,**/*problem*,**/*issue*'
+currency: 2026-04-22
 ---
 
 # Rubber Duck Debugging Skill
@@ -168,7 +173,3 @@ Traditional rubber duck debugging works because **forcing scattered thoughts int
 4. Let the human have the "aha" moment
 
 *The insight belongs to them. The structure belongs to us.*
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

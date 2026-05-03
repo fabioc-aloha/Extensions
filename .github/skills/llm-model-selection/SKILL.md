@@ -1,7 +1,12 @@
 ---
-name: "LLM Model Selection Skill"
-description: "Choosing the right model for the task — power vs. cost vs. speed."
-applyTo: "**/*model*,**/*llm*,**/*copilot*,**/*claude*,**/*gpt*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: llm-model-selection
+description: Choosing the right model for the task — power vs. cost vs. speed.
+tier: standard
+applyTo: '**/*model*,**/*llm*,**/*copilot*,**/*claude*,**/*gpt*'
+currency: 2026-04-22
 ---
 
 # LLM Model Selection Skill
@@ -19,7 +24,7 @@ This skill depends on rapidly evolving technology. Model capabilities, pricing, 
 - Context window expansions
 - New capability tiers
 
-**Last validated:** February 2026 (Claude 4.6 generation)
+**Last validated:** March 2026 (Claude 4.6 generation)
 
 **Check current state:** [Anthropic Models](https://platform.claude.com/docs/en/docs/about-claude/models), [OpenAI Models](https://platform.openai.com/docs/models)
 
@@ -56,9 +61,9 @@ This skill depends on rapidly evolving technology. Model capabilities, pricing, 
 
 | Tier | Models | Best For | Relative Cost |
 | ---- | ------ | -------- | ------------- |
-| **Frontier** | Claude Opus 4.6, GPT-5, Gemini 2.5 Ultra | Complex reasoning, architecture, novel problems | $$$$$ |
-| **Capable** | Claude Sonnet 4.6, GPT-4.1, Gemini 2.5 Pro | Most coding tasks, refactoring, debugging | $$$ |
-| **Fast** | Claude Haiku 4.5, GPT-4.1-mini, Gemini 2.5 Flash | Simple edits, formatting, boilerplate | $ |
+| **Frontier** | Claude Opus 4.6, GPT-5.2/5.3/Codex, o3, o1-pro | Complex reasoning, architecture, novel problems | $$$$$ |
+| **Capable** | Claude Sonnet 4.6, GPT-5.1/Codex, GPT-4.1, GPT-4o, Gemini 2.5/3 Pro, o4-mini | Most coding tasks, refactoring, debugging | $$$ |
+| **Efficient** | Claude Haiku 4.5, GPT-5 mini, GPT-4.1 mini/nano, GPT-4o mini, Gemini 2.5 Flash, Gemini 3 Flash | Simple edits, formatting, boilerplate | $ |
 
 ## When Opus 4.6 IS Worth It
 
@@ -154,7 +159,7 @@ When using **Auto** in VS Code Copilot, the model switches dynamically based on 
 | Self-actualization | Comprehensive architecture assessment |
 | Complex architecture refactoring | Multi-file changes, deep context |
 | Bootstrap learning (new skills) | Skill acquisition needs maximum capability |
-| Synapse validation/dream | Neural maintenance requires full architecture |
+| Connection validation/dream | Architecture maintenance requires full architecture context |
 | Adaptive thinking tasks | Opus 4.6 uses dynamic reasoning depth for optimal results |
 
 ### Warning Protocol
@@ -197,10 +202,10 @@ If you're doing:
 
 ## The Alex Recommendation
 
-For **Master Alex** (source of truth, architecture evolution):
+For **architecture evolution and complex cognitive tasks**:
 → **Always use Opus 4.6** — The cognitive architecture demands full capability
 
-For **Heirs** (production deployment, user-facing):
+For **production deployment, user-facing work**:
 → **Default to Sonnet 4.6** — Best balance of capability and cost
 → **Allow Opus for complex tasks** — User can request escalation
 
@@ -212,7 +217,3 @@ For **Heirs** (production deployment, user-facing):
 | Complex refactor | 10,000-20,000 | $0.15-0.30 | $0.03-0.06 |
 | Full session | 50,000-150,000 | $0.75-2.25 | $0.15-0.45 |
 | Meditation | 30,000-80,000 | $0.45-1.20 | $0.09-0.24 |
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

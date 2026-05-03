@@ -1,6 +1,15 @@
+---
+type: prompt
+lifecycle: stable
+inheritance: inheritable
+mode: agent
+description: Implement a production-ready Microsoft Graph API integration with least-privilege scopes, auth, error handling, and pagination
+application: "When designing APIs, integrations, or service interfaces"
+currency: 2026-04-21
+---
+
 # Microsoft Graph API Integration
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "building"`. This updates the welcome sidebar avatar.
 
 **Purpose**: Implement a correct, production-ready Microsoft Graph API integration with proper auth, error handling, and pagination
 **Domain**: Microsoft 365, Graph API, M365 services
@@ -203,4 +212,3 @@ Alex:
 **Cross-reference**: `.github/instructions/microsoft-graph-api.instructions.md`
 
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.

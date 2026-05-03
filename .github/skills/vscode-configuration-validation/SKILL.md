@@ -1,6 +1,12 @@
 ---
-name: "VS Code Configuration Validation"
-description: "Validate VS Code extension manifest against runtime code usage"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: vscode-configuration-validation
+description: Validate VS Code extension manifest against runtime code usage
+tier: standard
+applyTo: '**/package.json,**/.vscode/**,**/tsconfig*'
+currency: 2026-04-22
 ---
 
 # VS Code Extension Configuration Validation
@@ -138,25 +144,15 @@ await vscode.workspace.getConfiguration('alex.globalKnowledge')
 
 ### Automated Audit Script
 
-Create `scripts/validate-manifest.ps1`:
-
-```powershell
-# Find all config updates
-$updates = Select-String -Path "src/**/*.ts" -Pattern "getConfiguration\(['\"]([^'\"]+)['\"].*\.update\(['\"]([^'\"]+)"
-
-# Load package.json properties
-$manifest = Get-Content "package.json" | ConvertFrom-Json
-$registered = $manifest.contributes.configuration.properties.PSObject.Properties.Name
-
-# Check each update
-$issues = @()
-foreach ($match in $updates) {
-  $context = $match.Matches.Groups[1].Value
-  $key = $match.Matches.Groups[2].Value
-  $fullKey = "$context.$key"
-  
-  if ($registered -notcontains $fullKey) {
-    # Check if wrapped in try-catch (manual review needed)
+```text
+Pseudocode: validate-manifest
+1. Search src/**/*.ts for getConfiguration('section').update('key') calls
+2. Load contributes.configuration.properties from package.json
+3. For each config update found in source code:
+   If the full key (section.key) is NOT in package.json properties:
+     Flag as unregistered config write (potential runtime error)
+4. Report all mismatches
+```
     $issues += "⚠️  $fullKey - not registered (verify try-catch exists)"
   }
 }
@@ -219,7 +215,7 @@ Add to `.github/instructions/extension-audit-methodology.instructions.md`:
 ### Configuration Validation
 
 Before each release:
-1. Run `scripts/validate-manifest.ps1`
+1. Run `node scripts/release-preflight.cjs`
 2. Review any warnings for try-catch coverage
 3. Test configuration updates in clean VS Code instance
 4. Verify error messages are user-friendly

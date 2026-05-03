@@ -1,19 +1,23 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "persona-detection"
 description: "Intelligent project persona identification using priority chain detection with LLM and heuristic fallback"
+tier: core
+applyTo: '**/*persona*,**/*detection*,**/*project-type*'
+currency: 2026-04-20
 ---
 
 # Persona Detection Skill
 
-**Classification**: Inheritable (VS Code heir) | Feature Knowledge
-**Activation**: persona, know your customer, project type detection, welcome screen, sidebar persona
 **Inheritance**: heir:vscode
 
 ---
 
 ## Purpose
 
-Detect the most appropriate user persona for a workspace to personalize the Alex experience — sidebar branding, skill suggestions, and Active Context configuration.
+Detect the most appropriate user persona for a workspace to personalize the Alex experience — sidebar branding, skill suggestions, and working memory P5-P7 configuration.
 
 ---
 
@@ -25,15 +29,16 @@ Detect the most appropriate user persona for a workspace to personalize the Alex
 | 2 | Goal | Stated session objective from goals.json | 0.85 |
 | 3 | Phase | Current ROADMAP phase keywords | 0.75 |
 | 4 | Project Goals | Learning goals from user-profile.json | 0.70 |
-| 5 | Profile Cache | Saved projectPersona (< 7 days old) | cached |
-| 6 | Profile + Workspace | Tech stack, expertise, file structure scoring | variable |
-| 7 | Default | Developer fallback | 0.50 |
+| 5 | Copilot Instructions | `Persona:` field in copilot-instructions.md Active Context | 0.85 |
+| 6 | Profile Cache | Saved projectPersona (< 7 days old) | cached |
+| 7 | Profile + Workspace | Tech stack, expertise, file structure scoring | variable |
+| 8 | Default | Developer fallback | 0.50 |
 
 Detection stops at the first confident match. Lower priorities only run if higher ones return null.
 
 ---
 
-## Available Personas (as of v5.6.8)
+## Available Personas (as of v5.7.1)
 
 developer, academic, researcher, technical-writer, architect, data-engineer, devops, content-creator, fiction-writer, **game-developer**, project-manager, security, student, job-seeker, presenter, power-user
 
@@ -99,9 +104,6 @@ The welcome view displays the persona with confidence % and detection source (pr
 4. Ensure matching skill exists in `.github/skills/`
 
 **Note**: Focus Trifectas are NOT defined per-persona. They're managed independently based on current work context.
-3. Add persona ID to the LLM prompt's `personaId` enum
-4. Add skill to `getSkillDescription()` map and `skillNameMap` in `welcomeView.ts`
-5. Ensure matching skill exists in `.github/skills/`
 
 ---
 
@@ -109,12 +111,6 @@ The welcome view displays the persona with confidence % and detection source (pr
 
 | Issue | Root Cause | Fix |
 |-------|-----------|-----|
-| Every Alex project shows DevOps | `.github/` matched via substring | Use `fs.pathExists()` for path patterns (v5.6.8) |
-| `.github/` triggers power-user | Noise signal in every project | Removed from power-user patterns (v5.6.8) |
+| Every Alex project shows DevOps | `.github/` matched via substring | Use `fs.pathExists()` for path patterns (v5.7.1) |
+| `.github/` triggers power-user | Noise signal in every project | Removed from power-user patterns (v5.7.1) |
 | Wrong persona cached | projectPersona in user-profile.json stale | 7-day expiry + re-detect on upgrade |
-
-## Synapses
-
-- [.github/skills/heir-curation/SKILL.md] (High, Integrates, Forward) - "Persona detection ships to heir via inheritance"
-- [.github/instructions/alex-core.instructions.md] (Medium, References, Forward) - "Active Context persona field updated by persona detection"
-- [.github/skills/release-process/SKILL.md] (Medium, Validates, Forward) - "Persona detection tested during pre-publish"

@@ -5,6 +5,10 @@
 **Pomodoro timer in the status bar — work sprints, break reminders, session history**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.cx-focus-timer)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer)
+
+---
 
 25-minute work sessions. 5-minute breaks. Long break every 4 sessions. All in the status bar, all via commands. No web UI, no sign-in, no distractions.
 

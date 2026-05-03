@@ -1,11 +1,15 @@
 ---
+type: prompt
+lifecycle: stable
+inheritance: inheritable
 description: Manage brand assets, visual identity, and platform-specific branding
+application: "When managing brand assets, visual identity, or platform-specific branding"
 agent: Alex
+currency: 2026-04-21
 ---
 
 # /brand - Brand Asset Management
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "building"`. This updates the welcome sidebar avatar.
 
 Manage Alex brand hierarchy, visual assets, and platform-specific branding guidelines.
 
@@ -20,13 +24,12 @@ Manage Alex brand hierarchy, visual assets, and platform-specific branding guide
 ## Brand Quick Reference
 
 - **Tagline**: "Strap a Rocket to Your Back"
-- **Colors**: Azure blue (#0078d4) + thrust orange (#ff6b35)
+- **Colors**: sky blue (#38bdf8) + coral (#f97316) + indigo (#6366f1) — CorreaX dark palette
 - **Icon**: `$(rocket)` codicon
-- **GK Premium**: Space station metaphor, sync green (#00ff88)
+- **GK Premium**: Knowledge Graph Network, teal (#0d9488) + teal-light (#2dd4bf)
 
 ## Start
 
 Beginning brand management. What platform or asset would you like to work on?
 
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.

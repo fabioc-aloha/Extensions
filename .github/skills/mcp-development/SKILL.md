@@ -1,17 +1,23 @@
 ---
-name: "MCP Development Skill"
-description: "**Domain**: AI Infrastructure"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: mcp-development
+description: '**Domain**: AI Infrastructure'
+tier: standard
+applyTo: '**/*mcp*,**/mcp.json,**/*model-context-protocol*'
 user-invokable: false
+currency: 2026-04-22
 ---
 
 # MCP Development Skill
 
 > **Domain**: AI Infrastructure
 > **Inheritance**: inheritable
-> **Version**: 1.1.0
-> **Last Updated**: 2026-02-19
+> **Version**: 1.2.0
+> **Last Updated**: 2026-03-10
 
-> ⚠️ **Staleness Watch**: MCP spec is actively versioned. Streamable HTTP replaced HTTP+SSE for remote servers (spec 2025-03-26). Check [MCP Changelog](https://modelcontextprotocol.io/changelog) when advising on transport selection.
+> ⚠️ **Staleness Watch** ([EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md)): MCP spec and SDK are actively versioned. **SDK moved from 1.0.0 → 1.27.1** with 3 security fixes: cross-client data leak in shared instances (GHSA-345p-7cg4-v4c7), ReDoS (v1.25.2), command injection prevention (v1.27.1). New SDK features: task types, elicitation streaming, OAuth discovery/caching, fetch transport, conformance testing, framework-agnostic server refactoring. Streamable HTTP replaced HTTP+SSE for remote servers (spec 2025-03-26). Check [MCP Changelog](https://modelcontextprotocol.io/changelog) and [SDK Releases](https://github.com/modelcontextprotocol/typescript-sdk/releases) when advising on transport or SDK usage.
 
 ---
 
@@ -100,15 +106,12 @@ Functions the AI can execute:
 // Tool definition
 {
   name: "search_issues",
-  description: "Search GitHub issues in a repository"
-user-invokable: false,
+  description: "Search GitHub issues in a repository",
   inputSchema: {
     type: "object",
     properties: {
-      repo: { type: "string", description: "owner/repo format"
-user-invokable: false },
-      query: { type: "string", description: "Search query"
-user-invokable: false },
+      repo: { type: "string", description: "owner/repo format" },
+      query: { type: "string", description: "Search query" },
       state: {
         type: "string",
         enum: ["open", "closed", "all"],
@@ -136,8 +139,7 @@ Data the AI can read:
 {
   uri: "github://repo/owner/repo-name/issues",
   name: "Repository Issues",
-  description: "All issues in the repository"
-user-invokable: false,
+  description: "All issues in the repository",
   mimeType: "application/json"
 }
 
@@ -145,8 +147,7 @@ user-invokable: false,
 {
   uriTemplate: "github://repo/{owner}/{repo}/issues/{id}",
   name: "GitHub Issue",
-  description: "A specific GitHub issue"
-user-invokable: false,
+  description: "A specific GitHub issue",
   mimeType: "application/json"
 }
 ```
@@ -163,19 +164,16 @@ Reusable prompt templates:
 ```typescript
 {
   name: "code_review",
-  description: "Generate a code review for changes"
-user-invokable: false,
+  description: "Generate a code review for changes",
   arguments: [
     {
       name: "diff",
-      description: "The code diff to review"
-user-invokable: false,
+      description: "The code diff to review",
       required: true
     },
     {
       name: "focus",
-      description: "Areas to focus on (security, performance, style)"
-user-invokable: false,
+      description: "Areas to focus on (security, performance, style)",
       required: false
     }
   ]
@@ -205,7 +203,6 @@ server.tool(
     location: {
       type: "string",
       description: "City name or coordinates"
-user-invokable: false
     }
   },
   async ({ location }) => {
@@ -740,6 +737,31 @@ describe("MCP Server Integration", () => {
 | Requires input parameters | Static or template URI |
 | Returns computed result | Returns stored content |
 | May fail or have errors | Generally stable data |
+
+---
+
+## MCP Tool Handoff QA Decision Table (PL1)
+
+MCP tool calls are inherently synchronous — the tool returns a result and the interaction ends. This creates the same silent-handoff failure mode as extension commands: a write operation succeeds mechanically but the caller never learns that semantic review is needed.
+
+Review every MCP tool handler against this table:
+
+| # | Check | Pass | Fail | Action on Fail |
+|---|-------|------|------|----------------|
+| 1 | **Write tools gate on cross-project isolation** — tools that write to AI-Memory or global scope enforce SK2 boundary | SK2 decision table rows evaluated before write | Direct write with no isolation check | Add SK2 gate; return structured warning if check fails |
+| 2 | **Read tools don't mutate** — search/status tools have no side effects | Tool only reads files, returns data | Tool writes logs, creates files, or modifies state | Split into read tool + write tool; or explicitly document side effects |
+| 3 | **Error vs review distinction** — tool result distinguishes "error" from "semantic review pending" | Result includes `status: "review-required"` when artifacts need LLM review | Only returns `success` or `error`; no handoff signal | Add `semanticReviewRequired: true` + `reviewArtifact` path to result schema |
+| 4 | **PII filter on outputs** — tool results don't leak absolute paths with usernames or credentials | Paths are relative; no credentials in output | `C:\Users\name\...` paths or tokens in result JSON | Apply `stripPII()` before returning; use relative paths |
+| 5 | **Decision logging** — write operations log to PE1 decision log | `logPhase2Decision()` called with tool name, action, rationale | Write completes with no audit trail | Integrate `phase2-decision-log.cjs` into tool handler |
+| 6 | **Input validation** — tool validates all required fields before acting | Missing fields return descriptive error | Tool throws or returns empty result on bad input | Validate schema; return structured error with field requirements |
+| 7 | **Scope visibility** — tool result includes scope metadata for caller's routing | Result includes `scope: "project"` or `scope: "global"` | Caller can't determine if result crosses project boundary | Add scope field to result schema |
+| 8 | **Backup before overwrite** — tools that modify existing files preserve the original | `.backup.md` created before overwrite; path included in result | Original content lost on write | Create backup; include `backupPath` in result |
+
+**Known findings in `alex-cognitive-tools` (v1.1.0)**:
+- `alex_knowledge_save` fails rows 1, 3, 5, 8 — writes directly to AI-Memory with no isolation check, no decision logging, no review signal, and no backup of existing content.
+- `alex_health_check` passes (read-only, no mutations).
+- `alex_memory_search` and `alex_knowledge_search` pass (read-only).
+- `alex_architecture_status` passes (read-only).
 
 ---
 

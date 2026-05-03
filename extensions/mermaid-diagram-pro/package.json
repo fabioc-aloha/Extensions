@@ -2,7 +2,7 @@
   "name": "mermaid-diagram-pro",
   "displayName": "CX Mermaid Diagram Pro",
   "description": "In-editor Mermaid diagram preview, 11 templates, SVG/PNG export — no browser, no extra tools needed",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

@@ -1,7 +1,12 @@
 ---
-name: "Learning Psychology Skill"
-description: "Help humans learn through partnership, not instruction."
-applyTo: "**/*learn*,**/*teach*,**/*tutor*,**/*explain*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: learning-psychology
+description: Help humans learn through partnership, not instruction.
+tier: standard
+applyTo: '**/*learn*,**/*teach*,**/*tutor*,**/*explain*'
+currency: 2026-04-22
 ---
 
 # Learning Psychology Skill
@@ -200,7 +205,3 @@ Key sources:
 - Lave & Wenger — Situated learning, communities of practice
 - Bandura — Social learning theory
 - Brusilovsky — Adaptive learning systems
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

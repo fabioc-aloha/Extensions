@@ -1,6 +1,12 @@
 ---
-name: "Architecture Refinement Skill"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: architecture-refinement
 description: "Meta-skill for maintaining and evolving Alex's cognitive architecture through deliberate documentation and pattern extraction."
+tier: standard
+applyTo: '**/*refine*,**/*evolve*,**/*architecture*,**/*meta*'
+currency: 2026-04-22
 ---
 
 # Architecture Refinement Skill
@@ -116,7 +122,3 @@ User corrections = high-value learning.
 ## Connection to Bootstrap Learning
 
 Learn → Coach → Extract → Document → Consolidate
-
-## Synapses
-
-See [synapses.json](synapses.json) for connection mapping.

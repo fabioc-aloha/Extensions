@@ -1,6 +1,12 @@
 ---
-name: "Muscle Memory Recognition"
-description: "Identify opportunities to build automation scripts (muscles) from repetitive or heavy-lifting tasks"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: muscle-memory-recognition
+description: Identify opportunities to build automation scripts (muscles) from repetitive or heavy-lifting tasks
+tier: standard
+applyTo: '**/*muscle*,**/*automat*,**/*script*,**/*repetitive*'
+currency: 2026-04-22
 ---
 
 # Muscle Memory Recognition
@@ -120,11 +126,11 @@ IF (cross-platform required OR heir-critical):
 {action}-{target}.{ext}
 
 Examples:
-- validate-skills.ps1
-- sync-architecture.js
-- normalize-paths.ps1
-- gamma-generator.js
-- brain-qa.ps1
+- validate-skills.cjs
+- sync-to-heir.cjs
+- normalize-paths.cjs
+- gamma-generator.cjs
+- brain-qa.cjs
 ```
 
 ## Integration Checklist
@@ -133,8 +139,8 @@ When creating a new muscle:
 
 - [ ] Create script in `.github/muscles/`
 - [ ] Add to `inheritance.json` (master-only or inheritable)
-- [ ] Update referencing trifecta files (skills/instructions/prompts)
-- [ ] Add to `TRIFECTA-CATALOG.md` if part of trifecta
+- [ ] Update referencing trifecta files (skills/instructions/muscles)
+- [ ] Verify trifecta via brain-qa
 - [ ] Document invocation in referencing files
 - [ ] Test from heir context if inheritable
 
@@ -170,12 +176,35 @@ When identifying a muscle opportunity:
 
 ## Related Skills
 
-- [Bootstrap Learning](.github/skills/bootstrap-learning/SKILL.md) - Parent skill for learning-to-automation flow
-- [Research-First Development](.github/skills/research-first-development/SKILL.md) - Research before building muscles
-- [Architecture Health](.github/skills/architecture-health/SKILL.md) - Validate muscle integration
+- [Bootstrap Learning](..\bootstrap-learning/SKILL.md) - Parent skill for learning-to-automation flow
+- [Research-First Development](..\research-first-development/SKILL.md) - Research before building muscles
+- [Brain QA](..\brain-qa/SKILL.md) - Validate muscle integration
 
-## Synapses
+## Alex-First Output Guidelines
 
-- **Bootstrap Learning** → This skill (enables): Learning identifies automation opportunities
-- **This skill** → Trifecta System (produces): Muscles become part of trifectas
-- **Deep Thinking** → This skill (informs): Complex analysis reveals automation patterns
+When building muscles for Alex's own use (not user-facing tools), optimize for machine consumption:
+
+**DO**:
+- Output structured data (JSON, key: value pairs)
+- Use exit codes (0 = success, non-zero = failure)
+- Keep output minimal — only what Alex needs to parse
+- Use clear, grep-able status lines
+
+**DON'T**:
+- Add emojis or decorative Unicode
+- Build elaborate formatted tables
+- Add "helpful" explanations Alex doesn't need
+- Create progress spinners or animations
+
+**Example**:
+```javascript
+// ✅ Alex-first: parseable, minimal
+console.log(JSON.stringify({ passed: 12, failed: 0, warnings: 1 }));
+process.exit(0);
+
+// ❌ Human-first: decorative, verbose
+console.log('✅ All 12 checks passed!');
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━');
+```
+
+**Exception**: User-facing CLI tools (not muscles) should still be human-friendly.

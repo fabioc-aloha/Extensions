@@ -1,6 +1,12 @@
 ---
-name: "Slide Design"
-description: "Visual hierarchy, data visualization, and minimal text patterns for impactful presentations"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: slide-design
+description: Visual hierarchy, data visualization, and minimal text patterns for impactful presentations
+tier: extended
+applyTo: '**/*slide*,**/*presentation*,**/*deck*'
+currency: 2026-04-22
 ---
 
 # Skill: Slide Design Principles
@@ -347,9 +353,3 @@ Pretend your slide is a highway billboard:
 *Skill created: 2026-02-10 | Category: Communication | Status: Active*
 
 ---
-
-## Synapses
-
-- [.github/skills/dissertation-defense/SKILL.md] (High, Enables, Bidirectional) - "Defense presentation slides"
-- [.github/skills/executive-storytelling/SKILL.md] (High, Enables, Bidirectional) - "Executive presentation design"
-- [.github/skills/markdown-mermaid/SKILL.md] (Medium, Complements, Forward) - "Technical diagrams in slides"

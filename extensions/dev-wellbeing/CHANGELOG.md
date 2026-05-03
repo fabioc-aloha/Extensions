@@ -1,5 +1,10 @@
 # Changelog — Dev Wellbeing
 
+## [0.1.3] — 2026-02-28
+
+### Changed
+- README — absolute banner URL, publisher and version shields added
+
 ## [0.1.2] — 2026-02-27
 
 ### Added

@@ -1,10 +1,14 @@
 # Gamma Slide Assistant
 
-![Gamma Slide Assistant Banner](assets/banner.png)
+![Gamma Slide Assistant Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/gamma-slide-assistant/assets/banner.png)
 
 **Write presentations in Markdown, render with Marp — beautiful slides without leaving VS Code**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.gamma-slide-assistant)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant)
+
+---
 
 > Note: The Gamma.app API is not publicly available. This extension uses [Marp](https://marp.app/) — the best-in-class offline Markdown presentation engine — as the rendering backend.
 

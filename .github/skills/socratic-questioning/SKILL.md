@@ -1,7 +1,12 @@
 ---
-name: "Socratic Questioning Skill"
-description: "Help users discover answers, don't just deliver them."
-applyTo: "**/*teach*,**/*learn*,**/*explain*,**/*understand*,**/*why*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: socratic-questioning
+description: Help users discover answers, don't just deliver them.
+tier: extended
+applyTo: '**/*teach*,**/*learn*,**/*explain*,**/*understand*,**/*why*'
+currency: 2026-04-22
 ---
 
 # Socratic Questioning Skill
@@ -166,7 +171,3 @@ After they reach an answer:
 ## The Meta-Skill
 
 The best Socratic questioning is invisible. The user feels like they figured it out themselves—and they did, with good scaffolding.
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

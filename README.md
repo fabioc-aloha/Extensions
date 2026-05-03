@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>16 VS Code extensions spun off from Alex Cognitive Architecture</strong><br>
-  <sub>9 live on Marketplace | Publisher: <code>fabioc-aloha</code> | VS Code 1.109+</sub>
+  <sub>16 live on Marketplace | Publisher: <code>fabioc-aloha</code> | VS Code 1.109+</sub>
 </p>
 
 ---
@@ -23,7 +23,7 @@ A family of standalone VS Code extensions spun off from the [Alex Cognitive Arch
 | [CX Workspace Watchdog](./extensions/workspace-watchdog/) | 👁️ Awareness | [fabioc-aloha.cx-workspace-watchdog](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog) |
 | [MCP App Starter](./extensions/mcp-app-starter/) | 🛠️ Dev Tools | [fabioc-aloha.mcp-app-starter](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter) |
 
-### Sprint 2 — 4/6 Published ✅
+### Sprint 2 — Published ✅
 
 | Extension | Category | Marketplace |
 |---|---|---|
@@ -31,27 +31,27 @@ A family of standalone VS Code extensions spun off from the [Alex Cognitive Arch
 | [Brandfetch Logo Fetcher](./extensions/brandfetch-logo-fetcher/) | 🏢 Utility | [fabioc-aloha.brandfetch-logo-fetcher](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
 | [AI Voice Reader](./extensions/ai-voice-reader/) | 🔊 Accessibility | [fabioc-aloha.ai-voice-reader](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
 | [CX SecretGuard](./extensions/secret-guard/) | 🔒 Security | [fabioc-aloha.cx-secret-guard](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard) |
-| [CX Focus Timer](./extensions/focus-timer/) | ⏱️ Productivity | ⏳ Publish pending (rate limit) |
-| [CX Markdown to Word](./extensions/markdown-to-word/) | 📄 Converter | ⏳ Publish pending (rate limit) |
+| [CX Focus Timer](./extensions/focus-timer/) | ⏱️ Productivity | [fabioc-aloha.cx-focus-timer](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
+| [CX Markdown to Word](./extensions/markdown-to-word/) | 📄 Converter | [fabioc-aloha.cx-markdown-to-word](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word) |
 
 > **Naming note**: `workspace-watchdog`, `secret-guard`, `focus-timer`, and `markdown-to-word` were taken on Marketplace by other publishers — these ship with the `cx-` prefix.
 
-### Sprint 3 — Compile-Ready
+### Sprint 3 — Published ✅
 
-| Extension | Category | Status |
+| Extension | Category | Marketplace |
 |---|---|:---:|
-| [Dev Wellbeing](./extensions/dev-wellbeing/) | 🧘 Wellness | 🔧 Next up |
-| [PPTX Builder](./extensions/pptx-builder/) | 📊 Converter | 🔧 Next up |
-| [Replicate Image Studio](./extensions/replicate-image-studio/) | 🎨 Image Gen | 🔧 Next up |
+| [Dev Wellbeing](./extensions/dev-wellbeing/) | 🧘 Wellness | [fabioc-aloha.dev-wellbeing](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
+| [PPTX Builder](./extensions/pptx-builder/) | 📊 Converter | [fabioc-aloha.pptx-builder](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder) |
+| [Replicate Image Studio](./extensions/replicate-image-studio/) | 🎨 Image Gen | [fabioc-aloha.replicate-image-studio](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio) |
 
-### Sprint 4 — Compile-Ready
+### Sprint 4 — Published ✅
 
-| Extension | Category | Status |
+| Extension | Category | Marketplace |
 |---|---|:---:|
-| [Mermaid Diagram Pro](./extensions/mermaid-diagram-pro/) | 📐 Diagramming | 🔮 Planned |
-| [SVG Toolkit](./extensions/svg-toolkit/) | 🖼️ Image Gen | 🔮 Planned |
-| [SVG to PNG](./extensions/svg-to-png/) | 🖼️ Image Gen | 🔮 Planned |
-| [Gamma Slide Assistant](./extensions/gamma-slide-assistant/) | 🎤 Presenter | 🔮 Planned |
+| [Mermaid Diagram Pro](./extensions/mermaid-diagram-pro/) | 📐 Diagramming | [fabioc-aloha.mermaid-diagram-pro](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro) |
+| [SVG Toolkit](./extensions/svg-toolkit/) | 🖼️ Image Tools | [fabioc-aloha.svg-toolkit](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-toolkit) |
+| [SVG to PNG](./extensions/svg-to-png/) | 🖼️ Image Tools | [fabioc-aloha.svg-to-png](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-to-png) |
+| [Gamma Slide Assistant](./extensions/gamma-slide-assistant/) | 🎤 Presenter | [fabioc-aloha.gamma-slide-assistant](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
 
 ---
 

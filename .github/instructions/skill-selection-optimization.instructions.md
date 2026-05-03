@@ -1,5 +1,10 @@
 ---
+type: instruction
+lifecycle: stable
+inheritance: inheritable
 description: "Proactive skill selection and resource planning before complex task execution"
+application: "When building, auditing, or promoting cognitive architecture skills"
+currency: 2026-04-22
 ---
 
 # Skill Selection Optimization Protocol
@@ -19,7 +24,7 @@ Proactive pre-task cognitive resource planning. Before executing complex tasks, 
 | **Skill Activation** (reactive) | Safety net during execution | During response formation |
 | **Deep Thinking** | Systematic problem analysis | During execution |
 
-This protocol fills the gap between session-level planning and reactive skill-activation.
+This protocol fills the gap between session-level planning and reactive memory-activation.
 
 ## Activation Triggers
 
@@ -57,7 +62,7 @@ Parse the request and classify:
 
 ### Phase 1: Skill Survey
 
-Scan the **action-keyword index** in `skill-activation/SKILL.md` for ALL matching skills:
+Scan the **action-keyword index** in `memory-activation/SKILL.md` for ALL matching skills:
 
 1. **Extract all action verbs and domain nouns** from the request
 2. **Match against the index** — collect ALL hits, not just the first match
@@ -76,7 +81,7 @@ After surveying matching skills, **filter the cognitive context** to create a fo
 
 1. **Rate loaded instructions** by relevance to the current task (High/Medium/Low/None)
 2. **Suppress irrelevant protocols**: If task is "fix a CSS bug," meditation, release-management, and brand-asset protocols are noise — mentally deprioritize them
-3. **Promote relevant context**: If task involves architecture changes, elevate alex-core, embedded-synapse, and brain-qa to primary attention
+3. **Promote relevant context**: If task involves architecture changes, elevate alex-core, cognitive-health-validation, and brain-qa to primary attention
 4. **Context budget**: Identify the top 5-7 most relevant knowledge sources — this mirrors the biological dlPFC filtering ~80% of sensory input to prevent cognitive overload
 
 **Attention Gating Heuristics**:
@@ -97,7 +102,7 @@ After surveying matching skills, **filter the cognitive context** to create a fo
 
 Identify skill interactions:
 
-1. **Check synapse connections** between matched skills (via `synapses.json`)
+1. **Check related skills** via trifecta naming and semantic similarity
 2. **Identify feed-forward chains**: Skill A output → Skill B input
 3. **Spot conflicts**: Skills with competing approaches (resolve using task context)
 4. **Find amplifiers**: Skills that enhance each other when co-activated
@@ -169,7 +174,7 @@ When deep thinking is also triggered:
 - If task shifts domain mid-execution, Pivot Detection Protocol re-evaluates focus
 
 ### With Reactive Skill Activation
-Skill Selection Optimization runs BEFORE execution. The reactive skill-activation system remains as a safety net DURING execution. If the reactive system fires, it means the proactive system missed something — that's a learning signal.
+Skill Selection Optimization runs BEFORE execution. The reactive memory-activation system remains as a safety net DURING execution. If the reactive system fires, it means the proactive system missed something — that's a learning signal.
 
 ## Scenario Examples
 
@@ -207,19 +212,3 @@ After completing a complex task:
 3. **Were gaps properly flagged?** If unexpected difficulty → gap detection failed
 
 These signals should inform future skill selection accuracy — no formal logging required, just meta-cognitive awareness.
-
-## Synapses
-
-- ↔ `.github/skills/skill-activation/SKILL.md` — WHEN: complex task detected | YIELDS: action-keyword index for skill survey
-- ↔ `.github/instructions/deep-thinking.instructions.md` — WHEN: complex task needs both planning and analysis | YIELDS: episodic memory scan coordination
-- → `.github/instructions/alex-core.instructions.md` — WHEN: meta-cognitive planning | YIELDS: working memory slot management
-- → `.github/skills/cognitive-load/SKILL.md` — WHEN: many skills matched | YIELDS: prioritization and chunking
-- → `.github/skills/alex-effort-estimation/SKILL.md` — WHEN: assessing task complexity | YIELDS: effort estimates for planning
-- ← `.github/instructions/bootstrap-learning.instructions.md` — WHEN: unfamiliar domain detected in survey | YIELDS: learning acquisition protocols
-- ← `.github/skills/brain-qa/SKILL.md` — WHEN: brain-qa validates skill index integrity | YIELDS: confidence that SSO data sources are accurate
-- ← `.github/skills/meditation/SKILL.md` — WHEN: complex consolidation session | YIELDS: pre-meditation resource planning
-- ← `.github/instructions/dream-state-automation.instructions.md` — WHEN: dream validates synapse network | YIELDS: healthy dependency graph for SSO analysis
-- ← `.github/instructions/self-actualization.instructions.md` — WHEN: deep assessment needs resource planning | YIELDS: pre-assessment skill survey
-- ← `.github/skills/research-first-development/SKILL.md` — WHEN: gap analysis creates skills | YIELDS: enriched skill pool for SSO selection
-- ⊙ `.github/instructions/dream-state-automation.instructions.md` — INHIBITS: suppress SSO during dream state (unconscious processing doesn't need task planning)
-- ⊙ `.github/prompts/unified-meditation-protocols.prompt.md` — INHIBITS: suppress SSO for simple meditation (only activate for complex multi-phase consolidation)

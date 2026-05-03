@@ -1,6 +1,12 @@
 ---
+type: skill
+lifecycle: stable
+inheritance: inheritable
 name: "status-reporting"
 description: "Create stakeholder-friendly project status updates and progress reports"
+tier: standard
+applyTo: '**/*status*,**/*report*,**/*update*'
+currency: 2026-04-22
 ---
 
 # Status Reporting Skill
@@ -252,10 +258,10 @@ Pull information from:
 
 ## Related Skills
 
-- [proactive-assistance](.github/skills/proactive-assistance/SKILL.md) — Trigger status prep proactively
-- [scope-management](.github/skills/scope-management/SKILL.md) — Include scope health
-- [project-management](.github/skills/project-management/SKILL.md) — Project tracking context
-- [executive-storytelling](.github/skills/executive-storytelling/SKILL.md) — Advanced narrative techniques
+- [proactive-assistance](..\proactive-assistance/SKILL.md) — Trigger status prep proactively
+- [scope-management](..\scope-management/SKILL.md) — Include scope health
+- [project-management](..\project-management/SKILL.md) — Project tracking context
+- [executive-storytelling](..\executive-storytelling/SKILL.md) — Advanced narrative techniques
 
 ---
 

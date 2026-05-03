@@ -1,7 +1,13 @@
 ---
-name: "Azure DevOps Automation"
-description: "CI/CD pipelines, infrastructure as code, and deployment automation for Azure workloads"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: azure-devops-automation
+description: CI/CD pipelines, infrastructure as code, and deployment automation for Azure workloads
+tier: standard
+applyTo: '**/*devops*,**/*pipeline*,**/*cicd*,**/*ci-cd*,**/*yaml*'
 user-invokable: false
+currency: 2026-04-22
 ---
 
 # Skill: Azure DevOps Automation
@@ -209,7 +215,7 @@ output webAppUrl string = 'https://${webApp.properties.defaultHostName}'
 
 ### Deployment Command
 
-```powershell
+```bash
 # What-if preview
 az deployment group what-if `
   --resource-group rg-myapp-dev `
@@ -411,7 +417,7 @@ else
 
 ### Common Commands
 
-```powershell
+```bash
 # Azure CLI
 az login
 az account set --subscription "Production"

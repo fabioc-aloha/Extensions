@@ -1,6 +1,13 @@
 ---
-name: "Creative Writing Skill"
-description: "Patterns for fiction, narrative structure, character development, dialogue, and storytelling craft."
+type: skill
+inheritance: inheritable
+lifecycle: stable
+name: creative-writing
+description: Patterns for fiction, narrative structure, character development, dialogue, and storytelling craft.
+tier: standard
+applyTo: '**/*fiction*,**/*story*,**/*narrative*,**/*dialogue*,**/*character*'
+currency: 2026-05-02
+lastReviewed: 2026-05-02
 ---
 
 # Creative Writing Skill
@@ -94,12 +101,12 @@ book-project/
 ## Main Characters
 
 ### [Character Name] — [Role: Protagonist/Antagonist/etc.]
-- **Age**: 
-- **Occupation**: 
-- **Want** (external goal): 
-- **Need** (internal growth): 
-- **Lie** (false belief): 
-- **Ghost** (wound from past): 
+- **Age**:
+- **Occupation**:
+- **Want** (external goal):
+- **Need** (internal growth):
+- **Lie** (false belief):
+- **Ghost** (wound from past):
 - **Arc**: [Positive/Negative/Flat]
 
 **Voice notes**: [How they speak, verbal tics, vocabulary level]
@@ -461,20 +468,3 @@ Present tense. Active voice. Brief.
 - Sonnet — 14 lines, specific rhyme
 - Haiku — 5-7-5 syllables
 - Villanelle — 19 lines, refrains
-
-## Synapses
-
-### High-Strength Connections
-
-- [writing-publication] (High, Extends, Bidirectional) — "Publishing creative work"
-- [academic-research] (Medium, Complements, Bidirectional) — "Research for historical fiction"
-
-### Medium-Strength Connections
-
-- [knowledge-synthesis] (Medium, Uses, Forward) — "Synthesizing story elements"
-- [cognitive-load] (Medium, Applies, Forward) — "Reader experience management"
-
-### Supporting Connections
-
-- [meditation-facilitation] (Low, Supports, Forward) — "Creative reflection"
-- [appropriate-reliance] (Low, Applies, Forward) — "Balancing AI assistance with creative voice"

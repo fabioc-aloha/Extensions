@@ -1,6 +1,15 @@
+---
+type: prompt
+lifecycle: stable
+inheritance: inheritable
+mode: agent
+description: Scaffold or troubleshoot a Microsoft Teams app or M365 Copilot declarative agent with correct schema, icons, and packaging
+application: "When building Microsoft Teams apps, M365 Copilot declarative agents, or troubleshooting Teams manifest and packaging issues"
+currency: 2026-04-21
+---
+
 # Teams App Development
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "building"`. This updates the welcome sidebar avatar.
 
 **Purpose**: Scaffold or troubleshoot a Microsoft Teams app or M365 Copilot declarative agent with correct schema, icons, and packaging
 **Domain**: Microsoft Teams, M365 platform, declarative agents
@@ -193,4 +202,3 @@ Alex:
 **Cross-reference**: `.github/instructions/teams-app-patterns.instructions.md`
 
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.

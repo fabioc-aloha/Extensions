@@ -1,10 +1,14 @@
 # Replicate Image Studio
 
-![Replicate Image Studio Banner](assets/banner.png)
+![Replicate Image Studio Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/replicate-image-studio/assets/banner.png)
 
 **Generate images inside VS Code using Flux, SDXL, WAN 2.1 — insert results as Markdown**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.replicate-image-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio)
+
+---
 
 Type a prompt, choose a model, get an image URL — then insert as a Markdown image with one click. Session history tracks all your generations.
 

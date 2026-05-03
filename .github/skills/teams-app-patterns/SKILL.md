@@ -1,8 +1,13 @@
 ---
-name: "Teams App Patterns Skill"
-description: "Full Teams app development patterns."
-applyTo: "**/*teams*,**/*manifest*,**/*m365*"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: teams-app-patterns
+description: Full Teams app development patterns.
+tier: standard
 user-invokable: false
+applyTo: '**/*teams*,**/*manifest*,**/*m365*'
+currency: 2026-04-22
 ---
 
 # Teams App Patterns Skill
@@ -13,7 +18,7 @@ user-invokable: false
 
 Teams platform evolves rapidly. **Last validated:** February 13, 2026 (M365 Agents Toolkit CLI 3.1.0, Manifest v1.19, DA v1.6)
 
-**Check:** [Teams Docs](https://learn.microsoft.com/en-us/microsoftteams/platform/), [M365 Agents Toolkit](https://github.com/OfficeDev/TeamsFx)
+**Check:** [Teams Docs](https://learn.microsoft.com/en-us/microsoftteams/platform/), [M365 Agents Toolkit](https://github.com/OfficeDev/TeamsFx), [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md)
 
 > 💡 Use `@m365agents` chat participant in VS Code Copilot Chat for scaffolding, schema help, and troubleshooting.
 
@@ -50,7 +55,7 @@ The `@m365agents` chat participant exposes MCP tools. **Use these programmatical
 - **v3.x**: `--package-file` flag, correctly includes declarativeAgent.json
 
 **Upgrade CLI if packaging fails:**
-```powershell
+```bash
 npm install -g @microsoft/teamsapp-cli@latest
 teamsapp --version  # Should be 3.x
 ```
@@ -79,7 +84,7 @@ appPackage/
 
 When syncing icons from VS Code assets to M365:
 
-```powershell
+```bash
 # Install sharp if needed
 npm install sharp
 
@@ -90,7 +95,7 @@ node -e "const sharp = require('sharp'); sharp('vscode-extension/assets/logo.svg
 node -e "const sharp = require('sharp'); sharp('vscode-extension/assets/logo-mono.svg').resize(32, 32).png().toFile('appPackage/outline.png')"
 ```
 
-**Source of truth**: `platforms/vscode-extension/assets/logo.svg` and `logo-mono.svg`
+**Source of truth**: `assets/logo.svg` and `logo-mono.svg`
 
 ---
 
@@ -137,7 +142,7 @@ const token = await microsoftTeams.authentication.getAuthToken();
 The M365 Agents Toolkit (formerly Teams Toolkit) provides:
 
 **CLI commands:**
-```powershell
+```bash
 npx teamsapp package --env local
 npx teamsapp validate --package-file ...
 npx teamsapp preview --env local
@@ -192,7 +197,3 @@ Microsoft orgs with strict conditional access policies may block `teamsapp auth 
 **M365 Positioning Example**:
 - ❌ "Accelerate your Python development"
 - ✅ "Your AI research partner. Remembers context, grows with you."
-
-## Synapses
-
-See [synapses.json](synapses.json) for connections.

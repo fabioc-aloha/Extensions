@@ -1,10 +1,14 @@
 # SVG Toolkit
 
-![SVG Toolkit Banner](assets/banner.png)
+![SVG Toolkit Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/svg-toolkit/assets/banner.png)
 
 **SVG utilities — inline preview, data URI copy, icon templates, and basic validation**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.svg-toolkit)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-toolkit)
+
+---
 
 Right-click any `.svg` file in the Explorer for quick actions. Or use commands from the Command Palette.
 

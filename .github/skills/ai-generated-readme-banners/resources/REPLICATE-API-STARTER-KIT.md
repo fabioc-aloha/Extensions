@@ -1,3 +1,9 @@
+---
+type: resource
+lifecycle: stable
+inheritance: inheritable
+---
+
 # Replicate API Starter Kit
 
 > Validated reference for AI image generation via Replicate (Feb 2026)
@@ -8,18 +14,20 @@
 
 **Pick your model based on the task:**
 
-| Task | Model | Why |
-|------|-------|-----|
-| README banner WITH text/title | `ideogram-ai/ideogram-v2` | Only model with reliable typography |
-| README banner WITHOUT text | `black-forest-labs/flux-1.1-pro` | Best quality/speed balance |
-| Quick test/iteration | `black-forest-labs/flux-schnell` | Cheapest ($0.003), fast |
-| Character/avatar with consistent face | `google/nano-banana-pro` | Requires reference image |
-| Print-quality (4MP+) | `black-forest-labs/flux-1.1-pro-ultra` | Highest resolution |
+| Task                                  | Model                                  | Why                                |
+| ------------------------------------- | -------------------------------------- | ---------------------------------- |
+| README banner WITH text/title         | `ideogram-ai/ideogram-v2`              | Fast reliable typography ($0.08)   |
+| README banner WITH premium text       | `ideogram-ai/ideogram-v3-quality`      | Highest quality typography ($0.09) |
+| README banner WITHOUT text            | `black-forest-labs/flux-1.1-pro`       | Best quality/speed balance         |
+| Quick test/iteration                  | `black-forest-labs/flux-schnell`       | Cheapest ($0.003), fast            |
+| Character/avatar with consistent face | `google/nano-banana-pro`               | Requires reference image           |
+| Print-quality (4MP+)                  | `black-forest-labs/flux-1.1-pro-ultra` | Highest resolution                 |
 
 **Decision Tree:**
 ```
 Need text in image?
-  YES → ideogram-ai/ideogram-v2 ($0.08)
+  YES → Premium quality? → ideogram-ai/ideogram-v3-quality ($0.09)
+        Standard? → ideogram-ai/ideogram-v2 ($0.08)
   NO → Need face consistency from reference?
          YES → google/nano-banana-pro ($0.025)
          NO → Is this production or test?
@@ -112,23 +120,22 @@ Create `.vscode/mcp.json` in your workspace (or add to existing):
 
 ### Secure Token Storage (Recommended)
 
-**Alex users**: Use the **Secrets** feature in the Alex Welcome panel:
-1. Open Command Palette → "Alex: Show Welcome"
-2. Click **Secrets** in the sidebar
-3. Add `REPLICATE_API_TOKEN` with your `r8_...` token
-4. Token is stored securely in VS Code's SecretStorage
+**Alex users**: Store the token securely:
+1. Set `REPLICATE_API_TOKEN` as an environment variable, or
+2. If using the VS Code extension, store in SecretStorage via the Welcome panel
+3. Token format: `r8_...`
 
 This avoids putting tokens in config files that might be committed to git.
 
 ### Configuration Options
 
-| Option | Description |
-|--------|-------------|
-| `--client=claude` | Optimizes tool schemas for Claude/Copilot |
-| `--tools=dynamic` | Enables dynamic endpoint discovery (recommended) |
-| `--tools=static` | Loads all tools upfront (larger context) |
-| `--resource=models` | Filter to specific API resources |
-| `--operation=read` | Filter to read-only operations |
+| Option              | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| `--client=claude`   | Optimizes tool schemas for Claude/Copilot        |
+| `--tools=dynamic`   | Enables dynamic endpoint discovery (recommended) |
+| `--tools=static`    | Loads all tools upfront (larger context)         |
+| `--resource=models` | Filter to specific API resources                 |
+| `--operation=read`  | Filter to read-only operations                   |
 
 ### Testing MCP Installation
 
@@ -197,13 +204,14 @@ const replicate = new Replicate({
 
 ### Image Generation Models
 
-| Model | ID | Cost | Best For | Notes |
-|-------|-----|------|----------|-------|
-| **Flux Schnell** | `black-forest-labs/flux-schnell` | $0.003 | Quick iteration, testing | Fast (1-3s), good quality |
-| **Flux 1.1 Pro** | `black-forest-labs/flux-1.1-pro` | $0.04 | Production images, no text | High quality, 10-30s |
-| **Flux 1.1 Pro Ultra** | `black-forest-labs/flux-1.1-pro-ultra` | $0.06 | Print quality (4MP) | Up to 4MP output |
-| **Ideogram v2** | `ideogram-ai/ideogram-v2` | $0.08 | Typography, text in images | Crystal-clear text rendering |
-| **Nano-Banana Pro** | `google/nano-banana-pro` | $0.025 | Face-consistent editing | Uses reference image input |
+| Model                   | ID                                     | Cost   | Best For                   | Notes                          |
+| ----------------------- | -------------------------------------- | ------ | -------------------------- | ------------------------------ |
+| **Flux Schnell**        | `black-forest-labs/flux-schnell`       | $0.003 | Quick iteration, testing   | Fast (1-3s), good quality      |
+| **Flux 1.1 Pro**        | `black-forest-labs/flux-1.1-pro`       | $0.04  | Production images, no text | High quality, 10-30s           |
+| **Flux 1.1 Pro Ultra**  | `black-forest-labs/flux-1.1-pro-ultra` | $0.06  | Print quality (4MP)        | Up to 4MP output               |
+| **Ideogram v2**         | `ideogram-ai/ideogram-v2`              | $0.08  | Typography, text in images | Fast text rendering            |
+| **Ideogram v3 Quality** | `ideogram-ai/ideogram-v3-quality`      | $0.09  | Premium typography         | Highest quality text rendering |
+| **Nano-Banana Pro**     | `google/nano-banana-pro`               | $0.025 | Face-consistent editing    | Uses reference image input     |
 
 ### When to Use Each Model
 
@@ -227,6 +235,65 @@ ideogram-ai/ideogram-v2 — Perfect text rendering
 Input: prompt + aspect_ratio + style_type + magic_prompt_option
 Output: image URL
 ```
+
+---
+
+## Community Model Gotchas
+
+These patterns showed up repeatedly in real usage and matter more than the happy-path examples.
+
+### 1. Use Versioned Model Refs When Needed
+
+Many community models work in the Replicate UI page but return `404 Not Found` when invoked through the SDK with only `owner/model`.
+
+Use the versioned form when the bare model ref fails:
+
+```javascript
+const output = await replicate.run(
+  "miike-ai/flux-ico:478cae37f1aec0fde7977fdd54b272aaeabede7d8060801841920c16306369a9",
+  { input }
+);
+```
+
+If you are testing a community model, check its Versions page first and keep the exact version hash in your script or report.
+
+### 2. Respect Trigger Words
+
+Community LoRA-style models often need their trigger token in the prompt or the output drifts badly.
+
+Examples:
+
+- `miike-ai/flux-ico` → include `ICO`
+- `appmeloncreator/platmoji-beta` → include `emoji`
+
+Example:
+
+```javascript
+const prompt = "ICO minimal dashboard icon, three stacked status bars, flat product icon";
+```
+
+### 3. Distinguish Concept Models From Final Asset Models
+
+- Use raster community models like `flux-ico` and `platmoji-beta` for fast icon ideation
+- Use deterministic SVG construction or carefully selected vector models for final shipping assets
+- Do not assume SVG output is automatically better for tiny UI icons
+
+`recraft-ai/recraft-v4-svg` is excellent for larger vector compositions, but it remains too art-directed for tightly constrained micro-icon geometry.
+
+### 4. Use Replicate's Retry Hints
+
+Rate limits for lower-credit accounts can be very strict. When Replicate returns `429`, prefer its `retry_after` hint over a fixed backoff.
+
+```javascript
+const retryAfterMatch = error.message.match(/retry_after":(\d+)/i);
+const waitSeconds = retryAfterMatch ? Number(retryAfterMatch[1]) : 2;
+```
+
+### 5. Normalize Output Shapes
+
+Different Replicate models return outputs differently: strings, arrays, nested `output`, or objects with a `url()` getter.
+
+Build one normalization helper and reuse it everywhere.
 
 ---
 
@@ -291,7 +358,7 @@ const response = await fetch(output.toString());
 await writeFile("./avatar.png", Buffer.from(await response.arrayBuffer()));
 ```
 
-### Pattern 3: Typography Banner (Ideogram v2)
+### Pattern 3: Typography Banner (Ideogram v2 / v3 Quality)
 
 ```javascript
 import Replicate from "replicate";
@@ -463,6 +530,7 @@ function estimateCost(model, imageCount) {
     "black-forest-labs/flux-1.1-pro": 0.04,
     "black-forest-labs/flux-1.1-pro-ultra": 0.06,
     "ideogram-ai/ideogram-v2": 0.08,
+    "ideogram-ai/ideogram-v3-quality": 0.09,
     "google/nano-banana-pro": 0.025,
   };
 
@@ -501,6 +569,7 @@ const MODELS = {
   "flux-pro": { id: "black-forest-labs/flux-1.1-pro", cost: 0.04 },
   "flux-ultra": { id: "black-forest-labs/flux-1.1-pro-ultra", cost: 0.06 },
   "ideogram": { id: "ideogram-ai/ideogram-v2", cost: 0.08 },
+  "ideogram-quality": { id: "ideogram-ai/ideogram-v3-quality", cost: 0.09 },
   "nano-banana": { id: "google/nano-banana-pro", cost: 0.025 },
 };
 

@@ -1,5 +1,10 @@
 # Changelog — AI Voice Reader
 
+## [0.1.7] — 2026-02-28
+
+### Changed
+- README — absolute banner URL, publisher and version shields added
+
 ## [0.1.6] — 2026-03-01
 
 ### Improved

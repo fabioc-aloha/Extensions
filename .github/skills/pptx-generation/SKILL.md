@@ -1,6 +1,13 @@
 ---
-name: "PPTX Generation"
-description: "Programmatic PowerPoint creation via PptxGenJS with data-driven slides and Markdown conversion"
+type: skill
+lifecycle: stable
+inheritance: inheritable
+name: pptx-generation
+description: Programmatic PowerPoint creation via PptxGenJS with data-driven slides and Markdown conversion
+tier: extended
+applyTo: '**/*.pptx,**/*powerpoint*,**/*presentation*,**/*slide*'
+muscle: ~
+currency: 2026-04-22
 ---
 
 # PPTX Generation Skill
@@ -8,6 +15,8 @@ description: "Programmatic PowerPoint creation via PptxGenJS with data-driven sl
 **Domain**: Presentation Generation  
 **Purpose**: Programmatic PowerPoint creation via PptxGenJS  
 **Expertise**: Data-driven slides, Markdown conversion, Alex brand templates  
+
+> **Staleness Watch**: See [EXTERNAL-API-REGISTRY.md](../../EXTERNAL-API-REGISTRY.md) for source URLs and recheck cadence
 
 ---
 
@@ -126,11 +135,11 @@ await generateAndSavePresentation(slides, { title: 'Q4 Review' }, 'review.pptx')
 ## CLI Usage
 
 ```bash
-# From markdown
-npx ts-node .github/muscles/pptxgen-cli.ts --input slides.md --output deck.pptx
+# From markdown (planned)
+# node .github/muscles/pptxgen-cli.cjs --input slides.md --output deck.pptx
 
-# Quick content
-npx ts-node .github/muscles/pptxgen-cli.ts --content "Welcome to Alex|Point 1|Point 2" -o quick.pptx
+# Quick content (planned)
+# node .github/muscles/pptxgen-cli.cjs --content "Welcome to Alex|Point 1|Point 2" --output quick.pptx
 ```
 
 ---

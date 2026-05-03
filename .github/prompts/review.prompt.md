@@ -1,30 +1,53 @@
 ---
-description: Perform epistemic code review with confidence calibration
+type: prompt
+lifecycle: stable
+inheritance: inheritable
+description: "3-pass procedural code review: correctness, security, quality"
+application: "When reviewing code changes, pull requests, or auditing specific files"
 mode: agent
 agent: Alex
+model: claude-opus-4-6
+currency: 2026-04-21
 ---
 
-# /review - Epistemic Code Review
+# /review - Code Review
 
-> **Avatar**: Call `alex_cognitive_state_update` with `state: "reviewing"`. This updates the welcome sidebar avatar.
+3-pass review with structured findings. Create a TODO list for all passes. Mark each in-progress before starting, completed immediately after finishing.
 
-Perform code review with uncertainty quantification.
+## Step 1: Scope
 
-## Confidence Levels
+1. Identify the files to review (from user input, diff, or changed files)
+2. Read each file fully before reviewing
 
-- 🔴 **HIGH** (90%+): Clear issues, well-established patterns
-- 🟠 **MEDIUM-HIGH** (70-90%): Likely issues, common patterns
-- 🟡 **MEDIUM** (50-70%): Possible issues, context-dependent
-- 🔵 **LOW** (30-50%): Uncertain, needs verification
-- ⚪ **SPECULATIVE** (<30%): Guessing, definitely verify
+## Step 2: Pass 1 — Correctness
 
-## Principles
+For each file:
+1. Check logic errors, off-by-one, null/undefined paths, race conditions
+2. Check error handling: are failures caught and reported?
+3. Check edge cases: empty inputs, boundary values, unexpected types
+4. Record findings with file, line, severity (critical/warning/info)
 
-Always state confidence. Never present uncertain findings as certain.
+## Step 3: Pass 2 — Security
 
-## Start
+For each file:
+1. Check OWASP Top 10: injection, broken auth, sensitive data exposure
+2. Check input validation at system boundaries
+3. Check credential handling: no secrets in code, no log leakage
+4. Record findings with file, line, severity
 
-What code would you like me to review? Share files, a PR, or describe the area to examine.
+## Step 4: Pass 3 — Quality
 
+For each file:
+1. Check naming clarity, function length, DRY violations
+2. Check test coverage for changed logic
+3. Check consistency with existing codebase patterns
+4. Record findings with file, line, severity
 
-> **Revert Avatar**: Call `alex_cognitive_state_update` with `state: "persona"` to reset to project-appropriate avatar.
+## Summary
+
+After all passes, generate:
+- Files reviewed (count)
+- Findings by severity (critical / warning / info)
+- Findings by pass (correctness / security / quality)
+- Top 3 issues requiring immediate attention
+- Overall assessment (approve / request changes)

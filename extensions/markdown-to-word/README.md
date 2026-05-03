@@ -5,6 +5,10 @@
 **Convert Markdown + Mermaid diagrams to professional Word (.docx) via Pandoc**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.cx-markdown-to-word)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word)
+
+---
 
 Right-click any `.md` file → **Convert to Word**. Outputs a `.docx` alongside your Markdown file. Supports custom reference docs for house styles.
 
