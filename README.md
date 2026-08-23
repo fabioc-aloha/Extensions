@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="brand/logos/banner-extensions.svg" alt="Alex Extensions Banner" width="100%">
+  <img src="brand/logos/banner-extensions.png" alt="Alex Extensions Banner" width="100%">
 </p>
 
 <p align="center">
