@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="brand/logos/banner-extensions.png" alt="Alex Extensions Banner" width="100%">
+  <img src="https://dev.azure.com/fabioc-aloha/Extensions/_apis/git/repositories/Extensions/items?path=/brand/logos/banner-extensions.png&amp;download=true&amp;api-version=7.1" alt="Alex Extensions Banner" width="100%">
 </p>
 
 <p align="center">
