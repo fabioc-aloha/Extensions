@@ -126,7 +126,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "npx @vscode/vsce package"
+    "package": "node ../../scripts/package-svg-to-png.js"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2"

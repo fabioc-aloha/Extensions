@@ -10,4 +10,5 @@ node_modules/**
 **/*.map
 **/*.ts
 !out/*.js
+!out/node_modules/**
 !assets/**

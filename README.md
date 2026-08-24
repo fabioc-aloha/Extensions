@@ -66,8 +66,6 @@ Extensions/
 ├── package.json                — Workspace root (npm workspaces)
 ├── tsconfig.base.json          — Shared TypeScript configuration
 ├── .gitignore
-├── .github/
-│   └── copilot-instructions.md — Alex heir guidance for this repo
 ├── shared/                     — Shared utilities extracted from Alex
 │   ├── index.ts                — Barrel export for all shared code
 │   ├── tsconfig.json           — Shared package TypeScript config
@@ -160,6 +158,15 @@ Extensions **without** a context menu (workspace-level only): `dev-wellbeing`, `
 ## Publishing
 
 All extensions publish to the VS Code Marketplace under the `fabioc-aloha` publisher. Each extension has its own `CHANGELOG.md` and version lifecycle.
+
+Package or publish an explicit set from the repository root:
+
+```bash
+npm run package:all -- --filter=hook-studio,mcp-app-starter
+npm run publish:all -- --filter=hook-studio,mcp-app-starter
+```
+
+Set `VSCE_PAT` in your shell before publishing; never place the token in the repository or a command history. The release runner executes each extension's own build and package scripts, so bundled and TypeScript-only extensions follow their respective packaging requirements. Add `--dry-run` to either command to preview the selected extensions.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full publish checklist.
 

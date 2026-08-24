@@ -2,6 +2,7 @@
     "name": "alex-extensions",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "description": "Alex Cognitive Architecture — Standalone VS Code Extensions Monorepo",
     "workspaces": [
         "shared",
@@ -12,6 +13,7 @@
         "lint:all": "npm run lint --workspaces --if-present",
         "test:all": "npm run test --workspaces --if-present",
         "package:all": "node scripts/package-all.js",
+        "publish:all": "node scripts/package-all.js --publish",
         "clean:all": "node scripts/clean-all.js"
     },
     "devDependencies": {

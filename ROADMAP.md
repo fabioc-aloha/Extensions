@@ -23,7 +23,7 @@ All foundation work is done. Every extension compiles successfully and all share
 | `shared/api/brandfetch.ts` | ✅ Implemented |
 | `shared/index.ts` (barrel export) | ✅ Created |
 | `shared/tsconfig.json` | ✅ Configured |
-| Alex Extensions `.github/` heir | ✅ Deployed (v1.0.0) |
+| Marketplace release runner | ✅ Packages and publishes selected extensions |
 | All 16 extension `extension.ts` files | ✅ Implemented |
 | All 16 extensions compile | ✅ Verified (npm run compile:all) |
 | VSCE Publisher PAT | ✅ Verified (fabioc-aloha) |

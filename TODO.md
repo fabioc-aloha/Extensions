@@ -40,7 +40,7 @@ All implementation work is complete. These are no longer tasks.
 
 ### Implementation (compile-verified 2026-02-24)
 
-- [x] All 15 `extension.ts` files implemented (69–251 lines, real logic)
+- [x] All 16 `extension.ts` files implemented (69–251 lines, real logic)
 - [x] `shared/utils/fileObservations.ts` — 166 lines, FileObservationStore + 5 interfaces
 - [x] `shared/utils/decay.ts` — 128 lines, DecayEngine with scoring math
 - [x] `shared/utils/secretScanner.ts` — SecretScanner class, 50+ regex patterns
@@ -49,7 +49,6 @@ All implementation work is complete. These are no longer tasks.
 - [x] Hook Studio: `HookStudioPanel.ts` (166 lines) + `HookLogProvider.ts`
 - [x] Workspace Watchdog: full activate() wired to FileObservationStore
 - [x] MCP App Starter: 251-line scaffold wizard (TS/JS/Python templates)
-- [x] `.github/` heir deployed v1.0.0 — 9 skills, 4 agents, hooks, instructions
 
 ---
 
@@ -137,9 +136,7 @@ All implementation work is complete. These are no longer tasks.
 ## Infrastructure ✅
 
 - [x] Set up `shared/` as a proper ts module with its own compilation (`shared/tsconfig.json`, `shared/index.ts`)
-- [x] All 15 extensions compile successfully via `npm run compile:all`
+- [x] All 16 extensions compile successfully via `npm run compile:all`
 - [ ] Add ESLint config shared across all extensions
-- [ ] Add `scripts/package-all.sh` — packages all extensions to `dist/`
-- [ ] Add `scripts/publish-all.sh` — publishes all extensions sequentially
-- [ ] Write `.github/workflows/build.yml` for CI
-- [ ] Write `.github/workflows/publish.yml` for Marketplace publish on tag
+- [x] Add `scripts/package-all.js` — packages selected extensions through their manifest-defined workflows
+- [x] Add `npm run publish:all` — publishes selected VSIX packages sequentially

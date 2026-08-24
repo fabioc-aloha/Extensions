@@ -89,7 +89,8 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "npx @vscode/vsce package"
+    "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
+    "package": "npm run bundle && npx @vscode/vsce package"
   },
   "dependencies": {
     "pptxgenjs": "^3.12.0"

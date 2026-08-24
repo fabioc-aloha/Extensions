@@ -57,19 +57,27 @@ Import from shared: `import { DecayEngine } from '../../shared/utils/decay'`
 
 ## Publishing
 
-1. Ensure a `LICENSE` file exists in the extension directory (copy from any Sprint 1 extension)
-2. Ensure `.vscodeignore` exists (copy template from any Sprint 1 extension)
-3. **Check for name collision** — search the extension `name` at `marketplace.visualstudio.com`. If taken by any publisher, prefix with `cx-` (e.g. `cx-focus-timer`). Update both `name` and `displayName`.
+1. Ensure a `LICENSE` file exists in the extension directory (copy from any Sprint 1 extension).
+2. Ensure `.vscodeignore` exists (copy template from any Sprint 1 extension).
+3. **Check for name collision** — search the extension `name` at `marketplace.visualstudio.com`. If taken by any publisher, prefix with `cx-` (for example, `cx-focus-timer`). Update both `name` and `displayName`.
 4. Add esbuild bundle scripts to `package.json` if not present:
    ```json
    "bundle": "npx esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --platform=node --target=node20 --format=cjs --minify",
-   "package": "npm run bundle && npx @vscode/vsce package",
-   "publish": "npm run bundle && npx @vscode/vsce publish"
+   "package": "npm run bundle && npx @vscode/vsce package"
    ```
-5. Bump version in `package.json` and update `CHANGELOG.md`
-6. `npm run bundle` — verify `out/extension.js` builds cleanly
-7. `npx @vscode/vsce publish --no-dependencies`
-8. Create git tag: `git tag {extension-name}/v{version}`
+   Runtime dependencies must be bundled or deliberately staged by the extension's package script; do not rely on VSCE dependency detection in this npm workspace.
+5. Bump version in `package.json` and update `CHANGELOG.md`.
+6. Package the exact release set from the repository root:
+   ```bash
+   npm run package:all -- --filter=hook-studio,mcp-app-starter
+   ```
+   This type-checks each selected extension, runs its own `package` script, and creates the VSIX artifacts. Use `--dry-run` to confirm the selection without creating files.
+7. Set `VSCE_PAT` in your environment, then publish the packaged artifacts:
+   ```bash
+   npm run publish:all -- --filter=hook-studio,mcp-app-starter
+   ```
+   Publishing uploads the VSIX files produced in the preceding package phase and skips versions already on the Marketplace. The command does not publish anything when a selected extension fails to package.
+8. Create git tag: `git tag {extension-name}/v{version}`.
 
 > **Rate limit**: Marketplace caps new extension creation at ~7 per 12-hour window. Plan batch publishes accordingly.
 
