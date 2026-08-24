@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Sound arcs -->
-  <circle cx="50" cy="64" r="8" fill="#6366f1"/>
-  <path d="M62 52 a18 18 0 0 1 0 24" stroke="#6366f1" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M68 46 a26 26 0 0 1 0 36" stroke="#6366f1" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-  <path d="M74 40 a34 34 0 0 1 0 48" stroke="#6366f1" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#8b5cf6" opacity=".8"/>
+  <g fill="none" stroke="#8b5cf6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="43" cy="63" r="5" fill="#8b5cf6" stroke="none"/>
+          <path d="M53 51c7 7 7 19 0 26" opacity=".65"/>
+          <path d="M64 42c12 12 12 32 0 44" opacity=".8"/>
+          <path d="M76 34c17 17 17 43 0 60"/></g>
 </svg>

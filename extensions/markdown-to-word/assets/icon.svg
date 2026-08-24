@@ -1,14 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Page + arrow + page -->
-  <rect x="22" y="40" width="28" height="38" rx="3" fill="none" stroke="#0d9488" stroke-width="5"/>
-  <line x1="27" y1="53" x2="44" y2="53" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
-  <line x1="27" y1="61" x2="44" y2="61" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
-  <line x1="27" y1="69" x2="38" y2="69" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
-  <path d="M54 64 L74 64 M68 58 L74 64 L68 70" stroke="#0d9488" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="78" y="40" width="28" height="38" rx="3" fill="none" stroke="#0d9488" stroke-width="5"/>
-  <line x1="83" y1="53" x2="100" y2="53" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
-  <line x1="83" y1="61" x2="100" y2="61" stroke="#0d9488" stroke-width="3.5" opacity="0.75"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#2dd4bf" opacity=".8"/>
+  <g fill="none" stroke="#2dd4bf" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M34 42h22v40H34zM72 42h22v40H72z"/>
+          <path d="M40 53h10M40 61h10M78 53h10M78 61h10"/>
+          <path d="M58 62h12M65 55l7 7-7 7"/></g>
 </svg>

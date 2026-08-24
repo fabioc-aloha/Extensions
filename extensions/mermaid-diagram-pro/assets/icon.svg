@@ -1,12 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Three connected circles -->
-  <circle cx="64" cy="38" r="14" fill="none" stroke="#f43f5e" stroke-width="5"/>
-  <circle cx="40" cy="82" r="14" fill="none" stroke="#f43f5e" stroke-width="5"/>
-  <circle cx="88" cy="82" r="14" fill="none" stroke="#f43f5e" stroke-width="5"/>
-  <line x1="55" y1="50" x2="47" y2="71" stroke="#f43f5e" stroke-width="4.5"/>
-  <line x1="73" y1="50" x2="81" y2="71" stroke="#f43f5e" stroke-width="4.5"/>
-  <line x1="53" y1="82" x2="75" y2="82" stroke="#f43f5e" stroke-width="4.5"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#fb7185" opacity=".8"/>
+  <g fill="none" stroke="#fb7185" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="47" cy="47" r="8"/>
+          <circle cx="81" cy="47" r="8"/>
+          <circle cx="64" cy="82" r="8"/>
+          <path d="M54 51l7 23M74 51l-7 23M55 47h18" opacity=".75"/></g>
 </svg>

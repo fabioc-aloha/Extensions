@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- γ letterform -->
-  <text x="64" y="86" font-family="Georgia, serif" font-size="72" font-weight="700" fill="#0d9488" text-anchor="middle">γ</text>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#2dd4bf" opacity=".8"/>
+  <g fill="none" stroke="#2dd4bf" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="34" y="38" width="60" height="42" rx="6"/>
+          <path d="M47 91h34M64 80v11"/>
+          <path d="M48 65l10-10 8 7 14-15" stroke="#cbd5e1" stroke-width="4"/></g>
 </svg>

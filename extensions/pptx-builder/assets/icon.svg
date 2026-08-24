@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Three offset slide rectangles -->
-  <rect x="34" y="56" width="44" height="30" rx="3" fill="none" stroke="#0d9488" stroke-width="5"/>
-  <rect x="42" y="48" width="44" height="30" rx="3" fill="none" stroke="#0d9488" stroke-width="4.5" opacity="0.75"/>
-  <rect x="50" y="40" width="44" height="30" rx="3" fill="none" stroke="#0d9488" stroke-width="4" opacity="0.5"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#5eead4" opacity=".8"/>
+  <g fill="none" stroke="#5eead4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="37" y="45" width="42" height="30" rx="5" opacity=".55"/>
+          <rect x="49" y="36" width="42" height="30" rx="5" fill="#0f172a"/>
+          <path d="M58 47h24M58 55h14M58 63h20" stroke="#cbd5e1" stroke-width="4"/></g>
 </svg>

@@ -124,7 +124,7 @@ All CX extensions follow the **CorreaX Brand Design Kit (DK)** — dark-first, n
 
 | Standard | Spec | Status |
 |----------|------|--------|
-| Icon background | `#0f172a` + CX badge + accent bar | ✅ 16 icons |
+| Icon system | `#0f172a` rounded surface + semantic glyph + accent bar | ✅ 16 icons |
 | Banner | `#0f172a` bg + 4px accent bar + series label | ✅ 16 banners |
 | PWA icons | `#0f172a` 72–512px, CX lettermark in sky blue | ✅ 8 sizes |
 | Context menu | `$(tools) CX Tools` submenu, semantic groups | ✅ 14 extensions · 2 N/A |

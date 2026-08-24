@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Leaf -->
-  <path d="M64 92 C64 92 34 72 40 46 C46 22 64 22 64 22 C64 22 82 22 88 46 C94 72 64 92 64 92 Z" fill="none" stroke="#f97316" stroke-width="5"/>
-  <line x1="64" y1="92" x2="64" y2="42" stroke="#f97316" stroke-width="4" opacity="0.7"/>
-  <path d="M64 68 Q50 58 46 48" stroke="#f97316" stroke-width="3.5" fill="none" opacity="0.7" stroke-linecap="round"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#34d399" opacity=".8"/>
+  <g fill="none" stroke="#34d399" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M64 92V60"/>
+          <path d="M64 69c-15-2-23-12-23-26 15 0 23 10 23 26z" fill="#34d399" stroke="none" opacity=".9"/>
+          <path d="M64 61c3-15 13-23 27-23 0 15-10 23-27 23z" fill="#34d399" stroke="none" opacity=".65"/>
+          <path d="M44 88h40" opacity=".75"/></g>
 </svg>

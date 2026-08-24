@@ -1,15 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- 3×3 dot grid -->
-  <circle cx="40" cy="40" r="9" fill="#f43f5e"/>
-  <circle cx="64" cy="40" r="9" fill="#f43f5e"/>
-  <circle cx="88" cy="40" r="9" fill="#f43f5e"/>
-  <circle cx="40" cy="64" r="9" fill="#f43f5e"/>
-  <circle cx="64" cy="64" r="9" fill="#f43f5e"/>
-  <circle cx="88" cy="64" r="9" fill="#f43f5e"/>
-  <circle cx="40" cy="88" r="9" fill="#f43f5e"/>
-  <circle cx="64" cy="88" r="9" fill="#f43f5e"/>
-  <circle cx="88" cy="88" r="9" fill="#f43f5e"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#f97316" opacity=".8"/>
+  <g fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="48" cy="48" r="5" fill="#f97316" stroke="none"/>
+          <circle cx="80" cy="48" r="5" fill="#f97316" stroke="none"/>
+          <circle cx="48" cy="80" r="5" fill="#f97316" stroke="none"/>
+          <circle cx="80" cy="80" r="5" fill="#f97316" stroke="none"/>
+          <path d="M56 48h16M48 56v16M80 56v16"/>
+          <path d="M66 68l8 8 15-18" stroke="#cbd5e1" stroke-width="4"/></g>
 </svg>

@@ -1,11 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Hourglass -->
-  <line x1="40" y1="34" x2="88" y2="34" stroke="#f97316" stroke-width="5.5" stroke-linecap="round"/>
-  <line x1="40" y1="94" x2="88" y2="94" stroke="#f97316" stroke-width="5.5" stroke-linecap="round"/>
-  <path d="M42 36 L64 64 L86 36" fill="none" stroke="#f97316" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M42 92 L64 64 L86 92" fill="none" stroke="#f97316" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M55 80 Q64 72 73 80" fill="#f97316"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#fb923c" opacity=".8"/>
+  <g fill="none" stroke="#fb923c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M44 38h40M44 90h40"/>
+          <path d="M48 38c0 17 32 19 32 27s-32 10-32 25"/>
+          <path d="M80 38c0 17-32 19-32 27s32 10 32 25"/></g>
 </svg>

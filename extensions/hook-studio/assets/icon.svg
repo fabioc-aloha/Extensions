@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Glyph scaled 1.75× around centre — full canvas, no padding -->
-  <g transform="translate(64 64) scale(1.75) translate(-64 -64)">
-  <!-- Curly braces { } -->
-  <path d="M60 34 Q50 34 50 44 L50 57 Q50 64 44 64 Q50 64 50 71 L50 84 Q50 94 60 94" stroke="#6366f1" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M68 34 Q78 34 78 44 L78 57 Q78 64 84 64 Q78 64 78 71 L78 84 Q78 94 68 94" stroke="#6366f1" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="#0f172a"/>
+  <rect x="10.75" y="10.75" width="106.5" height="106.5" rx="25.25" fill="none" stroke="#24324a" stroke-width="1.5"/>
+  <rect x="43" y="104" width="42" height="3.5" rx="1.75" fill="#818cf8" opacity=".8"/>
+  <g fill="none" stroke="#818cf8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M54 39c-9 0-11 6-11 12v8c0 5-3 8-8 8 5 0 8 3 8 8v4c0 6 2 12 11 12"/>
+          <path d="M74 39c9 0 11 6 11 12v8c0 5 3 8 8 8-5 0-8 3-8 8v4c0 6-2 12-11 12"/>
+          <circle cx="64" cy="67" r="5" fill="#818cf8" stroke="none"/></g>
 </svg>
