@@ -70,11 +70,12 @@ Import from shared: `import { DecayEngine } from '../../shared/utils/decay'`
    npm run package:all -- --filter=hook-studio,mcp-app-starter
    ```
    This type-checks each selected extension, runs its own `package` script, and creates the VSIX artifacts. Use `--dry-run` to confirm the selection without creating files.
-7. Set `VSCE_PAT` in your environment, then publish the packaged artifacts:
+7. Publish the packaged artifacts using either a Marketplace PAT or interactive Microsoft Entra authentication:
    ```bash
    npm run publish:all -- --filter=hook-studio,mcp-app-starter
+   npm run publish:all:entra -- --filter=hook-studio,mcp-app-starter
    ```
-   Publishing uploads the VSIX files produced in the preceding package phase. An existing Marketplace version is treated as an error rather than silently skipped. The command does not publish anything when a selected extension fails to package.
+   `publish:all` requires `VSCE_PAT`. `publish:all:entra` uses direct Microsoft Entra API authentication from an available credential for an account authorized for the publisher; it does not reuse a Marketplace browser session. Publishing uploads the VSIX files produced in the preceding package phase. An existing Marketplace version is treated as an error rather than silently skipped. The command does not publish anything when a selected extension fails to package.
 8. Create git tag: `git tag {extension-name}/v{version}`.
 
 > **Rate limit**: Marketplace caps new extension creation at ~7 per 12-hour window. Plan batch publishes accordingly.

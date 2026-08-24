@@ -63,6 +63,7 @@ Extensions/
 ├── AUDIT-REPORT.md             — Current v0.2 baseline, audit evidence, and future vision
 ├── MARKET-ANALYSIS-AND-OPPORTUNITIES.md — Competitive evidence and opportunity ledger
 ├── ROADMAP.md                  — Current release and post-v0.2 roadmap
+├── PUBLISHING.md                — API-based Marketplace release runbook
 ├── CONTRIBUTING.md             — How to contribute and code standards
 ├── package.json                — Workspace root (npm workspaces)
 ├── tsconfig.base.json          — Shared TypeScript configuration
@@ -165,11 +166,13 @@ Package or publish an explicit set from the repository root:
 ```bash
 npm run package:all -- --filter=hook-studio,mcp-app-starter
 npm run publish:all -- --filter=hook-studio,mcp-app-starter
+npm run publish:all:entra -- --filter=hook-studio,mcp-app-starter
 ```
 
-Set `VSCE_PAT` in your shell before publishing; never place the token in the repository or a command history. The release runner executes each extension's own build and package scripts, so bundled and TypeScript-only extensions follow their respective packaging requirements. Add `--dry-run` to either command to preview the selected extensions.
+Publishing supports either a `VSCE_PAT` or direct Microsoft Entra API authentication through `publish:all:entra`. The browser Marketplace session is not shared with the CLI; Entra publishing uses an available authenticated credential for an account authorized for the `fabioc-aloha` publisher. Never place a PAT in the repository or command history. The release runner executes each extension's own build and package scripts, so bundled and TypeScript-only extensions follow their respective packaging requirements. Add `--dry-run` to either command to preview the selected extensions.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full publish checklist.
+See [PUBLISHING.md](./PUBLISHING.md) for the canonical release runbook and
+[CONTRIBUTING.md](./CONTRIBUTING.md) for contributor requirements.
 
 ---
 

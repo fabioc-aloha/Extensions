@@ -5,6 +5,7 @@
  * Options:
  *   --filter=hook-studio,mcp-app-starter  Select by directory or package name
  *   --publish                              Upload the generated VSIX files
+ *   --azure-credential                     Authenticate publishing with Microsoft Entra ID
  *   --dry-run                              Print the selected actions without running them
  */
 import { execFileSync } from 'child_process';
@@ -16,6 +17,7 @@ const args = process.argv.slice(2);
 const filter = args.find(arg => arg.startsWith('--filter='))?.slice('--filter='.length);
 const selectedNames = filter?.split(',').map(name => name.trim()).filter(Boolean);
 const publish = args.includes('--publish');
+const azureCredential = args.includes('--azure-credential');
 const dryRun = args.includes('--dry-run');
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
@@ -41,8 +43,12 @@ if (extensions.length === 0) {
     throw new Error(`No extensions matched the filter. Available extensions: ${available}`);
 }
 
-if (publish && !dryRun && !process.env.VSCE_PAT) {
-    throw new Error('VSCE_PAT must be set before publishing. Use --dry-run to preview the selected release.');
+if (azureCredential && !publish) {
+    throw new Error('--azure-credential requires --publish.');
+}
+
+if (publish && !dryRun && !process.env.VSCE_PAT && !azureCredential) {
+    throw new Error('Set VSCE_PAT or use --azure-credential before publishing. Use --dry-run to preview the selected release.');
 }
 
 const mode = publish ? 'Publishing' : 'Packaging';
@@ -93,7 +99,11 @@ if (publish) {
     for (const { directory, vsixPath } of packaged) {
         try {
             console.log(`${dryRun ? 'Would publish' : 'Publishing'} ${directory}...`);
-            run(npx, ['@vscode/vsce', 'publish', '--packagePath', vsixPath], EXTENSIONS_DIR);
+            const publishArgs = ['@vscode/vsce', 'publish', '--packagePath', vsixPath];
+            if (azureCredential) {
+                publishArgs.push('--azure-credential');
+            }
+            run(npx, publishArgs, EXTENSIONS_DIR);
             console.log(`  ${dryRun ? 'Would publish' : 'Published'} ${directory}`);
         } catch (err) {
             console.error(`  Failed ${directory}: ${err.message}`);

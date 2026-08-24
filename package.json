@@ -14,6 +14,7 @@
         "test:all": "npm run test --workspaces --if-present",
         "package:all": "node scripts/package-all.js",
         "publish:all": "node scripts/package-all.js --publish",
+        "publish:all:entra": "node scripts/package-all.js --publish --azure-credential",
         "clean:all": "node scripts/clean-all.js"
     },
     "devDependencies": {
