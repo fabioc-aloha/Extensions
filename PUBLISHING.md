@@ -6,6 +6,9 @@ This is the canonical release runbook for the `fabioc-aloha` VS Code
 Marketplace publisher. It defines a repeatable, API-based process for
 publishing selected extension versions without relying on browser automation.
 
+The staged migration to workload identity federation is tracked in
+[MARKETPLACE-WORKLOAD-IDENTITY-PLAN.md](./MARKETPLACE-WORKLOAD-IDENTITY-PLAN.md).
+
 ## Release Principles
 
 1. Publish an **explicit batch**, never an unreviewed portfolio-wide update.
