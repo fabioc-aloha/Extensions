@@ -5,9 +5,9 @@
 **Mermaid templates, GitHub compatibility checks, live-editor handoff, and export workflows for Markdown and `.mmd` files.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Mermaid](https://img.shields.io/badge/Mermaid-v11-ff3670)](https://mermaid.js.org/)
+[![Export dependency](https://img.shields.io/badge/Mermaid%20CLI-optional-f59e0b)](https://github.com/mermaid-js/mermaid-cli)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
-[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.mermaid-diagram-pro)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.mermaid-diagram-pro)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro)
 
 ---
 

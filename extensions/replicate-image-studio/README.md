@@ -5,9 +5,8 @@
 **Generate images and video in VS Code, preserve local history, and insert results as Markdown.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![API key](https://img.shields.io/badge/Replicate%20API%20key-required-dc2626)](https://replicate.com/account/api-tokens)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
-[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.replicate-image-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.replicate-image-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio)
 
 ---
 

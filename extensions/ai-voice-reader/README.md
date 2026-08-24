@@ -5,9 +5,8 @@
 **Local text-to-speech for document proof-reading, review, and accessibility inside VS Code.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Linux dependency](https://img.shields.io/badge/Linux-espeak%20required-6b7280)](https://github.com/espeak-ng/espeak-ng)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
-[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.ai-voice-reader)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.ai-voice-reader)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader)
 
 ---
 

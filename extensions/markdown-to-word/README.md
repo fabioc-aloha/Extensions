@@ -5,9 +5,9 @@
 **Convert Markdown to professional Word documents with Pandoc, Mermaid rendering, custom templates, and batch export.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Dependency](https://img.shields.io/badge/Pandoc-required-dc2626)](https://pandoc.org/installing.html)
+[![Mermaid export](https://img.shields.io/badge/Mermaid%20CLI-optional-f59e0b)](https://github.com/mermaid-js/mermaid-cli)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
-[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.cx-markdown-to-word)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.cx-markdown-to-word)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word)
 
 ---
 

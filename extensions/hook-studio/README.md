@@ -5,9 +5,8 @@
 **Validate and inspect VS Code Copilot hook configuration files, including the current multi-file hooks layout.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Copilot Hooks](https://img.shields.io/badge/Copilot-Hooks-24292f)](https://code.visualstudio.com/docs/agent-customization/hooks)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
-[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.hook-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.hook-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio)
 
 ---
 

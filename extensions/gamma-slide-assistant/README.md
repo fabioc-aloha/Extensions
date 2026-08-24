@@ -5,9 +5,10 @@
 **Create presentations from Markdown with local Marp export or an opt-in Gamma.app generation workflow.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![Gamma API](https://img.shields.io/badge/Gamma%20API-v1.0-8b5cf6)](https://developers.gamma.app/)
+[![API key](https://img.shields.io/badge/Gamma%20API%20key-optional-f59e0b)](https://gamma.app/settings/api-keys)
+[![Local export](https://img.shields.io/badge/Marp%20CLI-optional-f59e0b)](https://marp.app/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
-[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.gamma-slide-assistant)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.gamma-slide-assistant)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant)
 
 ---
 

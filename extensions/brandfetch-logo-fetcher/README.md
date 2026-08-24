@@ -5,9 +5,8 @@
 **Fetch company logos by domain and copy Markdown, SVG, PNG, or HTML references for technical content.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
+[![API key](https://img.shields.io/badge/Brandfetch%20API%20key-optional-f59e0b)](https://brandfetch.com/developers)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
-[![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.brandfetch-logo-fetcher)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.brandfetch-logo-fetcher)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher)
 
 ---
 
