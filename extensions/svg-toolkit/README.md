@@ -2,7 +2,7 @@
 
 ![SVG Toolkit Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/svg-toolkit/assets/banner.png)
 
-**SVG utilities — inline preview, data URI copy, icon templates, and basic validation**
+**Live SVG preview, color inspection, data URI copy, icon templates, and basic validation.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -13,7 +13,8 @@ Right-click any `.svg` file in the Explorer for quick actions. Or use commands f
 
 ## Features
 
-- **Inline SVG preview** — render any SVG in a VS Code side panel instantly
+- **Live SVG preview** — render an SVG in a side panel and refresh it as you edit
+- **Color inspection** — list explicit `fill` and `stroke` values and copy a selected value
 - **Data URI copy** — copy data:image/svg+xml;base64,... for use in CSS or HTML
 - **Markdown image copy** — paste directly as an inline Markdown image
 - **Icon templates** — insert circle, checkmark, arrow, or star starter SVG
@@ -33,6 +34,7 @@ No external tools required. Works entirely within VS Code.
 | `SVG Toolkit: Copy as Markdown Image` | Copy as inline Markdown image |
 | `SVG Toolkit: Insert Icon Template` | Insert circle, checkmark, arrow, or star template |
 | `SVG Toolkit: Validate SVG` | Check for `<svg>`, `viewBox`, `xmlns` |
+| `SVG Toolkit: Extract SVG Colors` | List explicit fill and stroke values for copying |
 
 ## Context Menu
 

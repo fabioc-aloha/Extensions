@@ -1,8 +1,8 @@
 {
   "name": "mcp-app-starter",
   "displayName": "CX MCP App Starter",
-  "description": "Scaffold initial Model Context Protocol server projects for Copilot agents in TypeScript, JavaScript, or Python",
-  "version": "0.1.10",
+  "description": "Scaffold MCP server projects, validate server configuration, and register local servers for VS Code",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -51,6 +51,10 @@
       {
         "command": "mcpAppStarter.openDocs",
         "title": "MCP App Starter: Open MCP Documentation"
+      },
+      {
+        "command": "mcpAppStarter.registerWorkspaceServer",
+        "title": "MCP App Starter: Register Server in Workspace"
       }
     ],
     "menus": {
@@ -86,6 +90,11 @@
           "command": "mcpAppStarter.create",
           "when": "explorerResourceIsFolder",
           "group": "3_generate@3"
+        },
+        {
+          "command": "mcpAppStarter.registerWorkspaceServer",
+          "when": "explorerResourceIsFolder",
+          "group": "3_generate@4"
         }
       ]
     },

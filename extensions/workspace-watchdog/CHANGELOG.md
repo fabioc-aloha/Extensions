@@ -1,5 +1,16 @@
 # Changelog — CX Workspace Watchdog
 
+## [0.2.0] — 2026-08-24
+
+### Added
+- Populated the File Health Explorer view with local hot-file, stalled-change, and TODO/FIXME sections.
+- Added a real TODO/FIXME scan for common text files and a manual scan result notification.
+
+### Fixed
+- Stalled changes now come from the built-in VS Code Git extension instead of an unpopulated observation field.
+- Moved all observations from a workspace `.github` file to VS Code workspace storage.
+- Corrected the dashboard, README, and severity descriptions to match the implemented local signals.
+
 ## [0.1.9] — 2026-02-28
 
 ### Changed

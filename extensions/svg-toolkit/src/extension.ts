@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
 
 let outputChannel: vscode.OutputChannel;
+let previewPanel: vscode.WebviewPanel | undefined;
+let previewUri: vscode.Uri | undefined;
 
 const ICON_TEMPLATES: { [key: string]: string } = {
     circle: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">\n  <circle cx="12" cy="12" r="10" fill="currentColor"/>\n</svg>',
@@ -18,8 +20,15 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('svgToolkit.copyDataUri', (uri?: vscode.Uri) => copyDataUri(uri)),
         vscode.commands.registerCommand('svgToolkit.copyMarkdown', (uri?: vscode.Uri) => copyMarkdown(uri)),
         vscode.commands.registerCommand('svgToolkit.insertIconTemplate', () => insertTemplate()),
-        vscode.commands.registerCommand('svgToolkit.validateSvg', () => validateSvg())
+        vscode.commands.registerCommand('svgToolkit.validateSvg', () => validateSvg()),
+        vscode.commands.registerCommand('svgToolkit.extractColors', (uri?: vscode.Uri) => extractColors(uri))
     );
+
+    context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(event => {
+        if (previewPanel && previewUri?.toString() === event.document.uri.toString()) {
+            updatePreview(event.document.getText());
+        }
+    }));
 
     outputChannel.appendLine('[SVG Toolkit] Activated.');
 }
@@ -31,10 +40,20 @@ async function getSvgContent(uri?: vscode.Uri): Promise<string | null> {
 }
 
 async function previewSvg(uri?: vscode.Uri): Promise<void> {
-    const svg = await getSvgContent(uri);
+    const targetUri = uri ?? vscode.window.activeTextEditor?.document.uri;
+    const svg = await getSvgContent(targetUri);
     if (!svg) { vscode.window.showWarningMessage('No SVG file found.'); return; }
-    const panel = vscode.window.createWebviewPanel('svgPreview', 'SVG Preview', vscode.ViewColumn.Beside, { enableScripts: false });
-    panel.webview.html = `<!DOCTYPE html><html><body style="background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;">${svg}</body></html>`;
+    previewUri = targetUri;
+    if (!previewPanel) {
+        previewPanel = vscode.window.createWebviewPanel('svgPreview', 'SVG Preview', vscode.ViewColumn.Beside, { enableScripts: false });
+        previewPanel.onDidDispose(() => {
+            previewPanel = undefined;
+            previewUri = undefined;
+        });
+    } else {
+        previewPanel.reveal(vscode.ViewColumn.Beside, true);
+    }
+    updatePreview(svg);
 }
 
 async function copyDataUri(uri?: vscode.Uri): Promise<void> {
@@ -81,6 +100,30 @@ function validateSvg(): void {
     outputChannel.appendLine(`  viewBox: ${hasViewBox ? '✅' : '⚠️ missing (may affect scaling)'}`);
     outputChannel.appendLine(`  xmlns: ${hasXmlns ? '✅' : '⚠️ missing'}`);
     outputChannel.show();
+}
+
+async function extractColors(uri?: vscode.Uri): Promise<void> {
+    const svg = await getSvgContent(uri);
+    if (!svg) { vscode.window.showWarningMessage('No SVG file found.'); return; }
+    const matches = svg.matchAll(/(?:fill|stroke)\s*=\s*["']([^"']+)["']/gi);
+    const colors = [...new Set([...matches].map(match => match[1]).filter(value => value !== 'none' && value !== 'currentColor'))];
+    if (colors.length === 0) {
+        vscode.window.showInformationMessage('SVG Toolkit: No explicit fill or stroke colors found.');
+        return;
+    }
+    const choice = await vscode.window.showQuickPick(
+        colors.map(color => ({ label: color, description: 'Copy color value' })),
+        { title: 'SVG Toolkit - Extracted Colors', placeHolder: 'Select a color to copy' }
+    );
+    if (!choice) { return; }
+    await vscode.env.clipboard.writeText(choice.label);
+    vscode.window.showInformationMessage(`SVG Toolkit: ${choice.label} copied.`);
+}
+
+function updatePreview(svg: string): void {
+    if (!previewPanel) { return; }
+    const sanitized = svg.replace(/<script[\s\S]*?<\/script>/gi, '');
+    previewPanel.webview.html = `<!DOCTYPE html><html><body style="background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;">${sanitized}</body></html>`;
 }
 
 export function deactivate(): void {

@@ -11,7 +11,7 @@
 
 ## What It Does
 
-SecretGuard scans files for 13 common secret patterns and surfaces findings through status alerts. Scans run automatically on save or on demand across the workspace.
+SecretGuard scans files for 13 common credential patterns and surfaces local findings in VS Code's Problems panel. Scans can run on save, while typing, or on demand across the workspace.
 
 ## Features
 
@@ -21,7 +21,7 @@ SecretGuard scans files for 13 common secret patterns and surfaces findings thro
 | **Workspace Scan** | Full sweep on demand via command or right-click |
 | **Problems Panel** | Findings appear as errors/warnings with line numbers for quick navigation |
 | **Severity levels** | Critical (private keys), High (API tokens), Medium (passwords), Low (URL credentials) |
-| **Ignore Patterns** | Glob-based exclusions for test fixtures, example files, and known-safe references |
+| **Local Ignore Patterns** | Workspace-relative glob exclusions for test fixtures, example files, and known-safe references |
 | **Right-click menus** | Right-click any file → **Scan File** or **Add Ignore Pattern**; right-click a folder → **Scan Workspace** |
 
 ## Detected Patterns
@@ -38,6 +38,14 @@ SecretGuard scans files for 13 common secret patterns and surfaces findings thro
 | Generic Secret | Medium |
 | Database Connection String | Medium |
 | URL with Embedded Credentials | Low |
+
+## Local Ignore Patterns
+
+Use `SecretGuard: Add Ignore Pattern` to add a workspace-relative glob to `secretGuard.ignorePatterns`, for example `**/*.fixture.ts` or `docs/examples/**`. Ignored files are skipped by on-type, on-save, current-file, and workspace scans. The setting is written to VS Code workspace settings; SecretGuard does not create a `.secretguardignore` file.
+
+## Scope and limitations
+
+This is a regex-based local warning tool, not a replacement for server-side secret scanning or a pre-commit hook. Findings are potential secrets and should be reviewed before taking action. Audit-log match text is redacted.
 
 ## Requirements
 
@@ -66,7 +74,7 @@ Explore more tools from the same suite:
 |-----------|-------------|-------------|
 | AI Voice Reader | Read files, selections, or documents aloud with Web Speech API | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
 | Brandfetch Logo Fetcher | Fetch and insert brand logos from any domain — SVG, PNG, or Markdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
-| Dev Wellbeing | Posture, eye-strain, and hydration reminders for long coding sessions | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
+| Dev Wellbeing | Local screen-break, posture, and hydration reminders | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
 | Focus Timer | Pomodoro-style focus and break timer with status bar countdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
 | Gamma Slide Assistant | Create presentations with local Marp export or optional Gamma generation | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
 | Hook Studio | Visual editor for VS Code hook conditions and automation rules | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |

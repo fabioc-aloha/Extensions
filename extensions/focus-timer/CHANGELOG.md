@@ -1,5 +1,15 @@
 # Changelog — Focus Timer
 
+## [0.2.0] — 2026-08-24
+
+### Added
+- Persisted completed focus and break sessions, the completed-focus count, and optional session notes in VS Code extension global storage.
+- Added `Focus Timer: Add Note to Latest Focus Session`.
+
+### Changed
+- `Focus Timer: Reset Local Session History` now clearly removes the local history and counter after confirmation.
+- Limited retained local history to the 200 most recent completed sessions.
+
 ## [0.1.4] — 2026-02-28
 
 ### Changed

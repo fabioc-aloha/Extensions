@@ -77,11 +77,11 @@ Marketplace.
 | CX SVG Toolkit | 2026-08-23 | 2026-08-23 | Metadata refreshed; SVG workbench work pending |
 | CX Brandfetch Logo Fetcher | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; API reliability work pending |
 | CX MCP App Starter | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; development-loop work pending |
-| CX Workspace Watchdog | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; core signal repair pending |
-| CX SecretGuard | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; pattern credibility work pending |
-| CX Knowledge Decay Tracker | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; core scoring repair pending |
-| CX Dev Wellbeing | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; context-aware recovery work pending |
-| CX Focus Timer | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; persistence and annotation work pending |
+| CX Workspace Watchdog | 2026-08-23 | 2026-08-24 | v0.2 local Git/TODO signals, Explorer tree, and workspace-storage migration prepared |
+| CX SecretGuard | 2026-08-23 | 2026-08-24 | v0.2 13-pattern credibility correction, Azure precision fix, and local ignore controls prepared |
+| CX Knowledge Decay Tracker | 2026-08-23 | 2026-08-24 | v0.2 tag parsing, local activity/review scoring, and startup scan prepared |
+| CX Dev Wellbeing | 2026-08-23 | 2026-08-24 | v0.2 transparent local session behavior and documentation correction prepared |
+| CX Focus Timer | 2026-08-23 | 2026-08-24 | v0.2 local persistent history and completed-session annotations prepared |
 
 ## Market Shifts
 

@@ -10,130 +10,162 @@ let sessionStart: number | undefined;
 let nextPosture: number | undefined;
 let nextEye: number | undefined;
 let nextHydration: number | undefined;
-let keystrokeCount = 0;
+let editEventCount = 0;
 
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('Dev Wellbeing');
     statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 95);
-    statusBar.command = 'devWellbeing.showStats';
-    context.subscriptions.push(outputChannel, statusBar);
-
     context.subscriptions.push(
-        vscode.commands.registerCommand('devWellbeing.start', () => startMonitoring()),
-        vscode.commands.registerCommand('devWellbeing.stop', () => stopMonitoring()),
-        vscode.commands.registerCommand('devWellbeing.showStats', () => showStats()),
+        outputChannel,
+        statusBar,
+        vscode.commands.registerCommand('devWellbeing.start', startMonitoring),
+        vscode.commands.registerCommand('devWellbeing.stop', stopMonitoring),
+        vscode.commands.registerCommand('devWellbeing.showStats', showStats),
         vscode.commands.registerCommand('devWellbeing.configureLimits', () => {
-            vscode.commands.executeCommand('workbench.action.openSettings', 'devWellbeing');
+            void vscode.commands.executeCommand('workbench.action.openSettings', 'devWellbeing');
+        }),
+        vscode.workspace.onDidChangeTextDocument(() => {
+            if (isMonitoring()) {
+                editEventCount += 1;
+            }
+        }),
+        vscode.workspace.onDidChangeConfiguration(event => {
+            if (isMonitoring() && event.affectsConfiguration('devWellbeing')) {
+                outputChannel.appendLine('[Wellbeing] Settings changed; restarting reminder intervals.');
+                restartMonitoring();
+            }
         })
     );
 
-    // Auto-start if enabled
-    const config = vscode.workspace.getConfiguration('devWellbeing');
-    if (config.get<boolean>('enabled') !== false) { startMonitoring(); }
-
-    // Track keystrokes
-    context.subscriptions.push(
-        vscode.workspace.onDidChangeTextDocument(() => { keystrokeCount++; })
-    );
-
-    outputChannel.appendLine('[Dev Wellbeing] Activated. Take care of yourself!');
+    if (vscode.workspace.getConfiguration('devWellbeing').get<boolean>('enabled') !== false) {
+        startMonitoring();
+    } else {
+        updateStatusBar();
+    }
+    outputChannel.appendLine('[Dev Wellbeing] Activated. This extension only tracks local session duration and document edit events while monitoring.');
 }
 
-function getConfig() {
-    const c = vscode.workspace.getConfiguration('devWellbeing');
+function getConfig(): { posture: number; eye: number; hydration: number } {
+    const config = vscode.workspace.getConfiguration('devWellbeing');
     return {
-        posture: (c.get<number>('postureReminderMinutes') ?? 45) * 60 * 1000,
-        eye: (c.get<number>('eyeBreakMinutes') ?? 20) * 60 * 1000,
-        hydration: (c.get<number>('hydrationMinutes') ?? 60) * 60 * 1000
+        posture: Math.max(1, config.get<number>('postureReminderMinutes') ?? 45) * 60_000,
+        eye: Math.max(1, config.get<number>('eyeBreakMinutes') ?? 20) * 60_000,
+        hydration: Math.max(1, config.get<number>('hydrationMinutes') ?? 60) * 60_000
     };
 }
 
+function isMonitoring(): boolean {
+    return postureTimer !== undefined;
+}
+
 function startMonitoring(): void {
-    stopMonitoring();
+    if (isMonitoring()) {
+        vscode.window.showInformationMessage('Dev Wellbeing monitoring is already active.');
+        return;
+    }
     sessionStart = Date.now();
-    keystrokeCount = 0;
-    const cfg = getConfig();
-
-    nextPosture = Date.now() + cfg.posture;
-    nextEye = Date.now() + cfg.eye;
-    nextHydration = Date.now() + cfg.hydration;
-
-    postureTimer = setInterval(() => {
-        vscode.window.showInformationMessage('🪑 Posture check! Sit up straight, unclench your shoulders.', 'Thanks!');
-        outputChannel.appendLine('[Wellbeing] Posture reminder sent.');
-        nextPosture = Date.now() + cfg.posture;
-        updateStatusBar();
-    }, cfg.posture);
-
-    eyeTimer = setInterval(() => {
-        vscode.window.showInformationMessage('👁️ 20-20-20 rule: Look at something 20 feet away for 20 seconds.', 'Done');
-        outputChannel.appendLine('[Wellbeing] Eye break reminder sent.');
-        nextEye = Date.now() + cfg.eye;
-        updateStatusBar();
-    }, cfg.eye);
-
-    hydrationTimer = setInterval(() => {
-        vscode.window.showInformationMessage('💧 Hydration check! Have you had water recently?', 'Yes');
-        outputChannel.appendLine('[Wellbeing] Hydration reminder sent.');
-        nextHydration = Date.now() + cfg.hydration;
-        updateStatusBar();
-    }, cfg.hydration);
-
-    // Refresh status bar every 30s so countdown stays current
-    statusBarRefresh = setInterval(() => updateStatusBar(), 30_000);
-    updateStatusBar();
-
-    vscode.window.showInformationMessage('✅ Dev Wellbeing monitoring started.');
+    editEventCount = 0;
+    scheduleReminders();
+    vscode.window.showInformationMessage('Dev Wellbeing monitoring started. Reminders are local to this VS Code session.');
     outputChannel.appendLine('[Wellbeing] Monitoring started.');
 }
 
-function stopMonitoring(): void {
+function restartMonitoring(): void {
+    clearTimers();
+    sessionStart = sessionStart ?? Date.now();
+    scheduleReminders();
+}
+
+function scheduleReminders(): void {
+    const config = getConfig();
+    nextPosture = Date.now() + config.posture;
+    nextEye = Date.now() + config.eye;
+    nextHydration = Date.now() + config.hydration;
+
+    postureTimer = setInterval(() => {
+        vscode.window.showInformationMessage('Posture reminder: pause briefly to adjust your setup.', 'Dismiss');
+        outputChannel.appendLine('[Wellbeing] Posture reminder sent.');
+        nextPosture = Date.now() + config.posture;
+        updateStatusBar();
+    }, config.posture);
+    eyeTimer = setInterval(() => {
+        vscode.window.showInformationMessage('Screen break reminder: look away from the editor for a short pause.', 'Dismiss');
+        outputChannel.appendLine('[Wellbeing] Screen break reminder sent.');
+        nextEye = Date.now() + config.eye;
+        updateStatusBar();
+    }, config.eye);
+    hydrationTimer = setInterval(() => {
+        vscode.window.showInformationMessage('Hydration reminder: take a moment to check in with yourself.', 'Dismiss');
+        outputChannel.appendLine('[Wellbeing] Hydration reminder sent.');
+        nextHydration = Date.now() + config.hydration;
+        updateStatusBar();
+    }, config.hydration);
+    statusBarRefresh = setInterval(updateStatusBar, 30_000);
+    updateStatusBar();
+}
+
+function clearTimers(): void {
     if (postureTimer) { clearInterval(postureTimer); postureTimer = undefined; }
     if (eyeTimer) { clearInterval(eyeTimer); eyeTimer = undefined; }
     if (hydrationTimer) { clearInterval(hydrationTimer); hydrationTimer = undefined; }
     if (statusBarRefresh) { clearInterval(statusBarRefresh); statusBarRefresh = undefined; }
-    nextPosture = undefined; nextEye = undefined; nextHydration = undefined;
+    nextPosture = undefined;
+    nextEye = undefined;
+    nextHydration = undefined;
+}
+
+function stopMonitoring(): void {
+    if (!isMonitoring()) {
+        return;
+    }
+    clearTimers();
     updateStatusBar();
+    outputChannel.appendLine('[Wellbeing] Monitoring stopped.');
+    vscode.window.showInformationMessage('Dev Wellbeing monitoring stopped. Session activity is not retained.');
 }
 
 function updateStatusBar(): void {
-    if (!sessionStart || !nextEye) {
+    if (!isMonitoring() || !nextEye || !nextPosture || !nextHydration) {
         statusBar.text = '$(heart) Wellbeing';
-        statusBar.tooltip = 'Dev Wellbeing — click to start monitoring';
+        statusBar.tooltip = 'Dev Wellbeing — local reminder monitoring is stopped. Click to start.';
+        statusBar.command = 'devWellbeing.start';
         statusBar.show();
         return;
     }
     const now = Date.now();
-    const eyeMins = Math.max(0, Math.round((nextEye - now) / 60_000));
-    const postureMins = nextPosture ? Math.max(0, Math.round((nextPosture - now) / 60_000)) : 0;
-    const hydMins = nextHydration ? Math.max(0, Math.round((nextHydration - now) / 60_000)) : 0;
-    const next = Math.min(eyeMins, postureMins, hydMins);
-    statusBar.text = `$(heart) ${next}m`;
+    const eyeMinutes = Math.max(0, Math.ceil((nextEye - now) / 60_000));
+    const postureMinutes = Math.max(0, Math.ceil((nextPosture - now) / 60_000));
+    const hydrationMinutes = Math.max(0, Math.ceil((nextHydration - now) / 60_000));
+    const nextReminder = Math.min(eyeMinutes, postureMinutes, hydrationMinutes);
+    statusBar.text = `$(heart) ${nextReminder}m`;
     statusBar.tooltip = [
-        'Dev Wellbeing — click for session stats',
-        `👁️ Eye break in ${eyeMins}m`,
-        `🪑 Posture in ${postureMins}m`,
-        `💧 Hydration in ${hydMins}m`
+        'Dev Wellbeing — click for local session details',
+        `Screen break in ${eyeMinutes}m`,
+        `Posture reminder in ${postureMinutes}m`,
+        `Hydration reminder in ${hydrationMinutes}m`
     ].join('\n');
+    statusBar.command = 'devWellbeing.showStats';
     statusBar.show();
 }
 
 function showStats(): void {
-    if (!sessionStart) { vscode.window.showInformationMessage('Start monitoring first.'); return; }
-    const elapsed = Math.round((Date.now() - sessionStart) / 60000);
-    const hours = Math.floor(elapsed / 60);
-    const mins = elapsed % 60;
+    if (!sessionStart) {
+        vscode.window.showInformationMessage('Start monitoring to see local session details.');
+        return;
+    }
+    const elapsedMinutes = Math.floor((Date.now() - sessionStart) / 60_000);
+    const hours = Math.floor(elapsedMinutes / 60);
+    const minutes = elapsedMinutes % 60;
     outputChannel.clear();
-    outputChannel.appendLine('Dev Wellbeing — Session Stats');
-    outputChannel.appendLine('─'.repeat(40));
-    outputChannel.appendLine(`Session duration: ${hours}h ${mins}m`);
-    outputChannel.appendLine(`Keystrokes: ~${keystrokeCount}`);
-    outputChannel.appendLine(`Tip: ${elapsed > 120 ? 'Consider a longer break after 2h of coding.' : 'Pace looks good!'}`);
+    outputChannel.appendLine('Dev Wellbeing — Local Session Details');
+    outputChannel.appendLine('─'.repeat(52));
+    outputChannel.appendLine(`Monitoring: ${isMonitoring() ? 'active' : 'stopped'}`);
+    outputChannel.appendLine(`Session duration: ${hours}h ${minutes}m`);
+    outputChannel.appendLine(`Document edit events while monitoring: ${editEventCount}`);
+    outputChannel.appendLine('This extension does not infer health, diagnose conditions, or retain session activity after VS Code closes.');
     outputChannel.show();
 }
 
 export function deactivate(): void {
-    stopMonitoring();
-    statusBar?.dispose();
-    outputChannel?.appendLine('[Dev Wellbeing] Deactivated.');
+    clearTimers();
 }

@@ -28,6 +28,7 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('mcpAppStarter.addTool', () => addTool()),
         vscode.commands.registerCommand('mcpAppStarter.addResource', () => addResource()),
         vscode.commands.registerCommand('mcpAppStarter.validate', () => validateConfig()),
+        vscode.commands.registerCommand('mcpAppStarter.registerWorkspaceServer', () => registerWorkspaceServer()),
         vscode.commands.registerCommand('mcpAppStarter.openDocs', () => {
             vscode.env.openExternal(vscode.Uri.parse('https://modelcontextprotocol.io/docs'));
         })
@@ -94,6 +95,13 @@ async function createMcpServer(): Promise<void> {
     } else if (openChoice === 'Open README') {
         const readmePath = path.join(outputDir, 'README.md');
         vscode.workspace.openTextDocument(readmePath).then(doc => vscode.window.showTextDocument(doc));
+    }
+    const registerChoice = await vscode.window.showInformationMessage(
+        'Register this server in .vscode/mcp.json now?',
+        'Register Server'
+    );
+    if (registerChoice === 'Register Server') {
+        await registerServerConfig(serverName, langChoice.id, workspaceRoot);
     }
 }
 
@@ -234,14 +242,90 @@ async function validateConfig(): Promise<void> {
     for (const file of mcpFiles) {
         try {
             const content = (await vscode.workspace.fs.readFile(file)).toString();
-            JSON.parse(content);
-            outputChannel.appendLine(`✅ ${file.fsPath} — valid JSON`);
+            const config = JSON.parse(content) as { mcpServers?: unknown };
+            const issues = validateMcpConfig(config);
+            if (issues.length === 0) {
+                outputChannel.appendLine(`✅ ${file.fsPath} — valid MCP server configuration`);
+            } else {
+                issues.forEach(issue => outputChannel.appendLine(`⚠️ ${file.fsPath} — ${issue}`));
+            }
         } catch (e) {
             outputChannel.appendLine(`❌ ${file.fsPath} — ${e}`);
         }
     }
     outputChannel.show();
     vscode.window.showInformationMessage('MCP config validation complete. See output channel.');
+}
+
+function validateMcpConfig(config: { mcpServers?: unknown }): string[] {
+    if (!config.mcpServers || typeof config.mcpServers !== 'object' || Array.isArray(config.mcpServers)) {
+        return ['mcpServers must be an object'];
+    }
+    const issues: string[] = [];
+    for (const [name, server] of Object.entries(config.mcpServers as Record<string, unknown>)) {
+        if (!server || typeof server !== 'object') {
+            issues.push(`${name} must be a configuration object`);
+            continue;
+        }
+        const candidate = server as { type?: unknown; command?: unknown; args?: unknown; url?: unknown };
+        if (candidate.type === 'http') {
+            if (typeof candidate.url !== 'string' || !candidate.url.startsWith('http')) {
+                issues.push(`${name} requires an http url`);
+            }
+        } else if (candidate.type === undefined || candidate.type === 'stdio') {
+            if (typeof candidate.command !== 'string' || !candidate.command.trim()) {
+                issues.push(`${name} requires a non-empty command`);
+            }
+            if (candidate.args !== undefined && (!Array.isArray(candidate.args) || candidate.args.some(arg => typeof arg !== 'string'))) {
+                issues.push(`${name}.args must be an array of strings`);
+            }
+        } else {
+            issues.push(`${name} has unsupported type "${String(candidate.type)}"`);
+        }
+    }
+    return issues;
+}
+
+async function registerWorkspaceServer(): Promise<void> {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    if (!workspaceRoot) {
+        vscode.window.showErrorMessage('Open a workspace folder first.');
+        return;
+    }
+    const serverName = await vscode.window.showInputBox({
+        title: 'MCP Server Name',
+        prompt: 'Enter the server directory name relative to the workspace',
+        validateInput: value => /^[a-z][a-z0-9-]*$/.test(value) ? undefined : 'Use lowercase letters, numbers, and hyphens only'
+    });
+    if (!serverName) { return; }
+    const language = await vscode.window.showQuickPick(
+        Object.entries(MCP_SERVER_TEMPLATES).map(([id, template]) => ({ label: template.label, id })),
+        { title: 'Server Language' }
+    );
+    if (!language) { return; }
+    await registerServerConfig(serverName, language.id, workspaceRoot);
+}
+
+async function registerServerConfig(serverName: string, language: string, workspaceRoot: string): Promise<void> {
+    const configUri = vscode.Uri.file(path.join(workspaceRoot, '.vscode', 'mcp.json'));
+    let config: { mcpServers: Record<string, unknown> } = { mcpServers: {} };
+    try {
+        config = JSON.parse(Buffer.from(await vscode.workspace.fs.readFile(configUri)).toString('utf8'));
+        config.mcpServers ??= {};
+    } catch {
+        await vscode.workspace.fs.createDirectory(vscode.Uri.file(path.join(workspaceRoot, '.vscode')));
+    }
+    if (config.mcpServers[serverName]) {
+        vscode.window.showErrorMessage(`.vscode/mcp.json already contains a server named "${serverName}".`);
+        return;
+    }
+    config.mcpServers[serverName] = language === 'python'
+        ? { type: 'stdio', command: 'python', args: [`${serverName}/src/server.py`] }
+        : { type: 'stdio', command: 'node', args: [`${serverName}/${language === 'typescript' ? 'dist/index.js' : 'src/index.js'}`] };
+    await vscode.workspace.fs.writeFile(configUri, Buffer.from(JSON.stringify(config, null, 2), 'utf8'));
+    vscode.window.showInformationMessage(`MCP App Starter: registered ${serverName} in .vscode/mcp.json.`, 'Open Config').then(choice => {
+        if (choice === 'Open Config') { vscode.window.showTextDocument(configUri); }
+    });
 }
 
 export function deactivate(): void {

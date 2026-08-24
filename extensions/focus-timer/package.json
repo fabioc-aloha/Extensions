@@ -1,8 +1,8 @@
 {
   "name": "cx-focus-timer",
   "displayName": "CX Focus Timer",
-  "description": "Local Pomodoro timer with keyboard shortcuts, status-bar sessions, and break reminders inside VS Code",
-  "version": "0.1.4",
+  "description": "Local Pomodoro timer with persistent session history, notes, and status-bar countdowns",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -50,8 +50,12 @@
         "title": "Focus Timer: Show Session History"
       },
       {
+        "command": "focusTimer.addNote",
+        "title": "Focus Timer: Add Note to Latest Focus Session"
+      },
+      {
         "command": "focusTimer.resetSessions",
-        "title": "Focus Timer: Reset Session Count"
+        "title": "Focus Timer: Reset Local Session History"
       }
     ],
     "keybindings": [

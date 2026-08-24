@@ -1,8 +1,8 @@
 {
   "name": "cx-workspace-watchdog",
   "displayName": "CX Workspace Watchdog",
-  "description": "Background file-activity monitor for recently opened files and workspace health commands",
-  "version": "0.1.9",
+  "description": "Local workspace activity view for hot files, Git changes that remain uncommitted, and TODO hotspots",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "engines": {

@@ -2,7 +2,7 @@
 
 ![Focus Timer Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/focus-timer/assets/banner.png)
 
-**Local Pomodoro timer with keyboard shortcuts, status-bar sessions, and break reminders.**
+**Local Pomodoro timer with persistent session history, notes, and status-bar countdowns.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -16,7 +16,8 @@
 - **Pomodoro timer in the status bar** — always visible, never intrusive
 - **Customizable cadence** — configure work, short break, and long break durations
 - **Auto long break** — triggers automatically after 4 completed work sessions
-- **Session history** — log of all completed sessions for the current VS Code session
+- **Persistent session history** — completed focus and break sessions are stored locally in VS Code extension storage
+- **Session notes** — add or edit a note on the latest completed focus session
 - **Pause/resume** — click the status bar item or use the command to pause mid-sprint
 
 ## Requirements
@@ -29,6 +30,8 @@ No external tools required. Works entirely within VS Code.
 2. Click the status bar item to pause/resume
 3. `Focus Timer: Start Break` — short (5m) or long break (15m after 4 sessions)
 4. `Focus Timer: Show Session History` — log of all completed sessions
+5. `Focus Timer: Add Note to Latest Focus Session` — annotate the most recently completed focus session
+6. `Focus Timer: Reset Local Session History` — permanently remove the locally stored history and counter
 
 ## Settings
 
@@ -37,6 +40,10 @@ No external tools required. Works entirely within VS Code.
 | `focusTimer.workMinutes` | 25 | Work session length |
 | `focusTimer.shortBreakMinutes` | 5 | Short break length |
 | `focusTimer.longBreakMinutes` | 15 | Long break length |
+
+## Local storage
+
+Completed focus and break sessions, their optional notes, and the completed-focus counter are stored in VS Code extension global storage on this device. The timer does not send session data anywhere. History retains the most recent 200 completed sessions.
 
 ---
 
@@ -48,7 +55,7 @@ Explore more tools from the same suite:
 |-----------|-------------|-------------|
 | AI Voice Reader | Read files, selections, or documents aloud with Web Speech API | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
 | Brandfetch Logo Fetcher | Fetch and insert brand logos from any domain — SVG, PNG, or Markdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
-| Dev Wellbeing | Posture, eye-strain, and hydration reminders for long coding sessions | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
+| Dev Wellbeing | Local screen-break, posture, and hydration reminders | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
 | **Focus Timer** *(this)* | Pomodoro-style focus and break timer with status bar countdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
 | Gamma Slide Assistant | Create presentations with local Marp export or optional Gamma generation | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
 | Hook Studio | Visual editor for VS Code hook conditions and automation rules | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |

@@ -2,7 +2,7 @@
 
 ![MCP App Starter Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/mcp-app-starter/assets/banner.png)
 
-**Scaffold initial Model Context Protocol (MCP) server projects in TypeScript, JavaScript, or Python.**
+**Scaffold MCP server projects, validate configuration, and register local servers for VS Code.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -21,9 +21,8 @@ VS Code 1.109 shipped stable MCP server support. Building an MCP server means se
 | **TypeScript template** | Full typed server with tool schemas, tsconfig, package.json |
 | **JavaScript template** | Minimal ESM server for lightweight use |
 | **Python template** | Server using the official `mcp` package |
-| **mcp.json config** | Auto-generates VS Code MCP config ready to paste |
-| **Add Tool** | Guided stub for adding new tools |
-| **Validate Config** | JSON validator for all `mcp.json` files in workspace |
+| **Workspace registration** | Optionally register a newly scaffolded server in `.vscode/mcp.json` |
+| **Validate Config** | Check `mcpServers`, transport type, command, arguments, and HTTP URL fields |
 | **Right-click menus** | Right-click a **folder** → New MCP Server; right-click `.ts/.js/.py` → Add Tool or Add Resource; right-click `.json` → Validate Config |
 
 ## Usage
@@ -53,6 +52,7 @@ my-mcp-server/
 | `MCP App Starter: Add Tool` | Palette · Right-click `.ts/.js/.py` | Guided stub for adding a new tool |
 | `MCP App Starter: Add Resource` | Palette · Right-click `.ts/.js/.py` | Guided stub for adding a new resource |
 | `MCP App Starter: Validate MCP Server Config` | Palette · Right-click `.json` | Validate mcp.json files in workspace |
+| `MCP App Starter: Register Server in Workspace` | Palette · Right-click folder | Add a local stdio server to `.vscode/mcp.json` |
 | `MCP App Starter: Open MCP Documentation` | Palette | Open modelcontextprotocol.io |
 
 ## Requirements

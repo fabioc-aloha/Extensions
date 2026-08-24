@@ -1,8 +1,8 @@
 {
   "name": "brandfetch-logo-fetcher",
   "displayName": "CX Brandfetch Logo Fetcher",
-  "description": "Fetch company logos by domain and copy Markdown, SVG, PNG, or HTML references for technical content",
-  "version": "0.1.6",
+  "description": "Fetch company logos by domain with your Brandfetch or Logo.dev API key and insert formatted references",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

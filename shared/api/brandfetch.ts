@@ -33,10 +33,12 @@ interface BrandfetchResponse {
 
 export class BrandfetchClient {
     private apiKey?: string;
+    private logoDevApiKey?: string;
     private cache = new Map<string, LogoResult>();
 
-    constructor(apiKey?: string) {
+    constructor(apiKey?: string, logoDevApiKey?: string) {
         this.apiKey = apiKey;
+        this.logoDevApiKey = logoDevApiKey;
     }
 
     async fetchLogo(domainOrName: string): Promise<LogoResult | null> {
@@ -60,8 +62,7 @@ export class BrandfetchClient {
             }
         }
 
-        // Fallback: Logo.dev (free, no API key required)
-        const result = await this.fetchFromLogoDev(domain);
+        const result = this.logoDevApiKey ? await this.fetchFromLogoDev(domain) : null;
         if (result) {
             this.cache.set(cacheKey, result);
         }
@@ -98,8 +99,7 @@ export class BrandfetchClient {
     }
 
     private async fetchFromLogoDev(domain: string): Promise<LogoResult | null> {
-        // Logo.dev returns PNG logos at a stable URL, no API key needed
-        const url = `https://img.logo.dev/${domain}?token=pk_free&format=png&size=128`;
+        const url = `https://img.logo.dev/${domain}?token=${encodeURIComponent(this.logoDevApiKey ?? '')}&format=png&size=128`;
 
         // Validate the URL is reachable
         try {

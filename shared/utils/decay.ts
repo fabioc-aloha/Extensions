@@ -68,14 +68,14 @@ export class DecayEngine {
     }
 
     /**
-     * Parse a decay tag from a document comment or frontmatter.
-     * Formats: "review: 90d", "review: 2026-05-15", "review: slow"
+     * Parse a decay or review tag from a document comment or frontmatter.
+     * Formats: "decay: slow", "review: 90d", "review: 2026-05-15"
      */
     static parseTag(tag: string): { profile?: DecayProfile; reviewDate?: Date } | null {
-        const reviewMatch = tag.match(/review:\s*(.+)/i);
-        if (!reviewMatch) { return null; }
+        const tagMatch = tag.match(/(?:decay|review):\s*([^\s>]+)/i);
+        if (!tagMatch) { return null; }
 
-        const value = reviewMatch[1].trim();
+        const value = tagMatch[1].trim().toLowerCase();
 
         if (['aggressive', 'moderate', 'slow', 'permanent'].includes(value)) {
             return { profile: value as DecayProfile };
@@ -92,9 +92,11 @@ export class DecayEngine {
             return { profile };
         }
 
-        const dateMatch = value.match(/^\d{4}-\d{2}-\d{2}$/);
-        if (dateMatch) {
-            return { reviewDate: new Date(value) };
+        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+            const reviewDate = new Date(`${value}T00:00:00`);
+            if (!Number.isNaN(reviewDate.getTime())) {
+                return { reviewDate };
+            }
         }
 
         return null;

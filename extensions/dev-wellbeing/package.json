@@ -1,8 +1,8 @@
 {
   "name": "dev-wellbeing",
   "displayName": "CX Dev Wellbeing",
-  "description": "Local status-bar reminders for eye breaks, posture checks, hydration, and session awareness",
-  "version": "0.1.3",
+  "description": "Local, configurable screen-break, posture, and hydration reminders with transparent session details",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -14,16 +14,13 @@
   ],
   "keywords": [
     "wellbeing",
-    "health",
     "breaks",
     "pomodoro",
     "ergonomics",
-    "eye strain",
-    "20-20-20",
+    "screen break",
     "posture",
     "hydration",
-    "productivity",
-    "developer health"
+    "productivity"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -59,7 +56,7 @@
         "devWellbeing.eyeBreakMinutes": {
           "type": "number",
           "default": 20,
-          "description": "20-20-20 eye break interval (minutes)"
+          "description": "Screen-break reminder interval (minutes)"
         },
         "devWellbeing.hydrationMinutes": {
           "type": "number",
@@ -69,7 +66,7 @@
         "devWellbeing.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Enable wellbeing reminders"
+          "description": "Start local reminder monitoring when VS Code starts"
         }
       }
     }

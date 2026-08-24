@@ -1,8 +1,8 @@
 {
   "name": "cx-secret-guard",
   "displayName": "CX SecretGuard",
-  "description": "Local real-time scanner for common API keys, tokens, and credential patterns with status alerts",
-  "version": "0.1.6",
+  "description": "Local scanner for 13 common API-key, token, and credential patterns with workspace ignore controls",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -106,7 +106,7 @@
         "secretGuard.ignorePatterns": {
           "type": "array",
           "default": [],
-          "description": "Glob patterns to ignore"
+          "description": "Workspace-relative glob patterns to exclude from SecretGuard scans"
         }
       }
     },

@@ -1,8 +1,8 @@
 {
   "name": "knowledge-decay-tracker",
   "displayName": "CX Knowledge Decay Tracker",
-  "description": "Review documentation freshness with configurable decay profiles and local staleness reports",
-  "version": "0.1.7",
+  "description": "Local documentation freshness reports using review dates, configurable decay profiles, and activity signals",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -102,6 +102,11 @@
             "**/SKILLS/**"
           ],
           "description": "File patterns to track"
+        },
+        "knowledgeDecay.autoScan": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run a silent workspace freshness scan when the extension starts"
         }
       }
     },

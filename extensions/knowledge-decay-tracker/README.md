@@ -11,26 +11,28 @@
 
 ## What It Does
 
-Uses configurable decay profiles to surface documents that may need review. Scan a workspace, inspect the local report, and mark files as fresh after an intentional review.
+Uses configurable decay profiles to surface documents that may need review. A scan combines a document's review date with local activity signals, then reports the lowest-scoring files first. All activity counts and review marks remain in VS Code workspace storage.
 
 ## Features
 
 | Feature | Description |
 |---|---|
-| **Forgetting Curve scoring** | Files decay on a configurable half-life schedule |
+| **Freshness scoring** | Normalized local activity contributes 60%; time since review contributes 40% |
 | **Four decay profiles** | Aggressive (14d), moderate (60d), slow (180d), permanent |
-| **Status bar badge** | Overdue file count always visible in the status bar |
-| **Staleness report** | Full workspace scan in the output channel |
+| **Status bar badge** | Latest scan's critical/fading count; click it to inspect critical files |
+| **Staleness report** | Full workspace scan, sorted from lowest to highest freshness |
 | **Critical files quick pick** | Jump to worst offenders immediately |
-| **Mark as fresh** | Reset the decay clock on reviewed files with one command |
+| **Mark as fresh** | Records a local review timestamp without changing the file's modified time |
+| **Startup scan** | A silent scan runs on activation by default; disable it with `knowledgeDecay.autoScan` |
 | **Right-click menus** | Right-click any file in Explorer or Editor → **Mark as Fresh** or **Show Report** |
 
 ## Requirements
 
-No external tools required. Optionally tag files with a decay profile by adding a comment at the top:
+No external tools required. Optionally tag a file's header with a decay profile or explicit review date:
 
 ```
 <!-- decay: moderate -->
+<!-- review: 2026-08-24 -->
 ```
 
 ## Decay Profiles
@@ -41,6 +43,8 @@ No external tools required. Optionally tag files with a decay profile by adding 
 | `moderate` | 60 days | Standard documentation |
 | `slow` | 180 days | Stable reference files |
 | `permanent` | Never | Archived/historical content |
+
+The `decay:` tag selects the profile for that file. A `review: YYYY-MM-DD` tag supplies its review date; otherwise the local “Mark File as Fresh” timestamp is used, falling back to the file modification time. Opening or saving a tracked file raises only its local activity weight.
 
 ## Commands
 
@@ -65,7 +69,7 @@ Explore more tools from the same suite:
 |-----------|-------------|-------------|
 | AI Voice Reader | Read files, selections, or documents aloud with Web Speech API | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
 | Brandfetch Logo Fetcher | Fetch and insert brand logos from any domain — SVG, PNG, or Markdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
-| Dev Wellbeing | Posture, eye-strain, and hydration reminders for long coding sessions | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
+| Dev Wellbeing | Local screen-break, posture, and hydration reminders | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
 | Focus Timer | Pomodoro-style focus and break timer with status bar countdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
 | Gamma Slide Assistant | Create presentations with local Marp export or optional Gamma generation | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
 | Hook Studio | Visual editor for VS Code hook conditions and automation rules | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |

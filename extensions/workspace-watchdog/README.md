@@ -2,7 +2,7 @@
 
 ![Workspace Watchdog Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/workspace-watchdog/assets/banner.png)
 
-**Background file-activity monitor for recently opened files and workspace health commands.**
+**A local workspace activity view for hot files, Git changes that remain uncommitted, and TODO/FIXME hotspots.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -11,26 +11,26 @@
 
 ## What It Does
 
-Workspace Watchdog records file activity in the background and provides commands for reviewing workspace health signals. Its broader stalled-work and TODO analysis is being expanded in the next modernization release.
+Workspace Watchdog records local file-open activity, reads the built-in VS Code Git extension when it is available, and scans common text files for TODO/FIXME comments. It does not write files into your workspace.
 
 ## Features
 
 | Feature | Description |
 |---|---|
-| **Hot Files** | Files you open most often — your actual working set |
-| **Stalled Files** | Files with uncommitted changes sitting >1d/3d/7d |
-| **TODO Hotspots** | Files with the most TODO/FIXME comments |
-| **Health Dashboard** | Green/Yellow/Red workspace health at a glance |
-| **Passive scan** | Runs every 30 minutes in background, no manual action needed |
-| **Right-click menus** | Right-click any folder in Explorer → **Show Dashboard** or **Scan Now** without opening the Palette |
+| **Hot Files** | Workspace files opened at least five times in the last seven days |
+| **Stalled Changes** | Built-in Git changes that have remained uncommitted for at least 1 day |
+| **TODO Hotspots** | Text files with at least three TODO/FIXME comments |
+| **Explorer view** | A populated File Health tree with expandable hot-file, stalled-change, and TODO sections |
+| **Local scan** | Runs silently at startup and every 30 minutes; **Scan Now** reports its result |
+| **Right-click menus** | Run the dashboard or scan command from the CX Tools submenu |
 
 ## Stall Severity Tiers
 
 | Tier | Threshold | Action |
 |---|---|---|
-| Warning | >1 day | Listed in dashboard |
-| Alert | >3 days | Visible in sidebar |
-| Critical | >7 days | Toast notification |
+| Warning | ≥1 day | Listed in the dashboard and Explorer view |
+| Alert | ≥3 days | Labeled in the dashboard and Explorer view |
+| Critical | ≥7 days | Labeled in the dashboard and Explorer view |
 
 ## Commands
 
@@ -48,7 +48,7 @@ No external tools required. Works entirely within VS Code using the local file s
 
 ## Data Storage
 
-Observations are stored locally in `.github/episodic/peripheral/file-observations.json`. No data leaves your machine.
+Observations are stored in VS Code workspace storage, not in your workspace files. No data leaves your machine. The stalled-change signal is unavailable when VS Code's built-in Git extension is unavailable; hot-file and TODO signals continue to work.
 
 ---
 
@@ -64,7 +64,7 @@ Explore more tools from the same suite:
 |-----------|-------------|-------------|
 | AI Voice Reader | Read files, selections, or documents aloud with Web Speech API | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
 | Brandfetch Logo Fetcher | Fetch and insert brand logos from any domain — SVG, PNG, or Markdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
-| Dev Wellbeing | Posture, eye-strain, and hydration reminders for long coding sessions | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
+| Dev Wellbeing | Local screen-break, posture, and hydration reminders | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
 | Focus Timer | Pomodoro-style focus and break timer with status bar countdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
 | Gamma Slide Assistant | Create presentations with local Marp export or optional Gamma generation | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
 | Hook Studio | Visual editor for VS Code hook conditions and automation rules | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |

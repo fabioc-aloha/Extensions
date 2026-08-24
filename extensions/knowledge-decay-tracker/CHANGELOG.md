@@ -1,5 +1,16 @@
 # Changelog — Knowledge Decay Tracker
 
+## [0.2.0] — 2026-08-24
+
+### Added
+- Added a silent startup scan controlled by `knowledgeDecay.autoScan` and a status-bar summary of the latest scan.
+- Recorded local open/save activity and explicit “Mark File as Fresh” review timestamps in VS Code workspace storage.
+
+### Fixed
+- Applied `decay:` and `review:` header tags during scanning, including explicit `YYYY-MM-DD` review dates.
+- Replaced the hardcoded reference count with normalized local activity scoring.
+- Stopped changing a file's modification time when marking it as fresh.
+
 ## [0.1.7] — 2026-02-28
 
 ### Changed

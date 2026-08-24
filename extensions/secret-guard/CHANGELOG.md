@@ -1,5 +1,16 @@
 # Changelog — CX SecretGuard
 
+## [0.2.0] — 2026-08-24
+
+### Added
+- Workspace-relative `secretGuard.ignorePatterns` now consistently excludes files from on-type, on-save, current-file, and workspace scans.
+- Added a command to add an ignore pattern to VS Code workspace settings.
+
+### Fixed
+- Reduced the Azure credential pattern's broad false positives by requiring an Azure credential assignment.
+- Cleared stale diagnostics when a subsequent scan finds no match.
+- Corrected source and documentation claims to the implemented 13 patterns; SecretGuard has no `.secretguardignore` file or pre-commit integration.
+
 ## [0.1.6] — 2026-02-28
 
 ### Changed
@@ -10,7 +21,7 @@
 ### Added
 - **Real-time scanning as-you-type** — secrets are detected 600ms after you stop typing (configurable with `secretGuard.scanOnType`)
 - **Status bar badge** — shows `⚠️ N secrets` in the status bar when secrets are detected in the current file; turns red to alert you immediately
-- **`SecretGuard: Clear Findings for Current File`** command to suppress false positives
+- **`SecretGuard: Clear Findings for Current File`** command to clear current diagnostics until the next scan
 - Active file scanned on extension activation
 
 ## [0.1.4] — 2026-02-25
@@ -42,7 +53,5 @@
 - `Secret Guard: Scan Active File` — quick single-file secrets check
 - `Secret Guard: Show Report` — open a detailed findings panel with severity and location
 - `Secret Guard: Add Allowlist Entry` — suppress a specific false-positive finding
-- 40+ secret patterns: API keys, tokens, passwords, connection strings, private keys
+- 13 secret patterns: API keys, tokens, passwords, connection strings, private keys
 - Inline diagnostic warnings on detected secrets in the editor
-- `.secretguardignore` support for excluding files and folders
-- Pre-commit guard mode (warn before saving files with detected secrets)

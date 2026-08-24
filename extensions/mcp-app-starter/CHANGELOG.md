@@ -1,5 +1,14 @@
 # Changelog — MCP App Starter
 
+## [0.2.0] — 2026-08-24
+
+### Added
+- Optional workspace registration for newly scaffolded local servers in `.vscode/mcp.json`
+- Structural MCP configuration validation for stdio and HTTP server entries
+
+### Changed
+- Modernized README language around the local MCP development loop
+
 ## [0.1.10] — 2026-02-28
 
 ### Changed

@@ -9,8 +9,11 @@ export function activate(context: vscode.ExtensionContext): void {
     context.subscriptions.push(outputChannel);
 
     const loadClient = async () => {
-        const apiKey = await context.secrets.get('brandfetch.apiKey') ?? '';
-        client = new BrandfetchClient(apiKey);
+        const [apiKey, logoDevApiKey] = await Promise.all([
+            context.secrets.get('brandfetch.apiKey'),
+            context.secrets.get('brandfetch.logoDevApiKey')
+        ]);
+        client = new BrandfetchClient(apiKey, logoDevApiKey);
     };
     loadClient();
 
@@ -19,8 +22,17 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('brandfetch.insertLogo', () => insertLogo()),
         vscode.commands.registerCommand('brandfetch.clearCache', () => { client?.clearCache(); vscode.window.showInformationMessage('Logo cache cleared.'); }),
         vscode.commands.registerCommand('brandfetch.setApiKey', async () => {
-            const key = await vscode.window.showInputBox({ title: 'Brandfetch API Key', password: true, prompt: 'Get your key at brandfetch.com/profile/api' });
-            if (key) { await context.secrets.store('brandfetch.apiKey', key); client = new BrandfetchClient(key); vscode.window.showInformationMessage('API key saved.'); }
+            const provider = await vscode.window.showQuickPick([
+                { label: 'Brandfetch', secretKey: 'brandfetch.apiKey', prompt: 'Get your key at brandfetch.com/developers' },
+                { label: 'Logo.dev', secretKey: 'brandfetch.logoDevApiKey', prompt: 'Get your key at logo.dev' }
+            ], { title: 'Choose Logo Provider API Key' });
+            if (!provider) { return; }
+            const key = await vscode.window.showInputBox({ title: `${provider.label} API Key`, password: true, prompt: provider.prompt });
+            if (key) {
+                await context.secrets.store(provider.secretKey, key.trim());
+                await loadClient();
+                vscode.window.showInformationMessage(`${provider.label} API key saved in VS Code SecretStorage.`);
+            }
         })
     );
 
@@ -60,10 +72,18 @@ async function insertLogo(): Promise<void> {
     if (!editor) { vscode.window.showWarningMessage('No active editor.'); return; }
     const domain = await vscode.window.showInputBox({ title: 'Insert Logo', prompt: 'Enter domain (e.g. github.com)', value: getSelectedText() });
     if (!domain) { return; }
+    const format = await vscode.window.showQuickPick(
+        [{ label: 'Markdown Image', id: 'markdown' }, { label: 'SVG URL', id: 'svg-url' }, { label: 'PNG URL', id: 'png-url' }, { label: 'HTML <img>', id: 'html-img' }],
+        { title: 'Insert Format' }
+    );
+    if (!format) { return; }
     try {
         const logo = await client.fetchLogo(domain);
-        if (!logo) { vscode.window.showWarningMessage(`No logo found for ${domain}`); return; }
-        const formatted = BrandfetchClient.formatForInsert(logo, 'markdown');
+        if (!logo) {
+            vscode.window.showWarningMessage(`No logo found for ${domain}. Configure a Brandfetch or Logo.dev API key.`);
+            return;
+        }
+        const formatted = BrandfetchClient.formatForInsert(logo, format.id as InsertFormat);
         editor.edit(eb => eb.insert(editor.selection.active, formatted));
     } catch (err) {
         vscode.window.showErrorMessage(`Failed: ${err}`);

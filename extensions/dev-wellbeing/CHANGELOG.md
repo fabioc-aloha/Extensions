@@ -1,5 +1,16 @@
 # Changelog — Dev Wellbeing
 
+## [0.2.0] — 2026-08-24
+
+### Fixed
+- Made monitoring start idempotent so repeated start commands do not reset the current session.
+- Restarted reminder intervals when a Dev Wellbeing setting changes while monitoring.
+- Corrected session statistics to report local document edit events rather than keystrokes.
+
+### Changed
+- Clarified local-only session behavior and removed health or diagnostic implications from reminders and documentation.
+- The stopped status-bar item now starts monitoring; the active item opens local session details.
+
 ## [0.1.3] — 2026-02-28
 
 ### Changed
@@ -26,7 +37,7 @@
 - `Dev Wellbeing: Show Session Stats` — session duration and keystroke count
 - `Dev Wellbeing: Configure Thresholds` — open settings
 - Posture reminders (default every 45 minutes)
-- 20-20-20 eye break reminders (default every 20 minutes)
+- Screen-break reminders (default every 20 minutes)
 - Hydration nudges (default every 60 minutes)
 - Auto-start on VS Code launch via `devWellbeing.enabled` setting
 - Status bar session duration display
