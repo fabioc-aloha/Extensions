@@ -2,7 +2,7 @@
 
 ![MCP App Starter Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/mcp-app-starter/assets/banner.png)
 
-**Scaffold Model Context Protocol (MCP) servers in seconds — TypeScript, JavaScript, or Python**
+**Scaffold initial Model Context Protocol (MCP) server projects in TypeScript, JavaScript, or Python.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)

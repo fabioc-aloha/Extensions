@@ -5,6 +5,7 @@ import * as path from 'path';
 import * as os from 'os';
 
 let outputChannel: vscode.OutputChannel;let previewPanel: vscode.WebviewPanel | undefined;
+const GITHUB_UNSUPPORTED_TYPES = new Set(['c4', 'timeline']);
 // ---------------------------------------------------------------------------
 // Diagram Templates — aligned with Alex's markdown-mermaid skill
 // ---------------------------------------------------------------------------
@@ -90,7 +91,9 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('mermaidPro.extractDiagram',
             () => extractToFile()),
         vscode.commands.registerCommand('mermaidPro.copySource',
-            () => copyDiagramSource())
+            () => copyDiagramSource()),
+        vscode.commands.registerCommand('mermaidPro.checkGitHubCompatibility',
+            () => checkGitHubCompatibility())
     );
 
     // Auto-refresh preview panel when document changes
@@ -131,6 +134,10 @@ function extractDiagramAtCursor(editor: vscode.TextEditor): string | null {
 }
 
 function getAllDiagramBlocks(editor: vscode.TextEditor): DiagramBlock[] {
+    if (editor.document.languageId === 'mermaid' || path.extname(editor.document.uri.fsPath).toLowerCase() === '.mmd') {
+        const code = editor.document.getText().trim();
+        return code ? [{ code, start: 1, type: code.split('\n')[0].trim() }] : [];
+    }
     const text = editor.document.getText();
     const results: DiagramBlock[] = [];
     const regex = /```mermaid\n([\s\S]*?)```/g;
@@ -374,7 +381,8 @@ function validateAll(): void {
     blocks.forEach((b, i) => {
         const type = detectDiagramType(b.code);
         const lines = b.code.split('\n').length;
-        outputChannel.appendLine(`  ${i + 1}. Line ${b.start} — ${type.padEnd(12)} ${lines} lines`);
+        const compatibility = GITHUB_UNSUPPORTED_TYPES.has(type.toLowerCase()) ? ' - review GitHub support' : '';
+        outputChannel.appendLine(`  ${i + 1}. Line ${b.start} — ${type.padEnd(12)} ${lines} lines${compatibility}`);
         outputChannel.appendLine(`     First: ${b.type}`);
     });
 
@@ -386,6 +394,27 @@ function validateAll(): void {
         `Found ${blocks.length} Mermaid diagram(s). See Output panel for details.`,
         'Show Output'
     ).then(c => { if (c) { outputChannel.show(); } });
+}
+
+function checkGitHubCompatibility(): void {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) { return; }
+    const blocks = getAllDiagramBlocks(editor);
+    if (blocks.length === 0) {
+        vscode.window.showInformationMessage('No Mermaid diagrams found in this file.');
+        return;
+    }
+    const unsupported = blocks.filter(block => GITHUB_UNSUPPORTED_TYPES.has(detectDiagramType(block.code).toLowerCase()));
+    outputChannel.clear();
+    outputChannel.appendLine(`GitHub Mermaid Compatibility - ${blocks.length} diagram(s) checked`);
+    if (unsupported.length === 0) {
+        outputChannel.appendLine('No known GitHub-incompatible diagram types detected.');
+        vscode.window.showInformationMessage('Mermaid Pro: No known GitHub-incompatible diagram types detected.');
+    } else {
+        unsupported.forEach(block => outputChannel.appendLine(`- Line ${block.start}: ${detectDiagramType(block.code)} may not render on GitHub.`));
+        vscode.window.showWarningMessage(`Mermaid Pro: ${unsupported.length} diagram(s) may not render on GitHub. See output for details.`);
+    }
+    outputChannel.show();
 }
 
 async function extractToFile(): Promise<void> {

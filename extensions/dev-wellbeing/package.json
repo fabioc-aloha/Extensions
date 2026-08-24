@@ -1,7 +1,7 @@
 {
   "name": "dev-wellbeing",
   "displayName": "CX Dev Wellbeing",
-  "description": "Status bar countdown to your next eye break, posture check, and hydration nudge — healthy coding habits built in",
+  "description": "Local status-bar reminders for eye breaks, posture checks, hydration, and session awareness",
   "version": "0.1.3",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",

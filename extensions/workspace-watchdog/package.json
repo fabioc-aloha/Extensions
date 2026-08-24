@@ -1,7 +1,7 @@
 {
   "name": "cx-workspace-watchdog",
   "displayName": "CX Workspace Watchdog",
-  "description": "Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots",
+  "description": "Background file-activity monitor for recently opened files and workspace health commands",
   "version": "0.1.9",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
@@ -15,8 +15,8 @@
   "keywords": [
     "productivity",
     "file-health",
-    "todo",
-    "git",
+    "file activity",
+    "workspace health",
     "monitoring"
   ],
   "activationEvents": [

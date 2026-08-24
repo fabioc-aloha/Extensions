@@ -2,7 +2,7 @@
 
 ![Hook Studio Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/hook-studio/assets/banner.png)
 
-**Visual GUI for VS Code `hooks.json` — the missing tooling for Copilot Chat hooks (VS Code 1.109+)**
+**Validate and inspect VS Code Copilot hook configuration files, including the current multi-file hooks layout.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -12,47 +12,51 @@
 
 ## Why Hook Studio?
 
-VS Code 1.109 shipped Copilot Chat hooks — a powerful system that fires before/after tool calls. But the only way to configure them is by hand-editing `.github/hooks.json`. There is no tooling, no validator, no way to see what fired and why.
-
-Hook Studio fills that gap with a visual, tabbed interface directly inside VS Code.
+Hook Studio helps you inspect and draft hook configurations inside VS Code. It provides static validation for the current `.github/hooks/*.json` layout and keeps compatibility with the legacy `.github/hooks.json` file.
 
 ## Features
 
 | Feature | Description |
 |---|---|
 | **Rule Builder** | Edit `hooks.json` with syntax highlighting, validation, and save |
-| **Execution Log** | See which hooks fired, when, and whether they succeeded |
-| **Condition Tester** | Simulate a tool call to preview which hooks would activate |
-| **Import from Alex** | One-click import from the Alex Cognitive Architecture hooks |
-| **File Watch** | Auto-reloads when `hooks.json` changes externally |
+| **Workspace validation** | Check current and legacy hook files for JSON, event, action type, and command issues |
+| **Legacy migration** | Copy a legacy hook document into a reviewable `.github/hooks/migrated.json` file without changing the original |
+| **Recipe starters** | Create reviewed starter files for formatting, testing, or audit workflows |
+| **Rule Builder** | Edit a hook JSON document with syntax validation and save |
+| **Activity output** | Review Hook Studio editor and file-watch activity; VS Code does not expose hook execution telemetry to extensions |
+| **File Watch** | Detect changes in `.github/hooks/*.json` and legacy `.github/hooks.json` |
 | **Right-click menus** | Right-click any `hooks.json` in Explorer or Editor to access all commands directly |
 
 ## Requirements
 
 - VS Code 1.109 or later
-- A workspace with `.github/hooks.json` (or create one via **Hook Studio: Open**)
+- A workspace with `.github/hooks/*.json` or legacy `.github/hooks.json`
 
 ## Usage
 
 1. Open the Command Palette (`Ctrl+Shift+P`)
 2. Run **Hook Studio: Open** — or right-click any `hooks.json` file and select from the context menu
-3. Use the **Rule Builder** tab to edit your hooks
-4. Click **Validate** to check JSON syntax
-5. Click **Save** to write back to `.github/hooks.json`
-6. Use the **Condition Tester** to simulate tool calls before committing
+3. Run **Hook Studio: Validate Workspace Hooks** to check lifecycle event names and command actions
+4. Use the **Rule Builder** tab to edit hook JSON
+5. Click **Validate** to check JSON syntax before saving
+
+## Migration and Recipes
+
+- **Migrate Legacy hooks.json** creates `.github/hooks/migrated.json` and leaves the legacy file untouched. Review and validate the new file before removing the legacy configuration.
+- **Create Hook Recipe** writes an additive starter file under `.github/hooks/`. Review every generated command for your repository and operating system before relying on it.
 
 ## hooks.json Format
 
 ```json
 {
-  "hooks": [
-    {
-      "event": "onToolCall",
-      "tool": "createFile",
-      "when": "always",
-      "run": "echo 'File created'"
-    }
-  ]
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "echo 'Before tool use'"
+      }
+    ]
+  }
 }
 ```
 
@@ -65,10 +69,13 @@ Hook Studio fills that gap with a visual, tabbed interface directly inside VS Co
 | `Hook Studio: Import from Alex Hooks` | Palette | Load hooks from Alex architecture |
 | `Hook Studio: Export hooks.json` | Palette · Right-click `hooks.json` | Export to a custom path |
 | `Hook Studio: Open Execution Log` | Palette · Right-click `hooks.json` | Show log view in Explorer sidebar |
+| `Hook Studio: Validate Workspace Hooks` | Palette · Right-click `hooks.json` | Validate current and legacy workspace hook files |
+| `Hook Studio: Migrate Legacy hooks.json` | Palette · Right-click `hooks.json` | Create a reviewable current-layout migration file |
+| `Hook Studio: Create Hook Recipe` | Palette | Create an additive starter recipe under `.github/hooks/` |
 
 ## Extension Settings
 
-No configuration required. Hook Studio auto-activates when `.github/hooks.json` exists in the workspace.
+No configuration required. Hook Studio auto-activates when a hook file exists in `.github/hooks/`.
 
 ---
 
@@ -87,7 +94,7 @@ Explore more tools from the same suite:
 | Dev Wellbeing | Posture, eye-strain, and hydration reminders for long coding sessions | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
 | Focus Timer | Pomodoro-style focus and break timer with status bar countdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
 | Gamma Slide Assistant | Create presentations with local Marp export or optional Gamma generation | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
-| **Hook Studio** *(this)* | Visual editor for VS Code hook conditions and automation rules | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |
+| **Hook Studio** *(this)* | Validate and inspect VS Code Copilot hook configurations | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |
 | Knowledge Decay Tracker | Track staleness of documentation and flag overdue reviews | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker) |
 | Markdown to Word | Convert Markdown + Mermaid diagrams to .docx via Pandoc | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word) |
 | MCP App Starter | Scaffold Model Context Protocol servers in TypeScript, JavaScript, or Python | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter) |

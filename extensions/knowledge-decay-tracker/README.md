@@ -2,7 +2,7 @@
 
 ![Knowledge Decay Tracker Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/knowledge-decay-tracker/assets/banner.png)
 
-**Surface time-decayed knowledge — find docs going stale before they mislead**
+**Review documentation freshness with configurable decay profiles and local staleness reports.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -12,7 +12,7 @@
 
 ## What It Does
 
-Uses the Forgetting Curve algorithm to score every tracked file by freshness. Files you haven't touched in months surface as `stale` or `critical` so you can review and refresh before they cause confusion.
+Uses configurable decay profiles to surface documents that may need review. Scan a workspace, inspect the local report, and mark files as fresh after an intentional review.
 
 ## Features
 

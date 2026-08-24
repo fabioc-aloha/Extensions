@@ -2,7 +2,7 @@
 
 ![Brandfetch Logo Fetcher Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/brandfetch-logo-fetcher/assets/banner.png)
 
-**Fetch company logos and brand assets by domain — insert as Markdown, SVG URL, or HTML**
+**Fetch company logos by domain and copy Markdown, SVG, PNG, or HTML references for technical content.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -12,7 +12,7 @@
 
 ## What It Does
 
-Type a domain name, choose your format, and the logo is ready to paste. Powered by Brandfetch API with Logo.dev fallback. LRU cache keeps repeated lookups instant.
+Type a domain name, choose a format, and copy the resulting reference. Powered by Brandfetch API with a Logo.dev fallback and an in-memory cache for repeated lookups.
 
 ## Features
 

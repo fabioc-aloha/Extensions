@@ -10,7 +10,7 @@
 
 ---
 
-Type a prompt, choose a model, get an image URL — then insert as a Markdown image with one click. Session history tracks all your generations.
+Type a prompt, choose a model, get an image URL, then insert it as Markdown or save it locally. Session history is available for the current VS Code session.
 
 ## Features
 

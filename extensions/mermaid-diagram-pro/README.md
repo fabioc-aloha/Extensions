@@ -2,7 +2,7 @@
 
 ![Mermaid Diagram Pro Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/mermaid-diagram-pro/assets/banner.png)
 
-**Enhanced Mermaid diagram support — templates, Mermaid Live preview, validation**
+**Mermaid templates, GitHub compatibility checks, live-editor handoff, and export workflows for Markdown and `.mmd` files.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -16,7 +16,8 @@
 
 - **11 diagram templates** — flowchart, sequence, class, ER, git graph, timeline, Gantt, pie chart, mind map, state diagram, C4 context
 - **Live preview** — open any diagram in Mermaid Live Editor pre-loaded with your code
-- **Inline validation** — count and list all mermaid code blocks in the active file
+- **Compatibility check** — flag known diagram types that may not render on GitHub
+- **Inline validation** — count and list all Mermaid blocks in Markdown or standalone `.mmd` files
 - **SVG/PNG export guidance** — instructions for mmdc CLI export
 - **Works in .md and .mmd files**
 
@@ -46,6 +47,7 @@ No external tools required for templates, preview, and validation. For local SVG
 | `Mermaid Pro: Preview Diagram at Cursor` | Open in Mermaid Live Editor |
 | `Mermaid Pro: Export as SVG` | Instructions for mmdc CLI export |
 | `Mermaid Pro: Validate All Diagrams in File` | Count and list all diagram blocks |
+| `Mermaid Pro: Check GitHub Compatibility` | Flag diagram types that may not render on GitHub |
 
 ---
 

@@ -2,7 +2,7 @@
 
 ![SecretGuard Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/secret-guard/assets/banner.png)
 
-**Pre-commit secret scanner — catch leaked API keys, tokens, and credentials before they leave your machine**
+**Local real-time scanner for common API keys, tokens, and credential patterns.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -12,7 +12,7 @@
 
 ## What It Does
 
-SecretGuard scans your files for 13 secret patterns — API keys, tokens, private keys, and connection strings — and surfaces findings directly in the Problems panel before they can leave your machine. Scans run automatically on save or on demand across the whole workspace.
+SecretGuard scans files for 13 common secret patterns and surfaces findings through status alerts. Scans run automatically on save or on demand across the workspace.
 
 ## Features
 

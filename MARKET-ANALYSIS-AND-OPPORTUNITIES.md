@@ -71,17 +71,17 @@ Marketplace.
 | CX AI Voice Reader | 2026-08-23 | 2026-08-23 | v0.2 local voice and playback reliability prepared |
 | CX PPTX Builder | 2026-08-23 | 2026-08-23 | v0.2 themes and continuation slides prepared |
 | CX Gamma Slide Assistant | 2026-08-23 | 2026-08-23 | v0.2 Gamma API generation and local Marp workflow prepared |
-| CX Hook Studio | 2026-08-23 | — | Current hook schema and recipe work pending |
-| CX Mermaid Diagram Pro | 2026-08-23 | — | Offline export and diagnostics work pending |
-| CX Replicate Image Studio | 2026-08-23 | — | Persistence and gallery work pending |
-| CX SVG Toolkit | 2026-08-23 | — | SVG workbench work pending |
-| CX Brandfetch Logo Fetcher | 2026-08-23 | — | API reliability work pending |
-| CX MCP App Starter | 2026-08-23 | — | Development-loop work pending |
-| CX Workspace Watchdog | 2026-08-23 | — | Core signal repair pending |
-| CX SecretGuard | 2026-08-23 | — | Pattern credibility work pending |
-| CX Knowledge Decay Tracker | 2026-08-23 | — | Core scoring repair pending |
-| CX Dev Wellbeing | 2026-08-23 | — | Context-aware recovery work pending |
-| CX Focus Timer | 2026-08-23 | — | Persistence and annotation work pending |
+| CX Hook Studio | 2026-08-23 | 2026-08-24 | Retained at 114 installs; native-editor gap analysis and v0.2 validation work in progress |
+| CX Mermaid Diagram Pro | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; offline export and diagnostics work pending |
+| CX Replicate Image Studio | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; persistence and gallery work pending |
+| CX SVG Toolkit | 2026-08-23 | 2026-08-23 | Metadata refreshed; SVG workbench work pending |
+| CX Brandfetch Logo Fetcher | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; API reliability work pending |
+| CX MCP App Starter | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; development-loop work pending |
+| CX Workspace Watchdog | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; core signal repair pending |
+| CX SecretGuard | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; pattern credibility work pending |
+| CX Knowledge Decay Tracker | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; core scoring repair pending |
+| CX Dev Wellbeing | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; context-aware recovery work pending |
+| CX Focus Timer | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; persistence and annotation work pending |
 
 ## Market Shifts
 

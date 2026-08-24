@@ -1,7 +1,7 @@
 {
   "name": "brandfetch-logo-fetcher",
   "displayName": "CX Brandfetch Logo Fetcher",
-  "description": "Fetch company logos by domain and insert as Markdown, SVG, PNG or HTML — brand assets in seconds, no browser needed",
+  "description": "Fetch company logos by domain and copy Markdown, SVG, PNG, or HTML references for technical content",
   "version": "0.1.6",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
@@ -22,7 +22,8 @@
     "brand identity",
     "domain",
     "svg logo",
-    "readme logo"
+    "readme logo",
+    "brand assets"
   ],
   "activationEvents": [
     "onCommand:brandfetch.fetchLogo",

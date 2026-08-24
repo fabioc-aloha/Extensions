@@ -1,7 +1,7 @@
 {
   "name": "mcp-app-starter",
   "displayName": "CX MCP App Starter",
-  "description": "Scaffold Model Context Protocol (MCP) servers for Copilot agents — zero boilerplate, TypeScript-first, ready to publish",
+  "description": "Scaffold initial Model Context Protocol server projects for Copilot agents in TypeScript, JavaScript, or Python",
   "version": "0.1.10",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
@@ -18,7 +18,9 @@
     "model context protocol",
     "scaffold",
     "copilot",
-    "ai"
+    "ai",
+    "mcp server",
+    "agent tools"
   ],
   "activationEvents": [
     "onCommand:mcpAppStarter.create",

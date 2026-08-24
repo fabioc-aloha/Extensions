@@ -1,7 +1,7 @@
 {
   "name": "knowledge-decay-tracker",
   "displayName": "CX Knowledge Decay Tracker",
-  "description": "Find stale documentation before it misleads — scan your codebase for knowledge decay with configurable half-life profiles",
+  "description": "Review documentation freshness with configurable decay profiles and local staleness reports",
   "version": "0.1.7",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",

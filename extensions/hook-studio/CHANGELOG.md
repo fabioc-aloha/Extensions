@@ -1,5 +1,17 @@
 # Changelog — Hook Studio
 
+## [0.2.0] — 2026-08-23
+
+### Added
+- `Hook Studio: Validate Workspace Hooks` for static JSON, lifecycle event, action type, and command validation
+- Discovery and file watching for `.github/hooks/*.json` alongside the legacy `.github/hooks.json` path
+- Legacy migration that creates a reviewable current-layout file without changing the original
+- Additive formatting, test, and audit recipe starters under `.github/hooks/`
+
+### Changed
+- Updated documentation to distinguish static validation from unavailable hook execution telemetry
+- Modernized metadata for current VS Code Copilot hook configurations
+
 ## [0.1.9] — 2026-02-28
 
 ### Changed

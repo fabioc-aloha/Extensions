@@ -1,8 +1,8 @@
 {
   "name": "hook-studio",
   "displayName": "CX Hook Studio",
-  "description": "Build, test, and debug VS Code agent hooks.json without reading docs — GUI editor for Copilot agent hooks",
-  "version": "0.1.9",
+  "description": "Validate and inspect VS Code Copilot hook configuration files, including the current multi-file hooks layout",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -23,7 +23,8 @@
     "copilot hooks",
     "agent hooks",
     "workflow automation",
-    "tool hooks"
+    "tool hooks",
+    "agent customization"
   ],
   "repository": {
     "type": "git",
@@ -35,7 +36,8 @@
     "onCommand:hookStudio.importFromAlex",
     "onCommand:hookStudio.exportHooks",
     "onCommand:hookStudio.openLog",
-    "workspaceContains:.github/hooks.json"
+    "onCommand:hookStudio.validateWorkspaceHooks",
+    "workspaceContains:.github/hooks/*.json"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -60,6 +62,18 @@
       {
         "command": "hookStudio.openLog",
         "title": "Hook Studio: Open Execution Log"
+      },
+      {
+        "command": "hookStudio.validateWorkspaceHooks",
+        "title": "Hook Studio: Validate Workspace Hooks"
+      },
+      {
+        "command": "hookStudio.migrateLegacyHooks",
+        "title": "Hook Studio: Migrate Legacy hooks.json"
+      },
+      {
+        "command": "hookStudio.createRecipe",
+        "title": "Hook Studio: Create Hook Recipe"
       }
     ],
     "menus": {
@@ -95,6 +109,20 @@
           "command": "hookStudio.openLog",
           "when": "resourceFilename == hooks.json",
           "group": "1_analysis@3"
+        },
+        {
+          "command": "hookStudio.validateWorkspaceHooks",
+          "when": "resourceFilename == hooks.json",
+          "group": "1_analysis@4"
+        },
+        {
+          "command": "hookStudio.migrateLegacyHooks",
+          "when": "resourceFilename == hooks.json",
+          "group": "2_transform@2"
+        },
+        {
+          "command": "hookStudio.createRecipe",
+          "group": "3_generate@1"
         }
       ]
     },

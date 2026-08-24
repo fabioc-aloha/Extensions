@@ -39,7 +39,7 @@ feasibility. Download count breaks ties; it is not the only signal.
 | 2 | CX SVG to PNG | 358 | P0 | Production icon pipeline | Icon-set export, output-folder setting, correct SVG activation |
 | 3 | CX AI Voice Reader | 327 | P0 | Developer proof-reading companion | Remove or implement Azure setting; chunking, pause/resume, real voice picker |
 | 4 | CX PPTX Builder | 334 | P0 | Branded technical deck generator | Correct claims and ship themes with real slide masters |
-| 5 | CX Hook Studio | 114 | P0 | Schema-aware hook recipe studio | Support modern `.github/hooks/*.json` schema and curated templates |
+| 5 | CX Hook Studio | 114 | P0 | Schema-aware hook recipe studio | Close native-editor gaps with migration, recipes, static dry runs, and policy validation |
 | 6 | CX Gamma Slide Assistant | 116 | P0 | Hybrid local and Gamma presentation workflow | Supported Gamma API generation with explicit paid-account boundary |
 | 7 | CX Mermaid Diagram Pro | 75 | P0 | Export-first Mermaid tooling | Offline bundled render path, `.mmd` support, diagnostics |
 | 8 | CX Replicate Image Studio | 44 | P1 | Persistent visual creative studio | Persist history, wire cancellation, add negative prompts |

@@ -2,7 +2,7 @@
 
 ![Workspace Watchdog Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/workspace-watchdog/assets/banner.png)
 
-**Background file health monitor — surface stalled work, uncommitted patterns, and TODO hotspots**
+**Background file-activity monitor for recently opened files and workspace health commands.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -12,7 +12,7 @@
 
 ## What It Does
 
-Workspace Watchdog silently watches your files in the background and alerts you when work is going stale. No more forgotten branches or files you opened two weeks ago and never committed.
+Workspace Watchdog records file activity in the background and provides commands for reviewing workspace health signals. Its broader stalled-work and TODO analysis is being expanded in the next modernization release.
 
 ## Features
 

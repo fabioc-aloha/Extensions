@@ -1,5 +1,14 @@
 # Changelog — Mermaid Diagram Pro
 
+## [0.2.0] — 2026-08-24
+
+### Added
+- GitHub compatibility check for diagram types that may not render on GitHub
+- Standalone `.mmd` file activation and validation
+
+### Changed
+- Modernized the extension positioning around export and compatibility workflows
+
 ## [0.1.3] — 2026-02-28
 
 ### Changed

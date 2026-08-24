@@ -2,7 +2,7 @@
 
 ![Focus Timer Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/focus-timer/assets/banner.png)
 
-**Pomodoro timer in the status bar — work sprints, break reminders, session history**
+**Local Pomodoro timer with keyboard shortcuts, status-bar sessions, and break reminders.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)

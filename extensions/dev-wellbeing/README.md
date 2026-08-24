@@ -2,7 +2,7 @@
 
 ![Dev Wellbeing Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/dev-wellbeing/assets/banner.png)
 
-**Healthy coding habits — posture reminders, eye breaks, hydration nudges, and session stats**
+**Local status-bar reminders for eye breaks, posture checks, hydration, and session awareness.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)

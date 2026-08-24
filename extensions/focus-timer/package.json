@@ -1,7 +1,7 @@
 {
   "name": "cx-focus-timer",
   "displayName": "CX Focus Timer",
-  "description": "Pomodoro timer with keyboard shortcuts, session badge, and break history — stay in flow without leaving VS Code",
+  "description": "Local Pomodoro timer with keyboard shortcuts, status-bar sessions, and break reminders inside VS Code",
   "version": "0.1.4",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
