@@ -38,6 +38,14 @@ Confirmed defects were corrected in the working tree:
 | Marketplace publication | Passed - all 16 v0.2.0 extensions published |
 | Git tags | One v0.2.0 tag created per successfully published extension |
 
+## Publishing Identity Direction
+
+The v0.2 release used short-lived, organization-scoped Marketplace PATs because
+the current personal Entra identity lacked extension-certificate permission.
+Future automated publishing should use Azure Pipelines workload identity
+federation with a user-assigned managed identity added to the Marketplace
+publisher as a Contributor. See `PUBLISHING.md`.
+
 ## Dependency Audit
 
 `pptxgenjs` currently depends on `image-size`, whose npm advisory applies to

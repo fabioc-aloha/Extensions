@@ -1,0 +1,25 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: AzureCLI@2
+    displayName: Verify Marketplace workload identity
+    inputs:
+      azureSubscription: sc-extensions-marketplace-publish
+      scriptType: pscore
+      scriptLocation: inlineScript
+      inlineScript: |
+        $profile = az rest `
+          --method get `
+          --url "https://app.vssps.visualstudio.com/_apis/profile/profiles/me?api-version=7.1" `
+          --resource "499b84ac-1321-427f-aa17-267ca6975798" `
+          --output json | ConvertFrom-Json
+
+        if ([string]::IsNullOrWhiteSpace($profile.id)) {
+          throw "Marketplace did not return a profile ID for the federated identity."
+        }
+
+        Write-Host "Marketplace profile ID: $($profile.id)"

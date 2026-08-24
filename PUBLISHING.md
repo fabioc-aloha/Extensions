@@ -29,23 +29,53 @@ publishing selected extension versions without relying on browser automation.
 
 ## Authentication
 
-### Preferred: Microsoft Entra API authentication
+### Recommended: Azure Pipelines workload identity federation
 
-The preferred command uses `@vscode/vsce --azure-credential`, which publishes
-through Marketplace APIs using an available Microsoft Entra credential:
+Microsoft recommends Microsoft Entra ID–based authentication with **workload
+identity federation** and a **user-assigned managed identity** for automated
+Marketplace publishing. This eliminates stored PATs and provides a
+pipeline-scoped, short-lived credential.
+
+Set up the publishing identity once:
+
+1. Create a user-assigned managed identity in Azure.
+2. In Azure DevOps, create an Azure Resource Manager service connection using
+   **Managed identity** with **Workload Identity Federation**. Scope it to the
+   resource group that hosts the identity and do not grant all pipelines access.
+3. Verify that Azure DevOps created a federated credential on the managed
+   identity with the connection's issuer and subject.
+4. Commit the identity-smoke pipeline and explicitly authorize its use of the
+   service connection.
+5. Run the smoke pipeline to retrieve the identity's Marketplace profile ID:
+   ```powershell
+   az rest -u https://app.vssps.visualstudio.com/_apis/profile/profiles/me --resource 499b84ac-1321-427f-aa17-267ca6975798
+   ```
+6. In Visual Studio Marketplace publisher management, add the returned `id` as
+   a publisher **Contributor**.
+7. Run the pipeline through an Azure CLI task and publish with:
+   ```powershell
+   npx @vscode/vsce publish --azure-credential
+   ```
+
+The managed identity must be an authorized Marketplace publisher member. A
+personal Entra sign-in or Marketplace browser session alone is not sufficient
+for certificate-managed extension updates.
+
+### Local direct Entra publishing
+
+`publish:all:entra` remains useful for an authorized Entra credential:
 
 ```powershell
 npm run publish:all:entra -- --filter=hook-studio
 ```
 
-This does not use browser automation and does not reuse a Marketplace browser
-cookie. If no authorized Entra credential is available locally, authenticate
-the approved account through the organization’s standard Entra sign-in method,
-then rerun the command.
+It uses Marketplace APIs and does not use browser automation. It is not the
+recommended automation model because personal identity and extension-certificate
+permissions can differ.
 
-### Fallback: Marketplace PAT
+### Emergency fallback: Marketplace PAT
 
-Use a Marketplace PAT only when Entra authentication is unavailable:
+Use a Marketplace PAT only when workload identity federation is unavailable:
 
 ```powershell
 $env:VSCE_PAT = "<token>"
@@ -120,6 +150,9 @@ npm run publish:all:entra -- --filter=hook-studio,svg-to-png
 The runner packages **all selected extensions before publishing any of them**.
 If packaging fails, nothing is uploaded. A duplicate Marketplace version fails
 visibly rather than being skipped.
+
+For production release automation, run the equivalent command in the approved
+Azure Pipeline workload identity rather than from an interactive workstation.
 
 ## Pilot Evidence
 
