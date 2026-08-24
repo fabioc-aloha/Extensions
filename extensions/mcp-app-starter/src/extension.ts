@@ -73,6 +73,7 @@ async function createMcpServer(): Promise<void> {
         async () => {
             await fs.promises.mkdir(outputDir, { recursive: true });
             await fs.promises.mkdir(path.join(outputDir, 'src'), { recursive: true });
+            await fs.promises.mkdir(path.join(outputDir, '.vscode'), { recursive: true });
 
             if (langChoice.id === 'typescript') {
                 await scaffoldTypeScript(outputDir, serverName);
@@ -164,8 +165,8 @@ await server.connect(transport);
 console.error('${name} MCP server running on stdio');
 `);
 
-    await fs.promises.writeFile(path.join(dir, 'mcp.json'), JSON.stringify({
-        mcpServers: {
+    await fs.promises.writeFile(path.join(dir, '.vscode', 'mcp.json'), JSON.stringify({
+        servers: {
             [name]: {
                 type: 'stdio',
                 command: 'node',
@@ -174,7 +175,7 @@ console.error('${name} MCP server running on stdio');
         }
     }, null, 2));
 
-    await fs.promises.writeFile(path.join(dir, 'README.md'), `# ${name}\n\nAn MCP server scaffolded by MCP App Starter.\n\n## Setup\n\n\`\`\`bash\nnpm install\nnpm run build\n\`\`\`\n\n## Add to VS Code\n\nAdd to your \`.vscode/mcp.json\`:\n\n\`\`\`json\n{\n  "mcpServers": {\n    "${name}": { "type": "stdio", "command": "node", "args": ["dist/index.js"] }\n  }\n}\n\`\`\`\n`);
+    await fs.promises.writeFile(path.join(dir, 'README.md'), `# ${name}\n\nAn MCP server scaffolded by MCP App Starter.\n\n## Setup\n\n\`\`\`bash\nnpm install\nnpm run build\n\`\`\`\n\n## Add to VS Code\n\nAdd to your \`.vscode/mcp.json\`:\n\n\`\`\`json\n{\n      "servers": {\n    "${name}": { "type": "stdio", "command": "node", "args": ["dist/index.js"] }\n  }\n}\n\`\`\`\n`);
 }
 
 async function scaffoldJavaScript(dir: string, name: string): Promise<void> {
@@ -196,45 +197,64 @@ console.error('${name} running');
 }
 
 async function scaffoldPython(dir: string, name: string): Promise<void> {
-    await fs.promises.writeFile(path.join(dir, 'requirements.txt'), 'mcp>=1.0.0\n');
-    await fs.promises.writeFile(path.join(dir, 'src', 'server.py'), `from mcp.server import Server
-from mcp.server.stdio import stdio_server
-from mcp import types
+    await fs.promises.writeFile(path.join(dir, 'requirements.txt'), 'mcp[cli]>=2.0.0\n');
+    await fs.promises.writeFile(path.join(dir, 'src', 'server.py'), `from mcp.server import MCPServer
 
-server = Server("${name}")
+server = MCPServer("${name}")
 
-@server.list_tools()
-async def list_tools():
-    return [types.Tool(name="hello", description="Say hello",
-        inputSchema={"type":"object","properties":{"name":{"type":"string"}},"required":["name"]})]
-
-@server.call_tool()
-async def call_tool(name: str, arguments: dict):
-    if name == "hello":
-        return [types.TextContent(type="text", text=f"Hello, {arguments['name']}!")]
-    raise ValueError(f"Unknown tool: {name}")
+@server.tool()
+async def hello(name: str) -> str:
+    """Say hello to a named person."""
+    return f"Hello, {name}!"
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(stdio_server(server))
+    server.run(transport="stdio")
 `);
-    await fs.promises.writeFile(path.join(dir, 'README.md'), `# ${name}\n\nMCP server (Python).\n\n## Setup\n\n\`\`\`bash\npip install -r requirements.txt\npython src/server.py\n\`\`\`\n`);
+    await fs.promises.writeFile(path.join(dir, 'README.md'), `# ${name}\n\nMCP server (Python SDK 2.0+).\n\n## Setup\n\n\`\`\`bash\npip install -r requirements.txt\npython src/server.py\n\`\`\`\n`);
 }
 
 async function addTool(): Promise<void> {
-    const toolName = await vscode.window.showInputBox({ title: 'Tool Name', prompt: 'Enter tool name (e.g. get_weather)' });
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+        vscode.window.showWarningMessage('Open an MCP server source file first.');
+        return;
+    }
+    const toolName = await vscode.window.showInputBox({
+        title: 'Tool Name',
+        prompt: 'Enter tool name (e.g. get_weather)',
+        validateInput: value => editor.document.languageId === 'python'
+            ? /^[a-z][a-z0-9_]*$/.test(value) ? undefined : 'Python tool names use lowercase letters, numbers, and underscores.'
+            : /^[a-z][a-z0-9_-]*$/.test(value) ? undefined : 'Use lowercase letters, numbers, underscores, or hyphens.'
+    });
     if (!toolName) { return; }
-    vscode.window.showInformationMessage(`Tool stub for "${toolName}" — open your index.ts/index.js and add it to the handlers.`);
+    const snippet = editor.document.languageId === 'python'
+        ? `\n@server.tool()\nasync def ${toolName}() -> str:\n    """Describe ${toolName}."""\n    return "${toolName} result"\n`
+        : `\n// MCP tool scaffold: add this definition to your tools list and route it in the call handler.\n{\n  name: ${JSON.stringify(toolName)},\n  description: 'Describe ${toolName}',\n  inputSchema: { type: 'object', properties: {} }\n},\n`;
+    await editor.edit(editBuilder => editBuilder.insert(editor.selection.active, snippet));
+    vscode.window.showInformationMessage(`MCP App Starter: inserted a ${toolName} tool scaffold. Wire it into the server handler before running.`);
 }
 
 async function addResource(): Promise<void> {
-    const resourceUri = await vscode.window.showInputBox({ title: 'Resource URI', prompt: 'Enter resource URI (e.g. data://config)' });
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+        vscode.window.showWarningMessage('Open an MCP server source file first.');
+        return;
+    }
+    const resourceUri = await vscode.window.showInputBox({
+        title: 'Resource URI',
+        prompt: 'Enter resource URI (e.g. data://config)',
+        validateInput: value => /^[a-z][a-z0-9+.-]*:\/\/\S+$/i.test(value) ? undefined : 'Enter a URI with a scheme, such as data://config.'
+    });
     if (!resourceUri) { return; }
-    vscode.window.showInformationMessage(`Resource stub for "${resourceUri}" — open your server file and add a resource handler.`);
+    const snippet = editor.document.languageId === 'python'
+        ? `\n# MCP resource scaffold: ${resourceUri}\n# Register this URI with the resource API supported by your installed MCP SDK.\nRESOURCE_URI = ${JSON.stringify(resourceUri)}\n`
+        : `\n// MCP resource scaffold: register this URI with the resource API supported by your installed SDK.\nconst resourceUri = ${JSON.stringify(resourceUri)};\n`;
+    await editor.edit(editBuilder => editBuilder.insert(editor.selection.active, snippet));
+    vscode.window.showInformationMessage(`MCP App Starter: inserted a ${resourceUri} resource scaffold. Complete its SDK registration before running.`);
 }
 
 async function validateConfig(): Promise<void> {
-    const mcpFiles = await vscode.workspace.findFiles('**/mcp.json', '**/node_modules/**');
+    const mcpFiles = await vscode.workspace.findFiles('**/.vscode/mcp.json', '**/node_modules/**');
     if (mcpFiles.length === 0) {
         vscode.window.showWarningMessage('No mcp.json found in workspace.');
         return;
@@ -242,7 +262,7 @@ async function validateConfig(): Promise<void> {
     for (const file of mcpFiles) {
         try {
             const content = (await vscode.workspace.fs.readFile(file)).toString();
-            const config = JSON.parse(content) as { mcpServers?: unknown };
+            const config = JSON.parse(content) as { servers?: unknown };
             const issues = validateMcpConfig(config);
             if (issues.length === 0) {
                 outputChannel.appendLine(`✅ ${file.fsPath} — valid MCP server configuration`);
@@ -257,12 +277,12 @@ async function validateConfig(): Promise<void> {
     vscode.window.showInformationMessage('MCP config validation complete. See output channel.');
 }
 
-function validateMcpConfig(config: { mcpServers?: unknown }): string[] {
-    if (!config.mcpServers || typeof config.mcpServers !== 'object' || Array.isArray(config.mcpServers)) {
-        return ['mcpServers must be an object'];
+function validateMcpConfig(config: { servers?: unknown }): string[] {
+    if (!config.servers || typeof config.servers !== 'object' || Array.isArray(config.servers)) {
+        return ['servers must be an object'];
     }
     const issues: string[] = [];
-    for (const [name, server] of Object.entries(config.mcpServers as Record<string, unknown>)) {
+    for (const [name, server] of Object.entries(config.servers as Record<string, unknown>)) {
         if (!server || typeof server !== 'object') {
             issues.push(`${name} must be a configuration object`);
             continue;
@@ -308,18 +328,28 @@ async function registerWorkspaceServer(): Promise<void> {
 
 async function registerServerConfig(serverName: string, language: string, workspaceRoot: string): Promise<void> {
     const configUri = vscode.Uri.file(path.join(workspaceRoot, '.vscode', 'mcp.json'));
-    let config: { mcpServers: Record<string, unknown> } = { mcpServers: {} };
+    let config: { servers: Record<string, unknown> } = { servers: {} };
     try {
         config = JSON.parse(Buffer.from(await vscode.workspace.fs.readFile(configUri)).toString('utf8'));
-        config.mcpServers ??= {};
-    } catch {
+        if (!config.servers || typeof config.servers !== 'object' || Array.isArray(config.servers)) {
+            vscode.window.showErrorMessage('.vscode/mcp.json must contain a servers object before registering a server.');
+            return;
+        }
+    } catch (err) {
+        try {
+            await vscode.workspace.fs.stat(configUri);
+            vscode.window.showErrorMessage(`Could not read .vscode/mcp.json: ${err instanceof Error ? err.message : String(err)}`);
+            return;
+        } catch {
+            // The config does not exist, so it is safe to create.
+        }
         await vscode.workspace.fs.createDirectory(vscode.Uri.file(path.join(workspaceRoot, '.vscode')));
     }
-    if (config.mcpServers[serverName]) {
+    if (config.servers[serverName]) {
         vscode.window.showErrorMessage(`.vscode/mcp.json already contains a server named "${serverName}".`);
         return;
     }
-    config.mcpServers[serverName] = language === 'python'
+    config.servers[serverName] = language === 'python'
         ? { type: 'stdio', command: 'python', args: [`${serverName}/src/server.py`] }
         : { type: 'stdio', command: 'node', args: [`${serverName}/${language === 'typescript' ? 'dist/index.js' : 'src/index.js'}`] };
     await vscode.workspace.fs.writeFile(configUri, Buffer.from(JSON.stringify(config, null, 2), 'utf8'));

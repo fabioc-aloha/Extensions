@@ -14,7 +14,7 @@ Type a prompt, choose a model, get an image URL, then insert it as Markdown or s
 
 ## Features
 
-- **Multi-model generation** — Flux Schnell, Flux Dev, SDXL, and WAN 2.1 video
+- **Multi-model generation** — Flux Schnell, Flux Dev, Flux Pro, SDXL, Ideogram v2/Turbo, Seedream, and WAN 2.1 video
 - **Insert as Markdown** — generated image URLs inserted at cursor with one click
 - **Persistent local history** — the latest 50 generations remain available across VS Code restarts
 - **Negative prompts** — optionally describe elements to avoid before generating an image

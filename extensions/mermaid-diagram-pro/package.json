@@ -1,7 +1,7 @@
 {
   "name": "mermaid-diagram-pro",
   "displayName": "CX Mermaid Diagram Pro",
-  "description": "Mermaid templates, GitHub compatibility checks, live-editor handoff, and SVG/PNG export workflows",
+  "description": "Mermaid templates, GitHub compatibility checks, live-editor handoff, and optional CLI-based SVG/PNG export",
   "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",

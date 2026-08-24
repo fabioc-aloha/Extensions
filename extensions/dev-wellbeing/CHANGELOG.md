@@ -10,6 +10,7 @@
 ### Changed
 - Clarified local-only session behavior and removed health or diagnostic implications from reminders and documentation.
 - The stopped status-bar item now starts monitoring; the active item opens local session details.
+- Session start and edit-event count now persist locally across VS Code restarts.
 
 ## [0.1.3] — 2026-02-28
 

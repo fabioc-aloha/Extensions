@@ -22,6 +22,7 @@ Hook Studio helps you inspect and draft hook configurations inside VS Code. It p
 | **Workspace validation** | Check current and legacy hook files for JSON, event, action type, and command issues |
 | **Legacy migration** | Copy a legacy hook document into a reviewable `.github/hooks/migrated.json` file without changing the original |
 | **Recipe starters** | Create reviewed starter files for formatting, testing, or audit workflows |
+| **Static dry run** | Inspect commands and OS overrides for one lifecycle event without executing hooks |
 | **Rule Builder** | Edit a hook JSON document with syntax validation and save |
 | **Activity output** | Review Hook Studio editor and file-watch activity; VS Code does not expose hook execution telemetry to extensions |
 | **File Watch** | Detect changes in `.github/hooks/*.json` and legacy `.github/hooks.json` |
@@ -65,8 +66,8 @@ Hook Studio helps you inspect and draft hook configurations inside VS Code. It p
 | Command | Where | Description |
 |---|---|---|
 | `Hook Studio: Open` | Palette · Right-click `hooks.json` | Open the visual editor panel |
-| `Hook Studio: Test Condition` | Palette · Right-click `hooks.json` | Run condition tester with a tool name |
-| `Hook Studio: Import from Alex Hooks` | Palette | Load hooks from Alex architecture |
+| `Hook Studio: Static Dry Run` | Palette · Right-click `hooks.json` | Inspect configured actions for one lifecycle event without executing them |
+| `Hook Studio: Open Legacy Workspace hooks.json` | Palette | Load the legacy single-file workspace configuration |
 | `Hook Studio: Export hooks.json` | Palette · Right-click `hooks.json` | Export to a custom path |
 | `Hook Studio: Open Execution Log` | Palette · Right-click `hooks.json` | Show log view in Explorer sidebar |
 | `Hook Studio: Validate Workspace Hooks` | Palette · Right-click `hooks.json` | Validate current and legacy workspace hook files |

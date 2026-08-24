@@ -122,8 +122,8 @@ async function extractColors(uri?: vscode.Uri): Promise<void> {
 
 function updatePreview(svg: string): void {
     if (!previewPanel) { return; }
-    const sanitized = svg.replace(/<script[\s\S]*?<\/script>/gi, '');
-    previewPanel.webview.html = `<!DOCTYPE html><html><body style="background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;">${sanitized}</body></html>`;
+    const dataUri = `data:image/svg+xml;base64,${Buffer.from(svg, 'utf8').toString('base64')}`;
+    previewPanel.webview.html = `<!DOCTYPE html><html><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:;"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="background:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;"><img src="${dataUri}" alt="SVG preview" style="max-width:100%;max-height:100vh;"></body></html>`;
 }
 
 export function deactivate(): void {

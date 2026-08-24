@@ -71,6 +71,11 @@
           "group": "1_analysis@1"
         },
         {
+          "command": "voiceReader.readDocument",
+          "when": "editorFocus",
+          "group": "1_analysis@2"
+        },
+        {
           "command": "voiceReader.stop",
           "when": "editorFocus",
           "group": "4_info@1"
@@ -78,7 +83,11 @@
         {
           "command": "voiceReader.readFile",
           "when": "!explorerResourceIsFolder",
-          "group": "1_analysis@2"
+          "group": "1_analysis@3"
+        },
+        {
+          "command": "voiceReader.setVoice",
+          "group": "4_info@2"
         }
       ]
     },

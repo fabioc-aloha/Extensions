@@ -1,180 +1,96 @@
-# Extensions Monorepo — Audit Report
+# Extensions Portfolio: Current State and Future Vision
 
-**Date**: February 27, 2026
-**Scope**: 16 extensions | **Auditor**: Alex
-**Publisher**: `fabioc-aloha`
+**Audit date:** 2026-08-24
+**Scope:** 16 extension v0.2 source candidates and monorepo release tooling
+**Publication status:** Source prepared; Marketplace publication intentionally pending
 
----
+## Current State
 
-## Executive Summary
+The end-to-end audit compared each extension's manifest, README, CHANGELOG,
+source, dependencies, and packaged VSIX behavior against this report and
+`MARKET-ANALYSIS-AND-OPPORTUNITIES.md`.
 
-| Dimension | Findings | Target | Grade |
-|---|---|---|:---:|
-| 1. Console Statements | 2 found, 2 legitimate | <20 | ✅ A+ |
-| 2. Dead Code | 0 orphaned commands | 0 | ✅ A+ |
-| 3. Sync Blocking I/O | 0 | 0 | ✅ A+ |
-| 4. Menu / Command Coverage | 70/70 commands match | 100% | ✅ A+ |
-| 5. Dependencies | 0 unused | 0 unused | ✅ A+ |
-| 6. Config / Manifest | 0 mismatches | 0 | ✅ A+ |
-| Compile Health | 0 errors, all 16 pass | 0 errors | ✅ A+ |
+Confirmed defects were corrected in the working tree:
 
-**Overall Grade: A+** — All 7 dimensions at A+.
+- Shell-string invocation was removed from Pandoc and Marp executable checks.
+- PowerShell speech values now cross the process boundary through environment
+  variables rather than generated command text.
+- Mermaid and SVG webview trust boundaries were hardened.
+- Replicate generation and downloads are cancellable.
+- Hook Studio now has current-layout validation, migration, recipes, and a
+  static lifecycle-event dry run.
+- MCP App Starter inserts real starter snippets, validates local configuration,
+  registers workspace servers, and uses the current Python SDK 2.0 scaffold.
+- SVG to PNG now stages the cross-platform WASM renderer instead of a
+  build-host-specific native binary.
+- Dev Wellbeing persists and can reset its minimal local session baseline.
+- Retired Marketplace Shields endpoints were removed from every README.
+- The npm workspace lockfile and direct release dependencies were refreshed.
 
----
+## Measured Validation
 
-## Extension Inventory
+| Gate | Result |
+|---|---|
+| TypeScript compile for shared + 16 extensions | Passed |
+| Per-extension package script | Passed - 16/16 v0.2 VSIX artifacts produced |
+| Runtime dependency inclusion | Verified by VSIX inspection for bundled packages |
+| PPTX dependency | Bundled into `out/extension.js`; no external runtime require |
+| Marketplace publication | Not run |
+| Git tags | Not created because v0.2 is not published |
 
-| Extension | Version | Published |
-|---|:---:|:---:|
-| ai-voice-reader | 0.1.5 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
-| brandfetch-logo-fetcher | 0.1.4 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
-| dev-wellbeing | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
-| focus-timer | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |
-| gamma-slide-assistant | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.gamma-slide-assistant) |
-| hook-studio | 0.1.7 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.hook-studio) |
-| knowledge-decay-tracker | 0.1.5 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.knowledge-decay-tracker) |
-| markdown-to-word | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-markdown-to-word) |
-| mcp-app-starter | 0.1.8 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mcp-app-starter) |
-| mermaid-diagram-pro | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.mermaid-diagram-pro) |
-| pptx-builder | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder) |
-| replicate-image-studio | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio) |
-| secret-guard | 0.1.4 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-secret-guard) |
-| svg-to-png | 0.1.0 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-to-png) |
-| svg-toolkit | 0.1.1 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.svg-toolkit) |
-| workspace-watchdog | 0.1.7 | ✅ [Marketplace](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-workspace-watchdog) |
+## Dependency Audit
 
----
+`pptxgenjs` currently depends on `image-size`, whose npm advisory applies to
+formats not consumed by the v0.2 text-only PPTX workflow. The dependency is
+overridden to the latest available `image-size` release, but npm still reports
+the upstream advisory because no non-vulnerable release is currently
+recognized. This is a documented residual risk, not silently treated as clean.
 
-## Detailed Findings
+The remaining npm audit findings are in development/release tooling. They are
+not bundled into extension runtime artifacts. Upgrade them as fixed upstream
+versions become available.
 
-### 1. Console Statements ✅
+Every extension manifest is versioned `0.2.0`; that version identifies a source
+candidate, not a published Marketplace release.
 
-**Total**: 2 statements in 1 extension — both legitimate.
+| Portfolio area | Current v0.2 baseline |
+|---|---|
+| Document and presentation | Folder DOCX conversion, native preview, themed PPTX output, and hybrid local/Gamma presentation generation |
+| Visual asset workflows | Icon-set export, cross-platform SVG rendering, safe live preview, colors, Mermaid compatibility, and local export |
+| Developer workflows | Current Copilot hook validation, MCP workspace registration, local secret scanning, Git/TODO health signals |
+| Local productivity | Persistent focus sessions, transparent reminder data, and knowledge freshness scoring |
+| Reliability and safety | Safe process boundaries, webview isolation, cancellable generations, SecretStorage credentials, package safeguards |
 
-| File | Line | Type | Action |
-|---|:---:|---|:---:|
-| `mcp-app-starter/src/extension.ts` | 157 | `console.error` — error handling | Keep |
-| `mcp-app-starter/src/extension.ts` | 186 | `console.error` — error handling | Keep |
+## Future Vision
 
-No debug scaffolding, no variable dumps. Nothing to remove.
+The next release cycle should expand only after v0.2 smoke testing and
+Marketplace feedback establish which workflows create durable value.
 
----
+| Focus | Future direction | Boundary |
+|---|---|---|
+| Evidence-first content | Word-like DOCX preview, richer PPTX visual composition, and post-export review | Do not add cloud conversion without a clear user benefit |
+| Visual production | Offline Mermaid export, SVG optimization, brand palettes, and controlled asset pipelines | Keep SVG Toolkit authoring separate from SVG to PNG rasterization |
+| Agent safety | Form-based hook authoring, MCP Inspector support, pre-commit secret controls, and agent-session health | Treat native VS Code capabilities as baseline, not competition to clone |
+| Durable local work | Replicate gallery, decay dashboard, focus streaks, and optional wellbeing coordination | Preserve local-only state and explicit reset controls |
+| Marketplace learning | Workflow screenshots, release notes, and 28-day adoption/support review | Publish a measured batch; do not release all extensions blindly |
 
-### 2. Dead Code ✅
+`MARKET-ANALYSIS-AND-OPPORTUNITIES.md` preserves the competitive evidence,
+install snapshot, and research ledger that informs these choices.
 
-**Orphaned commands**: 0
+## Publication Gates Still Required
 
-All 70 commands verified — every `registerCommand()` in source has a matching entry in `package.json` and vice versa.
+1. Perform targeted manual VSIX smoke tests from `TEST-GUIDE.md`.
+2. Capture current workflow evidence for Marketplace pages where a screenshot
+   materially improves comprehension.
+3. Choose the explicit filtered publication set.
+4. Create and push extension-version tags only after each Marketplace publish
+   succeeds.
 
-| Extension | Commands | Status |
-|---|:---:|:---:|
-| ai-voice-reader | 5 | ✅ |
-| brandfetch-logo-fetcher | 4 | ✅ |
-| dev-wellbeing | 4 | ✅ |
-| focus-timer | 5 | ✅ |
-| gamma-slide-assistant | 5 | ✅ |
-| hook-studio | 5 | ✅ |
-| knowledge-decay-tracker | 4 | ✅ |
-| markdown-to-word | 4 | ✅ |
-| mcp-app-starter | 5 | ✅ |
-| mermaid-diagram-pro | 4 | ✅ |
-| pptx-builder | 4 | ✅ |
-| replicate-image-studio | 5 | ✅ |
-| secret-guard | 4 | ✅ |
-| svg-to-png | 3 | ✅ |
-| svg-toolkit | 5 | ✅ |
-| workspace-watchdog | 5 | ✅ |
+## Residual Risks and Non-Defects
 
----
-
-### 3. Sync Blocking I/O ✅
-
-**Total**: 0 synchronous operations.
-
-All file system calls across all 16 extensions use async APIs (`fs.promises.*`, `vscode.workspace.fs.*`). Refactored in sprint Feb 25, 2026:
-
-| Extension | Refactored | Operations |
-|---|:---:|---|
-| mcp-app-starter | ✅ v0.1.7 | `writeFileSync` × 11, `mkdirSync` × 2, `existsSync` × 2 → `fs.promises.*` |
-| svg-to-png | ✅ v0.1.0 | `readFileSync`, `writeFileSync` → `fs.promises.*` |
-| markdown-to-word | ✅ | Already async (`fs.promises.access`) |
-| knowledge-decay-tracker | ✅ | Already async (`vscode.workspace.fs.stat`) |
-| svg-toolkit | ✅ | Already async (`vscode.workspace.fs.readFile`) |
-
----
-
-### 4. Menu & Command Coverage ✅
-
-**70 / 70 commands structurally verified.** Source handlers and `package.json` declarations are in perfect sync across all 16 extensions.
-
-Runtime smoke testing is covered in [TEST-GUIDE.md](TEST-GUIDE.md) — 16/16 extensions available on Marketplace for live install testing.
-
----
-
-### 5. Dependencies ✅
-
-**3 runtime dependencies declared**, all confirmed used:
-
-| Extension | Package | Usage Pattern | Status |
-|---|---|---|:---:|
-| pptx-builder | `pptxgenjs` | `require('pptxgenjs')` — dynamic | ✅ |
-| svg-to-png | `@resvg/resvg-js` | `require('@resvg/resvg-js')` — Rust native | ✅ |
-| replicate-image-studio | `@alex-extensions/shared` | `import` — workspace dep | ✅ |
-
-Both `require()` patterns are intentional: `pptxgenjs` for dynamic loading, `@resvg/resvg-js` for native Rust binding compatibility.
-
----
-
-### 6. Config & Manifest ✅
-
-8 extensions declare configuration properties. All `getConfiguration()` calls reference properly declared sections.
-
-| Extension | Config Keys | Status |
-|---|:---:|:---:|
-| ai-voice-reader | 3 | ✅ |
-| dev-wellbeing | 4 | ✅ |
-| focus-timer | 3 | ✅ |
-| knowledge-decay-tracker | 2 | ✅ |
-| markdown-to-word | 3 | ✅ |
-| secret-guard | 3 | ✅ |
-| svg-to-png | 3 | ✅ |
-| *(8 others)* | 0 | ✅ |
-
-Zero unregistered config updates, zero silent runtime failures.
-
----
-
-### Compile Health ✅
-
-```
-npm run compile:all — exit code 0
-All 16 extensions: 0 TypeScript errors
-Shared library: 0 TypeScript errors
-```
-
----
-
-## Remediation Plan
-
-✅ **All items resolved.** The monorepo is at A+ across all 7 dimensions.
-
----
-
-## Post-Remediation Checklist
-
-- [x] `npm run compile:all` → 0 errors
-- [x] All sync I/O refactored to async (`fs.promises.*`)
-- [x] Version bumps applied (mcp-app-starter 0.1.7)
-- [x] CHANGELOG entries added
-- [ ] Publish mcp-app-starter v0.1.7 to Marketplace
-- [ ] Publish gamma-slide-assistant v0.1.0 (rate-limit pending)
-- [ ] Publish svg-to-png v0.1.0 (rate-limit pending)
-
----
-
-## Notes
-
-- All 16 extensions use `CX ` display name prefix for brand identity (e.g. **CX Hook Studio**, **CX AI Voice Reader**).
-- 4 extensions use `cx-` in their Marketplace ID (focus-timer, markdown-to-word, secret-guard, workspace-watchdog) due to name collisions at first publish.
-- `svg-to-png` uses `resvg-js` (Rust renderer) for all SVG→PNG conversion — never ImageMagick (corrupts gradients/paths).
-- All 16/16 extensions are live on the Marketplace as of Feb 27, 2026.
+- Top-level `await` in the generated JavaScript MCP template is valid because
+  the generated project declares `"type": "module"`.
+- `pptxgenjs` is bundled by esbuild; the VSIX does not need a separate
+  `node_modules/pptxgenjs` directory.
+- Focus Timer intentionally persists completed sessions only; stopped partial
+  sessions are not represented as completed work.

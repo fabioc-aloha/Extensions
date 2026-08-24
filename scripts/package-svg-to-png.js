@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Stage resvg's platform binding beneath out/ so VS Code can resolve it at
- * runtime without relying on VSCE's workspace-unaware dependency detection.
+ * Stage resvg's cross-platform WASM package beneath out/ so VS Code can
+ * resolve the renderer without a platform-specific native VSIX.
  */
 import { execFileSync } from 'child_process';
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from 'fs';
+import { cpSync, existsSync, mkdirSync, rmSync } from 'fs';
 import { dirname, join } from 'path';
 
 const REPO_ROOT = join(import.meta.dirname, '..');
@@ -29,18 +29,8 @@ const copyPackage = packageName => {
     cpSync(source, destination, { recursive: true });
 };
 
-const resvgManifestPath = join(ROOT_NODE_MODULES, '@resvg', 'resvg-js', 'package.json');
-const resvgManifest = JSON.parse(readFileSync(resvgManifestPath, 'utf8'));
-const availablePlatformBindings = Object.keys(resvgManifest.optionalDependencies)
-    .filter(packageName => existsSync(join(ROOT_NODE_MODULES, ...packageName.split('/'))));
-
-if (availablePlatformBindings.length === 0) {
-    throw new Error('No resvg platform binding is installed in the workspace.');
-}
-
 try {
-    copyPackage('@resvg/resvg-js');
-    availablePlatformBindings.forEach(copyPackage);
+    copyPackage('@resvg/resvg-wasm');
 
     const options = { cwd: EXTENSION_DIR, stdio: 'inherit' };
     if (process.platform === 'win32') {

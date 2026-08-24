@@ -22,8 +22,9 @@ VS Code 1.109 shipped stable MCP server support. Building an MCP server means se
 | **JavaScript template** | Minimal ESM server for lightweight use |
 | **Python template** | Server using the official `mcp` package |
 | **Workspace registration** | Optionally register a newly scaffolded server in `.vscode/mcp.json` |
-| **Validate Config** | Check `mcpServers`, transport type, command, arguments, and HTTP URL fields |
-| **Right-click menus** | Right-click a **folder** → New MCP Server; right-click `.ts/.js/.py` → Add Tool or Add Resource; right-click `.json` → Validate Config |
+| **Validate Config** | Check `servers`, transport type, command, arguments, and HTTP URL fields |
+| **Tool/resource scaffolds** | Insert language-aware starter snippets at the active cursor for completion against your installed SDK |
+| **Right-click menus** | Right-click a **folder** → New MCP Server; right-click `.ts/.js/.py` → insert a tool or resource scaffold; right-click `.json` → Validate Config |
 
 ## Usage
 
@@ -38,7 +39,8 @@ VS Code 1.109 shipped stable MCP server support. Building an MCP server means se
 my-mcp-server/
 ├── src/
 │   └── index.ts      ← Server entry point with hello tool
-├── mcp.json          ← VS Code MCP config
+├── .vscode/
+│   └── mcp.json      ← VS Code MCP config
 ├── package.json
 ├── tsconfig.json
 └── README.md
@@ -49,9 +51,9 @@ my-mcp-server/
 | Command | Where | Description |
 |---|---|---|
 | `MCP App Starter: New MCP Server` | Palette · Right-click folder | Full wizard to create an MCP server project |
-| `MCP App Starter: Add Tool` | Palette · Right-click `.ts/.js/.py` | Guided stub for adding a new tool |
-| `MCP App Starter: Add Resource` | Palette · Right-click `.ts/.js/.py` | Guided stub for adding a new resource |
-| `MCP App Starter: Validate MCP Server Config` | Palette · Right-click `.json` | Validate mcp.json files in workspace |
+| `MCP App Starter: Insert Tool Scaffold` | Palette · Right-click `.ts/.js/.py` | Insert a starter definition at the active cursor |
+| `MCP App Starter: Insert Resource Scaffold` | Palette · Right-click `.ts/.js/.py` | Insert a resource-registration starter at the active cursor |
+| `MCP App Starter: Validate MCP Server Config` | Palette · Right-click `.json` | Validate `.vscode/mcp.json` files in workspace |
 | `MCP App Starter: Register Server in Workspace` | Palette · Right-click folder | Add a local stdio server to `.vscode/mcp.json` |
 | `MCP App Starter: Open MCP Documentation` | Palette | Open modelcontextprotocol.io |
 

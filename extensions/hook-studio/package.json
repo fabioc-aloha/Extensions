@@ -49,11 +49,11 @@
       },
       {
         "command": "hookStudio.testCondition",
-        "title": "Hook Studio: Test Hook Condition"
+        "title": "Hook Studio: Static Dry Run"
       },
       {
         "command": "hookStudio.importFromAlex",
-        "title": "Hook Studio: Import hooks.json from Alex"
+        "title": "Hook Studio: Open Legacy Workspace hooks.json"
       },
       {
         "command": "hookStudio.exportHooks",

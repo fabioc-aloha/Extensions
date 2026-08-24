@@ -93,7 +93,7 @@ if (publish) {
     for (const { directory, vsixPath } of packaged) {
         try {
             console.log(`${dryRun ? 'Would publish' : 'Publishing'} ${directory}...`);
-            run(npx, ['@vscode/vsce', 'publish', '--packagePath', vsixPath, '--skip-duplicate'], EXTENSIONS_DIR);
+            run(npx, ['@vscode/vsce', 'publish', '--packagePath', vsixPath], EXTENSIONS_DIR);
             console.log(`  ${dryRun ? 'Would publish' : 'Published'} ${directory}`);
         } catch (err) {
             console.error(`  Failed ${directory}: ${err.message}`);

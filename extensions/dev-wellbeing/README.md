@@ -16,7 +16,7 @@ Runs quietly in the background and fires reminders at configurable intervals. Wh
 - **Posture reminders** — gentle nudges to sit up and unclench shoulders
 - **Screen-break reminders** — configurable prompts to look away from the editor
 - **Hydration nudges** — water reminders at a configurable interval
-- **Session details** — monitoring duration and document edit-event count in the output panel
+- **Persistent local session details** — monitoring duration and document edit-event count survive VS Code restarts
 - **Auto-start** — activates on VS Code launch when devWellbeing.enabled is true
 
 ## Requirements
@@ -39,12 +39,13 @@ No external tools required. Works entirely within VS Code using native notificat
 | `Dev Wellbeing: Stop Monitoring` | Stop all reminders |
 | `Dev Wellbeing: Show Session Stats` | Local monitoring duration + document edit events |
 | `Dev Wellbeing: Configure Thresholds` | Open settings |
+| `Dev Wellbeing: Reset Local Session Details` | Clear the locally stored session baseline and edit-event count |
 
 Auto-starts on VS Code launch if `devWellbeing.enabled` is `true`.
 
 ## Privacy and scope
 
-Dev Wellbeing stores no session activity and makes no health, stress, or diagnostic inference. The displayed edit-event count is not a keystroke count; it is a local count of VS Code text-document change events while monitoring is active.
+Dev Wellbeing stores only the local session start time and document edit-event count in VS Code global extension storage. It makes no health, stress, or diagnostic inference and sends no data anywhere. The edit-event count is not a keystroke count.
 
 ---
 

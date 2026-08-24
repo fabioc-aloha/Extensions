@@ -38,11 +38,11 @@
       },
       {
         "command": "mcpAppStarter.addTool",
-        "title": "MCP App Starter: Add Tool to MCP Server"
+        "title": "MCP App Starter: Insert Tool Scaffold"
       },
       {
         "command": "mcpAppStarter.addResource",
-        "title": "MCP App Starter: Add Resource to MCP Server"
+        "title": "MCP App Starter: Insert Resource Scaffold"
       },
       {
         "command": "mcpAppStarter.validate",

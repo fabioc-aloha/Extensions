@@ -60,8 +60,9 @@ A family of standalone VS Code extensions spun off from the [Alex Cognitive Arch
 ```
 Extensions/
 ├── README.md                   — This file
-├── ROADMAP.md                  — Priority, timeline, status per extension
-├── TODO.md                     — Current sprint tasks
+├── AUDIT-REPORT.md             — Current v0.2 baseline, audit evidence, and future vision
+├── MARKET-ANALYSIS-AND-OPPORTUNITIES.md — Competitive evidence and opportunity ledger
+├── ROADMAP.md                  — Current release and post-v0.2 roadmap
 ├── CONTRIBUTING.md             — How to contribute and code standards
 ├── package.json                — Workspace root (npm workspaces)
 ├── tsconfig.base.json          — Shared TypeScript configuration

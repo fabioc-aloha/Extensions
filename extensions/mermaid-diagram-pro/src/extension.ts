@@ -3,6 +3,7 @@ import * as cp from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
+import { randomBytes } from 'crypto';
 
 let outputChannel: vscode.OutputChannel;let previewPanel: vscode.WebviewPanel | undefined;
 const GITHUB_UNSUPPORTED_TYPES = new Set(['c4', 'timeline']);
@@ -210,6 +211,7 @@ function openInBrowser(): void {
 }
 
 function getMermaidhtml(diagram: string, type: string): string {
+    const nonce = randomBytes(16).toString('base64');
     const escaped = diagram
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -219,7 +221,7 @@ function getMermaidhtml(diagram: string, type: string): string {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src https://cdn.jsdelivr.net 'nonce-${nonce}'; style-src 'unsafe-inline'; img-src data: blob:;">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { box-sizing: border-box; }
@@ -255,11 +257,11 @@ function getMermaidhtml(diagram: string, type: string): string {
   </div>
   <div id="error"></div>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script>
+  <script nonce="${nonce}">
     mermaid.initialize({
       startOnLoad: false,
       theme: 'default',
-      securityLevel: 'loose',
+      securityLevel: 'strict',
       fontFamily: 'Segoe UI, sans-serif'
     });
     async function render() {

@@ -193,11 +193,14 @@ export class ReplicateClient {
         return response.json() as Promise<ReplicatePrediction>;
     }
 
-    async waitForPrediction(predictionId: string, timeoutMs = 120_000): Promise<ReplicatePrediction> {
+    async waitForPrediction(predictionId: string, timeoutMs = 120_000, signal?: AbortSignal): Promise<ReplicatePrediction> {
         const start = Date.now();
         const pollIntervalMs = 1000;
 
         while (Date.now() - start < timeoutMs) {
+            if (signal?.aborted) {
+                throw new Error('Generation cancelled.');
+            }
             const response = await fetch(`${this.baseUrl}/predictions/${predictionId}`, {
                 headers: { 'Authorization': `Bearer ${this.apiToken}` },
             });
@@ -218,9 +221,16 @@ export class ReplicateClient {
         throw new Error(`Prediction timed out after ${timeoutMs}ms`);
     }
 
-    async generate(model: SupportedModel, input: ReplicateInput): Promise<string[]> {
+    async generate(model: SupportedModel, input: ReplicateInput, signal?: AbortSignal): Promise<string[]> {
         const prediction = await this.createPrediction(model, input);
-        const completed = await this.waitForPrediction(prediction.id);
+        const cancel = () => { void this.cancelPrediction(prediction.id); };
+        signal?.addEventListener('abort', cancel, { once: true });
+        let completed: ReplicatePrediction;
+        try {
+            completed = await this.waitForPrediction(prediction.id, 120_000, signal);
+        } finally {
+            signal?.removeEventListener('abort', cancel);
+        }
 
         const output = completed.output;
         if (!output) { return []; }

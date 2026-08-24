@@ -195,10 +195,12 @@ async function generateVideo(context: vscode.ExtensionContext, selectedText = ''
     if (!prompt) { return; }
 
     await vscode.window.withProgress(
-        { location: vscode.ProgressLocation.Notification, title: 'Generating video (2-5 min)...', cancellable: false },
-        async () => {
+        { location: vscode.ProgressLocation.Notification, title: 'Generating video (2-5 min)...', cancellable: true },
+        async (_progress, token) => {
+            const controller = new AbortController();
+            token.onCancellationRequested(() => controller.abort());
             try {
-                const urls = await c.generate('wan-2-1', { prompt });
+                const urls = await c.generate('wan-2-1', { prompt }, controller.signal);
                 const url = urls[0] ?? '';
                 await addHistory(context, { prompt, urls, model: 'wan-2-1', createdAt: new Date().toISOString() });
                 outputChannel.appendLine(`✅ Video generated: ${url}`);
@@ -206,6 +208,10 @@ async function generateVideo(context: vscode.ExtensionContext, selectedText = ''
                     if (action && url) { vscode.env.openExternal(vscode.Uri.parse(url)); }
                 });
             } catch (err) {
+                if (token.isCancellationRequested) {
+                    vscode.window.showInformationMessage('Replicate video generation cancelled.');
+                    return;
+                }
                 vscode.window.showErrorMessage(`Video generation failed: ${err}`);
                 outputChannel.appendLine(`❌ Video error: ${err}`);
             }
@@ -228,10 +234,16 @@ async function runGeneration(
         : `Generating with ${modelInfo.label} (${modelInfo.cost})...`;
 
     await vscode.window.withProgress(
-        { location: vscode.ProgressLocation.Notification, title, cancellable: false },
-        async () => {
+        { location: vscode.ProgressLocation.Notification, title, cancellable: true },
+        async (_progress, token) => {
+            const controller = new AbortController();
+            token.onCancellationRequested(() => controller.abort());
             try {
-                const urls = await c.generate(modelKey, { prompt, aspect_ratio: aspectRatio, negative_prompt: negativePrompt || undefined });
+                const urls = await c.generate(
+                    modelKey,
+                    { prompt, aspect_ratio: aspectRatio, negative_prompt: negativePrompt || undefined },
+                    controller.signal
+                );
                 const url = urls[0] ?? '';
                 await addHistory(context, { prompt, urls, model: modelKey, aspectRatio, createdAt: new Date().toISOString() });
                 outputChannel.appendLine(`✅ [${modelInfo.label}] ${aspectRatio} "${prompt.slice(0, 60)}..." → ${url}`);
@@ -252,6 +264,10 @@ async function runGeneration(
                     }
                 });
             } catch (err) {
+                if (token.isCancellationRequested) {
+                    vscode.window.showInformationMessage('Replicate image generation cancelled.');
+                    return;
+                }
                 const msg = err instanceof Error ? err.message : String(err);
                 vscode.window.showErrorMessage(`Generation failed: ${msg}`);
                 outputChannel.appendLine(`❌ Error [${modelInfo.label}]: ${msg}`);
@@ -300,19 +316,30 @@ async function saveLastToFile(): Promise<void> {
     });
     if (!saveUri) { return; }
 
-    await vscode.window.withProgress(
-        { location: vscode.ProgressLocation.Notification, title: 'Downloading image...', cancellable: false },
-        async () => {
-            const response = await fetch(url);
-            if (!response.ok) { throw new Error(`HTTP ${response.status}`); }
-            const buffer = Buffer.from(await response.arrayBuffer());
-            await fs.promises.writeFile(saveUri.fsPath, buffer);
-            outputChannel.appendLine(`💾 Saved: ${saveUri.fsPath}`);
-            vscode.window.showInformationMessage(`✅ Saved to ${path.basename(saveUri.fsPath)}`, 'Reveal').then(c => {
-                if (c) { vscode.commands.executeCommand('revealFileInOS', saveUri); }
-            });
+    try {
+        await vscode.window.withProgress(
+            { location: vscode.ProgressLocation.Notification, title: 'Downloading image...', cancellable: true },
+            async (_progress, token) => {
+                const controller = new AbortController();
+                token.onCancellationRequested(() => controller.abort());
+                const response = await fetch(url, { signal: controller.signal });
+                if (!response.ok) { throw new Error(`HTTP ${response.status}`); }
+                const buffer = Buffer.from(await response.arrayBuffer());
+                await fs.promises.writeFile(saveUri.fsPath, buffer);
+                outputChannel.appendLine(`💾 Saved: ${saveUri.fsPath}`);
+                vscode.window.showInformationMessage(`✅ Saved to ${path.basename(saveUri.fsPath)}`, 'Reveal').then(c => {
+                    if (c) { vscode.commands.executeCommand('revealFileInOS', saveUri); }
+                });
+            }
+        );
+    } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+            vscode.window.showInformationMessage('Replicate image download cancelled.');
+            return;
         }
-    );
+        const message = err instanceof Error ? err.message : String(err);
+        vscode.window.showErrorMessage(`Replicate image download failed: ${message}`);
+    }
 }
 
 function viewHistory(): void {

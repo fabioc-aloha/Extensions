@@ -72,7 +72,8 @@ async function createPresentation(): Promise<void> {
             if (c) { vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(outputPath)); }
         });
     } catch (err) {
-        vscode.window.showErrorMessage(`PPTX Builder error: ${err}`);
+        const message = err instanceof Error ? err.message : String(err);
+        vscode.window.showErrorMessage(`PPTX Builder error: ${message}`);
     }
 }
 

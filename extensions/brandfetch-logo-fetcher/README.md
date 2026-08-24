@@ -5,7 +5,7 @@
 **Fetch company logos by domain with your Brandfetch or Logo.dev API key and insert formatted references.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
-[![API key](https://img.shields.io/badge/Brandfetch%20API%20key-optional-f59e0b)](https://brandfetch.com/developers)
+[![API key](https://img.shields.io/badge/Provider%20API%20key-required-dc2626)](https://brandfetch.com/developers)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
 
 ---

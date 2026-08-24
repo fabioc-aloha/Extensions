@@ -4,8 +4,9 @@
 
 This document summarizes a source-level review of the 16 published
 `fabioc-aloha` VS Code extensions and a competitive scan performed on
-2026-08-23. It complements [PLAN.md](./PLAN.md): this document explains the
-market evidence and opportunities; the plan defines the execution order.
+2026-08-23. It complements [AUDIT-REPORT.md](./AUDIT-REPORT.md): this document
+explains the market evidence and opportunities; the audit records the current
+baseline and future portfolio vision.
 
 Marketplace install counts are the publisher snapshot supplied on 2026-08-23.
 They are useful for prioritization but should be refreshed before setting
@@ -40,20 +41,20 @@ recipes, and local-first knowledge freshness.
 |---|---:|---|
 | CX Markdown to Word | 547 | Strongest product-market signal |
 | CX SVG to PNG | 358 | Strong technical foundation and stale competitor opening |
-| CX PPTX Builder | 334 | Demand exists; output quality must improve |
-| CX AI Voice Reader | 327 | Clear document proof-reading niche |
-| CX Gamma Slide Assistant | 116 | Strategic overlap and naming issue |
-| CX Hook Studio | 114 | Valuable early adopter base but schema/platform risk |
-| CX Mermaid Diagram Pro | 75 | Native VS Code preview changed the category |
-| CX Replicate Image Studio | 44 | Promising workflow, needs durable UX |
-| CX SVG Toolkit | 28 | Large delivery gap versus claimed scope |
-| CX Brandfetch Logo Fetcher | 20 | Niche workflow with API reliability risk |
-| CX MCP App Starter | 7 | Low installs, high ecosystem upside |
-| CX Workspace Watchdog | 7 | Advertised core signals are not yet populated |
-| CX SecretGuard | 4 | Crowded market; trust and precision required |
-| CX Dev Wellbeing | 2 | Unique idea not yet implemented |
-| CX Knowledge Decay Tracker | 2 | Uncontested niche with fixable core defects |
-| CX Focus Timer | 0 | Fragmented category; local-first differentiation possible |
+| CX PPTX Builder | 334 | v0.2 themes and continuation slides prepared |
+| CX AI Voice Reader | 327 | v0.2 proof-reading reliability prepared |
+| CX Gamma Slide Assistant | 116 | v0.2 hybrid local/Gamma workflow prepared |
+| CX Hook Studio | 114 | v0.2 validation, migration, recipes, and dry run prepared |
+| CX Mermaid Diagram Pro | 75 | v0.2 compatibility workflow prepared |
+| CX Replicate Image Studio | 44 | v0.2 durable and cancellable workflow prepared |
+| CX SVG Toolkit | 28 | v0.2 live workbench baseline prepared |
+| CX Brandfetch Logo Fetcher | 20 | v0.2 provider-key reliability prepared |
+| CX MCP App Starter | 7 | v0.2 local development loop prepared |
+| CX Workspace Watchdog | 7 | v0.2 core signals and Explorer tree prepared |
+| CX SecretGuard | 4 | v0.2 credibility and local ignore controls prepared |
+| CX Dev Wellbeing | 2 | v0.2 transparent local reminders prepared |
+| CX Knowledge Decay Tracker | 2 | v0.2 scoring repair prepared |
+| CX Focus Timer | 0 | v0.2 persistent annotated sessions prepared |
 
 The deprecated Alex extension has 99 installs but is outside this repository.
 It is a discovery and migration channel, not a product to revive.
@@ -71,12 +72,12 @@ Marketplace.
 | CX AI Voice Reader | 2026-08-23 | 2026-08-23 | v0.2 local voice and playback reliability prepared |
 | CX PPTX Builder | 2026-08-23 | 2026-08-23 | v0.2 themes and continuation slides prepared |
 | CX Gamma Slide Assistant | 2026-08-23 | 2026-08-23 | v0.2 Gamma API generation and local Marp workflow prepared |
-| CX Hook Studio | 2026-08-23 | 2026-08-24 | Retained at 114 installs; native-editor gap analysis and v0.2 validation work in progress |
-| CX Mermaid Diagram Pro | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; offline export and diagnostics work pending |
-| CX Replicate Image Studio | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; persistence and gallery work pending |
-| CX SVG Toolkit | 2026-08-23 | 2026-08-23 | Metadata refreshed; SVG workbench work pending |
-| CX Brandfetch Logo Fetcher | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; API reliability work pending |
-| CX MCP App Starter | 2026-08-23 | 2026-08-23 | Documentation and metadata refreshed; development-loop work pending |
+| CX Hook Studio | 2026-08-23 | 2026-08-24 | v0.2 validation, migration, recipes, and static dry run prepared |
+| CX Mermaid Diagram Pro | 2026-08-23 | 2026-08-24 | v0.2 `.mmd` and GitHub compatibility workflow prepared |
+| CX Replicate Image Studio | 2026-08-23 | 2026-08-24 | v0.2 persistent history, negative prompts, and cancellation prepared |
+| CX SVG Toolkit | 2026-08-23 | 2026-08-24 | v0.2 live safe preview and color extraction prepared |
+| CX Brandfetch Logo Fetcher | 2026-08-23 | 2026-08-24 | v0.2 user-owned provider credentials and format-aware insertion prepared |
+| CX MCP App Starter | 2026-08-23 | 2026-08-24 | v0.2 workspace registration, structural validation, and insertion starters prepared |
 | CX Workspace Watchdog | 2026-08-23 | 2026-08-24 | v0.2 local Git/TODO signals, Explorer tree, and workspace-storage migration prepared |
 | CX SecretGuard | 2026-08-23 | 2026-08-24 | v0.2 13-pattern credibility correction, Azure precision fix, and local ignore controls prepared |
 | CX Knowledge Decay Tracker | 2026-08-23 | 2026-08-24 | v0.2 tag parsing, local activity/review scoring, and startup scan prepared |
@@ -204,7 +205,8 @@ clear:
 ## Recommended Operating Cadence
 
 1. Run the portfolio credibility baseline.
-2. Deliver the next extension in the order in [PLAN.md](./PLAN.md).
+2. Select the next investment from the opportunity map and the current audit
+   baseline.
 3. Before coding, verify the competitor and platform assumptions for that
    extension.
 4. Release one focused v0.2 outcome with visual evidence and a clear
@@ -226,4 +228,4 @@ clear:
 - [Snyk Security](https://marketplace.visualstudio.com/items?itemName=snyk-security.snyk-vulnerability-scanner)
 - [Trivy for VS Code](https://marketplace.visualstudio.com/items?itemName=aquasecurityofficial.trivy-vulnerability-scanner)
 - Local review: `extensions/*/src`, `shared/`, `README.md`, `ROADMAP.md`, and
-  `TODO.md`.
+  `AUDIT-REPORT.md`.

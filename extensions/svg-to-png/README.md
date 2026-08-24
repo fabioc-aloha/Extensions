@@ -9,7 +9,7 @@
 
 ---
 
-Right-click any `.svg` in the Explorer to convert it, export a transparent icon set, or process the workspace. [resvg-js](https://github.com/yisibl/resvg-js) renders locally with no ImageMagick, Inkscape, or browser dependency.
+Right-click any `.svg` in the Explorer to convert it, export a transparent icon set, or process the workspace. The cross-platform [resvg WASM renderer](https://github.com/yisibl/resvg-js) runs locally with no ImageMagick, Inkscape, or browser dependency.
 
 ## Features
 
@@ -24,7 +24,7 @@ Right-click any `.svg` in the Explorer to convert it, export a transparent icon 
 
 ## Requirements
 
-No installation required. The `@resvg/resvg-js` Rust renderer is **bundled with the extension** — no system dependencies, no ImageMagick, no Inkscape needed.
+No installation required. The `@resvg/resvg-wasm` renderer is **bundled with the extension** — no platform-specific native binary, ImageMagick, or Inkscape is needed.
 
 ## Usage
 

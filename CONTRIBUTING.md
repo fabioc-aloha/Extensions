@@ -17,7 +17,6 @@ extensions/{name}/
 ├── tsconfig.json         — Extends ../../tsconfig.base.json
 ├── README.md             — User-facing documentation
 ├── CHANGELOG.md          — Version history
-├── TODO.md               — Extension-specific tasks
 ├── src/
 │   ├── extension.ts      — activate() / deactivate() only
 │   ├── commands/         — One file per command
@@ -35,7 +34,6 @@ Before writing a utility, check `shared/` first:
 - `shared/api/brandfetch.ts` — Logo fetching
 - `shared/utils/decay.ts` — Forgetting Curve decay engine
 - `shared/utils/secretScanner.ts` — Regex-based secret detection
-- `shared/utils/fileObservations.ts` — Background file watcher logic
 
 Import from shared: `import { DecayEngine } from '../../shared/utils/decay'`
 
@@ -76,7 +74,7 @@ Import from shared: `import { DecayEngine } from '../../shared/utils/decay'`
    ```bash
    npm run publish:all -- --filter=hook-studio,mcp-app-starter
    ```
-   Publishing uploads the VSIX files produced in the preceding package phase and skips versions already on the Marketplace. The command does not publish anything when a selected extension fails to package.
+   Publishing uploads the VSIX files produced in the preceding package phase. An existing Marketplace version is treated as an error rather than silently skipped. The command does not publish anything when a selected extension fails to package.
 8. Create git tag: `git tag {extension-name}/v{version}`.
 
 > **Rate limit**: Marketplace caps new extension creation at ~7 per 12-hour window. Plan batch publishes accordingly.

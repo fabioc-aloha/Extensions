@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext): void {
 function checkPandocSilent(): void {
     const config = vscode.workspace.getConfiguration('markdownToWord');
     const pandocPath = config.get<string>('pandocPath') ?? 'pandoc';
-    cp.exec(`${pandocPath} --version`, (err) => {
+    cp.execFile(pandocPath, ['--version'], (err) => {
         if (err) {
             vscode.window.showWarningMessage(
                 'Markdown to Word: pandoc not found. Install it to enable conversion.',
@@ -62,7 +62,7 @@ function checkPandocSilent(): void {
 function checkPandoc(): void {
     const config = vscode.workspace.getConfiguration('markdownToWord');
     const pandocPath = config.get<string>('pandocPath') ?? 'pandoc';
-    cp.exec(`${pandocPath} --version`, (err, stdout) => {
+    cp.execFile(pandocPath, ['--version'], (err, stdout) => {
         if (err) {
             vscode.window.showErrorMessage('❌ Pandoc not found.', 'Install Pandoc').then(c => {
                 if (c) { vscode.env.openExternal(vscode.Uri.parse('https://pandoc.org/installing.html')); }
@@ -77,7 +77,7 @@ function checkPandoc(): void {
 function checkMermaid(): void {
     const config = vscode.workspace.getConfiguration('markdownToWord');
     const mmdcPath = config.get<string>('mmdcPath') ?? 'mmdc';
-    cp.exec(`${mmdcPath} --version`, (err, stdout) => {
+    cp.execFile(mmdcPath, ['--version'], (err, stdout) => {
         if (err) {
             vscode.window.showErrorMessage('❌ Mermaid CLI (mmdc) not found.', 'Install mmdc').then(c => {
                 if (c) { vscode.env.openExternal(vscode.Uri.parse('https://github.com/mermaid-js/mermaid-cli')); }

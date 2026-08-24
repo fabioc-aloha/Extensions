@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 let outputChannel: vscode.OutputChannel;
+let rendererReady: Promise<void> | undefined;
 
 /** Standard banner dimensions for VS Code Marketplace extension banners */
 const BANNER_WIDTH = 1280;
@@ -250,7 +251,11 @@ async function doConvert(
 ): Promise<boolean> {
     try {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const { Resvg } = require('@resvg/resvg-js');
+        const { Resvg, initWasm } = require('@resvg/resvg-wasm') as typeof import('@resvg/resvg-wasm');
+        rendererReady ??= fs.promises
+            .readFile(require.resolve('@resvg/resvg-wasm/index_bg.wasm'))
+            .then(buffer => initWasm(buffer));
+        await rendererReady;
 
         const svgBuffer = await fs.promises.readFile(svgPath);
         const config = vscode.workspace.getConfiguration('svgToPng');

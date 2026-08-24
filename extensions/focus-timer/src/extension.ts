@@ -31,7 +31,7 @@ export function activate(context: vscode.ExtensionContext): void {
     extensionContext = context;
     outputChannel = vscode.window.createOutputChannel('Focus Timer');
     statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-    statusBar.command = 'focusTimer.pause';
+    statusBar.command = 'focusTimer.start';
     statusBar.show();
     loadState();
     updateStatusBar();
@@ -185,7 +185,7 @@ function stop(): void {
 
 function togglePause(): void {
     if (!isRunning) {
-        startFocus();
+        vscode.window.showInformationMessage('Focus Timer: no active session to pause.');
         return;
     }
     isPaused = !isPaused;
@@ -231,6 +231,7 @@ async function resetSessions(): Promise<void> {
 
 function updateStatusBar(): void {
     if (!isRunning) {
+        statusBar.command = 'focusTimer.start';
         const badge = sessionsCompleted ? ` · $(flame)×${sessionsCompleted}` : '';
         statusBar.text = `$(clock) Focus${badge}`;
         statusBar.tooltip = sessionsCompleted
@@ -238,6 +239,7 @@ function updateStatusBar(): void {
             : 'Focus Timer — click to start a focus session.';
         return;
     }
+    statusBar.command = 'focusTimer.pause';
     const minutes = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
     const seconds = (secondsLeft % 60).toString().padStart(2, '0');
     const icon = isBreak ? '$(coffee)' : '$(flame)';

@@ -45,13 +45,7 @@ export function activate(context: vscode.ExtensionContext): void {
         }),
 
         vscode.commands.registerCommand('hookStudio.testCondition', async () => {
-            const toolName = await vscode.window.showInputBox({
-                prompt: 'Enter tool name to simulate (e.g., createFile, runTerminal)',
-                placeHolder: 'createFile',
-            });
-            if (!toolName) { return; }
-            HookStudioPanel.createOrShow(context, outputChannel);
-            HookStudioPanel.simulateTool(toolName);
+            await runStaticDryRun(outputChannel);
         }),
 
         vscode.commands.registerCommand('hookStudio.importFromAlex', async () => {
@@ -104,6 +98,59 @@ export function activate(context: vscode.ExtensionContext): void {
     );
 
     outputChannel.appendLine('[Hook Studio] Extension activated. VS Code 1.109+ required for agent hooks.');
+}
+
+async function runStaticDryRun(outputChannel: vscode.OutputChannel): Promise<void> {
+    const event = await vscode.window.showQuickPick([...HOOK_EVENTS].sort(), {
+        title: 'Hook Studio - Static Dry Run',
+        placeHolder: 'Choose a lifecycle event to inspect'
+    });
+    if (!event) { return; }
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri;
+    if (!workspaceRoot) {
+        vscode.window.showWarningMessage('Hook Studio: Open a workspace folder first.');
+        return;
+    }
+    const files = [
+        ...await vscode.workspace.findFiles(new vscode.RelativePattern(workspaceRoot, '.github/hooks/**/*.json')),
+        ...await vscode.workspace.findFiles(new vscode.RelativePattern(workspaceRoot, '.github/hooks.json'))
+    ];
+    const matches: { file: string; index: number; action: Record<string, unknown> }[] = [];
+    for (const file of files) {
+        try {
+            const parsed = JSON.parse(Buffer.from(await vscode.workspace.fs.readFile(file)).toString('utf8')) as {
+                hooks?: Record<string, unknown>;
+            };
+            const entries = parsed.hooks?.[event];
+            const actions = Array.isArray(entries) ? entries : entries ? [entries] : [];
+            actions.forEach((action, index) => {
+                if (action && typeof action === 'object') {
+                    matches.push({ file: vscode.workspace.asRelativePath(file), index, action: action as Record<string, unknown> });
+                }
+            });
+        } catch {
+            // Workspace validation reports malformed documents separately.
+        }
+    }
+    outputChannel.clear();
+    outputChannel.appendLine(`Hook Studio Static Dry Run - ${event}`);
+    outputChannel.appendLine('Static analysis only; no command is executed and no live hook telemetry is observed.');
+    outputChannel.appendLine('─'.repeat(72));
+    if (!matches.length) {
+        outputChannel.appendLine('No configured actions found for this event.');
+    }
+    for (const match of matches) {
+        outputChannel.appendLine(`${match.file} [${match.index}]`);
+        outputChannel.appendLine(`  type: ${String(match.action.type ?? '(missing)')}`);
+        outputChannel.appendLine(`  command: ${String(match.action.command ?? '(missing)')}`);
+        if (match.action.timeout !== undefined) { outputChannel.appendLine(`  timeout: ${String(match.action.timeout)}s`); }
+        for (const platform of ['windows', 'linux', 'osx']) {
+            if (match.action[platform] !== undefined) {
+                outputChannel.appendLine(`  ${platform}: ${String(match.action[platform])}`);
+            }
+        }
+    }
+    outputChannel.show();
 }
 
 function createHooksWatcher(outputChannel: vscode.OutputChannel): vscode.Disposable[] {
@@ -256,12 +303,36 @@ function validateHookDocument(content: string, fileName: string): string[] {
                 issues.push(`${fileName}: ${event}[${index}] must be a hook action object.`);
                 return;
             }
-            const candidate = action as { type?: unknown; command?: unknown };
+            const candidate = action as {
+                type?: unknown;
+                command?: unknown;
+                timeout?: unknown;
+                cwd?: unknown;
+                env?: unknown;
+                windows?: unknown;
+                linux?: unknown;
+                osx?: unknown;
+            };
             if (candidate.type !== 'command') {
                 issues.push(`${fileName}: ${event}[${index}] must declare type: "command".`);
             }
-            if (typeof candidate.command !== 'string' || !candidate.command.trim()) {
-                issues.push(`${fileName}: ${event}[${index}] must declare a non-empty command.`);
+            const commandProperties = [candidate.command, candidate.windows, candidate.linux, candidate.osx];
+            if (!commandProperties.some(value => typeof value === 'string' && value.trim())) {
+                issues.push(`${fileName}: ${event}[${index}] must declare at least one non-empty command property.`);
+            }
+            if (candidate.timeout !== undefined && (typeof candidate.timeout !== 'number' || candidate.timeout <= 0)) {
+                issues.push(`${fileName}: ${event}[${index}].timeout must be a positive number.`);
+            }
+            if (candidate.cwd !== undefined && typeof candidate.cwd !== 'string') {
+                issues.push(`${fileName}: ${event}[${index}].cwd must be a string.`);
+            }
+            if (candidate.env !== undefined && (!candidate.env || typeof candidate.env !== 'object' || Array.isArray(candidate.env))) {
+                issues.push(`${fileName}: ${event}[${index}].env must be an object.`);
+            }
+            for (const platform of ['windows', 'linux', 'osx'] as const) {
+                if (candidate[platform] !== undefined && typeof candidate[platform] !== 'string') {
+                    issues.push(`${fileName}: ${event}[${index}].${platform} must be a command string.`);
+                }
             }
         });
     }

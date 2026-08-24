@@ -43,6 +43,10 @@
       {
         "command": "devWellbeing.configureLimits",
         "title": "Dev Wellbeing: Configure Thresholds"
+      },
+      {
+        "command": "devWellbeing.resetSession",
+        "title": "Dev Wellbeing: Reset Local Session Details"
       }
     ],
     "configuration": {

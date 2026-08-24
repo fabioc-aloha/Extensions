@@ -144,11 +144,11 @@
     "package": "node ../../scripts/package-svg-to-png.js"
   },
   "dependencies": {
-    "@resvg/resvg-js": "^2.6.2"
+    "@resvg/resvg-wasm": "^2.6.2"
   },
   "devDependencies": {
-    "@types/vscode": "^1.109.0",
     "@types/node": "^20.0.0",
+    "@types/vscode": "^1.109.0",
     "typescript": "^5.7.0"
   },
   "license": "MIT",

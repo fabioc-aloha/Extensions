@@ -11,8 +11,12 @@ let nextPosture: number | undefined;
 let nextEye: number | undefined;
 let nextHydration: number | undefined;
 let editEventCount = 0;
+let extensionContext: vscode.ExtensionContext;
+let persistTimer: ReturnType<typeof setTimeout> | undefined;
+const SESSION_KEY = 'devWellbeing.session';
 
 export function activate(context: vscode.ExtensionContext): void {
+    extensionContext = context;
     outputChannel = vscode.window.createOutputChannel('Dev Wellbeing');
     statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 95);
     context.subscriptions.push(
@@ -21,12 +25,14 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('devWellbeing.start', startMonitoring),
         vscode.commands.registerCommand('devWellbeing.stop', stopMonitoring),
         vscode.commands.registerCommand('devWellbeing.showStats', showStats),
+        vscode.commands.registerCommand('devWellbeing.resetSession', resetSession),
         vscode.commands.registerCommand('devWellbeing.configureLimits', () => {
             void vscode.commands.executeCommand('workbench.action.openSettings', 'devWellbeing');
         }),
         vscode.workspace.onDidChangeTextDocument(() => {
             if (isMonitoring()) {
                 editEventCount += 1;
+                schedulePersist();
             }
         }),
         vscode.workspace.onDidChangeConfiguration(event => {
@@ -36,6 +42,9 @@ export function activate(context: vscode.ExtensionContext): void {
             }
         })
     );
+    const saved = context.globalState.get<{ sessionStart?: number; editEventCount?: number }>(SESSION_KEY);
+    sessionStart = saved?.sessionStart;
+    editEventCount = saved?.editEventCount ?? 0;
 
     if (vscode.workspace.getConfiguration('devWellbeing').get<boolean>('enabled') !== false) {
         startMonitoring();
@@ -63,8 +72,8 @@ function startMonitoring(): void {
         vscode.window.showInformationMessage('Dev Wellbeing monitoring is already active.');
         return;
     }
-    sessionStart = Date.now();
-    editEventCount = 0;
+    sessionStart ??= Date.now();
+    void persistSession();
     scheduleReminders();
     vscode.window.showInformationMessage('Dev Wellbeing monitoring started. Reminders are local to this VS Code session.');
     outputChannel.appendLine('[Wellbeing] Monitoring started.');
@@ -119,9 +128,32 @@ function stopMonitoring(): void {
         return;
     }
     clearTimers();
+    void persistSession();
     updateStatusBar();
     outputChannel.appendLine('[Wellbeing] Monitoring stopped.');
-    vscode.window.showInformationMessage('Dev Wellbeing monitoring stopped. Session activity is not retained.');
+    vscode.window.showInformationMessage('Dev Wellbeing monitoring stopped. Local session details remain available until reset.');
+}
+
+function schedulePersist(): void {
+    if (persistTimer) { clearTimeout(persistTimer); }
+    persistTimer = setTimeout(() => { void persistSession(); }, 1000);
+}
+
+async function persistSession(): Promise<void> {
+    await extensionContext.globalState.update(SESSION_KEY, { sessionStart, editEventCount });
+}
+
+async function resetSession(): Promise<void> {
+    const choice = await vscode.window.showWarningMessage(
+        'Reset the locally stored Dev Wellbeing session start and edit-event count?',
+        { modal: true },
+        'Reset Session'
+    );
+    if (choice !== 'Reset Session') { return; }
+    sessionStart = isMonitoring() ? Date.now() : undefined;
+    editEventCount = 0;
+    await persistSession();
+    vscode.window.showInformationMessage('Dev Wellbeing: local session details reset.');
 }
 
 function updateStatusBar(): void {
@@ -166,6 +198,8 @@ function showStats(): void {
     outputChannel.show();
 }
 
-export function deactivate(): void {
+export async function deactivate(): Promise<void> {
     clearTimers();
+    if (persistTimer) { clearTimeout(persistTimer); }
+    await persistSession();
 }

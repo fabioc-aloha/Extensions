@@ -59,10 +59,15 @@ function speakNext(rate: number, voice: string): void {
 
     // Windows: PowerShell Add-Type / SpeechSynthesizer
     if (process.platform === 'win32') {
-        const escaped = chunk.replace(/'/g, "''");
-        const voiceSelection = voice ? `$s.SelectVoice('${voice.replace(/'/g, "''")}'); ` : '';
-        const ps = `Add-Type -AssemblyName System.Speech; $s = New-Object System.Speech.Synthesis.SpeechSynthesizer; ${voiceSelection}$s.Rate = ${Math.round((rate - 1) * 10)}; $s.Speak('${escaped}')`;
-        speechProcess = cp.spawn('powershell', ['-NoProfile', '-Command', ps]);
+        const ps = 'Add-Type -AssemblyName System.Speech; $s = New-Object System.Speech.Synthesis.SpeechSynthesizer; if ($env:VOICE_READER_VOICE) { $s.SelectVoice($env:VOICE_READER_VOICE) }; $s.Rate = [int]$env:VOICE_READER_RATE; $s.Speak($env:VOICE_READER_TEXT)';
+        speechProcess = cp.spawn('powershell', ['-NoProfile', '-NonInteractive', '-Command', ps], {
+            env: {
+                ...process.env,
+                VOICE_READER_TEXT: chunk,
+                VOICE_READER_VOICE: voice,
+                VOICE_READER_RATE: String(Math.round((rate - 1) * 10))
+            }
+        });
     } else if (process.platform === 'darwin') {
         const args = voice ? ['-v', voice, '-r', String(Math.round(rate * 200)), chunk] : ['-r', String(Math.round(rate * 200)), chunk];
         speechProcess = cp.spawn('say', args);
