@@ -62,8 +62,8 @@ It is a discovery and migration channel, not a product to revive.
 ## Competition Intelligence Ledger
 
 `Extension updated` records a source, README, or package update prepared in
-this repository. It does not mean the version has been published to the
-Marketplace.
+this repository. All listed v0.2.0 updates were published to the Marketplace
+on 2026-08-24.
 
 | Extension | Date researched | Extension updated | Current action |
 |---|---|---|---|

@@ -2,7 +2,7 @@
 
 **Audit date:** 2026-08-24
 **Scope:** 16 extension v0.2 source candidates and monorepo release tooling
-**Publication status:** Source prepared; Marketplace publication intentionally pending
+**Publication status:** All 16 extensions published at v0.2.0 on 2026-08-24
 
 ## Current State
 
@@ -35,8 +35,8 @@ Confirmed defects were corrected in the working tree:
 | Per-extension package script | Passed - 16/16 v0.2 VSIX artifacts produced |
 | Runtime dependency inclusion | Verified by VSIX inspection for bundled packages |
 | PPTX dependency | Bundled into `out/extension.js`; no external runtime require |
-| Marketplace publication | Not run |
-| Git tags | Not created because v0.2 is not published |
+| Marketplace publication | Passed - all 16 v0.2.0 extensions published |
+| Git tags | One v0.2.0 tag created per successfully published extension |
 
 ## Dependency Audit
 
@@ -77,14 +77,25 @@ Marketplace feedback establish which workflows create durable value.
 `MARKET-ANALYSIS-AND-OPPORTUNITIES.md` preserves the competitive evidence,
 install snapshot, and research ledger that informs these choices.
 
-## Publication Gates Still Required
+## Post-Publication Follow-Through
 
-1. Perform targeted manual VSIX smoke tests from `TEST-GUIDE.md`.
+1. Perform targeted Marketplace-install smoke tests from `TEST-GUIDE.md`.
 2. Capture current workflow evidence for Marketplace pages where a screenshot
    materially improves comprehension.
-3. Choose the explicit filtered publication set.
-4. Create and push extension-version tags only after each Marketplace publish
-   succeeds.
+3. Monitor Marketplace rendering, acquisition, and support feedback for 28
+   days before selecting the next post-v0.2 investment.
+
+## Publication Pilot
+
+SVG Toolkit v0.2.0 was published on 2026-08-24 through the Marketplace API
+with an organization-scoped Marketplace (Manage) PAT. Marketplace management
+reflected the version in approximately six minutes. The pilot credential was
+revoked after publication and the source was tagged `svg-toolkit/v0.2.0`.
+
+The remaining 15 extensions were then published through the same
+organization-scoped, short-lived PAT flow. That batch credential was revoked
+immediately after publication, and each extension received its own v0.2.0
+source tag.
 
 ## Residual Risks and Non-Defects
 

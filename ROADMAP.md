@@ -1,7 +1,7 @@
 # Extensions Roadmap
 
 **Updated:** 2026-08-24
-**Current milestone:** v0.2 source candidates prepared; Marketplace publication pending
+**Current milestone:** v0.2 published to Marketplace; post-publication validation and learning
 
 ## v0.2 Delivered
 
@@ -24,13 +24,13 @@
 | SVG Toolkit | Safe live preview and color extraction |
 | Workspace Watchdog | Git/TODO signals, Explorer tree, workspace storage |
 
-## Before Marketplace Publication
+## Post-Publication Follow-Through
 
-1. Pass the full 16-extension package gate.
-2. Complete the manual VSIX smoke matrix in `TEST-GUIDE.md`.
-3. Select an explicit publication batch.
-4. Publish without `--skip-duplicate` masking an unexpected version conflict.
-5. Tag only successfully published versions.
+1. Complete the manual Marketplace-install smoke matrix in `TEST-GUIDE.md`.
+2. Capture current workflow screenshots for the highest-demand listings.
+3. Review Marketplace rendering, acquisition, and support feedback after 28
+   days.
+4. Select the next post-v0.2 investment from the opportunity map.
 
 ## Post-v0.2 Opportunities
 

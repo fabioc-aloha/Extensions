@@ -55,6 +55,10 @@ npm run publish:all -- --filter=hook-studio
 The PAT must have Marketplace publisher-management permission. Keep it out of
 source, shell history, documentation examples, and committed scripts.
 
+> **PAT scope change:** Azure DevOps warns that, beginning December 1, 2026,
+> global PATs scoped to all accessible organizations will no longer be
+> supported. Create PATs scoped to `fabioc-aloha` only.
+
 ## Standard Release Flow
 
 Replace the example filter with the exact release set.
@@ -116,6 +120,18 @@ npm run publish:all:entra -- --filter=hook-studio,svg-to-png
 The runner packages **all selected extensions before publishing any of them**.
 If packaging fails, nothing is uploaded. A duplicate Marketplace version fails
 visibly rather than being skipped.
+
+## Pilot Evidence
+
+On 2026-08-24, `fabioc-aloha.svg-toolkit` v0.2.0 was published successfully
+with an organization-scoped Marketplace (Manage) PAT. Marketplace management
+showed the new version in approximately six minutes. The pilot PAT was revoked
+immediately after publication, and the release was tagged
+`svg-toolkit/v0.2.0`.
+
+The remaining 15 v0.2.0 extensions were subsequently published through the
+same short-lived, organization-scoped PAT process. That batch PAT was revoked
+immediately after use, and all 16 extensions now have matching v0.2.0 tags.
 
 ### 6. Verify the Marketplace result
 
