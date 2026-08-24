@@ -1,5 +1,16 @@
 # Changelog — PPTX Builder
 
+## [0.2.0] — 2026-08-23
+
+### Added
+- CX Navy, Corporate, and Minimal presentation themes
+- `PPTX Builder: Select Theme` command and `pptxBuilder.theme` setting
+- Automatic continuation slides for long Markdown sections
+
+### Changed
+- Modernized README language around branded local presentation generation
+- Removed unsupported v0.1 feature claims from the historical release notes
+
 ## [0.1.3] — 2026-02-28
 
 ### Changed
@@ -20,10 +31,7 @@
 
 ### Added
 - Initial release
-- `PPTX Builder: Build Presentation` — generate a `.pptx` from a Markdown or JSON outline
+- `PPTX Builder: Build Presentation` — generate a `.pptx` from a Markdown outline
 - `PPTX Builder: Preview Slide Structure` — inspect slide hierarchy before building
-- `PPTX Builder: Apply Theme` — choose from built-in or custom theme files
-- `PPTX Builder: Export Speaker Notes` — extract notes to a companion `.md` file
-- pptxgenjs-powered slide rendering with text, images, and charts
-- Configurable output path and default theme in extension settings
+- pptxgenjs-powered text slide rendering with speaker notes
 - Progress notification with open-file link on completion

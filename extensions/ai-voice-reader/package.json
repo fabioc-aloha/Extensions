@@ -1,8 +1,8 @@
 {
   "name": "ai-voice-reader",
   "displayName": "CX AI Voice Reader",
-  "description": "Text-to-speech for VS Code — read documents, selections, and notes aloud using your OS built-in TTS engine (no API key required)",
-  "version": "0.1.7",
+  "description": "Local text-to-speech for VS Code document proof-reading with system voice selection and chunked playback",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -85,15 +85,6 @@
     "configuration": {
       "title": "AI Voice Reader",
       "properties": {
-        "voiceReader.engine": {
-          "type": "string",
-          "enum": [
-            "os",
-            "azure"
-          ],
-          "default": "os",
-          "description": "TTS engine: OS built-in or Azure Cognitive Speech"
-        },
         "voiceReader.rate": {
           "type": "number",
           "default": 1,
@@ -105,6 +96,11 @@
           "type": "boolean",
           "default": true,
           "description": "Remove Markdown syntax before reading"
+        },
+        "voiceReader.voice": {
+          "type": "string",
+          "default": "",
+          "description": "System voice name. Leave empty to use the operating system default."
         }
       }
     },

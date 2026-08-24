@@ -49,6 +49,10 @@ No external tools required for templates, preview, and validation. For local SVG
 
 ---
 
+## Related Reading
+
+**From the extension author:** [The Defensible Decision: A Guide to AI-Assisted Business Analytics](https://www.amazon.com/Defensible-Decision-AI-Assisted-Business-Analytics/dp/B0HCLQXLLQ) explores how visual communication can support a clear audience, decision, and validation step.
+
 ## 🔷 CX Tools Suite
 
 Explore more tools from the same suite:

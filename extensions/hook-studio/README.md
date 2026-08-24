@@ -72,6 +72,10 @@ No configuration required. Hook Studio auto-activates when `.github/hooks.json` 
 
 ---
 
+## Related Reading
+
+**From the extension author:** [Loop Engineering: A Better Way to Think, Create, and Work with AI](https://www.amazon.com/Loop-Engineering-Better-Create-Applied/dp/B0H8R8GDTJ) explores controls, independent checks, and proportional autonomy for AI-assisted workflows.
+
 ## 🔷 CX Tools Suite
 
 Explore more tools from the same suite:

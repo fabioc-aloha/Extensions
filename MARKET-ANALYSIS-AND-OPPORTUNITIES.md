@@ -58,6 +58,31 @@ recipes, and local-first knowledge freshness.
 The deprecated Alex extension has 99 installs but is outside this repository.
 It is a discovery and migration channel, not a product to revive.
 
+## Competition Intelligence Ledger
+
+`Extension updated` records a source, README, or package update prepared in
+this repository. It does not mean the version has been published to the
+Marketplace.
+
+| Extension | Date researched | Extension updated | Current action |
+|---|---|---|---|
+| CX Markdown to Word | 2026-08-23 | 2026-08-23 | v0.2 folder conversion and native preview prepared |
+| CX SVG to PNG | 2026-08-23 | 2026-08-23 | v0.2 icon-set and batch workflow prepared |
+| CX AI Voice Reader | 2026-08-23 | 2026-08-23 | v0.2 local voice and playback reliability prepared |
+| CX PPTX Builder | 2026-08-23 | 2026-08-23 | v0.2 themes and continuation slides prepared |
+| CX Gamma Slide Assistant | 2026-08-23 | — | Positioning decision pending |
+| CX Hook Studio | 2026-08-23 | — | Current hook schema and recipe work pending |
+| CX Mermaid Diagram Pro | 2026-08-23 | — | Offline export and diagnostics work pending |
+| CX Replicate Image Studio | 2026-08-23 | — | Persistence and gallery work pending |
+| CX SVG Toolkit | 2026-08-23 | — | SVG workbench work pending |
+| CX Brandfetch Logo Fetcher | 2026-08-23 | — | API reliability work pending |
+| CX MCP App Starter | 2026-08-23 | — | Development-loop work pending |
+| CX Workspace Watchdog | 2026-08-23 | — | Core signal repair pending |
+| CX SecretGuard | 2026-08-23 | — | Pattern credibility work pending |
+| CX Knowledge Decay Tracker | 2026-08-23 | — | Core scoring repair pending |
+| CX Dev Wellbeing | 2026-08-23 | — | Context-aware recovery work pending |
+| CX Focus Timer | 2026-08-23 | — | Persistence and annotation work pending |
+
 ## Market Shifts
 
 ### Native VS Code now owns the baseline

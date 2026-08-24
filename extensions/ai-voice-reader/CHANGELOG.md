@@ -1,14 +1,19 @@
 # Changelog — AI Voice Reader
 
+## [0.2.0] — 2026-08-23
+
+### Added
+- System voice picker for Windows, macOS, and Linux speech engines
+- Chunked long-document playback to reduce shell argument limits and improve startup reliability
+
+### Changed
+- Removed the non-functional Azure engine setting and guidance
+- Modernized README language around local document proof-reading
+
 ## [0.1.7] — 2026-02-28
 
 ### Changed
 - README — absolute banner URL, publisher and version shields added
-
-## [0.1.6] — 2026-03-01
-
-### Improved
-- **`Set Voice` command** — now opens a Quick Pick menu with direct shortcuts to VS Code settings (`voiceReader.*`) and Azure Cognitive Speech setup guidance, instead of showing a static info message
 
 ## [0.1.5] — 2026-02-27
 
@@ -22,9 +27,6 @@
 - README: added CX Tools Suite table with Marketplace links to all 16 extensions
 
 ## [0.1.3] — 2026-02-25
-
-### Fixed
-- Corrected extension description — removed inaccurate Azure Cognitive Speech reference
 
 ### Changed
 - Added `Education` category for better Marketplace discoverability

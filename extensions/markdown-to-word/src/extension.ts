@@ -11,6 +11,7 @@ const PAGE_MAX_WIDTH_IN  = 5.85;
 const PAGE_MAX_HEIGHT_IN = 8.1;
 // Dots per inch for reading PNG dimensions (96 DPI default for Word images)
 const DPI = 96;
+const SKIPPED_DIRECTORY_NAMES = new Set(['.git', 'node_modules']);
 
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('Markdown to Word');
@@ -24,7 +25,9 @@ export function activate(context: vscode.ExtensionContext): void {
         vscode.commands.registerCommand('markdownToWord.convertWithOptions',
             (uri?: vscode.Uri) => convertWithOptions(uri)),
         vscode.commands.registerCommand('markdownToWord.preview',
-            () => previewDiagrams()),
+            () => openMarkdownPreview()),
+        vscode.commands.registerCommand('markdownToWord.convertFolder',
+            () => convertFolder()),
         vscode.commands.registerCommand('markdownToWord.checkPandoc',
             () => checkPandoc()),
         vscode.commands.registerCommand('markdownToWord.checkMermaid',
@@ -138,11 +141,79 @@ async function convertWithOptions(uri?: vscode.Uri): Promise<void> {
     await convert(target.fsPath, outputUri.fsPath, renderChoice?.value ?? false);
 }
 
+async function convertFolder(): Promise<void> {
+    const selection = await vscode.window.showOpenDialog({
+        canSelectFiles: false,
+        canSelectFolders: true,
+        canSelectMany: false,
+        openLabel: 'Convert Markdown Files'
+    });
+    const folder = selection?.[0];
+    if (!folder) { return; }
+
+    const markdownFiles = await findMarkdownFiles(folder.fsPath);
+    if (markdownFiles.length === 0) {
+        vscode.window.showInformationMessage('Markdown to Word: No Markdown files found in the selected folder.');
+        return;
+    }
+
+    const renderChoice = await vscode.window.showQuickPick(
+        [
+            { label: '$(symbol-string) Pre-render Mermaid diagrams', value: true, description: 'Requires mmdc (mermaid-cli)' },
+            { label: '$(file) Convert markdown as-is', value: false, description: 'Faster, diagrams remain as code blocks' }
+        ],
+        { title: `Convert ${markdownFiles.length} Markdown Files` }
+    );
+    if (!renderChoice) { return; }
+
+    let converted = 0;
+    let failed = 0;
+    let cancelled = false;
+
+    await vscode.window.withProgress(
+        {
+            location: vscode.ProgressLocation.Notification,
+            title: 'Converting Folder to Word',
+            cancellable: true
+        },
+        async (progress, token) => {
+            for (let index = 0; index < markdownFiles.length; index++) {
+                if (token.isCancellationRequested) {
+                    cancelled = true;
+                    break;
+                }
+
+                const inputPath = markdownFiles[index];
+                progress.report({
+                    message: `${index + 1}/${markdownFiles.length}: ${path.basename(inputPath)}`,
+                    increment: 100 / markdownFiles.length
+                });
+
+                if (await convert(inputPath, undefined, renderChoice.value, false)) {
+                    converted++;
+                } else {
+                    failed++;
+                }
+            }
+        }
+    );
+
+    const status = cancelled ? 'cancelled' : 'complete';
+    const summary = `Markdown to Word: Folder conversion ${status}. ${converted} converted, ${failed} failed.`;
+    outputChannel.appendLine(summary);
+    vscode.window.showInformationMessage(summary);
+}
+
 // ---------------------------------------------------------------------------
 // Core conversion
 // ---------------------------------------------------------------------------
 
-async function convert(inputPath: string, outputPath?: string, preRenderMermaid = false): Promise<void> {
+async function convert(
+    inputPath: string,
+    outputPath?: string,
+    preRenderMermaid = false,
+    showNotification = true
+): Promise<boolean> {
     const config = vscode.workspace.getConfiguration('markdownToWord');
     const pandocPath = config.get<string>('pandocPath') ?? 'pandoc';
     const referenceDoc = config.get<string>('referenceDoc') ?? '';
@@ -178,26 +249,32 @@ async function convert(inputPath: string, outputPath?: string, preRenderMermaid 
         );
 
         outputChannel.appendLine(`✅ Converted: ${outPath}`);
-        vscode.window.showInformationMessage(
-            `✅ Converted to ${path.basename(outPath)}`,
-            'Open Folder', 'Open File'
-        ).then(c => {
-            if (c === 'Open Folder') { vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(outPath)); }
-            else if (c === 'Open File') { vscode.commands.executeCommand('vscode.open', vscode.Uri.file(outPath)); }
-        });
+        if (showNotification) {
+            vscode.window.showInformationMessage(
+                `✅ Converted to ${path.basename(outPath)}`,
+                'Open Folder', 'Open File'
+            ).then(c => {
+                if (c === 'Open Folder') { vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(outPath)); }
+                else if (c === 'Open File') { vscode.commands.executeCommand('vscode.open', vscode.Uri.file(outPath)); }
+            });
+        }
+        return true;
     } catch (err) {
         const error = err instanceof Error ? err : new Error(String(err));
-        vscode.window.showErrorMessage(`Conversion failed: ${error.message}`, 'Show Logs').then(c => {
-            if (c) { outputChannel.show(); }
-        });
+        if (showNotification) {
+            vscode.window.showErrorMessage(`Conversion failed: ${error.message}`, 'Show Logs').then(c => {
+                if (c) { outputChannel.show(); }
+            });
+        }
         outputChannel.appendLine(`❌ Error: ${error.message}`);
-        outputChannel.show();
+        if (showNotification) { outputChannel.show(); }
+        return false;
     } finally {
         // Clean up temp files
         for (const f of cleanupFiles) {
             try { await fs.promises.unlink(f); } catch { /* ignore */ }
         }
-        try { await fs.promises.rmdir(tmpDir); } catch { /* ignore */ }
+        try { await fs.promises.rm(tmpDir, { recursive: true, force: true }); } catch { /* ignore */ }
     }
 }
 
@@ -345,10 +422,31 @@ function runCommand(cmd: string, args: string[]): Promise<void> {
 // Utilities
 // ---------------------------------------------------------------------------
 
-function previewDiagrams(): void {
-    vscode.window.showInformationMessage(
-        'Mermaid preview: use VS Code built-in Markdown Preview or the "Mermaid Diagram Pro" extension.'
-    );
+async function findMarkdownFiles(folderPath: string): Promise<string[]> {
+    const entries = await fs.promises.readdir(folderPath, { withFileTypes: true });
+    const files: string[] = [];
+
+    for (const entry of entries) {
+        const entryPath = path.join(folderPath, entry.name);
+        if (entry.isDirectory()) {
+            if (!SKIPPED_DIRECTORY_NAMES.has(entry.name)) {
+                files.push(...await findMarkdownFiles(entryPath));
+            }
+        } else if (entry.isFile() && path.extname(entry.name).toLowerCase() === '.md') {
+            files.push(entryPath);
+        }
+    }
+
+    return files;
+}
+
+async function openMarkdownPreview(): Promise<void> {
+    const target = vscode.window.activeTextEditor?.document.uri;
+    if (!target || path.extname(target.fsPath).toLowerCase() !== '.md') {
+        vscode.window.showWarningMessage('Open a Markdown file first.');
+        return;
+    }
+    await vscode.commands.executeCommand('markdown.showPreviewToSide', target);
 }
 
 export function deactivate(): void {

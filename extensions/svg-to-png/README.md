@@ -2,7 +2,7 @@
 
 ![SVG to PNG Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/svg-to-png/assets/banner.png)
 
-**Convert SVG files to pixel-perfect PNGs — Rust-based rendering, batch convert, right-click workflow**
+**Turn SVG source files into production-ready PNGs, transparent icon sets, and Marketplace banners with local Rust rendering.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -10,13 +10,15 @@
 
 ---
 
-Right-click any `.svg` in the Explorer → **SVG to PNG: Convert SVG File**. Uses [resvg-js](https://github.com/yisibl/resvg-js), a Rust-based renderer that produces accurate, anti-aliased PNGs with full system font support — no ImageMagick, no Inkscape, nothing to install.
+Right-click any `.svg` in the Explorer to convert it, export a transparent icon set, or process the workspace. [resvg-js](https://github.com/yisibl/resvg-js) renders locally with no ImageMagick, Inkscape, or browser dependency.
 
 ## Features
 
 - **Right-click convert** — Explorer context menu on any `.svg` file for instant conversion
 - **Custom width** — scale output to any pixel width while preserving aspect ratio
-- **Batch convert** — convert every SVG in the workspace with one command
+- **Transparent icon sets** — export 16, 32, 48, 64, 128, 256, and 512 px PNGs from one SVG
+- **Cancellable batch conversion** — convert every SVG in the workspace and stop safely when needed
+- **Output control** — keep generated files beside each SVG or set an output directory that preserves workspace subfolders
 - **Accurate rendering** — Rust/resvg engine handles gradients, paths, and text correctly
 - **System fonts** — text in SVGs renders using your installed system fonts
 - **Auto-open** — converted PNG opens immediately in VS Code preview
@@ -39,6 +41,10 @@ Right-click → **SVG to PNG: Convert SVG at Custom Width** → enter pixel widt
 
 Command Palette (`Ctrl+Shift+P`) → **SVG to PNG: Convert All SVGs in Workspace**
 
+### Transparent Icon Set
+
+Right-click an SVG → **SVG to PNG: Export Transparent Icon Set** → choose a destination folder. The command writes a standard PNG size set with transparent backgrounds.
+
 ## Commands
 
 | Command | Description |
@@ -46,6 +52,7 @@ Command Palette (`Ctrl+Shift+P`) → **SVG to PNG: Convert All SVGs in Workspace
 | `SVG to PNG: Convert SVG File` | Convert the selected SVG to PNG |
 | `SVG to PNG: Convert SVG at Custom Width` | Convert at a custom pixel width |
 | `SVG to PNG: Convert All SVGs in Workspace` | Batch convert all SVGs in the workspace |
+| `SVG to PNG: Export Transparent Icon Set` | Export a transparent 16-512 px PNG icon set |
 
 ## Settings
 
@@ -54,10 +61,11 @@ Command Palette (`Ctrl+Shift+P`) → **SVG to PNG: Convert All SVGs in Workspace
 | `svgToPng.defaultWidth` | `0` | Output width in px (0 = natural SVG size) |
 | `svgToPng.loadSystemFonts` | `true` | Load system fonts for text rendering |
 | `svgToPng.openAfterConvert` | `true` | Open PNG in preview after conversion |
+| `svgToPng.outputDirectory` | `` | Optional output directory; relative paths resolve from workspace root |
 
 ## Why resvg?
 
-ImageMagick's SVG parser is incomplete and often mangles gradients, paths, and text. resvg-js uses a Rust implementation of the full SVG spec — the same rendering quality as modern browsers, with no lossy interpretation.
+ImageMagick's SVG parser is incomplete and often mangles gradients, paths, and text. resvg-js uses a Rust implementation of the SVG rendering pipeline with no external application to install.
 
 ---
 

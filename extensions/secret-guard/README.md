@@ -55,6 +55,10 @@ No external tools required. The scanner engine runs entirely within VS Code.
 
 ---
 
+## Related Reading
+
+**From the extension author:** [Loop Engineering: A Better Way to Think, Create, and Work with AI](https://www.amazon.com/Loop-Engineering-Better-Create-Applied/dp/B0H8R8GDTJ) offers a practical framework for boundaries and verifiable safeguards in AI-assisted work.
+
 ## 🔷 CX Tools Suite
 
 Explore more tools from the same suite:

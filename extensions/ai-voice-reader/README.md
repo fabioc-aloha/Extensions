@@ -2,7 +2,7 @@
 
 ![AI Voice Reader Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/ai-voice-reader/assets/banner.png)
 
-**Text-to-speech for VS Code — read documents, selections, and notes aloud**
+**Local text-to-speech for document proof-reading, review, and accessibility inside VS Code.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -12,17 +12,19 @@
 
 ## What It Does
 
-Uses the operating system's built-in TTS engine — no API key required. Automatically strips Markdown syntax before reading so headings and code blocks sound natural.
+Use your operating system's speech engine to listen back to Markdown, notes, and source files without an API key. CX AI Voice Reader splits long documents into reliable paragraph-sized playback chunks and can use any system voice you select.
 
 ## Features
 
 | Feature | Description |
 |---|---|
-| **Read Selection** | Read selected text or the current line with one command |
+| **Read Selection** | Read selected text, or the current document when nothing is selected |
 | **Read Document** | Narrate entire files from start to finish |
 | **Markdown-aware** | Strips `#`, `**`, backticks, and code fences before speaking |
 | **Cross-platform** | PowerShell TTS on Windows, `say` on macOS, `espeak` on Linux |
 | **Configurable speed** | Adjust playback rate from 0.5× to 2.0× |
+| **System voice picker** | Choose an installed operating system voice or return to the system default |
+| **Long-document playback** | Reads in manageable chunks to avoid shell argument limits |
 | **Right-click menus** | Right-click any editor → Read Selection, Read Document, or Stop; right-click in Explorer → Read File |
 
 ## Requirements
@@ -43,7 +45,7 @@ No external tools required. Uses your operating system's built-in text-to-speech
 | `Voice Reader: Read Entire Document` | Palette · Editor right-click | Read the whole active file |
 | `Voice Reader: Read File...` | Palette · Explorer right-click | Pick any text file to read |
 | `Voice Reader: Stop` | Palette · Editor right-click | Stop playback immediately |
-| `Voice Reader: Set Voice` | Palette | Choose from available system voices |
+| `Voice Reader: Set Voice` | Palette | Choose an available system voice |
 
 ## Settings
 
@@ -51,6 +53,7 @@ No external tools required. Uses your operating system's built-in text-to-speech
 |---|---|---|
 | `voiceReader.rate` | 1.0 | Speed (0.5–2.0) |
 | `voiceReader.stripMarkdown` | true | Remove Markdown before speaking |
+| `voiceReader.voice` | `` | System voice name; leave empty for the OS default |
 
 ---
 
@@ -60,7 +63,7 @@ Explore more tools from the same suite:
 
 | Extension | Description | Marketplace |
 |-----------|-------------|-------------|
-| **AI Voice Reader** *(this)* | Read files, selections, or documents aloud with Web Speech API | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
+| **AI Voice Reader** *(this)* | Read files, selections, or documents aloud with local system voices | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.ai-voice-reader) |
 | Brandfetch Logo Fetcher | Fetch and insert brand logos from any domain — SVG, PNG, or Markdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.brandfetch-logo-fetcher) |
 | Dev Wellbeing | Posture, eye-strain, and hydration reminders for long coding sessions | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.dev-wellbeing) |
 | Focus Timer | Pomodoro-style focus and break timer with status bar countdown | [Install ↗](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.cx-focus-timer) |

@@ -1,5 +1,15 @@
 # Changelog — Markdown to Word
 
+## [0.2.0] — 2026-08-23
+
+### Added
+- `Markdown to Word: Convert Folder` — recursively convert Markdown files while skipping `.git` and `node_modules`
+- `Markdown to Word: Open Markdown Preview` — open VS Code's built-in Markdown preview before export
+
+### Changed
+- Modernized README language around single-file, folder, and Mermaid-aware conversion
+- Clarified Pandoc and optional Mermaid CLI requirements
+
 ## [0.1.2] — 2026-02-28
 
 ### Changed
@@ -17,7 +27,6 @@
 - Initial release
 - `Markdown to Word: Convert Active File` — convert the open `.md` file to a `.docx`
 - `Markdown to Word: Convert with Template` — apply a custom `.docx` style template
-- `Markdown to Word: Convert Folder` — batch-convert all `.md` files in a directory
 - Mermaid diagram rendering inside Word documents
 - Configurable output path in extension settings
 - Progress notification and output link on completion

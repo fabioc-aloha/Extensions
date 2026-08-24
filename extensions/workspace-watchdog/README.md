@@ -53,6 +53,10 @@ Observations are stored locally in `.github/episodic/peripheral/file-observation
 
 ---
 
+## Related Reading
+
+**From the extension author:** [Loop Engineering: A Better Way to Think, Create, and Work with AI](https://www.amazon.com/Loop-Engineering-Better-Create-Applied/dp/B0H8R8GDTJ) examines preserving context, making verification visible, and recognizing the debt left by shortcuts in AI-assisted work.
+
 ## 🔷 CX Tools Suite
 
 Explore more tools from the same suite:

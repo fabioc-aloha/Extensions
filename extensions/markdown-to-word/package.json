@@ -1,8 +1,8 @@
 {
   "name": "cx-markdown-to-word",
   "displayName": "CX Markdown to Word",
-  "description": "Convert Markdown + Mermaid diagrams to professional Word (.docx) via Pandoc — custom templates, tables, code blocks",
-  "version": "0.1.2",
+  "description": "Convert Markdown to professional Word documents with Pandoc, Mermaid rendering, custom templates, and batch export",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -47,7 +47,11 @@
       },
       {
         "command": "markdownToWord.preview",
-        "title": "Markdown to Word: Preview Diagrams"
+        "title": "Markdown to Word: Open Markdown Preview"
+      },
+      {
+        "command": "markdownToWord.convertFolder",
+        "title": "Markdown to Word: Convert Folder"
       },
       {
         "command": "markdownToWord.checkPandoc",
@@ -91,6 +95,11 @@
           "command": "markdownToWord.preview",
           "when": "resourceExtname == .md",
           "group": "1_analysis@1"
+        },
+        {
+          "command": "markdownToWord.convertFolder",
+          "when": "resourceExtname == .md",
+          "group": "2_transform@4"
         },
         {
           "command": "markdownToWord.checkPandoc",

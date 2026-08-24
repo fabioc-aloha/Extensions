@@ -64,6 +64,10 @@ Your content here.
 
 ---
 
+## Related Reading
+
+**From the extension author:** [The Defensible Decision: A Guide to AI-Assisted Business Analytics](https://www.amazon.com/Defensible-Decision-AI-Assisted-Business-Analytics/dp/B0HCLQXLLQ) offers a practical discipline for clear, reviewable AI-assisted presentations and visual analysis.
+
 ## 🔷 CX Tools Suite
 
 Explore more tools from the same suite:

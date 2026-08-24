@@ -6,6 +6,7 @@ let outputChannel: vscode.OutputChannel;
 
 /** Standard banner dimensions for VS Code Marketplace extension banners */
 const BANNER_WIDTH = 1280;
+const ICON_SET_SIZES = [16, 32, 48, 64, 128, 256, 512];
 
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('SVG to PNG');
@@ -26,6 +27,9 @@ export function activate(context: vscode.ExtensionContext): void {
         ),
         vscode.commands.registerCommand('svgToPng.convertTransparent', (uri?: vscode.Uri) =>
             convertSvg(uri, false, true)
+        ),
+        vscode.commands.registerCommand('svgToPng.exportIconSet', (uri?: vscode.Uri) =>
+            exportIconSet(uri)
         )
     );
 
@@ -53,7 +57,7 @@ async function convertSvg(uri?: vscode.Uri, askWidth = false, transparent = fals
         width = input ? parseInt(input, 10) : 0;
     }
 
-    const outputPath = targetUri.fsPath.replace(/\.svg$/i, '.png');
+    const outputPath = await getOutputPath(targetUri.fsPath, path.basename(targetUri.fsPath).replace(/\.svg$/i, '.png'));
     const success = await doConvert(targetUri.fsPath, outputPath, width, transparent);
 
     if (success && config.get<boolean>('openAfterConvert')) {
@@ -81,26 +85,94 @@ async function convertBatch(): Promise<void> {
 
     let successCount = 0;
     let failCount = 0;
+    let cancelled = false;
 
     await vscode.window.withProgress(
-        { location: vscode.ProgressLocation.Notification, title: 'SVG to PNG', cancellable: false },
-        async (progress) => {
+        { location: vscode.ProgressLocation.Notification, title: 'SVG to PNG', cancellable: true },
+        async (progress, token) => {
             for (let i = 0; i < svgFiles.length; i++) {
+                if (token.isCancellationRequested) {
+                    cancelled = true;
+                    break;
+                }
                 const svgPath = svgFiles[i].fsPath;
-                const pngPath = svgPath.replace(/\.svg$/i, '.png');
+                const pngPath = await getOutputPath(svgPath, path.basename(svgPath).replace(/\.svg$/i, '.png'));
                 progress.report({
                     message: `Converting ${i + 1}/${svgFiles.length}: ${path.basename(svgPath)}`,
                     increment: (100 / svgFiles.length)
                 });
-                const ok = await doConvert(svgPath, pngPath, width);
+                const ok = await doConvert(svgPath, pngPath, width, false, false);
                 ok ? successCount++ : failCount++;
             }
         }
     );
 
-    const msg = `SVG to PNG: ${successCount} converted` + (failCount > 0 ? `, ${failCount} failed` : '') + '.';
+    const msg = `SVG to PNG: ${successCount} converted` + (failCount > 0 ? `, ${failCount} failed` : '') + (cancelled ? ' before cancellation.' : '.');
     vscode.window.showInformationMessage(msg);
     outputChannel.show();
+}
+
+async function exportIconSet(uri?: vscode.Uri): Promise<void> {
+    const targetUri = uri ?? vscode.window.activeTextEditor?.document.uri;
+    if (!targetUri || path.extname(targetUri.fsPath).toLowerCase() !== '.svg') {
+        vscode.window.showWarningMessage('SVG to PNG: Open or select an SVG file first.');
+        return;
+    }
+
+    const sourceName = path.basename(targetUri.fsPath, '.svg');
+    const destination = await vscode.window.showOpenDialog({
+        canSelectFiles: false,
+        canSelectFolders: true,
+        canSelectMany: false,
+        defaultUri: vscode.Uri.file(path.join(path.dirname(targetUri.fsPath), `${sourceName}-icons`)),
+        openLabel: 'Export Icon Set Here'
+    });
+    const destinationUri = destination?.[0];
+    if (!destinationUri) { return; }
+
+    await fs.promises.mkdir(destinationUri.fsPath, { recursive: true });
+    let exported = 0;
+    let failed = 0;
+    let cancelled = false;
+
+    await vscode.window.withProgress(
+        {
+            location: vscode.ProgressLocation.Notification,
+            title: 'Exporting Transparent Icon Set',
+            cancellable: true
+        },
+        async (progress, token) => {
+            for (let index = 0; index < ICON_SET_SIZES.length; index++) {
+                if (token.isCancellationRequested) {
+                    cancelled = true;
+                    break;
+                }
+
+                const size = ICON_SET_SIZES[index];
+                progress.report({
+                    message: `${size} x ${size}`,
+                    increment: 100 / ICON_SET_SIZES.length
+                });
+
+                const iconPath = path.join(destinationUri.fsPath, `${sourceName}-${size}.png`);
+                if (await doConvert(targetUri.fsPath, iconPath, size, true, false)) {
+                    exported++;
+                } else {
+                    failed++;
+                }
+            }
+        }
+    );
+
+    const msg = `SVG to PNG: ${exported} transparent icon files exported to ${destinationUri.fsPath}` +
+        (failed > 0 ? `, ${failed} failed` : '') +
+        (cancelled ? ' before cancellation.' : '.');
+    outputChannel.appendLine(msg);
+    vscode.window.showInformationMessage(msg, 'Open Folder').then(choice => {
+        if (choice === 'Open Folder') {
+            vscode.commands.executeCommand('revealFileInOS', destinationUri);
+        }
+    });
 }
 
 /**
@@ -152,7 +224,7 @@ async function generateExtensionBanners(): Promise<void> {
                     increment: 100 / bannerFiles.length
                 });
 
-                const ok = await doConvert(svgPath, pngPath, BANNER_WIDTH);
+                const ok = await doConvert(svgPath, pngPath, BANNER_WIDTH, false, false);
                 ok ? successCount++ : failCount++;
             }
         }
@@ -169,7 +241,13 @@ async function generateExtensionBanners(): Promise<void> {
     ).then(c => { if (c) { outputChannel.show(); } });
 }
 
-async function doConvert(svgPath: string, pngPath: string, width: number, transparent = false): Promise<boolean> {
+async function doConvert(
+    svgPath: string,
+    pngPath: string,
+    width: number,
+    transparent = false,
+    notifyFailure = true
+): Promise<boolean> {
     try {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const { Resvg } = require('@resvg/resvg-js');
@@ -202,10 +280,31 @@ async function doConvert(svgPath: string, pngPath: string, width: number, transp
     } catch (err) {
         const msg = `❌ Failed: ${path.basename(svgPath)} — ${err instanceof Error ? err.message : String(err)}`;
         outputChannel.appendLine(msg);
-        vscode.window.showErrorMessage(`SVG to PNG: ${msg}`);
+        if (notifyFailure) {
+            vscode.window.showErrorMessage(`SVG to PNG: ${msg}`);
+        }
         return false;
     }
 }
 
-export function deactivate(): void {}
+async function getOutputPath(inputPath: string, outputFileName: string): Promise<string> {
+    const config = vscode.workspace.getConfiguration('svgToPng');
+    const configuredDirectory = config.get<string>('outputDirectory')?.trim();
+    if (!configuredDirectory) {
+        return path.join(path.dirname(inputPath), outputFileName);
+    }
 
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    const outputRoot = path.isAbsolute(configuredDirectory)
+        ? configuredDirectory
+        : path.join(workspaceRoot ?? path.dirname(inputPath), configuredDirectory);
+    const relativeInputPath = workspaceRoot ? path.relative(workspaceRoot, inputPath) : '';
+    const relativeParent = relativeInputPath && !relativeInputPath.startsWith('..') && !path.isAbsolute(relativeInputPath)
+        ? path.dirname(relativeInputPath)
+        : '';
+    const outputDirectory = path.join(outputRoot, relativeParent);
+    await fs.promises.mkdir(outputDirectory, { recursive: true });
+    return path.join(outputDirectory, outputFileName);
+}
+
+export function deactivate(): void {}

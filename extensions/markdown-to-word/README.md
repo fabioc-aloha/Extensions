@@ -2,7 +2,7 @@
 
 ![Markdown to Word Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/markdown-to-word/assets/banner.png)
 
-**Convert Markdown + Mermaid diagrams to professional Word (.docx) via Pandoc**
+**Convert Markdown to professional Word documents with Pandoc, Mermaid rendering, custom templates, and batch export.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
@@ -10,26 +10,30 @@
 
 ---
 
-Right-click any `.md` file → **Convert to Word**. Outputs a `.docx` alongside your Markdown file. Supports custom reference docs for house styles.
+Turn Markdown into a `.docx` without leaving VS Code. Convert one file, choose an output location, or batch-convert a documentation folder. Use the built-in Markdown preview to review source before export, then apply a Word reference document when your team needs house styles.
 
 ## Features
 
-- **Right-click convert** — right-click any .md file in the Explorer to convert to Word
-- **Mermaid diagram support** — diagrams rendered to PNG and embedded in the .docx
-- **Custom house styles** — point to a reference .docx for your company style template
-- **Output alongside source** — .docx created next to your Markdown file automatically
-- **Pandoc-powered** — industry-standard document conversion quality
+- **Single-file conversion** — convert the active or selected Markdown file to Word
+- **Folder conversion** — recursively convert Markdown files while skipping `.git` and `node_modules`
+- **Mermaid rendering** — optionally render Mermaid diagrams to PNG before export
+- **Custom house styles** — apply a Word reference document for your organization template
+- **Built-in source preview** — open the current Markdown file in VS Code's native preview before export
+- **Pandoc-powered output** — retain Pandoc support for full Markdown and template conversion
 
 ## Requirements
 
-- [Pandoc](https://pandoc.org/installing.html) must be installed
+- [Pandoc](https://pandoc.org/installing.html) is required for Word conversion
+- [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli) is optional and required only when pre-rendering Mermaid diagrams
 
 ## Commands
 
 | Command | Description |
 |---|---|
-| `Markdown to Word: Convert Current File` | Convert active .md to .docx |
+| `Markdown to Word: Convert (auto-detect Mermaid)` | Convert active .md to .docx and offer Mermaid pre-rendering |
 | `Markdown to Word: Convert With Options` | Choose output path |
+| `Markdown to Word: Convert Folder` | Batch-convert a selected folder of Markdown files |
+| `Markdown to Word: Open Markdown Preview` | Review the current source using VS Code's built-in Markdown preview |
 | `Markdown to Word: Check Pandoc Installation` | Verify pandoc is available |
 
 ## Settings
@@ -40,6 +44,10 @@ Right-click any `.md` file → **Convert to Word**. Outputs a `.docx` alongside 
 | `markdownToWord.referenceDoc` | `` | Custom .docx style template |
 
 ---
+
+## Related Reading
+
+**From the extension author:** [The Defensible Decision: A Guide to AI-Assisted Business Analytics](https://www.amazon.com/Defensible-Decision-AI-Assisted-Business-Analytics/dp/B0HCLQXLLQ) explores how to produce AI-assisted documents and analyses that serve a named audience, decision, and check.
 
 ## 🔷 CX Tools Suite
 

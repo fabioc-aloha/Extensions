@@ -1,8 +1,8 @@
 {
   "name": "svg-to-png",
   "displayName": "CX SVG to PNG",
-  "description": "Convert SVG to PNG with a right-click — Rust renderer (resvg), custom width, transparency, batch convert, and banner pipeline",
-  "version": "0.1.2",
+  "description": "Convert SVG to PNG with Rust rendering, transparent icon sets, batch output control, and banner generation",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -10,6 +10,7 @@
     "vscode": "^1.109.0"
   },
   "categories": [
+    "Visualization",
     "Other"
   ],
   "keywords": [
@@ -26,7 +27,7 @@
     "rust renderer"
   ],
   "activationEvents": [
-    "onLanguage:xml",
+    "onLanguage:svg",
     "onCommand:svgToPng.convert",
     "onCommand:svgToPng.convertBatch",
     "onCommand:svgToPng.generateBanners",
@@ -54,6 +55,10 @@
       {
         "command": "svgToPng.convertTransparent",
         "title": "SVG to PNG: Convert with Transparent Background"
+      },
+      {
+        "command": "svgToPng.exportIconSet",
+        "title": "SVG to PNG: Export Transparent Icon Set"
       }
     ],
     "menus": {
@@ -91,6 +96,11 @@
           "group": "2_transform@4"
         },
         {
+          "command": "svgToPng.exportIconSet",
+          "when": "resourceExtname == .svg",
+          "group": "2_transform@5"
+        },
+        {
           "command": "svgToPng.generateBanners",
           "group": "3_generate@1"
         }
@@ -113,6 +123,11 @@
           "type": "boolean",
           "default": true,
           "description": "Open the generated PNG after conversion"
+        },
+        "svgToPng.outputDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Optional output directory. Relative paths resolve from the workspace root; batch conversion preserves source subfolders."
         }
       }
     },
