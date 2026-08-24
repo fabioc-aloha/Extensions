@@ -1,5 +1,17 @@
 # Changelog — Gamma Slide Assistant
 
+## [0.2.0] — 2026-08-23
+
+### Added
+- Optional Gamma.app API generation from structured Markdown text
+- Gamma API key storage through VS Code SecretStorage
+- Gamma generation polling with cancellation-aware progress and actionable API errors
+- `gammaSlides.defaultThemeId` setting for optional Gamma themes
+
+### Changed
+- Corrected the README to reflect Gamma API availability and Pro-or-higher account requirement
+- Modernized the extension description around local Marp export plus optional Gamma generation
+
 ## [0.1.2] — 2026-02-28
 
 ### Changed
@@ -14,9 +26,5 @@
 
 ### Added
 - Initial release
-- `Gamma: Open Slide Assistant` — launch the Gamma slide-creation webview panel
-- `Gamma: Generate Outline from File` — produce a slide outline from the active document
-- `Gamma: Export to Gamma` — send the current outline to Gamma.app for rendering
 - Context-menu integration for Markdown files
-- Configurable Gamma API token in extension settings
-- Live outline preview inside the webview panel
+- Local Marp HTML/PDF export, browser preview, frontmatter insertion, and starter presentation generation

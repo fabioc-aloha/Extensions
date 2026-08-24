@@ -1,8 +1,8 @@
 {
   "name": "gamma-slide-assistant",
   "displayName": "CX Gamma Slide Assistant",
-  "description": "Markdown to presentation slides with Marp — export to HTML or PDF, live preview, starter templates, zero configuration",
-  "version": "0.1.2",
+  "description": "Create presentations from Markdown with local Marp export or an opt-in Gamma.app generation workflow",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",
@@ -10,7 +10,9 @@
     "vscode": "^1.109.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Visualization",
+    "Education"
   ],
   "keywords": [
     "presentation",
@@ -49,6 +51,14 @@
       {
         "command": "gammaSlides.newPresentation",
         "title": "Gamma Slides: New Presentation"
+      },
+      {
+        "command": "gammaSlides.exportToGamma",
+        "title": "Gamma Slides: Generate Presentation in Gamma"
+      },
+      {
+        "command": "gammaSlides.configureGammaApiKey",
+        "title": "Gamma Slides: Configure Gamma API Key"
       }
     ],
     "menus": {
@@ -88,6 +98,15 @@
         {
           "command": "gammaSlides.newPresentation",
           "group": "3_generate@2"
+        },
+        {
+          "command": "gammaSlides.exportToGamma",
+          "when": "resourceExtname == .md",
+          "group": "3_generate@3"
+        },
+        {
+          "command": "gammaSlides.configureGammaApiKey",
+          "group": "4_info@1"
         }
       ]
     },
@@ -96,7 +115,17 @@
         "id": "cx.tools",
         "label": "$(tools) CX Tools"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Gamma Slides",
+      "properties": {
+        "gammaSlides.defaultThemeId": {
+          "type": "string",
+          "default": "",
+          "description": "Optional Gamma theme ID used for API-generated presentations. Leave empty for the Gamma workspace default."
+        }
+      }
+    }
   },
   "scripts": {
     "compile": "tsc -p ./",

@@ -40,7 +40,7 @@ feasibility. Download count breaks ties; it is not the only signal.
 | 3 | CX AI Voice Reader | 327 | P0 | Developer proof-reading companion | Remove or implement Azure setting; chunking, pause/resume, real voice picker |
 | 4 | CX PPTX Builder | 334 | P0 | Branded technical deck generator | Correct claims and ship themes with real slide masters |
 | 5 | CX Hook Studio | 114 | P0 | Schema-aware hook recipe studio | Support modern `.github/hooks/*.json` schema and curated templates |
-| 6 | CX Gamma Slide Assistant | 116 | P0 decision | Defensible presentation product or retirement | Correct claims, rebrand decision, and evaluate merge with PPTX Builder |
+| 6 | CX Gamma Slide Assistant | 116 | P0 | Hybrid local and Gamma presentation workflow | Supported Gamma API generation with explicit paid-account boundary |
 | 7 | CX Mermaid Diagram Pro | 75 | P0 | Export-first Mermaid tooling | Offline bundled render path, `.mmd` support, diagnostics |
 | 8 | CX Replicate Image Studio | 44 | P1 | Persistent visual creative studio | Persist history, wire cancellation, add negative prompts |
 | 9 | CX SVG Toolkit | 28 | P1 | SVG developer workbench | Deliver SVGO and live preview; state scope versus SVG to PNG |
@@ -89,10 +89,9 @@ Work sequentially through the first four extensions:
 1. **Hook Studio:** The native VS Code hooks editor now covers basic file
    editing. Become the source of validated recipes, full schema form editing,
    static dry runs, and safe migration of hook files.
-2. **Gamma Slide Assistant:** Decide whether a renamed CX Slide Publisher can
-   differentiate through publication workflow, or merge it into a single CX
-   Presentation Suite with PPTX Builder. Do not continue as a weaker Marp
-   wrapper under the Gamma name.
+2. **Gamma Slide Assistant:** Maintain the hybrid workflow: local Marp export
+   for offline use and opt-in Gamma API generation for paid Gamma users. Keep
+   the paid-account, credit, and text-only API boundaries explicit.
 3. **Mermaid Diagram Pro:** VS Code includes Mermaid preview. Pivot to offline
    rendering, export, templates, diagnostics, and GitHub compatibility checks.
 
@@ -184,8 +183,8 @@ Record a baseline before the first v0.2 release, then review after 28 days.
 
 1. Before Tranche 1, approve the claim-correction approach: remove unsupported
    historical claims or implement them.
-2. Before the presentation work, choose whether Gamma Slide Assistant is
-   renamed, merged, or retired.
+2. Before expanding Gamma generation, verify the current Gamma API contract,
+   account requirements, credits, rate limits, and text-format behavior.
 3. Before Chat Participant or MCP work, verify the target VS Code APIs and
    user authentication model at implementation time.
 4. Before any cloud-connected feature, approve the pricing, consent, and

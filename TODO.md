@@ -129,7 +129,7 @@ All implementation work is complete. These are no longer tasks.
 - [x] Mermaid Diagram Pro — 11 templates, live preview, SVG/PNG export
 - [x] SVG Toolkit — inline preview, data URI copy, icon templates, validation
 - [x] SVG to PNG — Rust renderer (resvg-js), batch convert, custom width
-- [x] Gamma Slide Assistant — Marp offline path, HTML/PDF export
+- [x] Gamma Slide Assistant — local Marp HTML/PDF export plus optional Gamma API generation
 
 ---
 

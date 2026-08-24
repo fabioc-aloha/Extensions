@@ -318,17 +318,16 @@ All three shipped on the same day VS Code 1.109 first-mover window was identifie
 
 ### Gamma Slide Assistant
 
-**Tagline**: Transform markdown outlines into presentation-ready slides.
+**Tagline**: Create presentation-ready slides from Markdown with local Marp export or optional Gamma generation.
 
 **Core features**:
-- **Offline path (available now)**: Convert markdown → branded Marp `.md` with slide themes, speaker notes, and image placeholders
-- **Online path (when Gamma API opens)**: One-command upload to Gamma.app with AI-enhanced titles and layouts
-- Slide theme library: minimal, corporate, dark, academic
-- Image placeholder AI: describe a slide visual, generate it via Replicate
-- Export: Marp → HTML, PDF, PPTX
+- **Local path**: Marp HTML/PDF export, browser preview, frontmatter insertion, and starter presentation generation
+- **Gamma path**: One-command presentation generation from Markdown-derived text with `---` card boundaries
+- Gamma API key storage in VS Code SecretStorage, with paid-account and credit confirmation before generation
+- Optional Gamma theme ID for API-generated presentations
 
-**Tech**: Marp CLI, Gamma API (when available), Replicate API, VS Code API
-**Status**: ✅ Implemented
+**Tech**: Marp CLI via `npx`, Gamma API v1.0, VS Code SecretStorage, VS Code API
+**Status**: v0.2.0 prepared; Marketplace publication pending
 
 ---
 

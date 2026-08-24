@@ -70,7 +70,7 @@ Marketplace.
 | CX SVG to PNG | 2026-08-23 | 2026-08-23 | v0.2 icon-set and batch workflow prepared |
 | CX AI Voice Reader | 2026-08-23 | 2026-08-23 | v0.2 local voice and playback reliability prepared |
 | CX PPTX Builder | 2026-08-23 | 2026-08-23 | v0.2 themes and continuation slides prepared |
-| CX Gamma Slide Assistant | 2026-08-23 | — | Positioning decision pending |
+| CX Gamma Slide Assistant | 2026-08-23 | 2026-08-23 | v0.2 Gamma API generation and local Marp workflow prepared |
 | CX Hook Studio | 2026-08-23 | — | Current hook schema and recipe work pending |
 | CX Mermaid Diagram Pro | 2026-08-23 | — | Offline export and diagnostics work pending |
 | CX Replicate Image Studio | 2026-08-23 | — | Persistence and gallery work pending |
@@ -171,7 +171,7 @@ clear:
 | SVG to PNG | Stale SVG competitor; no icon-set workflow | Production asset pipeline | Multi-size icon export, output folder, SVG activation |
 | AI Voice Reader | Microsoft speech is broad but not document review | Proof-reader companion | Chunking, pause/resume, voice picker, remove or implement Azure |
 | PPTX Builder | Marp has better preview/export ecosystem | Branded technical PPTX engine | Truthful docs and themes with native slide masters |
-| Gamma Slide Assistant | Directly inferior Marp wrapper; Gamma naming mismatch | Slide publisher or merged presentation suite | Correct claims and make rename/merge decision |
+| Gamma Slide Assistant | Paid Gamma account and API-credit boundary | Hybrid local Marp and Gamma workflow | Maintain Gamma API contract and document input limits |
 | Hook Studio | Native hooks editor and new schema | Hook template and validation studio | Multi-file schema support and curated recipes |
 | Mermaid Diagram Pro | Native VS Code preview | Offline export and compatibility tooling | Local Mermaid, `.mmd` support, diagnostics |
 | Replicate Image Studio | Official Replicate MCP offers chat-first path | Persistent visual creative studio | Saved history, cancellation, negative prompts |
