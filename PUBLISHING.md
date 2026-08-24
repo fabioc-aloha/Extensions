@@ -26,6 +26,8 @@ publishing selected extension versions without relying on browser automation.
 - A clean source tree for the intended release commit
 - Version, README, CHANGELOG, and package metadata updated for every selected
   extension
+- An Azure Pipelines execution entitlement: either hosted parallelism enabled
+  for the organization or an authorized self-hosted agent pool
 
 ## Authentication
 
