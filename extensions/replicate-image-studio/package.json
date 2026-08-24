@@ -1,8 +1,8 @@
 {
   "name": "replicate-image-studio",
   "displayName": "CX Replicate Image Studio",
-  "description": "Generate images and video with Replicate models in VS Code, then save or insert results as Markdown",
-  "version": "0.1.3",
+  "description": "Generate images and video with Replicate models in VS Code, then save or insert persistent results as Markdown",
+  "version": "0.2.0",
   "publisher": "fabioc-aloha",
   "author": "Fabio Correa",
   "icon": "assets/icon.png",

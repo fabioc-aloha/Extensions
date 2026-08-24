@@ -2,21 +2,23 @@
 
 ![Replicate Image Studio Banner](https://raw.githubusercontent.com/fabioc-aloha/Extensions/main/extensions/replicate-image-studio/assets/banner.png)
 
-**Generate images inside VS Code using Flux, SDXL, WAN 2.1 — insert results as Markdown**
+**Generate images and video in VS Code, preserve local history, and insert results as Markdown.**
 
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
 [![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.replicate-image-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.replicate-image-studio)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.replicate-image-studio)
 
 ---
 
-Type a prompt, choose a model, get an image URL, then insert it as Markdown or save it locally. Session history is available for the current VS Code session.
+Type a prompt, choose a model, get an image URL, then insert it as Markdown or save it locally. Generation history is retained locally across VS Code restarts.
 
 ## Features
 
 - **Multi-model generation** — Flux Schnell, Flux Dev, SDXL, and WAN 2.1 video
 - **Insert as Markdown** — generated image URLs inserted at cursor with one click
-- **Session history** — all generations tracked for the current VS Code session
+- **Persistent local history** — the latest 50 generations remain available across VS Code restarts
+- **Negative prompts** — optionally describe elements to avoid before generating an image
 - **Secure key storage** — API key in VS Code SecretStorage, never in settings.json
 - **Prompt from selection** — selected text pre-fills the generation prompt
 

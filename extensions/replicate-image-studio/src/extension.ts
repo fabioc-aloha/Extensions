@@ -14,7 +14,9 @@ interface HistoryEntry {
     createdAt: string;
 }
 
-const history: HistoryEntry[] = [];
+let history: HistoryEntry[] = [];
+const HISTORY_KEY = 'replicate.history';
+const MAX_HISTORY_ENTRIES = 50;
 
 const ASPECT_RATIOS = [
     { label: '1:1  Square', value: '1:1' },
@@ -44,6 +46,7 @@ function requireClient(): ReplicateClient | null {
 export function activate(context: vscode.ExtensionContext): void {
     outputChannel = vscode.window.createOutputChannel('Replicate Image Studio');
     context.subscriptions.push(outputChannel);
+    history = context.globalState.get<HistoryEntry[]>(HISTORY_KEY, []);
 
     // Initialize client from stored key
     context.secrets.get('replicate.apiKey').then(key => {
@@ -63,13 +66,13 @@ export function activate(context: vscode.ExtensionContext): void {
 
     context.subscriptions.push(
         vscode.commands.registerCommand('replicateStudio.generate',
-            () => generateImage(getSelectedText())),
+            () => generateImage(context, getSelectedText())),
         vscode.commands.registerCommand('replicateStudio.generateSmart',
-            () => generateSmart()),
+            () => generateSmart(context)),
         vscode.commands.registerCommand('replicateStudio.generateBanner',
-            () => generateBanner()),
+            () => generateBanner(context)),
         vscode.commands.registerCommand('replicateStudio.generateVideo',
-            () => generateVideo(getSelectedText())),
+            () => generateVideo(context, getSelectedText())),
         vscode.commands.registerCommand('replicateStudio.setApiKey',
             () => setApiKey(context)),
         vscode.commands.registerCommand('replicateStudio.viewHistory',
@@ -96,7 +99,7 @@ async function setApiKey(context: vscode.ExtensionContext): Promise<void> {
     }
 }
 
-async function generateImage(selectedText = ''): Promise<void> {
+async function generateImage(context: vscode.ExtensionContext, selectedText = ''): Promise<void> {
     const c = requireClient();
     if (!c) { return; }
 
@@ -135,10 +138,11 @@ async function generateImage(selectedText = ''): Promise<void> {
     });
     if (!aspectRatio) { return; }
 
-    await runGeneration(c, model.modelKey, prompt, aspectRatio.value);
+    const negativePrompt = await getNegativePrompt();
+    await runGeneration(context, c, model.modelKey, prompt, aspectRatio.value, undefined, negativePrompt);
 }
 
-async function generateSmart(): Promise<void> {
+async function generateSmart(context: vscode.ExtensionContext): Promise<void> {
     const c = requireClient();
     if (!c) { return; }
 
@@ -158,11 +162,12 @@ async function generateSmart(): Promise<void> {
     const selectedModel = selectModelForPrompt(prompt);
     const modelInfo = MODEL_CATALOG[selectedModel];
 
-    await runGeneration(c, selectedModel, prompt, aspectRatio.value,
-        `Smart mode selected: ${modelInfo.label} — ${modelInfo.bestFor}`);
+    const negativePrompt = await getNegativePrompt();
+    await runGeneration(context, c, selectedModel, prompt, aspectRatio.value,
+        `Smart mode selected: ${modelInfo.label} — ${modelInfo.bestFor}`, negativePrompt);
 }
 
-async function generateBanner(): Promise<void> {
+async function generateBanner(context: vscode.ExtensionContext): Promise<void> {
     const c = requireClient();
     if (!c) { return; }
 
@@ -174,10 +179,11 @@ async function generateBanner(): Promise<void> {
     if (!prompt) { return; }
 
     // Banners are always landscape + Ideogram for typography
-    await runGeneration(c, 'ideogram', prompt, '16:9', 'Banner mode: Ideogram v2 selected for text rendering');
+    const negativePrompt = await getNegativePrompt();
+    await runGeneration(context, c, 'ideogram', prompt, '16:9', 'Banner mode: Ideogram v2 selected for text rendering', negativePrompt);
 }
 
-async function generateVideo(selectedText = ''): Promise<void> {
+async function generateVideo(context: vscode.ExtensionContext, selectedText = ''): Promise<void> {
     const c = requireClient();
     if (!c) { return; }
 
@@ -194,7 +200,7 @@ async function generateVideo(selectedText = ''): Promise<void> {
             try {
                 const urls = await c.generate('wan-2-1', { prompt });
                 const url = urls[0] ?? '';
-                history.unshift({ prompt, urls, model: 'wan-2-1', createdAt: new Date().toISOString() });
+                await addHistory(context, { prompt, urls, model: 'wan-2-1', createdAt: new Date().toISOString() });
                 outputChannel.appendLine(`✅ Video generated: ${url}`);
                 vscode.window.showInformationMessage('✅ Video generated!', 'Open in Browser').then(action => {
                     if (action && url) { vscode.env.openExternal(vscode.Uri.parse(url)); }
@@ -208,11 +214,13 @@ async function generateVideo(selectedText = ''): Promise<void> {
 }
 
 async function runGeneration(
+    context: vscode.ExtensionContext,
     c: ReplicateClient,
     modelKey: SupportedModel,
     prompt: string,
     aspectRatio: string,
-    statusNote?: string
+    statusNote?: string,
+    negativePrompt?: string
 ): Promise<void> {
     const modelInfo = MODEL_CATALOG[modelKey];
     const title = statusNote
@@ -223,9 +231,9 @@ async function runGeneration(
         { location: vscode.ProgressLocation.Notification, title, cancellable: false },
         async () => {
             try {
-                const urls = await c.generate(modelKey, { prompt, aspect_ratio: aspectRatio });
+                const urls = await c.generate(modelKey, { prompt, aspect_ratio: aspectRatio, negative_prompt: negativePrompt || undefined });
                 const url = urls[0] ?? '';
-                history.unshift({ prompt, urls, model: modelKey, aspectRatio, createdAt: new Date().toISOString() });
+                await addHistory(context, { prompt, urls, model: modelKey, aspectRatio, createdAt: new Date().toISOString() });
                 outputChannel.appendLine(`✅ [${modelInfo.label}] ${aspectRatio} "${prompt.slice(0, 60)}..." → ${url}`);
 
                 const markdownSnippet = `![${prompt}](${url})`;
@@ -250,6 +258,19 @@ async function runGeneration(
             }
         }
     );
+}
+
+async function getNegativePrompt(): Promise<string> {
+    return (await vscode.window.showInputBox({
+        title: 'Negative Prompt (Optional)',
+        prompt: 'Describe elements to avoid, or leave empty to skip.',
+        ignoreFocusOut: true
+    }))?.trim() ?? '';
+}
+
+async function addHistory(context: vscode.ExtensionContext, entry: HistoryEntry): Promise<void> {
+    history = [entry, ...history].slice(0, MAX_HISTORY_ENTRIES);
+    await context.globalState.update(HISTORY_KEY, history);
 }
 
 function insertMarkdownSnippet(snippet: string): void {

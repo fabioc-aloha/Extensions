@@ -7,6 +7,7 @@
 [![VS Code](https://img.shields.io/badge/VS%20Code-1.109%2B-blue)](https://code.visualstudio.com/)
 [![Publisher](https://img.shields.io/badge/publisher-fabioc--aloha-orange)](https://marketplace.visualstudio.com/publishers/fabioc-aloha)
 [![Version](https://img.shields.io/visual-studio-marketplace/v/fabioc-aloha.pptx-builder)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/fabioc-aloha.pptx-builder)](https://marketplace.visualstudio.com/items?itemName=fabioc-aloha.pptx-builder)
 
 ---
 
